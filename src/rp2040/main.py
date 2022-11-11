@@ -12,10 +12,10 @@ rtc.datetime((2022, 11, 11, 16, 13, 0, 0, 0))
 # set up the hardware
 display = PicoGraphics(display=DISPLAY_PICO_EXPLORER)
 i2c = PimoroniI2C(**PICO_EXPLORER_I2C_PINS)
-#bme = BreakoutBME280(i2c, address=0x76)
+
 
 # lets set up some pen colours to make drawing easier
-TEMPCOLOUR = display.create_pen(0, 0, 0)  # this colour will get changed in a bit
+
 WHITE = display.create_pen(255, 255, 255)
 BLACK = display.create_pen(0, 0, 0)
 RED = display.create_pen(255, 0, 0)
@@ -74,7 +74,37 @@ CLOCKWORDS = [
 
 from array import *
 
-def display_words_row(_x, _y,_words,_colors) -> int:
+def get_color(_hsvpos, _bright):
+    _hsvpos = _hsvpos % 255
+    _bright = abs(_bright)
+    if _bright > 255:
+        _bright = 255
+        
+    bs = _bright / 255.0
+    r = 0.0
+    g = 0.0
+    b = 0.0
+    
+    _hsvpos = 255 - _hsvpos
+    if _hsvpos < 85:
+        r = (255 - _hsvpos * 3) * bs
+        g = 0
+        b = (_hsvpos * 3) * bs
+    elif _hsvpos < 170:
+        _hsvpos = _hsvpos - 85
+        b = (255 - _hsvpos * 3) * bs
+        r = 0
+        g = (_hsvpos * 3) * bs
+    else:
+        _hsvpos = _hsvpos - 170
+        g = (255 - _hsvpos * 3) * bs
+        b = 0
+        r = (_hsvpos * 3) * bs
+        
+    return int(r), int(g), int(b)
+
+
+def display_words_row(_x, _y, _coloroffset, _words,_colors) -> int:
     
     fz = 3 # FONT SIZE
     fzmul = int(fz * 5.5) # DISTANCE BETWEEN WORDS
@@ -82,8 +112,17 @@ def display_words_row(_x, _y,_words,_colors) -> int:
     x = _x
     for w in _words:
         
-        if _colors[i] is not None and _colors[i]:
-            display.set_pen(WHITE)
+        if _colors[i] is not None and _colors[i] > 0:
+            if _colors[i] == 2:
+                print(get_color(_coloroffset, 255))
+                r,g,b = get_color(_coloroffset, 255)
+                display.set_pen(display.create_pen(r, g, b))
+            elif _colors[i] == 3:
+                r,g,b = get_color(_coloroffset* +100, 255)
+                display.set_pen(display.create_pen(r, g, b))
+            else:
+                display.set_pen(WHITE)
+            
         else:
             display.set_pen(GREY)
             
@@ -93,32 +132,32 @@ def display_words_row(_x, _y,_words,_colors) -> int:
     
 
 
-def set_word_display(_index):
+def set_word_display(_index, _coloroffset):
     
     y = 10
     x = 30
     yinc = 22
     
     
-    display_words_row(x, y, ['es', 'k', 'ist', 'a', 'funf'], [M_ES in _index, 0, M_IST in _index, 0, M_FUENF in _index])
+    display_words_row(x, y, _coloroffset, ['es', 'k', 'ist', 'a', 'funf'], [(M_ES in _index)*1, 0, (M_IST in _index)*1, 0, (M_FUENF in _index)*2])
     y = y + yinc
-    display_words_row(x, y, ['zehn', 'zwanzig'], [M_ZEHN in _index, M_ZWANZIG in _index])
+    display_words_row(x, y, _coloroffset, ['zehn', 'zwanzig'], [(M_ZEHN in _index)*2, (M_ZWANZIG in _index)*2])
     y = y + yinc
-    display_words_row(x, y, ['drei', 'viertel'], [M_VIERTEL in _index, M_VIERTEL in _index])
+    display_words_row(x, y, _coloroffset, ['drei', 'viertel'], [(M_VIERTEL in _index)*2, (M_VIERTEL in _index)*2])
     y = y + yinc
-    display_words_row(x, y, ['vor', 'funk','nach'], [M_VOR in _index, 0, M_NACH in _index])
+    display_words_row(x, y, _coloroffset, ['vor', 'funk','nach'], [(M_VOR in _index)*1, 0, (M_NACH in _index)*1])
     y = y + yinc
-    display_words_row(x, y, ['halb', 'a', 'el', 'f', 'unf'], [M_HALB in _index, 0, H_ELF in _index, H_ELF in _index or H_FUENF in _index ,H_FUENF in _index])
+    display_words_row(x, y, _coloroffset, ['halb', 'a', 'el', 'f', 'unf'], [(M_HALB in _index)*2, 0, (H_ELF in _index)*3, (H_ELF in _index or H_FUENF in _index)*3 ,(H_FUENF in _index)*3])
     y = y + yinc
-    display_words_row(x, y, ['ein', 's', 'xam','zwei'], [H_EIN in _index or H_EINS in _index, H_EINS in _index, 0, H_ZWEI in _index])
+    display_words_row(x, y, _coloroffset, ['ein', 's', 'xam','zwei'], [(H_EIN in _index or H_EINS in _index)*3, (H_EINS in _index)*3, 0, (H_ZWEI in _index)*3])
     y = y + yinc
-    display_words_row(x, y, ['drei', 'auj','vier'], [H_DREI in _index, 0, H_VIER in _index])
+    display_words_row(x, y, _coloroffset, ['drei', 'auj','vier'], [(H_DREI in _index)*3, 0, (H_VIER in _index)*3])
     y = y + yinc
-    display_words_row(x, y, ['sechs', 'nl','acht'], [H_SECHS in _index, 0, H_ACHT in _index])
+    display_words_row(x, y, _coloroffset, ['sechs', 'nl','acht'], [(H_SECHS in _index)*3, 0, (H_ACHT in _index)*3])
     y = y + yinc
-    display_words_row(x, y, ['sieben', 'zwolf'], [H_SIEBEN in _index, H_ZWOELF in _index]) 
+    display_words_row(x, y, _coloroffset, ['sieben', 'zwolf'], [(H_SIEBEN in _index)*3, (H_ZWOELF in _index)*3]) 
     y = y + yinc
-    display_words_row(x, y, ['zeh','n','eun', 'uhr'], [H_ZEHN in _index, H_ZEHN in _index or H_NEUN in _index, H_NEUN in _index, M_UHR in _index]) 
+    display_words_row(x, y, _coloroffset, ['zeh','n','eun', 'uhr'], [(H_ZEHN in _index)*3, (H_ZEHN in _index or H_NEUN in _index)*3, (H_NEUN in _index)*3, (M_UHR in _index)*1]) 
  
     display.update()
 
@@ -127,7 +166,7 @@ def clear_word_display():
     display.clear()
     
 def time_to_words(_h, _m) -> []:
-    print(_h, _m)
+    
     word_array = [M_ES, M_IST]
     # ADD WORDS FOR HOURS
     if _h == 0 or _h == 12:
@@ -207,13 +246,14 @@ def time_to_words(_h, _m) -> []:
 
 
     
-def display_time(_h, _m):
+def display_time(_h, _m, _s):
+    print(_h, _m, _s)
     clear_word_display()
     words = time_to_words(_h, _m)
     # ADD ONLY 'UHR' IF MINUTES CANT BE DISPLAYED
-    
+
         
-    set_word_display(words)
+    set_word_display(words, (_s * 4) % 255)
 
     
     
@@ -224,7 +264,7 @@ def display_time(_h, _m):
         
 while True:
 
-    display_time(rtc.datetime()[3], rtc.datetime()[4])
+    display_time(rtc.datetime()[3], rtc.datetime()[4], rtc.datetime()[6])
 
     # waits for 1 second and clears to BLACK
     time.sleep(1)
