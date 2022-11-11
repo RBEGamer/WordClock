@@ -104,13 +104,13 @@ def set_word_display(_index):
     y = y + yinc
     display_words_row(x, y, ['zehn', 'zwanzig'], [M_ZEHN in _index, M_ZWANZIG in _index])
     y = y + yinc
-    display_words_row(x, y, ['drei', 'viertel'], [M_ZEHN in _index, M_ZEHN in _index])
+    display_words_row(x, y, ['drei', 'viertel'], [M_VIERTEL in _index, M_VIERTEL in _index])
     y = y + yinc
     display_words_row(x, y, ['vor', 'funk','nach'], [M_VOR in _index, 0, M_NACH in _index])
     y = y + yinc
     display_words_row(x, y, ['halb', 'a', 'el', 'f', 'unf'], [M_HALB in _index, 0, H_ELF in _index, H_ELF in _index or H_FUENF in _index ,H_FUENF in _index])
     y = y + yinc
-    display_words_row(x, y, ['eins', 'xam','zwei'], [H_EINS in _index, 0, H_ZWEI in _index])
+    display_words_row(x, y, ['ein', 's', 'xam','zwei'], [H_EIN in _index or H_EINS in _index, H_EINS in _index, 0, H_ZWEI in _index])
     y = y + yinc
     display_words_row(x, y, ['drei', 'auj','vier'], [H_DREI in _index, 0, H_VIER in _index])
     y = y + yinc
@@ -127,12 +127,16 @@ def clear_word_display():
     display.clear()
     
 def time_to_words(_h, _m) -> []:
-    word_array = []
-
+    print(_h, _m)
+    word_array = [M_ES, M_IST]
+    # ADD WORDS FOR HOURS
     if _h == 0 or _h == 12:
         word_array.append(H_ZWOELF)
     elif _h == 1 or _h == 13:
-        word_array.append(H_EINS)
+        if _m  >= 0 and _m < 5:
+            word_array.append(H_EIN)
+        else:
+            word_array.append(H_EINS)
     elif _h == 2 or _h == 14:
         word_array.append(H_ZWEI)
     elif _h == 3 or _h == 15:
@@ -154,48 +158,73 @@ def time_to_words(_h, _m) -> []:
     elif _h == 11 or _h == 23:
         word_array.append(H_ELF)
 
+    
+    # ADD WORDS FOR MINUTES
+    if _m >= 5 and _m < 25:
+        word_array.append(M_NACH)
+    if _m >= 35 and _m < 39:
+        word_array.append(M_NACH)
+    elif _m >= 25 and _m < 30:
+        word_array.append(M_VOR)
+    elif _m >= 40 and _m < 59:
+        word_array.append(M_VOR)
+    elif _m >= 0 and _m < 5:
+        word_array.append(M_UHR)
+        
+
+    if _m >= 5 and _m < 10:
+        word_array.append(M_FUENF)
+    elif _m >= 10 and _m < 15:
+        word_array.append(M_ZEHN)
+    elif _m >= 15 and _m < 20:
+        word_array.append(M_VIERTEL)
+    elif _m >= 20 and _m < 25:
+        word_array.append(M_ZWANZIG)
+    elif _m >= 25 and _m < 30:
+        word_array.append(M_FUENF)
+        word_array.append(M_HALB)
+    elif _m >= 30 and _m < 35:
+        word_array.append(M_HALB)
+    elif _m >= 35 and _m < 40:
+        word_array.append(M_FUENF)
+        word_array.append(M_HALB)
+    elif _m >= 40 and _m < 45:
+        word_array.append(M_ZWANZIG)
+    elif _m >= 45 and _m < 50:
+        word_array.append(M_VIERTEL)
+    elif _m >= 50 and _m < 55:
+        word_array.append(M_ZEHN)
+    elif _m >= 55 and _m < 60:
+        word_array.append(M_FUENF)
+        
+        
+        
+        
         
     return word_array
-#def set_word_led(_index):
+
+
+
+
     
 def display_time(_h, _m):
     clear_word_display()
-    set_word_display(time_to_words(_h, _m))
+    words = time_to_words(_h, _m)
+    # ADD ONLY 'UHR' IF MINUTES CANT BE DISPLAYED
+    
+        
+    set_word_display(words)
 
     
-
+    
     
 
 
 
         
 while True:
-    #display_time(12,42)
-    #display.set_pen(BLACK)
-    #display.clear()
-
 
     display_time(rtc.datetime()[3], rtc.datetime()[4])
-    # drawing the temperature text
-    #display.set_pen(WHITE)
-    #display.text("temperature:", 10, 10, 240, 3)
-    #display.set_pen(TEMPCOLOUR)
-    #display.text('{:.1f}'.format(temperature) + 'C', 10, 30, 240, 5)
-    #display.set_pen(WHITE)
-    #display.text(describe_temperature(temperature), 10, 60, 240, 3)
-
-    # and the pressure text
-    #display.text("pressure:", 10, 90, 240, 3)
-    #display.text('{:.0f}'.format(pressurehpa) + 'hPa', 10, 110, 240, 5)
-    #display.text(describe_pressure(pressurehpa), 10, 140, 240, 3)
-
-    # and the humidity text
-    #display.text("humidity:", 10, 170, 240, 3)
-    #display.text('{:.0f}'.format(humidity) + '%', 10, 190, 240, 5)
-    #display.text(describe_humidity(humidity), 10, 220, 240, 3)
-
-    # time to update the display
-    
 
     # waits for 1 second and clears to BLACK
     time.sleep(1)
