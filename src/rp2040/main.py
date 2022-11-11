@@ -198,7 +198,7 @@ def time_to_words(_h, _m) -> []:
         word_array.append(H_ELF)
 
     
-    # ADD WORDS FOR MINUTES
+    # ADD MIDDLE WORDS
     if _m >= 5 and _m < 25:
         word_array.append(M_NACH)
     if _m >= 35 and _m < 39:
@@ -210,7 +210,7 @@ def time_to_words(_h, _m) -> []:
     elif _m >= 0 and _m < 5:
         word_array.append(M_UHR)
         
-
+    # ADD WORDS FOR MINUTES
     if _m >= 5 and _m < 10:
         word_array.append(M_FUENF)
     elif _m >= 10 and _m < 15:
@@ -235,10 +235,7 @@ def time_to_words(_h, _m) -> []:
         word_array.append(M_ZEHN)
     elif _m >= 55 and _m < 60:
         word_array.append(M_FUENF)
-        
-        
-        
-        
+  
         
     return word_array
 
@@ -250,9 +247,7 @@ def display_time(_h, _m, _s):
     print(_h, _m, _s)
     clear_word_display()
     words = time_to_words(_h, _m)
-    # ADD ONLY 'UHR' IF MINUTES CANT BE DISPLAYED
-
-        
+    
     set_word_display(words, (_s * 4) % 255)
 
     
