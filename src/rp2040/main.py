@@ -1,5 +1,6 @@
-# This example lets you plug a BME280 breakout into your Pico Explorer and make a little indoor weather station, with barometer style descriptionsimport time
-from breakout_bme280 import BreakoutBME280
+# WORDCLOCK PR2040 SOFTWARE
+# FOR PCB V1 WITH OPTIONAL WIFI EXTENTION EXPORT
+# 
 from pimoroni_i2c import PimoroniI2C
 from pimoroni import PICO_EXPLORER_I2C_PINS
 from picographics import PicoGraphics, DISPLAY_PICO_EXPLORER
@@ -8,24 +9,43 @@ import time
 from machine import ADC
 from array import *
 
+
+
+# UART ON GPIO0-TX AND GPIO1-RX TO COMMUNICATE$ WITH THE WIFI EXTENTION
 uart = machine.UART(0, baudrate = 9600)
 print("UART Info : ", uart)
+# TO USE I"C PINS 2/3 ON THE RP2040 I2C BUS 1 HAS TO BE USED
+i2c = machine.I2C(1, scl=machine.Pin(3), sda=machine.Pin(2))
+print("I2C Info : ", i2c)
 
+
+BH150_ADDR = 0x23
+bh150_enabled = False
+devices = i2c.scan()
+print("# I2C DEVICES FOUND:")
+if devices:
+    for d in devices:
+        print(hex(d))
+        if d == BH150_ADDR:
+            bh150_enabled = True
+
+# INIT RTC
 rtc = machine.RTC()
-rtc.datetime((2022, 11, 11, 18, 13, 0, 0, 0))
+
 
 # set up the hardware
 display = PicoGraphics(display=DISPLAY_PICO_EXPLORER)
-i2c = PimoroniI2C(**PICO_EXPLORER_I2C_PINS)
+
 
 
 # lets set up some pen colours to make drawing easier
 
 WHITE = display.create_pen(255, 255, 255)
 BLACK = display.create_pen(0, 0, 0)
-RED = display.create_pen(255, 0, 0)
 GREY = display.create_pen(125, 125, 125)
 
+
+# CLOCKWORDS INDEX
 M_ES = 0
 M_IST = 1
 M_FUENF = 2
@@ -117,7 +137,7 @@ def get_color(_hsvpos, _bright):
     return int(r), int(g), int(b)
 
 
-def display_words_row(_x, _y, _coloroffset, _words,_colors) -> int:
+def display_words_row(_x, _y, _coloroffset, _brgh, _words,_colors) -> int:
     
     fz = 3 # FONT SIZE
     fzmul = int(fz * 5.5) # DISTANCE BETWEEN WORDS
@@ -127,11 +147,11 @@ def display_words_row(_x, _y, _coloroffset, _words,_colors) -> int:
         
         if _colors[i] is not None and _colors[i] > 0:
             if _colors[i] == 2:
-                print(get_color(_coloroffset, 255))
-                r,g,b = get_color(_coloroffset, 255)
+                print(get_color(_coloroffset, _brgh))
+                r,g,b = get_color(_coloroffset, _brgh)
                 display.set_pen(display.create_pen(r, g, b))
             elif _colors[i] == 3:
-                r,g,b = get_color(_coloroffset +100, 255)
+                r,g,b = get_color(_coloroffset +100, _brgh)
                 display.set_pen(display.create_pen(r, g, b))
             else:
                 display.set_pen(WHITE)
@@ -145,33 +165,33 @@ def display_words_row(_x, _y, _coloroffset, _words,_colors) -> int:
     
 
 
-def set_word_display(_index, _coloroffset):
-    
+def set_word_display(_index, _coloroffset, _brgh):
+    # TEXT POSITION ON DISPLAY LEFT/TOP CORNER
     y = 10
     x = 30
     yinc = 22
-    
-    
-    display_words_row(x, y, _coloroffset, ['es', 'k', 'ist', 'a', 'funf'], [(M_ES in _index)*1, 0, (M_IST in _index)*1, 0, (M_FUENF in _index)*2])
+    # DISPLAY ROWS ON THE DISPLAY
+    # #
+    display_words_row(x, y, _coloroffset, _brgh, ['es', 'k', 'ist', 'a', 'funf'], [(M_ES in _index)*1, 0, (M_IST in _index)*1, 0, (M_FUENF in _index)*2])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, ['zehn', 'zwanzig'], [(M_ZEHN in _index)*2, (M_ZWANZIG in _index)*2])
+    display_words_row(x, y, _coloroffset, _brgh, ['zehn', 'zwanzig'], [(M_ZEHN in _index)*2, (M_ZWANZIG in _index)*2])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, ['drei', 'viertel'], [(M_VIERTEL in _index)*2, (M_VIERTEL in _index)*2])
+    display_words_row(x, y, _coloroffset, _brgh, ['drei', 'viertel'], [(M_VIERTEL in _index)*2, (M_VIERTEL in _index)*2])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, ['vor', 'funk','nach'], [(M_VOR in _index)*1, 0, (M_NACH in _index)*1])
+    display_words_row(x, y, _coloroffset, _brgh, ['vor', 'funk','nach'], [(M_VOR in _index)*1, 0, (M_NACH in _index)*1])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, ['halb', 'a', 'el', 'f', 'unf'], [(M_HALB in _index)*2, 0, (H_ELF in _index)*3, (H_ELF in _index or H_FUENF in _index)*3 ,(H_FUENF in _index)*3])
+    display_words_row(x, y, _coloroffset, _brgh, ['halb', 'a', 'el', 'f', 'unf'], [(M_HALB in _index)*2, 0, (H_ELF in _index)*3, (H_ELF in _index or H_FUENF in _index)*3 ,(H_FUENF in _index)*3])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, ['ein', 's', 'xam','zwei'], [(H_EIN in _index or H_EINS in _index)*3, (H_EINS in _index)*3, 0, (H_ZWEI in _index)*3])
+    display_words_row(x, y, _coloroffset, _brgh, ['ein', 's', 'xam','zwei'], [(H_EIN in _index or H_EINS in _index)*3, (H_EINS in _index)*3, 0, (H_ZWEI in _index)*3])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, ['drei', 'auj','vier'], [(H_DREI in _index)*3, 0, (H_VIER in _index)*3])
+    display_words_row(x, y, _coloroffset, _brgh, ['drei', 'auj','vier'], [(H_DREI in _index)*3, 0, (H_VIER in _index)*3])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, ['sechs', 'nl','acht'], [(H_SECHS in _index)*3, 0, (H_ACHT in _index)*3])
+    display_words_row(x, y, _coloroffset, _brgh, ['sechs', 'nl','acht'], [(H_SECHS in _index)*3, 0, (H_ACHT in _index)*3])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, ['sieben', 'zwolf'], [(H_SIEBEN in _index)*3, (H_ZWOELF in _index)*3]) 
+    display_words_row(x, y, _coloroffset, _brgh, ['sieben', 'zwolf'], [(H_SIEBEN in _index)*3, (H_ZWOELF in _index)*3]) 
     y = y + yinc
-    display_words_row(x, y, _coloroffset, ['zeh','n','eun', 'uhr'], [(H_ZEHN in _index)*3, (H_ZEHN in _index or H_NEUN in _index)*3, (H_NEUN in _index)*3, (M_UHR in _index)*1]) 
- 
+    display_words_row(x, y, _coloroffset, _brgh, ['zeh','n','eun', 'uhr'], [(H_ZEHN in _index)*3, (H_ZEHN in _index or H_NEUN in _index)*3, (H_NEUN in _index)*3, (M_UHR in _index)*1]) 
+    # UPDatE DISPLAY
     display.update()
 
 def clear_word_display():
@@ -179,7 +199,7 @@ def clear_word_display():
     display.clear()
     
 def time_to_words(_h, _m) -> []:
-    
+    # ARRAY 
     word_array = [M_ES, M_IST]
     # ADD WORDS FOR HOURS
     if _h == 0 or _h == 12:
@@ -209,8 +229,6 @@ def time_to_words(_h, _m) -> []:
         word_array.append(H_ZEHN)
     elif _h == 11 or _h == 23:
         word_array.append(H_ELF)
-
-    
     # ADD MIDDLE WORDS
     if _m >= 5 and _m < 25:
         word_array.append(M_NACH)
@@ -221,8 +239,7 @@ def time_to_words(_h, _m) -> []:
     elif _m >= 40 and _m < 59:
         word_array.append(M_VOR)
     elif _m >= 0 and _m < 5:
-        word_array.append(M_UHR)
-        
+        word_array.append(M_UHR)      
     # ADD WORDS FOR MINUTES
     if _m >= 5 and _m < 10:
         word_array.append(M_FUENF)
@@ -273,8 +290,7 @@ def crc16(data: bytes, poly=0x8408):
     return crc & 0xFFFF
 
     
-def send_cmd_str(_command, _payload):
-    
+def send_cmd_str(_command, _payload): 
     final = _command + "_" + _payload + "_" + str(crc16(str.encode(_command+_payload)))
     uart.write(final)
     print("send:", final)
@@ -291,9 +307,12 @@ def parse_cmd_str(_incomestr):
                 print("crc mismatch", crc, sp[2])
     return None, ""
     
-def display_time(_h, _m, _s):
     
-    cmd, payload = parse_cmd_str(send_cmd_str("ct", "{0}:{1}:{2}".format(_h, _m, _s)))
+    
+    
+def display_time(_h, _m, _s, _brgh):
+    
+    send_cmd_str("ct", "{0}:{1}:{2}".format(_h, _m, _s))
     if cmd is not None:
         print(cmd, payload)
         
@@ -302,26 +321,74 @@ def display_time(_h, _m, _s):
     
     clear_word_display()
     words = time_to_words(_h, _m)
-    
-    set_word_display(words, (_s * 4) % 255)
+    set_word_display(words, (_s * 4) % 255, _brgh)
 
     
     
+def init_bh1750(i2c_addr = 0x23):
+    i2c.writeto(i2c_addr, 0x00, bytes([0x00])) # OFF
+    i2c.writeto(i2c_addr, 0x01, bytes([0x01])) # ON
+    i2c.writeto(i2c_addr, 0x07, bytes([0x07])) # RESET
+    # SET MODE
+    i2c.writeto(i2c_addr, 0x13, bytes([0x13])) # CONT_LOWRES
+
+    
+def read_bh1750(i2c_addr = 0x23, _default_brght = 255, _min_brght = 10):
+    data = i2c.readfrom(i2c_addr, 2) # READ 2 BYTES
+    factor = 2.0
+    res = (data[0]<<8 | data[1]) / (1.2 * factor)
+    
+    
+    # 505 LUX = BRIGHT LIVINGROOM SENSOR DELIVERS 1-65536 LUX SO MAP 0-505 => 255-_min_brght
+    return max(_min_brght, _default_brght, max(255,min(res,505)/2))
+
+
+display_update_trigger = 0
+display_set_brightness = 0 # 0=AUTO 1-255 FIXED
+display_calc_brightness = 255 #
+
+
+if bh150_enabled:
+    init_bh1750()
+    send_cmd_str("bh1750", "enabled")
+else:
+    send_cmd_str("bh170", "disabled")
     
 
-
-
-        
 while True:
     rxData = bytes()
     while uart.any() > 0:
         rxData += uart.read(1)
     if len(rxData) > 0:
-        print(rxData.decode('utf-8'))
-    
-    display_time(rtc.datetime()[3], rtc.datetime()[4], rtc.datetime()[6])
-    
+        cmd, payload = parse_cmd_str(rxData.decode('utf-8'))
+        # SET TIME CMD
+        if cmd is not None and cmd == "st" and ":" in payload:
+            sp = payload.split(":")
+            if len(sp) > 2:    
+                rtc.datetime((2022, 11, 11, sp[0], sp[1], 0, 0, 0))
+        # SET BRIGHTNESS CMD
+        elif cmd is not None and cmd == "sb" and len(payload) > 0:
+            pass
+        
+        
+    # UPDATE DISPLAY EVERY X CYCLES
+    if display_update_trigger > 10:
+        # CALC BRIGHTNESS
+        if display_set_brightness == 0:
+            if bh150_enabled:
+                display_calc_brightness = read_bh1750(display_set_brightness)
+                send_cmd_str("bh1750", display_calc_brightness)
+            else:
+                display_calc_brightness = 255
+        else:
+            display_calc_brightness = display_set_brightness
+            
+            
+        # UPDATE DISPLAY
+        display_update_trigger = 0
+        display_time(rtc.datetime()[3], rtc.datetime()[4], rtc.datetime()[6], display_calc_brightness)
+    display_update_trigger += 1
     #print(temperature())
     # waits for 1 second and clears to BLACK
-    time.sleep(1)
+    time.sleep(0.2)
 
