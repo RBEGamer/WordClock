@@ -1,7 +1,6 @@
 # WORDCLOCK PR2040 SOFTWARE
 # FOR PCB V1 WITH OPTIONAL WIFI EXTENTION EXPORT
-# 
-from pimoroni_i2c import PimoroniI2C
+
 from pimoroni import PICO_EXPLORER_I2C_PINS
 from picographics import PicoGraphics, DISPLAY_PICO_EXPLORER
 from array import *
@@ -137,7 +136,7 @@ def get_color(_hsvpos, _bright):
     return int(r), int(g), int(b)
 
 
-def display_words_row(_x, _y, _coloroffset, _brgh, _words,_colors) -> int:
+def display_words_row(_x, _y, _penm, _penh, _brgh, _words,_colors) -> int:
     
     fz = 3 # FONT SIZE
     fzmul = int(fz * 5.5) # DISTANCE BETWEEN WORDS
@@ -147,12 +146,9 @@ def display_words_row(_x, _y, _coloroffset, _brgh, _words,_colors) -> int:
         
         if _colors[i] is not None and _colors[i] > 0:
             if _colors[i] == 2:
-                print(get_color(_coloroffset, _brgh))
-                r,g,b = get_color(_coloroffset, _brgh)
-                display.set_pen(display.create_pen(r, g, b))
+                display.set_pen(_penm)
             elif _colors[i] == 3:
-                r,g,b = get_color(_coloroffset +100, _brgh)
-                display.set_pen(display.create_pen(r, g, b))
+                display.set_pen(_penh)
             else:
                 display.set_pen(WHITE)
             
@@ -170,27 +166,35 @@ def set_word_display(_index, _coloroffset, _brgh):
     y = 10
     x = 30
     yinc = 22
+    
+    
+    r,g,b = get_color(_coloroffset, _brgh)
+    penm = display.create_pen(r, g, b)
+    r,g,b = get_color(_coloroffset+100, _brgh)
+    penh = display.create_pen(r, g, b)
+    
+    
     # DISPLAY ROWS ON THE DISPLAY
     # #
-    display_words_row(x, y, _coloroffset, _brgh, ['es', 'k', 'ist', 'a', 'funf'], [(M_ES in _index)*1, 0, (M_IST in _index)*1, 0, (M_FUENF in _index)*2])
+    display_words_row(x, y, penm, penh, _brgh, ['es', 'k', 'ist', 'a', 'funf'], [(M_ES in _index)*1, 0, (M_IST in _index)*1, 0, (M_FUENF in _index)*2])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, _brgh, ['zehn', 'zwanzig'], [(M_ZEHN in _index)*2, (M_ZWANZIG in _index)*2])
+    display_words_row(x, y, penm, penh, _brgh, ['zehn', 'zwanzig'], [(M_ZEHN in _index)*2, (M_ZWANZIG in _index)*2])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, _brgh, ['drei', 'viertel'], [(M_VIERTEL in _index)*2, (M_VIERTEL in _index)*2])
+    display_words_row(x, y, penm, penh, _brgh, ['drei', 'viertel'], [(M_VIERTEL in _index)*2, (M_VIERTEL in _index)*2])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, _brgh, ['vor', 'funk','nach'], [(M_VOR in _index)*1, 0, (M_NACH in _index)*1])
+    display_words_row(x, y, penm, penh, _brgh, ['vor', 'funk','nach'], [(M_VOR in _index)*1, 0, (M_NACH in _index)*1])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, _brgh, ['halb', 'a', 'el', 'f', 'unf'], [(M_HALB in _index)*2, 0, (H_ELF in _index)*3, (H_ELF in _index or H_FUENF in _index)*3 ,(H_FUENF in _index)*3])
+    display_words_row(x, y, penm, penh, _brgh, ['halb', 'a', 'el', 'f', 'unf'], [(M_HALB in _index)*2, 0, (H_ELF in _index)*3, (H_ELF in _index or H_FUENF in _index)*3 ,(H_FUENF in _index)*3])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, _brgh, ['ein', 's', 'xam','zwei'], [(H_EIN in _index or H_EINS in _index)*3, (H_EINS in _index)*3, 0, (H_ZWEI in _index)*3])
+    display_words_row(x, y, penm, penh, _brgh, ['ein', 's', 'xam','zwei'], [(H_EIN in _index or H_EINS in _index)*3, (H_EINS in _index)*3, 0, (H_ZWEI in _index)*3])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, _brgh, ['drei', 'auj','vier'], [(H_DREI in _index)*3, 0, (H_VIER in _index)*3])
+    display_words_row(x, y, penm, penh, _brgh, ['drei', 'auj','vier'], [(H_DREI in _index)*3, 0, (H_VIER in _index)*3])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, _brgh, ['sechs', 'nl','acht'], [(H_SECHS in _index)*3, 0, (H_ACHT in _index)*3])
+    display_words_row(x, y, penm, penh, _brgh, ['sechs', 'nl','acht'], [(H_SECHS in _index)*3, 0, (H_ACHT in _index)*3])
     y = y + yinc
-    display_words_row(x, y, _coloroffset, _brgh, ['sieben', 'zwolf'], [(H_SIEBEN in _index)*3, (H_ZWOELF in _index)*3]) 
+    display_words_row(x, y, penm, penh, _brgh, ['sieben', 'zwolf'], [(H_SIEBEN in _index)*3, (H_ZWOELF in _index)*3]) 
     y = y + yinc
-    display_words_row(x, y, _coloroffset, _brgh, ['zeh','n','eun', 'uhr'], [(H_ZEHN in _index)*3, (H_ZEHN in _index or H_NEUN in _index)*3, (H_NEUN in _index)*3, (M_UHR in _index)*1]) 
+    display_words_row(x, y, penm, penh, _brgh, ['zeh','n','eun', 'uhr'], [(H_ZEHN in _index)*3, (H_ZEHN in _index or H_NEUN in _index)*3, (H_NEUN in _index)*3, (M_UHR in _index)*1]) 
     # UPDatE DISPLAY
     display.update()
 
@@ -313,12 +317,10 @@ def parse_cmd_str(_incomestr):
 def display_time(_h, _m, _s, _brgh):
     
     send_cmd_str("ct", "{0}:{1}:{2}".format(_h, _m, _s))
-    if cmd is not None:
-        print(cmd, payload)
+
         
 
-    
-    
+
     clear_word_display()
     words = time_to_words(_h, _m)
     set_word_display(words, (_s * 4) % 255, _brgh)
@@ -383,7 +385,9 @@ while True:
         else:
             display_calc_brightness = display_set_brightness
             
-            
+        # READ TEMP
+        send_cmd_str("temp", str(int(temperature()*100)/100.0))
+        
         # UPDATE DISPLAY
         display_update_trigger = 0
         display_time(rtc.datetime()[3], rtc.datetime()[4], rtc.datetime()[6], display_calc_brightness)
