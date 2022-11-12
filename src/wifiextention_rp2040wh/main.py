@@ -41,10 +41,10 @@ def send_cmd_str(_command, _payload):
     return final
 
 def parse_cmd_str(_incomestr):
-    print("got:", _incomestr)
+#    print("got:", _incomestr)
     if len(_incomestr) > 0 and "_" in _incomestr:
         sp = _incomestr.split("_")
-        print("sp:", sp)
+#        print("sp:", sp)
         if len(sp) > 2:
             crc = str(crc16(str.encode(sp[0]+sp[1])))
             if str(crc) == str(sp[2]).split("\n")[0]: # DIRTY wAY TO REMOVE NEW line CHARAHTeR if present
@@ -57,22 +57,20 @@ def parse_cmd_str(_incomestr):
     
     
 
-    
- #   send_cmd_str("ct", "{0}:{1}:{2}".format(_h, _m, _s))
-
-
-
 while True:
     
     
     # REC COMMANDS FROM WIFI MODULE
+    rxData = bytes()
     rxData = bytes()
     if uart.any() > 0: 
         rxData += uart.readline()
         # If DATA READ
         if len(rxData) > 0:
             cmd, payload = parse_cmd_str(rxData.decode('utf-8'))
-        # to log
+            print(cmd, "=>", payload)
 
-    time.sleep(0.2)
+        # to log
+    send_cmd_str("st", "11:22:33")
+    time.sleep(1)
 
