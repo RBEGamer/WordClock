@@ -374,7 +374,7 @@ while True:
         # SET BRIGHTNESS CMD
         elif cmd is not None and cmd == "sb" and len(payload) > 0:
             display_set_brightness = max(min(int(payload),255),0)
-        send_cmd_str("log", cmd + ":" + payload)
+        send_cmd_str("log", str(cmd) + ":" + str(payload))
         
         
     # UPDATE DISPLAY EVERY X CYCLES
