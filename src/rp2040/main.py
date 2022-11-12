@@ -342,7 +342,7 @@ def read_bh1750(i2c_addr = 0x23, _default_brght = 255, _min_brght = 10):
     
     
     # 505 LUX = BRIGHT LIVINGROOM SENSOR DELIVERS 1-65536 LUX SO MAP 0-505 => 255-_min_brght
-    return max(_min_brght, _default_brght, max(255,min(res,505)/2))
+    return max(_min_brght, _default_brght, min(255,min(res,505)/2))
 
 
 display_update_trigger = 0
@@ -358,6 +358,9 @@ else:
     
 
 while True:
+    
+    
+    # REC COMMANDS FROM WIFI MODULE
     rxData = bytes()
     while uart.any() > 0:
         rxData += uart.read(1)
@@ -367,10 +370,11 @@ while True:
         if cmd is not None and cmd == "st" and ":" in payload:
             sp = payload.split(":")
             if len(sp) > 2:    
-                rtc.datetime((2022, 11, 11, sp[0], sp[1], 0, 0, 0))
+                rtc.datetime((2022, 11, 11, int(sp[0]), int(sp[1]), 0))
         # SET BRIGHTNESS CMD
         elif cmd is not None and cmd == "sb" and len(payload) > 0:
-            pass
+            display_set_brightness = max(min(int(payload),255),0)
+        send_cmd_str("log", cmd + ":" + payload)
         
         
     # UPDATE DISPLAY EVERY X CYCLES
