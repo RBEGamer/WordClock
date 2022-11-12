@@ -1,12 +1,35 @@
+#include <NTPClient.h>
+// change next line to use with another board/shield
+#include <ESP8266WiFi.h>
+//#include <WiFi.h> // for WiFi shield
+//#include <WiFi101.h> // for WiFi 101 shield or MKR1000
+#include <WiFiUdp.h>
+
+const char *ssid = "Livebox-9E1C";
+const char *password = "56X9DaQJZhXLwadh5C";
+
+const char* ntpServer = "pool.ntp.org";
+const long gmtOffset_sec = 3600;
+const int daylightOffset_sec = 3600;
 
 
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "europe.pool.ntp.org", 3600, 60000);
 
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   Serial1.begin(9600);
-  //Serial1.begin(9600);
+  Serial.println("START");
+
+ WiFi.begin(ssid, password);
+  while ( WiFi.status() != WL_CONNECTED ) {
+    delay ( 500 );
+    Serial.print ( "." );
+  }
+  timeClient.begin();
+  
 }
 
 
@@ -33,9 +56,10 @@ uint16_t crc16(String _data, uint16_t _poly=0x8408)
 }
 
 void send_cmd_str(String _command, String _payload){
-    //Serial.println(_command + "_" + _payload + "_" + crc16(_command + _payload) + "\n");
     Serial1.println(_command + "_" + _payload + "_" + crc16(_command + _payload) + "\n");
 }
+
+
 
 String readString;
 String getValue(String data, char separator, int index) {
@@ -53,24 +77,43 @@ String getValue(String data, char separator, int index) {
 }
 
 
-void set_clock_time(int _h, int _m, int _s){
+void set_clock_time(const int _h, const int _m, const int _s){
   send_cmd_str("st", String(_h) + ":" + String(_m) + ":" + String(_s));
 }
 
-void set_brightness(int _b){
 
+int last_set_brightness = 255;
+void set_brightness(int _b){
+  if(_b < 10){_b = 10;}
+  else if(_b > 255){_b = 255;}
+  send_cmd_str("sb", String(_b));
+  last_set_brightness = _b;
 }
 
 void set_brightness(bool _set_auto){
+  if(_set_auto){
+    send_cmd_str("sb", "0");
+  }else{
+   set_brightness(last_set_brightness);
+  }
   
 }
 
-
+int t = 0;
 void loop() {
-  //send_cmd_str("ct", "1:101:36"); //5650
-  //Serial.println(crc16("abc"));
-  //delay(100);
 
+  timeClient.update();
+
+
+
+
+
+  t++;
+  if(t > 10*300 && WiFi.status() == WL_CONNECTED){
+    send_cmd_str("st", timeClient.getFormattedTime());
+  }
+
+  // PARSE GOT CLOCK INFORMATION
    while (Serial1.available()) {
     delay(30); //delay to allow buffer to fill
     if (Serial1.available() > 0) {
@@ -91,10 +134,14 @@ void loop() {
     readString = "";
     // CHECK CRC
     if(crc == String(crc16(cmd + payload))){
-      Serial.println(cmd);
+      
+      if(cmd == "ct"){
+
+      }else if(cmd == "cb"){
+
+      }
 
     }
   }
   delay(100);
-  set_clock_time(19,19,19);
 }
