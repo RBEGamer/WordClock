@@ -304,7 +304,7 @@ def crc16(data: bytes, poly=0x8408):
 
     
 def send_cmd_str(_command, _payload): 
-    final = _command + "_" + _payload + "_" + str(crc16(str.encode(str(_command)+str(_payload)))) + "\n"
+    final = str(_command) + "_" + str(_payload) + "_" + str(crc16(str.encode(str(_command)+str(_payload)))) + "\n"
     uart.write(final)
     print("send:", final)
     return final
@@ -431,7 +431,7 @@ while True:
             # SET BRIGHTNESS CMD
             elif cmd is not None and cmd == "sb" and len(payload) >= 0:
                 display_set_brightness = max(min(int(payload),255),0)
-            send_cmd_str("log", str(cmd) + ":" + str(payload))
+            #send_cmd_str("log", str(cmd) + ":" + str(payload))
         
         
     # UPDATE DISPLAY EVERY X CYCLES
