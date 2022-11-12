@@ -295,7 +295,7 @@ def crc16(data: bytes, poly=0x8408):
 
     
 def send_cmd_str(_command, _payload): 
-    final = _command + "_" + _payload + "_" + str(crc16(str.encode(_command+_payload)))
+    final = _command + "_" + _payload + "_" + str(crc16(str.encode(_command+_payload)) + "\n")
     uart.write(final)
     print("send:", final)
     return final
