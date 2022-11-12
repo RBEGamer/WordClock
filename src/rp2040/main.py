@@ -391,7 +391,7 @@ def rtc_update():
            time_s = 0
            time_m = time_m +1
         if time_m >= 60:
-           time_h = 0
+           time_m = 0
            time_h = time_h +1
         if time_h >= 24:
            time_h = 0
@@ -440,11 +440,12 @@ while True:
         if display_set_brightness == 0:
             if bh150_enabled:
                 display_calc_brightness = read_bh1750(display_set_brightness)
-                send_cmd_str("bh1750", display_calc_brightness)
+                send_cmd_str("cb", display_calc_brightness)
             else:
                 display_calc_brightness = 255
         else:
             display_calc_brightness = display_set_brightness
+            send_cmd_str("cb", display_calc_brightness)
             
         # READ TEMP
         #send_cmd_str("temp", str(int(temperature()*100)/100.0))
