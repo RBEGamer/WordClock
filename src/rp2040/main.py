@@ -295,7 +295,7 @@ def crc16(data: bytes, poly=0x8408):
 
     
 def send_cmd_str(_command, _payload): 
-    final = _command + "_" + _payload + "_" + str(crc16(str.encode(_command+_payload)) + "\n")
+    final = _command + "_" + _payload + "_" + str(crc16(str.encode(str(_command)+str(_payload)))) + "\n"
     uart.write(final)
     print("send:", final)
     return final
@@ -399,4 +399,5 @@ while True:
     #print(temperature())
     # waits for 1 second and clears to BLACK
     time.sleep(0.2)
+
 
