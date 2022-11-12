@@ -287,10 +287,7 @@ def time_to_words(_h, _m) -> []:
     return word_array
 
 
-def crc16(data: bytes, poly=0x8408):
-    '''
-    CRC-16-CCITT Algorithm
-    '''
+def crc16(data: bytes, poly=0x8408):  
     data = bytearray(data)
     crc = 0xFFFF
     for b in data:
@@ -303,7 +300,6 @@ def crc16(data: bytes, poly=0x8408):
             cur_byte >>= 1
     crc = (~crc & 0xFFFF)
     crc = (crc << 8) | ((crc >> 8) & 0xFF)
-    
     return crc & 0xFFFF
 
     
@@ -433,7 +429,7 @@ while True:
                 if len(sp) > 2:
                     rtc_settime(int(sp[0]), int(sp[1]), int(sp[1]))
             # SET BRIGHTNESS CMD
-            elif cmd is not None and cmd == "sb" and len(payload) > 0:
+            elif cmd is not None and cmd == "sb" and len(payload) >= 0:
                 display_set_brightness = max(min(int(payload),255),0)
             send_cmd_str("log", str(cmd) + ":" + str(payload))
         
@@ -451,10 +447,10 @@ while True:
             display_calc_brightness = display_set_brightness
             
         # READ TEMP
-        send_cmd_str("temp", str(int(temperature()*100)/100.0))
+        #send_cmd_str("temp", str(int(temperature()*100)/100.0))
         
         # UPDATE DISPLAY
-        rtc_update()
+        #rtc_update()
         h, m, s = rtc_gettime()
         display_update_trigger = 0
         display_time(h, m, s, display_calc_brightness)
