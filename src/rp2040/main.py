@@ -19,21 +19,32 @@ print("I2C Info : ", i2c)
 
 
 BH150_ADDR = 0x23
+DS1301_ADDR = 0x66
 bh150_enabled = False
+ds1307_enabled = False
 devices = i2c.scan()
 print("# I2C DEVICES FOUND:")
 if devices:
     for d in devices:
         print(hex(d))
         if d == BH150_ADDR:
-            bh150_enabled = True
+            bh150_enabled = Tru
+        elif d == DS1301_ADDR:
+            ds1307_enabled = True
 
 # INIT RTC
-rtc = machine.RTC()
-
-
+#rtc = machine.RTC()
 # set up the hardware
 display = PicoGraphics(display=DISPLAY_PICO_EXPLORER)
+
+
+# TIME VARIAbLES FOR FAKE RTC
+time_h = 0
+time_m = 0
+time_s = 0
+display_update_trigger = 0
+display_set_brightness = 0 # 0=AUTO 1-255 FIXED
+display_calc_brightness = 255 #
 
 
 
@@ -301,10 +312,10 @@ def send_cmd_str(_command, _payload):
     return final
 
 def parse_cmd_str(_incomestr):
-    print("got:", _incomestr)
+    #print("got:", _incomestr)
     if len(_incomestr) > 0 and "_" in _incomestr:
         sp = _incomestr.split("_")
-        print("sp:", sp)
+        #print("sp:", sp)
         if len(sp) > 2:
             crc = str(crc16(str.encode(sp[0]+sp[1])))
             if str(crc) == str(sp[2]).split("\n")[0]: # DIRTY wAY TO REMOVE NEW line CHARAHTeR if present
@@ -317,12 +328,7 @@ def parse_cmd_str(_incomestr):
     
     
 def display_time(_h, _m, _s, _brgh):
-    
     send_cmd_str("ct", "{0}:{1}:{2}".format(_h, _m, _s))
-
-        
-
-
     clear_word_display()
     words = time_to_words(_h, _m)
     set_word_display(words, (_s * 4) % 255, _brgh)
@@ -347,9 +353,53 @@ def read_bh1750(i2c_addr = 0x23, _default_brght = 255, _min_brght = 10):
     return max(_min_brght, _default_brght, min(255,min(res,505)/2))
 
 
-display_update_trigger = 0
-display_set_brightness = 0 # 0=AUTO 1-255 FIXED
-display_calc_brightness = 255 #
+def rtc_init():
+    if ds1307_enabled:
+        pass
+    else:
+       rtc_settime(0, 0, 0)
+
+def rtc_gettime():
+    # rtc.datetime()[3], rtc.datetime()[4], rtc.datetime()[6]
+    if ds1307_enabled:
+        pass
+    else:
+        global time_s
+        global time_m
+        global time_h
+        return time_h, time_m, time_s
+
+def rtc_settime(_h, _m, _s):
+    if ds1307_enabled:
+        pass
+    else:
+        global time_s
+        global time_m
+        global time_h
+        time_h = _h
+        time_m = _m
+        time_s = _s
+
+
+def rtc_update():
+    if ds1307_enabled:
+        pass
+    else:
+        global time_s
+        global time_m
+        global time_h
+        time_s = time_s + 1    
+        if time_s >= 60:
+           time_s = 0
+           time_m = time_m +1
+        if time_m >= 60:
+           time_h = 0
+           time_h = time_h +1
+        if time_h >= 24:
+           time_h = 0
+
+
+
 
 
 if bh150_enabled:
@@ -357,8 +407,14 @@ if bh150_enabled:
     send_cmd_str("bh1750", "enabled")
 else:
     send_cmd_str("bh170", "disabled")
-    
 
+rtc_init()
+if ds1307_enabled:
+    send_cmd_str("ds1307", "enabled")
+else:
+    send_cmd_str("ds1307", "disabled")
+    
+    
 while True:
     
     
@@ -372,8 +428,8 @@ while True:
         # SET TIME CMD
             if cmd is not None and cmd == "st" and ":" in payload:
                 sp = payload.split(":")
-                if len(sp) > 2:    
-                    rtc.datetime((2022, 11, 11, int(sp[0]), int(sp[1]), 0))
+                if len(sp) > 2:
+                    rtc_settime(int(sp[0]), int(sp[1]), int(sp[1]))
             # SET BRIGHTNESS CMD
             elif cmd is not None and cmd == "sb" and len(payload) > 0:
                 display_set_brightness = max(min(int(payload),255),0)
@@ -396,11 +452,13 @@ while True:
         send_cmd_str("temp", str(int(temperature()*100)/100.0))
         
         # UPDATE DISPLAY
+        rtc_update()
+        h, m, s = rtc_gettime()
         display_update_trigger = 0
-        display_time(rtc.datetime()[3], rtc.datetime()[4], rtc.datetime()[6], display_calc_brightness)
+        display_time(h, m, s, display_calc_brightness)
     display_update_trigger += 1
     #print(temperature())
     # waits for 1 second and clears to BLACK
-    time.sleep(0.2)
+    time.sleep(0.1)
 
 
