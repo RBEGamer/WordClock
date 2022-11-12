@@ -301,11 +301,13 @@ def send_cmd_str(_command, _payload):
     return final
 
 def parse_cmd_str(_incomestr):
+    print("got:", _incomestr)
     if len(_incomestr) > 0 and "_" in _incomestr:
         sp = _incomestr.split("_")
+        print("sp:", sp)
         if len(sp) > 2:
             crc = str(crc16(str.encode(sp[0]+sp[1])))
-            if crc == sp[2]:
+            if str(crc) == str(sp[2]).split("\n")[0]: # DIRTY wAY TO REMOVE NEW line CHARAHTeR if present
                 return sp[0], sp[1]
             else:
                 print("crc mismatch", crc, sp[2])
@@ -362,19 +364,20 @@ while True:
     
     # REC COMMANDS FROM WIFI MODULE
     rxData = bytes()
-    while uart.any() > 0:
-        rxData += uart.read(1)
-    if len(rxData) > 0:
-        cmd, payload = parse_cmd_str(rxData.decode('utf-8'))
+    if uart.any() > 0: 
+        rxData += uart.readline()
+        # If DATA READ
+        if len(rxData) > 0:
+            cmd, payload = parse_cmd_str(rxData.decode('utf-8'))
         # SET TIME CMD
-        if cmd is not None and cmd == "st" and ":" in payload:
-            sp = payload.split(":")
-            if len(sp) > 2:    
-                rtc.datetime((2022, 11, 11, int(sp[0]), int(sp[1]), 0))
-        # SET BRIGHTNESS CMD
-        elif cmd is not None and cmd == "sb" and len(payload) > 0:
-            display_set_brightness = max(min(int(payload),255),0)
-        send_cmd_str("log", str(cmd) + ":" + str(payload))
+            if cmd is not None and cmd == "st" and ":" in payload:
+                sp = payload.split(":")
+                if len(sp) > 2:    
+                    rtc.datetime((2022, 11, 11, int(sp[0]), int(sp[1]), 0))
+            # SET BRIGHTNESS CMD
+            elif cmd is not None and cmd == "sb" and len(payload) > 0:
+                display_set_brightness = max(min(int(payload),255),0)
+            send_cmd_str("log", str(cmd) + ":" + str(payload))
         
         
     # UPDATE DISPLAY EVERY X CYCLES
