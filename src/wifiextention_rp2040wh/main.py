@@ -35,18 +35,19 @@ def crc16(data: bytes, poly=0x8408):
 
     
 def send_cmd_str(_command, _payload): 
-    final = _command + "_" + _payload + "_" + str(crc16(str.encode(_command+_payload)) + "\n")
+    final = _command + "_" + _payload + "_" + str(crc16(str.encode(str(_command)+str(_payload)))) + "\n"
     uart.write(final)
     print("send:", final)
     return final
 
 def parse_cmd_str(_incomestr):
-    print(":", _incomestr)
+    print("got:", _incomestr)
     if len(_incomestr) > 0 and "_" in _incomestr:
         sp = _incomestr.split("_")
+        print("sp:", sp)
         if len(sp) > 2:
             crc = str(crc16(str.encode(sp[0]+sp[1])))
-            if crc == sp[2]:
+            if str(crc) == str(sp[2]).split("\n")[0]: # DIRTY wAY TO REMOVE NEW line CHARAHTeR if present
                 return sp[0], sp[1]
             else:
                 print("crc mismatch", crc, sp[2])
@@ -66,10 +67,11 @@ while True:
     
     # REC COMMANDS FROM WIFI MODULE
     rxData = bytes()
-    while uart.any() > 0:
-        rxData += uart.read(1)
-    if len(rxData) > 0:
-        cmd, payload = parse_cmd_str(rxData.decode('utf-8'))
+    if uart.any() > 0: 
+        rxData += uart.readline()
+        # If DATA READ
+        if len(rxData) > 0:
+            cmd, payload = parse_cmd_str(rxData.decode('utf-8'))
         # to log
 
     time.sleep(0.2)
