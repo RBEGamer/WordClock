@@ -1,6 +1,8 @@
 # WORDCLOCK PR2040 SOFTWARE
 # FOR PCB V1 WITH OPTIONAL WIFI EXTENTION EXPORT
-
+# CHANGELOG
+# * added fakertc -> rtc support missing
+# * cmd parser / sender working
 from pimoroni import PICO_EXPLORER_I2C_PINS
 from picographics import PicoGraphics, DISPLAY_PICO_EXPLORER
 from array import *
