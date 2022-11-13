@@ -3,13 +3,12 @@
 # CHANGELOG
 # * added fakertc -> rtc support missing
 # * cmd parser / sender working
-from pimoroni import PICO_EXPLORER_I2C_PINS
 from picographics import PicoGraphics, DISPLAY_PICO_EXPLORER
-from array import *
-import time
+import array, time
 from machine import ADC
 from array import *
-
+import rp2
+from machine import Pin
 
 
 # UART ON GPIO0-TX AND GPIO1-RX TO COMMUNICATE$ WITH THE WIFI EXTENTION
@@ -82,6 +81,8 @@ H_ELF = 20
 H_ZWOELF = 18
 H_EIN = 22
 
+
+PIN_NEOPIXELS = 22
 NUM_NEOPIXELS = 10*11
 CLOCKWORDS = [
   [9,10,-1,-1,-1,-1,-1,-1,-1,-1], # es 0 X OK
@@ -108,6 +109,28 @@ CLOCKWORDS = [
   [109,108,107,-1,-1,-1,-1,-1,-1, -1],  # uhr 21 X X
   [55,56,57,-1,-1,-1,-1,-1,-1,-1],  # eins 11 X OK
 ]
+
+@rp2.asm_pio(sideset_init=rp2.PIO.OUT_LOW, out_shiftdir=rp2.PIO.SHIFT_LEFT, autopull=True, pull_thresh=24)
+def ws2812():
+    T1 = 2
+    T2 = 5
+    T3 = 3
+    wrap_target()
+    label("bitloop")
+    out(x, 1)               .side(0)    [T3 - 1]
+    jmp(not_x, "do_zero")   .side(1)    [T1 - 1]
+    jmp("bitloop")          .side(1)    [T2 - 1]
+    label("do_zero")
+    nop()                   .side(0)    [T2 - 1]
+    wrap()
+
+
+# Create the StateMachine with the ws2812 program, outputting on pin
+sm = rp2.StateMachine(0, ws2812, freq=8_000_000, sideset_base=Pin(PIN_NEOPIXELS))
+# Start the StateMachine, it will wait for data on its FIFO.
+sm.active(1)
+# Display a pattern on the LEDs via an array of LED RGB values.
+#ar = array.array("I", [0 for _ in range(NUM_NEOPIXELS)])
 
 
 
@@ -249,7 +272,7 @@ def time_to_words(_h, _m) -> []:
     # ADD MIDDLE WORDS
     if _m >= 5 and _m < 25:
         word_array.append(M_NACH)
-    if _m >= 35 and _m < 39:
+    if _m >= 35 and _m < 40:
         word_array.append(M_NACH)
     elif _m >= 25 and _m < 30:
         word_array.append(M_VOR)
@@ -451,7 +474,7 @@ while True:
         #send_cmd_str("temp", str(int(temperature()*100)/100.0))
         
         # UPDATE DISPLAY
-        #rtc_update()
+        rtc_update()
         h, m, s = rtc_gettime()
         display_update_trigger = 0
         display_time(h, m, s, display_calc_brightness)
