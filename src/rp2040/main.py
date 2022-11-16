@@ -3,7 +3,7 @@
 # CHANGELOG
 # * added fakertc -> rtc support missing
 # * cmd parser / sender working
-from picographics import PicoGraphics, DISPLAY_PICO_EXPLORER
+#from picographics import PicoGraphics, DISPLAY_PICO_EXPLORER
 import array, time
 from machine import ADC
 from array import *
@@ -36,7 +36,7 @@ if devices:
 # INIT RTC
 #rtc = machine.RTC()
 # set up the hardware
-display = PicoGraphics(display=DISPLAY_PICO_EXPLORER)
+#display = PicoGraphics(display=DISPLAY_PICO_EXPLORER)
 
 
 # TIME VARIAbLES FOR FAKE RTC
@@ -51,9 +51,9 @@ display_calc_brightness = 255 #
 
 # lets set up some pen colours to make drawing easier
 
-WHITE = display.create_pen(255, 255, 255)
-BLACK = display.create_pen(0, 0, 0)
-GREY = display.create_pen(125, 125, 125)
+#WHITE = display.create_pen(255, 255, 255)
+#BLACK = display.create_pen(0, 0, 0)
+#GREY = display.create_pen(125, 125, 125)
 
 
 # CLOCKWORDS INDEX
@@ -83,31 +83,31 @@ H_EIN = 22
 
 
 PIN_NEOPIXELS = 22
-NUM_NEOPIXELS = 10*11
+NUM_NEOPIXELS = (10*11)+4 # 4 minute leds
 CLOCKWORDS = [
-  [9,10,-1,-1,-1,-1,-1,-1,-1,-1], # es 0 X OK
-  [5,6,7,-1,-1,-1,-1,-1,-1,-1],  # ist 1 X OK
-  [0,1,2,3,-1,-1,-1,-1,-1,-1],  # fuenf 2 X OK
-  [11,12,13,14,-1,-1,-1,-1,-1,-1],  # zehn 3 X OK
-  [15,16,17,18,19,20,21,-1,-1,-1], #  zwanzig 4 X OK
-  [22,23,24,25,26,27,28,-1,-1,-1],  # viertel 5 X OK
-  [33,34,35,-1,-1,-1,-1,-1,-1,-1],  # vor 6 X OK
-  [43,42,41,40,-1,-1,-1,-1,-1,-1],  # nach 8 X OK
-  [54,53,52,51,-1,-1,-1,-1,-1,-1],  # halb 7 X OK
-  [102,103,104,105,-1,-1,-1,-1,-1,-1],  # neun 9  X OK
-  [44,45,46,47, -1,-1,-1,-1,-1,-1],  # fuenf 10 X OK
-  [55,56,57,58,-1,-1,-1,-1,-1,-1],  # eins 11 X OK
-  [65,64,63,62,-1,-1,-1,-1,-1,-1],  # zwei 12 X OK
-  [73,74,75,76,-1,-1,-1,-1,-1,-1],  # drei 13 X OK
-  [66,67,68,69,-1,-1,-1,-1,-1,-1],  # vier 14 X OK
-  [77,78,79,80,81,-1,-1,-1,-1,-1],  # sechs 15 X OK
-  [87,86,85,84,-1,-1,-1,-1,-1,-1],  # acht 16 X OK
-  [93,94,95,96,97,98, -1,-1,-1,-1],  # sieben 17 X OK
-  [88,89,90,91,92,-1,-1,-1,-1,-1], # zwölf 18 X OK
-  [99,100,101,102,-1,-1,-1,-1,-1,-1],  # zehn 19 X OK
-  [47,48,49,-1,-1,-1,-1,-1,-1,-1],  # elf 20 X OK
-  [109,108,107,-1,-1,-1,-1,-1,-1, -1],  # uhr 21 X X
-  [55,56,57,-1,-1,-1,-1,-1,-1,-1],  # eins 11 X OK
+  [1,2,-1,-1,-1,-1,-1,-1,-1,-1], # es 0 X OK
+  [4,5,6,-1,-1,-1,-1,-1,-1,-1],  # ist 1 X OK
+  [7,8,9,10,11,-1,-1,-1,-1,-1],  # fuenf 2 X OK
+  [23,22,21,20,-1,-1,-1,-1,-1,-1],  # zehn 3 X OK
+  [13,14,15,16,17,18,19,-1,-1,-1], #  zwanzig 4 X OK
+  [28,2,-1,-1,-1,-1,-1,-1,-1,-1],  # viertel 5 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # vor 6 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # nach 8 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # halb 7 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # neun 9  X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # fuenf 10 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # eins 11 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # zwei 12 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # drei 13 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # vier 14 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # sechs 15 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # acht 16 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # sieben 17 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1], # zwölf 18 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # zehn 19 X OK
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # elf 20 X OK
+  [102,103,104,-1,-1,-1,-1,-1,-1,-1],  # uhr 21 X X
+  [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],  # eins 11 X OK
 ]
 
 @rp2.asm_pio(sideset_init=rp2.PIO.OUT_LOW, out_shiftdir=rp2.PIO.SHIFT_LEFT, autopull=True, pull_thresh=24)
@@ -131,7 +131,7 @@ sm = rp2.StateMachine(0, ws2812, freq=8_000_000, sideset_base=Pin(PIN_NEOPIXELS)
 sm.active(1)
 # Display a pattern on the LEDs via an array of LED RGB values.
 #ar = array.array("I", [0 for _ in range(NUM_NEOPIXELS)])
-
+pixel_array = array("I", [0 for _ in range(NUM_NEOPIXELS)])
 
 
 def temperature():
@@ -169,74 +169,50 @@ def get_color(_hsvpos, _bright):
         b = 0
         r = (_hsvpos * 3) * bs
         
-    return int(r), int(g), int(b)
+    return (int(r), int(g), int(b))
 
+def update_pix(): # dimming colors and updating state machine (state_mach)
+    dimmer_array = array("I", [0 for _ in range(NUM_NEOPIXELS)])
+    for ii,cc in enumerate(pixel_array):
+        r = int(((cc >> 8) & 0xFF)) # 8-bit red dimmed to brightness
+        g = int(((cc >> 16) & 0xFF)) # 8-bit green dimmed to brightness
+        b = int((cc & 0xFF)) # 8-bit blue dimmed to brightness
+        dimmer_array[ii] = (g<<16) + (r<<8) + b # 24-bit color dimmed to brightness
+    sm.put(dimmer_array, 8) # update the state machine with new colors
+    time.sleep_ms(10)
 
-def display_words_row(_x, _y, _penm, _penh, _brgh, _words,_colors) -> int:
-    
-    fz = 3 # FONT SIZE
-    fzmul = int(fz * 5.5) # DISTANCE BETWEEN WORDS
-    i = 0
-    x = _x
-    for w in _words:
-        
-        if _colors[i] is not None and _colors[i] > 0:
-            if _colors[i] == 2:
-                display.set_pen(_penm)
-            elif _colors[i] == 3:
-                display.set_pen(_penh)
-            else:
-                display.set_pen(WHITE)
-            
-        else:
-            display.set_pen(GREY)
-            
-        i = i + 1
-        display.text(w,x, _y, 100, fz)
-        x = x + fzmul  * len(w)
+def set_24bit(ii, color): # set colors to 24-bit format inside pixel_array
+    pixel_array[ii] = (color[1]<<16) + (color[0]<<8) + color[2] # set 24-bit color
     
 
 
-def set_word_display(_index, _coloroffset, _brgh):
+def set_word_display(_words, _coloroffset, _brgh):
     # TEXT POSITION ON DISPLAY LEFT/TOP CORNER
-    y = 10
-    x = 30
-    yinc = 22
     
     
-    r,g,b = get_color(_coloroffset, _brgh)
-    penm = display.create_pen(r, g, b)
-    r,g,b = get_color(_coloroffset+100, _brgh)
-    penh = display.create_pen(r, g, b)
-    
-    
-    # DISPLAY ROWS ON THE DISPLAY
-    # #
-    display_words_row(x, y, penm, penh, _brgh, ['es', 'k', 'ist', 'a', 'funf'], [(M_ES in _index)*1, 0, (M_IST in _index)*1, 0, (M_FUENF in _index)*2])
-    y = y + yinc
-    display_words_row(x, y, penm, penh, _brgh, ['zehn', 'zwanzig'], [(M_ZEHN in _index)*2, (M_ZWANZIG in _index)*2])
-    y = y + yinc
-    display_words_row(x, y, penm, penh, _brgh, ['drei', 'viertel'], [(M_VIERTEL in _index)*2, (M_VIERTEL in _index)*2])
-    y = y + yinc
-    display_words_row(x, y, penm, penh, _brgh, ['vor', 'funk','nach'], [(M_VOR in _index)*1, 0, (M_NACH in _index)*1])
-    y = y + yinc
-    display_words_row(x, y, penm, penh, _brgh, ['halb', 'a', 'el', 'f', 'unf'], [(M_HALB in _index)*2, 0, (H_ELF in _index)*3, (H_ELF in _index or H_FUENF in _index)*3 ,(H_FUENF in _index)*3])
-    y = y + yinc
-    display_words_row(x, y, penm, penh, _brgh, ['ein', 's', 'xam','zwei'], [(H_EIN in _index or H_EINS in _index)*3, (H_EINS in _index)*3, 0, (H_ZWEI in _index)*3])
-    y = y + yinc
-    display_words_row(x, y, penm, penh, _brgh, ['drei', 'auj','vier'], [(H_DREI in _index)*3, 0, (H_VIER in _index)*3])
-    y = y + yinc
-    display_words_row(x, y, penm, penh, _brgh, ['sechs', 'nl','acht'], [(H_SECHS in _index)*3, 0, (H_ACHT in _index)*3])
-    y = y + yinc
-    display_words_row(x, y, penm, penh, _brgh, ['sieben', 'zwolf'], [(H_SIEBEN in _index)*3, (H_ZWOELF in _index)*3]) 
-    y = y + yinc
-    display_words_row(x, y, penm, penh, _brgh, ['zeh','n','eun', 'uhr'], [(H_ZEHN in _index)*3, (H_ZEHN in _index or H_NEUN in _index)*3, (H_NEUN in _index)*3, (M_UHR in _index)*1]) 
-    # UPDatE DISPLAY
-    display.update()
+ 
+    penm = get_color(_coloroffset, _brgh)
+    penh = get_color(_coloroffset+100, _brgh)
+    for i in range(NUM_NEOPIXELS):
+        set_24bit(i, (0, 0, 0))
+        
+    for word in _words:
+        if word >= 0:
+            for led in CLOCKWORDS[word]:
+                if led >= 0:
+                    set_24bit(led, penm)
+                else:
+                    set_24bit(led, (0,0,0))
+
+        
+    update_pix()
+        
+
 
 def clear_word_display():
-    display.set_pen(BLACK)
-    display.clear()
+    for i in range(NUM_NEOPIXELS):
+        set_24bit(i, (0, 0, 0))
+    update_pix()
     
 def time_to_words(_h, _m) -> []:
     # ARRAY 
@@ -350,7 +326,6 @@ def parse_cmd_str(_incomestr):
     
 def display_time(_h, _m, _s, _brgh):
     send_cmd_str("ct", "{0}:{1}:{2}".format(_h, _m, _s))
-    clear_word_display()
     words = time_to_words(_h, _m)
     set_word_display(words, (_s * 4) % 255, _brgh)
 
@@ -435,7 +410,7 @@ if ds1307_enabled:
 else:
     send_cmd_str("ds1307", "disabled")
     
-    
+clear_word_display()
 while True:
     
     
