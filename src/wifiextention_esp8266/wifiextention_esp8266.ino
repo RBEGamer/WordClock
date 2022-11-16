@@ -9,7 +9,8 @@
 
 
 
-
+//FOR ESP8266-01
+#define LED_BUILTIN 2
 
 #include <Arduino.h>
 #include "FS.h"
@@ -73,7 +74,7 @@
 #define MDNS_NAME "wordclock" // set hostname
 #define WEBSITE_TITLE "Word Clock Wifi Module Configuration" // name your device
 #define SERIAL_BAUD_RATE 9600
-#define NTP_SEND_TIME_INTERVAL 5 //*60 //sende zeit an uhr all x minuten
+#define NTP_SEND_TIME_INTERVAL 5*60 //sende zeit an uhr all x minuten
 #define DEFAULT_NTP_SERVER "pool.ntp.org"
 #define DEFAULT_TIMEZONE 1
 #define DEFAULT_BEIGHTNESS 255
@@ -106,7 +107,7 @@ const String ap_name = "WordClockConfiguration";
 const char* file_ntp_server = "/file.txt";
 const char* file_timezone = "/timezone.txt";
 const char* file_brightness = "/brightness.txt";
-const char* file_dalight_saving_enabled = "/enabledls.txt";
+const char* file_dalight_saving_enabled = "/dls.txt";
 //VARS
 
 int timezone = 0;
@@ -275,7 +276,7 @@ uint16_t crc16(String _data, uint16_t _poly=0x8408)
 }
 
 void send_cmd_str(String _command, String _payload){
-    Serial1.println(_command + "_" + _payload + "_" + crc16(_command + _payload) + "\n");
+    Serial.println(_command + "_" + _payload + "_" + crc16(_command + _payload) + "\n");
 }
 
 
@@ -695,8 +696,7 @@ void setup(void)
 
         
   //Serial.println("_setup_complete_");
-  pinMode(2, OUTPUT);
-  digitalWrite(2, true); 
+
 }
 
 
@@ -712,11 +712,10 @@ void loop(void)
 
     
 
-    led_state = !led_state;
-    digitalWrite(2, led_state); 
-    
+ 
     //UPDATE NTP NTP
-    if ((millis() - last) > (1000)) {
+   
+    if ((millis() - last) > (1000*NTP_SEND_TIME_INTERVAL)) {
       last = millis();  
       led_state = !led_state;
       digitalWrite(LED_BUILTIN, led_state); 
