@@ -29,7 +29,7 @@ if devices:
     for d in devices:
         print(hex(d))
         if d == BH150_ADDR:
-            bh150_enabled = Tru
+            bh150_enabled = True
         elif d == DS1301_ADDR:
             ds1307_enabled = True
 
