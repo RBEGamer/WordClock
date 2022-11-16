@@ -3,6 +3,8 @@
 // 16.11.2022 -  INITIAL
 
 #define VERSION "1.0"
+
+// ENABLE ON ESP8266-01 !!!!!!!!!!!!!!!!!!!!!!!!!!
 #define USE_LITTLEFS
 
 
@@ -693,10 +695,13 @@ void setup(void)
 
         
   //Serial.println("_setup_complete_");
+  pinMode(2, OUTPUT);
+  digitalWrite(2, true); 
 }
 
 
 
+bool led_state = false;
 
 
 void loop(void)
@@ -707,32 +712,63 @@ void loop(void)
 
     
 
-
+    led_state = !led_state;
+    digitalWrite(2, led_state); 
     
     //UPDATE NTP NTP
-    if ((millis() - last) > 1000 * NTP_SEND_TIME_INTERVAL) {
-        last = millis();   
-          //HANDLE NTP
-          timeClient.update();
-          time_last = timeClient.getFormattedTime(); 
-          rtc_hours = timeClient.getHours();
-          rtc_mins = timeClient.getMinutes();
-          rtc_secs = timeClient.getSeconds();
-          set_clock_time(rtc_hours, rtc_mins, rtc_secs);
-
-        //CHECK SUMMERTIME IF ENABLED
+    if ((millis() - last) > (1000)) {
+      last = millis();  
+      led_state = !led_state;
+      digitalWrite(LED_BUILTIN, led_state); 
+      //HANDLE NTP
+      timeClient.update();
+      time_last = timeClient.getFormattedTime(); 
+      rtc_hours = timeClient.getHours();
+      rtc_mins = timeClient.getMinutes();
+      rtc_secs = timeClient.getSeconds();
+      //CHECK SUMMERTIME IF ENABLED
       if(dalight_saving_enabled && summertime_EU(rtc_year, rtc_month, rtc_day, rtc_hours,0)){
        rtc_hours_tmp = rtc_hours + 1;
        if(rtc_hours_tmp >= 24){
          rtc_hours_tmp = (rtc_hours_tmp - 24);
        }
       }
-
-
+      set_clock_time(rtc_hours, rtc_mins, rtc_secs);
     }
 
  
+    //HANDLE COMMANDS FROM THE CLOCK
+    // PARSE GOT CLOCK INFORMATION
+   while (Serial.available()) {
+    delay(30); //delay to allow buffer to fill
+    if (Serial.available() > 0) {
+      char c = Serial.read(); //gets one byte from serial buffer
+      if (c == '\n') {
+        Serial.flush();
+        break;
+      }else{
+        readString += c;
+      }
+    }
+  }
 
+  if (readString.length() > 0) {
+    const String cmd = getValue(readString, '_', 0);
+    const String payload = getValue(readString, '_', 1);
+    const String crc = getValue(readString, '_', 2);
+    readString = "";
+
+    // CHECK CRC
+    if(crc == String(crc16(cmd + payload))){
+      last_error = readString;
+      if(cmd == "ct"){
+
+      }else if(cmd == "cb"){
+
+      }
+
+    }
+  }
    
  
     //HANDLE OTA
