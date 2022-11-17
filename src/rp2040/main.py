@@ -8,9 +8,9 @@ import array, time
 from machine import ADC
 from array import *
 import rp2
-from machine import Pin
 
-
+import machine
+from machine import *
 # UART ON GPIO0-TX AND GPIO1-RX TO COMMUNICATE$ WITH THE WIFI EXTENTION
 uart = machine.UART(0, baudrate = 9600)
 print("UART Info : ", uart)
@@ -20,7 +20,7 @@ print("I2C Info : ", i2c)
 
 
 BH150_ADDR = 0x23
-DS1301_ADDR = 0x66
+DS1307_ADDR = 0x68
 bh150_enabled = False
 ds1307_enabled = False
 devices = i2c.scan()
@@ -30,7 +30,7 @@ if devices:
         print(hex(d))
         if d == BH150_ADDR:
             bh150_enabled = True
-        elif d == DS1301_ADDR:
+        elif d == DS1307_ADDR:
             ds1307_enabled = True
 
 # INIT RTC
@@ -332,14 +332,15 @@ def display_time(_h, _m, _s, _brgh):
     
     
 def init_bh1750(i2c_addr = 0x23):
-    i2c.writeto(i2c_addr, 0x00, bytes([0x00])) # OFF
-    i2c.writeto(i2c_addr, 0x01, bytes([0x01])) # ON
-    i2c.writeto(i2c_addr, 0x07, bytes([0x07])) # RESET
+    i2c.writeto_mem(i2c_addr, 0x00, bytearray([0x00])) # OFF
+    i2c.writeto_mem(i2c_addr, 0x01, bytearray([0x01])) # ON
+    i2c.writeto_mem(i2c_addr, 0x07, bytearray([0x07])) # RESET
     # SET MODE
-    i2c.writeto(i2c_addr, 0x13, bytes([0x13])) # CONT_LOWRES
+    i2c.writeto_mem(i2c_addr, 0x13, bytearray([0x13])) # CONT_LOWRES
 
     
 def read_bh1750(i2c_addr = 0x23, _default_brght = 255, _min_brght = 10):
+    print("read_bh1750")
     data = i2c.readfrom(i2c_addr, 2) # READ 2 BYTES
     factor = 2.0
     res = (data[0]<<8 | data[1]) / (1.2 * factor)
@@ -457,5 +458,6 @@ while True:
     #print(temperature())
     # waits for 1 second and clears to BLACK
     time.sleep(0.1)
+
 
 
