@@ -1,28 +1,25 @@
 #include <stdio.h>
-#include "hardware/rtc.h"
+
 #include "pico/stdlib.h"
 #include "pico/util/datetime.h"
-#include "hardware/uart.h"
 #include "pico/binary_info.h"
 #include "hardware/i2c.h"
+#include "hardware/adc.h"
+
 
 #include <PicoLed.hpp>
 #include <Effects/Stars.hpp>
 
+
+#include "wifi_interface.h"
 #include "wordclock_helper.h"
+#include "helper.h"
+#include "rtc.h"
 
-bool reserved_addr(uint8_t addr)
-{
-    return (addr & 0x78) == 0 || (addr & 0x78) == 0x78;
-}
 
-#define BH1750_I2C_ADDR 0x23
-#define BH1750_I2C_ADDR_ALT 0x5C
-int enable_bh1750 = 0;
-
-#define DS1307_I2C_ADDR 0x68
-int enable_ds1307 = 0;
-
+//STORES IF i2C devices were found
+int enable_bh1750_addr = -1;
+int enable_ds1307_addr = -1;
 
 void init_i2c()
 {
@@ -34,124 +31,114 @@ void init_i2c()
 
     for (int addr = 0; addr < (1 << 7); ++addr)
     {
-        if (addr % 16 == 0)
-        {
-            printf("%02x ", addr);
-        }
-
         int ret;
         uint8_t rxdata;
-        if (reserved_addr(addr)){
+        if ((addr & 0x78) == 0 || (addr & 0x78) == 0x78)
+        {
             ret = PICO_ERROR_GENERIC;
-        }else{
+        }
+        else
+        {
             ret = i2c_read_blocking(i2c_default, addr, &rxdata, 1, false);
+            
         }
 
-        if (ret >= 0 && addr == BH1750_I2C_ADDR){
-            enable_bh1750 = 1;
-        }else if (ret >= 0 && addr == BH1750_I2C_ADDR_ALT){
-            enable_bh1750 = 2;
-        }else if(ret >= 0 && addr == DS1307_I2C_ADDR){
-            enable_ds1307 = 1;
+        if (ret > 0){
+                printf("i2c device at %02x ", addr);
+        }
+
+        // CHECK FOR REQUESTED DEVIES FOUND
+        if (ret >= 0 && addr == BH1750_I2C_ADDR)
+        {
+            enable_bh1750_addr = addr;
+        }
+        else if (ret >= 0 && addr == BH1750_I2C_ADDR_ALT)
+        {
+            enable_bh1750_addr = addr;
+        }
+        else if (ret >= 0 && addr == DS1307_I2C_ADDR)
+        {
+            enable_ds1307_addr = addr;
         }
     }
 }
 
 void init_bh1750()
 {
-    int addr = BH1750_I2C_ADDR;
-    if (enable_bh1750 == 1)
+    if (enable_bh1750_addr < 0)
     {
-        addr = BH1750_I2C_ADDR;
-    }
-    else if (enable_bh1750 == 2)
-    {
-        addr = BH1750_I2C_ADDR_ALT;
+        printf("init_bh1750 failed");
+        return;
     }
 
     // INIT SEQUENCE POWER DOWN, POWER UP, RESET, CONT READING MODE
     uint8_t buf[1];
     buf[0] = 0x00;
-    i2c_write_blocking(i2c_default, addr, buf, 1, true);
+    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
     buf[0] = 0x01;
-    i2c_write_blocking(i2c_default, addr, buf, 1, true);
+    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
     buf[0] = 0x07;
-    i2c_write_blocking(i2c_default, addr, buf, 1, true);
+    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
     buf[0] = 0x13;
-    i2c_write_blocking(i2c_default, addr, buf, 1, true);
-}
-
-int imap(int x, const int in_min, const int in_max, const int out_min, const int out_max)
-{
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
 }
 
 
 int get_brightness()
 {
-
-    int addr = BH1750_I2C_ADDR;
-    if (enable_bh1750 == 1)
+    // IF NO MODULE FOUND
+    if (enable_bh1750_addr < 0)
     {
-        addr = BH1750_I2C_ADDR;
-    }
-    else if (enable_bh1750 == 2)
-    {
-        addr = BH1750_I2C_ADDR_ALT;
-    }
-
-    if (enable_bh1750 <= 0)
-    {
-        return 128;
+        return -1;
     }
     int ret;
 
-    uint8_t buf[2];
+    uint8_t buf[2];   
+    ret = i2c_read_blocking(i2c_default, enable_bh1750_addr, buf, 2, false);
 
-    if (reserved_addr(addr))
-    {
-        ret = PICO_ERROR_GENERIC;
-    }
-    else
-    {
-        ret = i2c_read_blocking(i2c_default, addr, buf, 2, false);
-    }
     const uint16_t upper_byte = buf[0];
     const uint16_t lower_byte = buf[1];
-
+    
     if (ret <= 0)
     {
-        return 128;
+        return -1;
     }
 
-    const int lux = ((upper_byte << 8) + lower_byte) / (1.2 * 2);    
-    return imap(lux, 0, 100, 5, 255);
+    const int lux = ((upper_byte << 8) + lower_byte) / (1.2 * 2); // custom 1.5 factor added
+    return lux;
 }
 
-void set_rtc(const int8_t _h, const int8_t _m, const int8_t _s)
-{
-    datetime_t t = {
-        .year = 2020,
-        .month = 06,
-        .day = 05,
-        .dotw = 0, // 0 is Sunday, so 5 is Friday
-        .hour = _h,
-        .min = _m,
-        .sec = _s};
-    rtc_set_datetime(&t);
-    sleep_us(64);
-}
+const int num_readings = 30;
+int readings[num_readings];
+int reading_index = 0;
+long avg_sum = 0;
 
-void init_rtc()
+int get_average_brightness()
 {
-    rtc_init();
-}
 
-datetime_t read_rtc()
-{
-    datetime_t t;
-    rtc_get_datetime(&t);
-    return t;
+    long average;
+    // subtract the last reading:
+    avg_sum = avg_sum - readings[reading_index];
+    // read the sensor:
+    const int b = get_brightness();
+   
+    if (b >= 0)
+    {
+        readings[reading_index] = b; 
+    }
+
+    // add value to total:
+    avg_sum = avg_sum + readings[reading_index];
+    // handle index
+    reading_index = reading_index + 1;
+    if (reading_index >= num_readings)
+    {
+        reading_index = 0;
+    }
+    average = avg_sum / num_readings;
+    // 0-420lux => 0-255 led brightness and limit range
+    const int r = std::max(5, std::min(255, helper::map((int)average, 0, 420, 5, 255)));
+    return r;
 }
 
 void update_display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s)
@@ -159,39 +146,65 @@ void update_display_time(PicoLed::PicoLedController &_leds, const int _h, const 
     wordclock_helper::display_time(_leds, _h, _m, _s);
 }
 
+
+
 int main()
 {
     stdio_init_all();
 
-    // uart_init(PICO_DEFAULT_UART, PICO_DEFAULT_UART_BAUDRATE);
-    // gpio_set_function(PICO_DEFAULT_UART_TX_PIN, GPIO_FUNC_UART);
-    // gpio_set_function(PICO_DEFAULT_UART_RX_PIN, GPIO_FUNC_UART);
-    init_rtc();
-    set_rtc(0, 0, 0);
-    init_i2c();
-    init_bh1750();
-    sleep_ms(1000);
-
-    // 0. Initialize LED strip
-    printf("0. Initialize LED strip\n");
-    PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
-    
-
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
 
-    // PicoLed::Stars effectStars(ledStrip, wordclock_helper::get_word_color(wordclock_helper::wordclock_word_index::M_FUENF, 0), 4.0);
-    gpio_put(PICO_DEFAULT_LED_PIN, enable_ds1307);
 
-    bool b = false;
+
+    wifi_interface::init_uart();
+    sleep_ms(2000); //WAIT FOR UART / USB A BIT 
+    printf("START");
+    rtc::init_rtc();
+    rtc::set_rtc_time(0, 0, 0);
+    init_i2c();
+    init_bh1750();
+    
+
+    //modified lib for 400khz
+    PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
+
+
+
+    int current_brightness = get_average_brightness();
+    int last_brightness = 0;
+    int last_tmin = -1;
+    int last_tsec = -1;
+
+
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
     while (true)
     {
-        datetime_t t = read_rtc();
-        update_display_time(ledStrip, t.hour, t.min, t.sec);
-        sleep_ms(500);
+        
+        // UPDATE DISPLAY IF NEEDED
+        datetime_t t = rtc::read_rtc();
+        if(last_tsec != t.sec){
+            last_tsec = t.sec;
+            update_display_time(ledStrip, t.hour, t.min, t.sec);
+        }
+        //SEND TIME TO WIFI MODULE IF NEEDED
+        if(last_tmin != t.min){
+            last_tmin = t.min;
+            wifi_interface::send_current_time(t.hour, t.min, t.sec);
+        }
 
-            
-        ledStrip.setBrightness(get_brightness());
+        //UPDATE BRIGHTNESS IF NEEDED
+        current_brightness = get_average_brightness();
+        if (std::abs(current_brightness-last_brightness) > 3){
+            last_brightness = current_brightness;
+            wifi_interface::send_brightness(current_brightness);
+            ledStrip.setBrightness(current_brightness);
+        }
+
+       
+
+        sleep_ms(100);
     }
 
     return 0;

@@ -31,17 +31,21 @@ pico_sdk_init()
 
 include("PicoLed/PicoLed.cmake")
 
-set(HEADER_FILES ${CMAKE_CURRENT_LIST_DIR}/include/wordclock_helper.h)
-add_executable(wordclock src/wordclock_helper.h src/main.cpp src/wordclock_helper.cpp)
+
+add_executable(wordclock src/rtc.h src/rtc.cpp src/helper.h src/helper.cpp src/wordclock_helper.h src/wifi_interface.h src/wifi_interface.cpp src/main.cpp src/wordclock_helper.cpp)
 
 pico_set_program_name(wordclock "wordclock")
 pico_set_program_version(wordclock "0.9")
 
-pico_enable_stdio_uart(wordclock 1)
+pico_enable_stdio_uart(wordclock 0)
 pico_enable_stdio_usb(wordclock 1)
 
 target_link_libraries(wordclock 
-        pico_stdlib hardware_pio hardware_rtc hardware_i2c
+        pico_stdlib
+        hardware_pio
+        hardware_rtc
+        hardware_i2c
+        hardware_adc
 )
 
 

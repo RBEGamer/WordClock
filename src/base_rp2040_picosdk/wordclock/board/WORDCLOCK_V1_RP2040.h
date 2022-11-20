@@ -14,6 +14,14 @@
 // For board detection
 #define WORDCLOCK_V1_RP2040
 
+
+// CUSTOM PCB COMPONENTS
+#define USE_RP2040RTC
+
+#define BH1750_I2C_ADDR 0x23
+#define BH1750_I2C_ADDR_ALT 0x5C
+#define DS1307_I2C_ADDR 0x68
+
 // On some samples, the xosc can take longer to stabilize than is usual
 #ifndef PICO_XOSC_STARTUP_DELAY_MULTIPLIER
 #define PICO_XOSC_STARTUP_DELAY_MULTIPLIER 64
@@ -22,6 +30,7 @@
 //------------- UART -------------//
 #ifndef PICO_DEFAULT_UART
 #define PICO_DEFAULT_UART 0
+#define PICO_DEFAULT_UART0
 #endif
 
 #ifndef PICO_DEFAULT_UART_BAUDRATE

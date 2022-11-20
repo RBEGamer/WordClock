@@ -261,7 +261,7 @@ void wordclock_helper::set_word(PicoLed::PicoLedController &_leds, const wordclo
 {
     const int word_index = (int)_word;
     const int word_len = sizeof(wordclock_helper::CLOCKWORDS[word_index]) / sizeof(wordclock_helper::CLOCKWORDS[word_index][0]);
-    printf("word_len %i\n", word_len);
+    
 
     for (int i = 0; i < word_len; i++)
     {
