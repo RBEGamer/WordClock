@@ -5055,7 +5055,65 @@ CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_printf/include/pico/printf.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio/driver.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h
+
+CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj: /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio/driver.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico/assert.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/assert.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/_ansi.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/newlib.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/_newlib_version.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/sys/config.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/machine/ieeefp.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/sys/features.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/machine/_default_types.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/sys/_intsup.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/sys/_stdint.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+  generated/pico_base/pico/version.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico/config.h \
+  generated/pico_base/pico/config_autogen.h \
+  board/WORDCLOCK_V1_RP2040.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_platform/include/pico/platform.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/platform_defs.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/addressmap.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/sio.h \
+  /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/sys/cdefs.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico/types.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico/error.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/defs.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/code.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/sio.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/interp.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/padsbank0.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pads_bank0.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/iobank0.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/io_bank0.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/intctrl.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/m0plus.h
 
 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj: /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/tusb.h \
@@ -5379,17 +5437,14 @@ CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_pll/include/hardware/pll.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pll.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pll.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_clocks/include/hardware/clocks.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/clocks.h \
-  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h \
-  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info.h \
-  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/defs.h \
-  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/structure.h \
-  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/code.h
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/clocks.h
 
 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj: /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_flash/include/hardware/flash.h \
@@ -5502,6 +5557,7 @@ CMakeFiles/wordclock.dir/src/main.cpp.obj: src/main.cpp \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/uart.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/uart.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h \
+  /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/include/pico/stdio_usb.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_util/include/pico/util/datetime.h \
   /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info.h \
@@ -5901,6 +5957,8 @@ src/main.cpp:
 
 /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c:
 
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c:
+
 /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_binary_info/include/pico/binary_info/code.h:
 
 /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/timer.h:
@@ -6046,6 +6104,8 @@ build/WS2812B.pio.h:
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/arm-none-eabi/include/c++/10.3.1/bits/unordered_map.h:
 
 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/lib/gcc/arm-none-eabi/10.3.1/include-fixed/limits.h:
+
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h:
 
 /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/dreq.h:
 

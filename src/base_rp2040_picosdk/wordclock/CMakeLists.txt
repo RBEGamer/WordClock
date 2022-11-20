@@ -37,7 +37,7 @@ add_executable(wordclock src/wordclock_helper.h src/main.cpp src/wordclock_helpe
 pico_set_program_name(wordclock "wordclock")
 pico_set_program_version(wordclock "0.9")
 
-pico_enable_stdio_uart(wordclock 0)
+pico_enable_stdio_uart(wordclock 1)
 pico_enable_stdio_usb(wordclock 1)
 
 target_link_libraries(wordclock 

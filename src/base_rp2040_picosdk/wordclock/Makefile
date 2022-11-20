@@ -1929,6 +1929,30 @@ Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
 .PHONY : Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
 
+Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.obj: Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+.PHONY : Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.obj
+
+# target to build an object file
+Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+.PHONY : Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+
+Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.i: Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
+.PHONY : Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.i
+
+# target to preprocess a source file
+Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
+.PHONY : Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
+
+Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.s: Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
+.PHONY : Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.s
+
+# target to generate assembly for a file
+Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
+.PHONY : Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
+
 Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.obj: Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
 .PHONY : Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.obj
 
@@ -2326,6 +2350,9 @@ help:
 	@echo "... Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/stdio.obj"
 	@echo "... Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/stdio.i"
 	@echo "... Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/stdio.s"
+	@echo "... Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.obj"
+	@echo "... Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.i"
+	@echo "... Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.s"
 	@echo "... Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.obj"
 	@echo "... Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.i"
 	@echo "... Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.s"

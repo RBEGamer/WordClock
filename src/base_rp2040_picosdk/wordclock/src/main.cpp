@@ -69,8 +69,8 @@ void init_bh1750()
         addr = BH1750_I2C_ADDR_ALT;
     }
 
+    // INIT SEQUENCE POWER DOWN, POWER UP, RESET, CONT READING MODE
     uint8_t buf[1];
-
     buf[0] = 0x00;
     i2c_write_blocking(i2c_default, addr, buf, 1, true);
     buf[0] = 0x01;
@@ -125,7 +125,7 @@ int get_brightness()
     }
 
     const int lux = ((upper_byte << 8) + lower_byte) / (1.2 * 2);    
-    return imap(lux, 0, 200, 10, 255);
+    return imap(lux, 0, 100, 5, 255);
 }
 
 void set_rtc(const int8_t _h, const int8_t _m, const int8_t _s)
