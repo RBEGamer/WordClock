@@ -1406,8 +1406,8 @@ CMakeFiles/PicoLed_WS2812B_pio_h.dir/clean:
 # Target rules for target CMakeFiles/wordclock.dir
 
 # All Build rule for target.
-CMakeFiles/wordclock.dir/all: CMakeFiles/ELF2UF2Build.dir/all
 CMakeFiles/wordclock.dir/all: CMakeFiles/PicoLed_WS2812B_pio_h.dir/all
+CMakeFiles/wordclock.dir/all: CMakeFiles/ELF2UF2Build.dir/all
 CMakeFiles/wordclock.dir/all: pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/build

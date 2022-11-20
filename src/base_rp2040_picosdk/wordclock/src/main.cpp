@@ -196,7 +196,7 @@ int main()
 
         //UPDATE BRIGHTNESS IF NEEDED
         current_brightness = get_average_brightness();
-        if (std::abs(current_brightness-last_brightness) > 3){
+        if (current_brightness != last_brightness){
             last_brightness = current_brightness;
             wifi_interface::send_brightness(current_brightness);
             ledStrip.setBrightness(current_brightness);
