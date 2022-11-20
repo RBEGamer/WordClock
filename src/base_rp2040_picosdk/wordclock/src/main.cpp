@@ -162,7 +162,7 @@ int main()
     sleep_ms(2000); //WAIT FOR UART / USB A BIT 
     printf("START");
     rtc::init_rtc();
-    rtc::set_rtc_time(0, 0, 0);
+    rtc::set_rtc_time("21:36:34");
     init_i2c();
     init_bh1750();
     
@@ -173,11 +173,13 @@ int main()
 
 
     int current_brightness = get_average_brightness();
+    int current_brightness_mode = 0; //0=auto >0-255 = manual
     int last_brightness = 0;
     int last_tmin = -1;
     int last_tsec = -1;
 
-
+    //enable uart rx irq for communication with wifi module
+    wifi_interface::enable_uart_irq(true);
     gpio_put(PICO_DEFAULT_LED_PIN, false);
     while (true)
     {
@@ -195,7 +197,12 @@ int main()
         }
 
         //UPDATE BRIGHTNESS IF NEEDED
-        current_brightness = get_average_brightness();
+        if(current_brightness_mode == 0){
+             current_brightness = get_average_brightness(); //automatic if mode = 0
+        }else{
+            current_brightness = current_brightness_mode; //manual if mode 1-255
+        }
+        
         if (current_brightness != last_brightness){
             last_brightness = current_brightness;
             wifi_interface::send_brightness(current_brightness);
@@ -203,6 +210,17 @@ int main()
         }
 
        
+       //PARSE CMD FROM WIFIMOUDLE IF PRESENT
+       wifi_interface::rxcmd wmc = wifi_interface::parse_cmd();
+       if(wmc.cmdok){
+            printf("got cmd %s %s \n", wmc.cmd.c_str(), wmc.payload.c_str());
+            if(wmc.cmd == "st"){
+                rtc::set_rtc_time(wmc.payload);
+                //TODO RTC PARSE TIMESTRING
+            }else if(wmc.cmd == "sb"){
+                current_brightness_mode = std::max(0,std::min(255,std::atoi(wmc.payload.c_str())));
+            }
+       }
 
         sleep_ms(100);
     }

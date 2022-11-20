@@ -92,7 +92,7 @@ int wordclock_helper::CLOCKWORDS[27][10] = {
     {113, -1, -1, -1, -1, -1, -1, -1, -1, -1}, // 26 minute dot four
 };
 
-void wordclock_helper::display_time_with_words(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s)
+void wordclock_helper::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)
 {
 
     // MINUTE DOTS
@@ -122,7 +122,11 @@ void wordclock_helper::display_time_with_words(PicoLed::PicoLedController &_leds
     // PREFIX WORDS IT IS xxx (OCLOCK)
     wordclock_helper::set_word(_leds, wordclock_helper::wordclock_word_index::C_ES, _s, PICO_DEFAULT_WS2812_OFFSET);
     wordclock_helper::set_word(_leds, wordclock_helper::wordclock_word_index::C_IST, _s, PICO_DEFAULT_WS2812_OFFSET);
-
+    //after >30 min the hour word need to be set to the nex full hour
+    int _h = _horig;
+    if(_m > 30){
+        _h = (_horig+1) % 24;
+    }
     // HOURS
     if (_h == 0 || _h == 12)
     {

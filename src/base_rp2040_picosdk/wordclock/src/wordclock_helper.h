@@ -41,7 +41,7 @@ public:
   // 27 different word and max 10 leds per word (can be modified, see wordclock_word_index for wordindex) see wordclock_helper.cpp
   static int CLOCKWORDS[27][10];
 
-  static void display_time_with_words(PicoLed::PicoLedController& _leds, const int _h, const int _m, const int _s);
+  static void display_time_with_words(PicoLed::PicoLedController& _leds, const int _horig, const int _m, const int _s);
   static void display_time(PicoLed::PicoLedController& _leds, const int _h, const int _m, const int _s);
   static void set_word(PicoLed::PicoLedController& _leds, const wordclock_helper::wordclock_word_index _word, const int _current_seconds, const int led_index_offset);
   static PicoLed::Color Wheel(int WheelPos, int _bright);
