@@ -3,7 +3,10 @@
 
 #include "pico/stdlib.h"
 #include "pico/util/datetime.h"
+
+#ifdef USE_RP2040RTC
 #include "hardware/rtc.h"
+#endif
 
 #include "helper.h"
 class rtc

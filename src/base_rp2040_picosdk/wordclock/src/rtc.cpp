@@ -24,18 +24,26 @@ void rtc::set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _s)
         .hour = _h,
         .min = _m,
         .sec = _s};
+
+#ifdef USE_RP2040RTC
     rtc_set_datetime(&t);
     sleep_us(64);
+#endif
 }
 
 void rtc::init_rtc()
 {
+#ifdef USE_RP2040RTC
     rtc_init();
+#endif
 }
 
 datetime_t rtc::read_rtc()
 {
     datetime_t t;
+
+#ifdef USE_RP2040RTC
     rtc_get_datetime(&t);
+#endif
     return t;
 }

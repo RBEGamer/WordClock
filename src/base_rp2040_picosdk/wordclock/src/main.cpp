@@ -162,7 +162,7 @@ int main()
     sleep_ms(2000); //WAIT FOR UART / USB A BIT 
     printf("START");
     rtc::init_rtc();
-    rtc::set_rtc_time("21:36:34");
+    rtc::set_rtc_time(__TIME__);
     init_i2c();
     init_bh1750();
     
@@ -216,7 +216,6 @@ int main()
             printf("got cmd %s %s \n", wmc.cmd.c_str(), wmc.payload.c_str());
             if(wmc.cmd == "st"){
                 rtc::set_rtc_time(wmc.payload);
-                //TODO RTC PARSE TIMESTRING
             }else if(wmc.cmd == "sb"){
                 current_brightness_mode = std::max(0,std::min(255,std::atoi(wmc.payload.c_str())));
             }
