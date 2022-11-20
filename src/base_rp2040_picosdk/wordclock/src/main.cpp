@@ -125,7 +125,7 @@ int get_brightness()
     }
 
     const int lux = ((upper_byte << 8) + lower_byte) / (1.2 * 2);    
-    return imap(lux, 0, 200, 1, 255);
+    return imap(lux, 0, 200, 10, 255);
 }
 
 void set_rtc(const int8_t _h, const int8_t _m, const int8_t _s)

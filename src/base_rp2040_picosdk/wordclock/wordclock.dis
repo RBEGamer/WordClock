@@ -864,14 +864,14 @@ Disassembly of section .text:
 100007b6:	6913      	ldr	r3, [r2, #16]
 100007b8:	2b00      	cmp	r3, #0
 100007ba:	d100      	bne.n	100007be <main+0x5a>
-100007bc:	e0d0      	b.n	10000960 <main+0x1fc>
+100007bc:	e0cf      	b.n	1000095e <main+0x1fa>
 100007be:	0030      	movs	r0, r6
 100007c0:	a907      	add	r1, sp, #28
 100007c2:	f7ff fec5 	bl	10000550 <_ZNSt3mapIjS_IjSt10shared_ptrIN7PicoLed13PicoLedTargetEESt4lessIjESaISt4pairIKjS3_EEES5_SaIS6_IS7_SA_EEEixERS7_>
 100007c6:	3004      	adds	r0, #4
 100007c8:	4284      	cmp	r4, r0
 100007ca:	d000      	beq.n	100007ce <main+0x6a>
-100007cc:	e123      	b.n	10000a16 <main+0x2b2>
+100007cc:	e122      	b.n	10000a14 <main+0x2b0>
 100007ce:	2020      	movs	r0, #32
 100007d0:	f00a ff08 	bl	1000b5e4 <_Znwj>
 100007d4:	2300      	movs	r3, #0
@@ -911,7 +911,7 @@ Disassembly of section .text:
 1000081e:	4690      	mov	r8, r2
 10000820:	2b00      	cmp	r3, #0
 10000822:	d100      	bne.n	10000826 <main+0xc2>
-10000824:	e0d1      	b.n	100009ca <main+0x266>
+10000824:	e0d0      	b.n	100009c8 <main+0x264>
 10000826:	001c      	movs	r4, r3
 10000828:	689b      	ldr	r3, [r3, #8]
 1000082a:	2b00      	cmp	r3, #0
@@ -930,11 +930,11 @@ Disassembly of section .text:
 10000846:	6183      	str	r3, [r0, #24]
 10000848:	45a0      	cmp	r8, r4
 1000084a:	d100      	bne.n	1000084e <main+0xea>
-1000084c:	e09d      	b.n	1000098a <main+0x226>
+1000084c:	e09c      	b.n	10000988 <main+0x224>
 1000084e:	6923      	ldr	r3, [r4, #16]
 10000850:	2b00      	cmp	r3, #0
 10000852:	d000      	beq.n	10000856 <main+0xf2>
-10000854:	e086      	b.n	10000964 <main+0x200>
+10000854:	e085      	b.n	10000962 <main+0x1fe>
 10000856:	0038      	movs	r0, r7
 10000858:	0027      	movs	r7, r4
 1000085a:	211c      	movs	r1, #28
@@ -967,7 +967,7 @@ Disassembly of section .text:
 10000892:	60b3      	str	r3, [r6, #8]
 10000894:	2b00      	cmp	r3, #0
 10000896:	d100      	bne.n	1000089a <main+0x136>
-10000898:	e087      	b.n	100009aa <main+0x246>
+10000898:	e086      	b.n	100009a8 <main+0x244>
 1000089a:	61a7      	str	r7, [r4, #24]
 1000089c:	686b      	ldr	r3, [r5, #4]
 1000089e:	9908      	ldr	r1, [sp, #32]
@@ -997,7 +997,7 @@ Disassembly of section .text:
 100008d6:	0492      	lsls	r2, r2, #18
 100008d8:	625a      	str	r2, [r3, #36]	; 0x24
 100008da:	2900      	cmp	r1, #0
-100008dc:	d03e      	beq.n	1000095c <main+0x1f8>
+100008dc:	d03d      	beq.n	1000095a <main+0x1f6>
 100008de:	615a      	str	r2, [r3, #20]
 100008e0:	4e67      	ldr	r6, [pc, #412]	; (10000a80 <main+0x31c>)
 100008e2:	0020      	movs	r0, r4
@@ -1017,7 +1017,7 @@ Disassembly of section .text:
 10000904:	2b01      	cmp	r3, #1
 10000906:	d008      	beq.n	1000091a <main+0x1b6>
 10000908:	2b02      	cmp	r3, #2
-1000090a:	d025      	beq.n	10000958 <main+0x1f4>
+1000090a:	d024      	beq.n	10000956 <main+0x1f2>
 1000090c:	2b00      	cmp	r3, #0
 1000090e:	dc04      	bgt.n	1000091a <main+0x1b6>
 10000910:	2180      	movs	r1, #128	; 0x80
@@ -1042,133 +1042,133 @@ Disassembly of section .text:
 1000093c:	4b53      	ldr	r3, [pc, #332]	; (10000a8c <main+0x328>)
 1000093e:	f005 fec0 	bl	100066c2 <__wrap___aeabi_ddiv>
 10000942:	f005 ff5d 	bl	10006800 <__wrap___aeabi_d2iz>
-10000946:	01c3      	lsls	r3, r0, #7
-10000948:	1a18      	subs	r0, r3, r0
-1000094a:	21c8      	movs	r1, #200	; 0xc8
-1000094c:	0040      	lsls	r0, r0, #1
-1000094e:	f005 fc43 	bl	100061d8 <__wrap___aeabi_idiv>
-10000952:	3001      	adds	r0, #1
-10000954:	b2c1      	uxtb	r1, r0
-10000956:	e7dc      	b.n	10000912 <main+0x1ae>
-10000958:	215c      	movs	r1, #92	; 0x5c
-1000095a:	e7df      	b.n	1000091c <main+0x1b8>
-1000095c:	619a      	str	r2, [r3, #24]
-1000095e:	e7bf      	b.n	100008e0 <main+0x17c>
-10000960:	0014      	movs	r4, r2
-10000962:	e72c      	b.n	100007be <main+0x5a>
-10000964:	68f1      	ldr	r1, [r6, #12]
-10000966:	42a1      	cmp	r1, r4
-10000968:	d024      	beq.n	100009b4 <main+0x250>
-1000096a:	2201      	movs	r2, #1
-1000096c:	4644      	mov	r4, r8
-1000096e:	4694      	mov	ip, r2
-10000970:	68b3      	ldr	r3, [r6, #8]
-10000972:	e003      	b.n	1000097c <main+0x218>
-10000974:	4662      	mov	r2, ip
-10000976:	6898      	ldr	r0, [r3, #8]
-10000978:	001c      	movs	r4, r3
-1000097a:	0003      	movs	r3, r0
-1000097c:	2b00      	cmp	r3, #0
-1000097e:	d031      	beq.n	100009e4 <main+0x280>
-10000980:	691a      	ldr	r2, [r3, #16]
-10000982:	2a00      	cmp	r2, #0
-10000984:	d1f6      	bne.n	10000974 <main+0x210>
-10000986:	68d8      	ldr	r0, [r3, #12]
-10000988:	e7f6      	b.n	10000978 <main+0x214>
-1000098a:	68b4      	ldr	r4, [r6, #8]
-1000098c:	429c      	cmp	r4, r3
-1000098e:	d038      	beq.n	10000a02 <main+0x29e>
-10000990:	2101      	movs	r1, #1
-10000992:	e004      	b.n	1000099e <main+0x23a>
-10000994:	000a      	movs	r2, r1
-10000996:	68a3      	ldr	r3, [r4, #8]
-10000998:	2b00      	cmp	r3, #0
-1000099a:	d018      	beq.n	100009ce <main+0x26a>
-1000099c:	001c      	movs	r4, r3
-1000099e:	6923      	ldr	r3, [r4, #16]
-100009a0:	2b00      	cmp	r3, #0
-100009a2:	d1f7      	bne.n	10000994 <main+0x230>
-100009a4:	2200      	movs	r2, #0
-100009a6:	68e3      	ldr	r3, [r4, #12]
-100009a8:	e7f6      	b.n	10000998 <main+0x234>
-100009aa:	6833      	ldr	r3, [r6, #0]
-100009ac:	0030      	movs	r0, r6
-100009ae:	68db      	ldr	r3, [r3, #12]
-100009b0:	4798      	blx	r3
-100009b2:	e772      	b.n	1000089a <main+0x136>
-100009b4:	2001      	movs	r0, #1
-100009b6:	4643      	mov	r3, r8
-100009b8:	0022      	movs	r2, r4
-100009ba:	0039      	movs	r1, r7
-100009bc:	f00a fffe 	bl	1000b9bc <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_>
-100009c0:	6973      	ldr	r3, [r6, #20]
-100009c2:	003c      	movs	r4, r7
-100009c4:	3301      	adds	r3, #1
-100009c6:	6173      	str	r3, [r6, #20]
-100009c8:	e74b      	b.n	10000862 <main+0xfe>
-100009ca:	0014      	movs	r4, r2
-100009cc:	e734      	b.n	10000838 <main+0xd4>
-100009ce:	2a00      	cmp	r2, #0
-100009d0:	d100      	bne.n	100009d4 <main+0x270>
-100009d2:	e740      	b.n	10000856 <main+0xf2>
-100009d4:	68f3      	ldr	r3, [r6, #12]
-100009d6:	42a3      	cmp	r3, r4
-100009d8:	d00c      	beq.n	100009f4 <main+0x290>
-100009da:	0020      	movs	r0, r4
-100009dc:	f00a ffd2 	bl	1000b984 <_ZSt18_Rb_tree_decrementPSt18_Rb_tree_node_base>
-100009e0:	0004      	movs	r4, r0
-100009e2:	e738      	b.n	10000856 <main+0xf2>
-100009e4:	2a00      	cmp	r2, #0
-100009e6:	d100      	bne.n	100009ea <main+0x286>
-100009e8:	e735      	b.n	10000856 <main+0xf2>
-100009ea:	42a1      	cmp	r1, r4
-100009ec:	d1f5      	bne.n	100009da <main+0x276>
-100009ee:	2c00      	cmp	r4, #0
-100009f0:	d100      	bne.n	100009f4 <main+0x290>
-100009f2:	e730      	b.n	10000856 <main+0xf2>
-100009f4:	45a0      	cmp	r8, r4
-100009f6:	d0dd      	beq.n	100009b4 <main+0x250>
-100009f8:	6920      	ldr	r0, [r4, #16]
-100009fa:	1e43      	subs	r3, r0, #1
-100009fc:	4198      	sbcs	r0, r3
-100009fe:	b2c0      	uxtb	r0, r0
-10000a00:	e7d9      	b.n	100009b6 <main+0x252>
-10000a02:	4644      	mov	r4, r8
-10000a04:	e7e6      	b.n	100009d4 <main+0x270>
-10000a06:	a80b      	add	r0, sp, #44	; 0x2c
-10000a08:	f7ff fe92 	bl	10000730 <_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE0EED1Ev>
-10000a0c:	a809      	add	r0, sp, #36	; 0x24
-10000a0e:	f7ff fe8f 	bl	10000730 <_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE0EED1Ev>
-10000a12:	f00a f837 	bl	1000aa84 <__cxa_end_cleanup>
-10000a16:	2004      	movs	r0, #4
-10000a18:	f009 fff6 	bl	1000aa08 <__cxa_allocate_exception>
-10000a1c:	0004      	movs	r4, r0
-10000a1e:	2004      	movs	r0, #4
-10000a20:	f00a fde0 	bl	1000b5e4 <_Znwj>
-10000a24:	4b1a      	ldr	r3, [pc, #104]	; (10000a90 <main+0x32c>)
-10000a26:	6020      	str	r0, [r4, #0]
-10000a28:	6003      	str	r3, [r0, #0]
-10000a2a:	2200      	movs	r2, #0
-10000a2c:	0020      	movs	r0, r4
-10000a2e:	4919      	ldr	r1, [pc, #100]	; (10000a94 <main+0x330>)
-10000a30:	f00a fd86 	bl	1000b540 <__cxa_throw>
-10000a34:	e7ea      	b.n	10000a0c <main+0x2a8>
-10000a36:	2120      	movs	r1, #32
-10000a38:	0020      	movs	r0, r4
-10000a3a:	f009 ff7b 	bl	1000a934 <_ZdlPvj>
-10000a3e:	f00a f821 	bl	1000aa84 <__cxa_end_cleanup>
-10000a42:	a80d      	add	r0, sp, #52	; 0x34
-10000a44:	f009 fc74 	bl	1000a330 <_ZN7PicoLed17PicoLedControllerD1Ev>
-10000a48:	f00a f81c 	bl	1000aa84 <__cxa_end_cleanup>
-10000a4c:	f00a f908 	bl	1000ac60 <__cxa_begin_catch>
-10000a50:	0020      	movs	r0, r4
-10000a52:	f7ff fc97 	bl	10000384 <_ZN7PicoLed7WS2812BD0Ev>
-10000a56:	f00a fd8d 	bl	1000b574 <__cxa_rethrow>
-10000a5a:	0020      	movs	r0, r4
-10000a5c:	f009 ffea 	bl	1000aa34 <__cxa_free_exception>
-10000a60:	f00a f810 	bl	1000aa84 <__cxa_end_cleanup>
-10000a64:	f00a f936 	bl	1000acd4 <__cxa_end_catch>
-10000a68:	f00a f80c 	bl	1000aa84 <__cxa_end_cleanup>
+10000946:	23f5      	movs	r3, #245	; 0xf5
+10000948:	21c8      	movs	r1, #200	; 0xc8
+1000094a:	4358      	muls	r0, r3
+1000094c:	f005 fc44 	bl	100061d8 <__wrap___aeabi_idiv>
+10000950:	300a      	adds	r0, #10
+10000952:	b2c1      	uxtb	r1, r0
+10000954:	e7dd      	b.n	10000912 <main+0x1ae>
+10000956:	215c      	movs	r1, #92	; 0x5c
+10000958:	e7e0      	b.n	1000091c <main+0x1b8>
+1000095a:	619a      	str	r2, [r3, #24]
+1000095c:	e7c0      	b.n	100008e0 <main+0x17c>
+1000095e:	0014      	movs	r4, r2
+10000960:	e72d      	b.n	100007be <main+0x5a>
+10000962:	68f1      	ldr	r1, [r6, #12]
+10000964:	42a1      	cmp	r1, r4
+10000966:	d024      	beq.n	100009b2 <main+0x24e>
+10000968:	2201      	movs	r2, #1
+1000096a:	4644      	mov	r4, r8
+1000096c:	4694      	mov	ip, r2
+1000096e:	68b3      	ldr	r3, [r6, #8]
+10000970:	e003      	b.n	1000097a <main+0x216>
+10000972:	4662      	mov	r2, ip
+10000974:	6898      	ldr	r0, [r3, #8]
+10000976:	001c      	movs	r4, r3
+10000978:	0003      	movs	r3, r0
+1000097a:	2b00      	cmp	r3, #0
+1000097c:	d031      	beq.n	100009e2 <main+0x27e>
+1000097e:	691a      	ldr	r2, [r3, #16]
+10000980:	2a00      	cmp	r2, #0
+10000982:	d1f6      	bne.n	10000972 <main+0x20e>
+10000984:	68d8      	ldr	r0, [r3, #12]
+10000986:	e7f6      	b.n	10000976 <main+0x212>
+10000988:	68b4      	ldr	r4, [r6, #8]
+1000098a:	429c      	cmp	r4, r3
+1000098c:	d038      	beq.n	10000a00 <main+0x29c>
+1000098e:	2101      	movs	r1, #1
+10000990:	e004      	b.n	1000099c <main+0x238>
+10000992:	000a      	movs	r2, r1
+10000994:	68a3      	ldr	r3, [r4, #8]
+10000996:	2b00      	cmp	r3, #0
+10000998:	d018      	beq.n	100009cc <main+0x268>
+1000099a:	001c      	movs	r4, r3
+1000099c:	6923      	ldr	r3, [r4, #16]
+1000099e:	2b00      	cmp	r3, #0
+100009a0:	d1f7      	bne.n	10000992 <main+0x22e>
+100009a2:	2200      	movs	r2, #0
+100009a4:	68e3      	ldr	r3, [r4, #12]
+100009a6:	e7f6      	b.n	10000996 <main+0x232>
+100009a8:	6833      	ldr	r3, [r6, #0]
+100009aa:	0030      	movs	r0, r6
+100009ac:	68db      	ldr	r3, [r3, #12]
+100009ae:	4798      	blx	r3
+100009b0:	e773      	b.n	1000089a <main+0x136>
+100009b2:	2001      	movs	r0, #1
+100009b4:	4643      	mov	r3, r8
+100009b6:	0022      	movs	r2, r4
+100009b8:	0039      	movs	r1, r7
+100009ba:	f00a ffff 	bl	1000b9bc <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_>
+100009be:	6973      	ldr	r3, [r6, #20]
+100009c0:	003c      	movs	r4, r7
+100009c2:	3301      	adds	r3, #1
+100009c4:	6173      	str	r3, [r6, #20]
+100009c6:	e74c      	b.n	10000862 <main+0xfe>
+100009c8:	0014      	movs	r4, r2
+100009ca:	e735      	b.n	10000838 <main+0xd4>
+100009cc:	2a00      	cmp	r2, #0
+100009ce:	d100      	bne.n	100009d2 <main+0x26e>
+100009d0:	e741      	b.n	10000856 <main+0xf2>
+100009d2:	68f3      	ldr	r3, [r6, #12]
+100009d4:	42a3      	cmp	r3, r4
+100009d6:	d00c      	beq.n	100009f2 <main+0x28e>
+100009d8:	0020      	movs	r0, r4
+100009da:	f00a ffd3 	bl	1000b984 <_ZSt18_Rb_tree_decrementPSt18_Rb_tree_node_base>
+100009de:	0004      	movs	r4, r0
+100009e0:	e739      	b.n	10000856 <main+0xf2>
+100009e2:	2a00      	cmp	r2, #0
+100009e4:	d100      	bne.n	100009e8 <main+0x284>
+100009e6:	e736      	b.n	10000856 <main+0xf2>
+100009e8:	42a1      	cmp	r1, r4
+100009ea:	d1f5      	bne.n	100009d8 <main+0x274>
+100009ec:	2c00      	cmp	r4, #0
+100009ee:	d100      	bne.n	100009f2 <main+0x28e>
+100009f0:	e731      	b.n	10000856 <main+0xf2>
+100009f2:	45a0      	cmp	r8, r4
+100009f4:	d0dd      	beq.n	100009b2 <main+0x24e>
+100009f6:	6920      	ldr	r0, [r4, #16]
+100009f8:	1e43      	subs	r3, r0, #1
+100009fa:	4198      	sbcs	r0, r3
+100009fc:	b2c0      	uxtb	r0, r0
+100009fe:	e7d9      	b.n	100009b4 <main+0x250>
+10000a00:	4644      	mov	r4, r8
+10000a02:	e7e6      	b.n	100009d2 <main+0x26e>
+10000a04:	a80b      	add	r0, sp, #44	; 0x2c
+10000a06:	f7ff fe93 	bl	10000730 <_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE0EED1Ev>
+10000a0a:	a809      	add	r0, sp, #36	; 0x24
+10000a0c:	f7ff fe90 	bl	10000730 <_ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE0EED1Ev>
+10000a10:	f00a f838 	bl	1000aa84 <__cxa_end_cleanup>
+10000a14:	2004      	movs	r0, #4
+10000a16:	f009 fff7 	bl	1000aa08 <__cxa_allocate_exception>
+10000a1a:	0004      	movs	r4, r0
+10000a1c:	2004      	movs	r0, #4
+10000a1e:	f00a fde1 	bl	1000b5e4 <_Znwj>
+10000a22:	4b1b      	ldr	r3, [pc, #108]	; (10000a90 <main+0x32c>)
+10000a24:	6020      	str	r0, [r4, #0]
+10000a26:	6003      	str	r3, [r0, #0]
+10000a28:	2200      	movs	r2, #0
+10000a2a:	0020      	movs	r0, r4
+10000a2c:	4919      	ldr	r1, [pc, #100]	; (10000a94 <main+0x330>)
+10000a2e:	f00a fd87 	bl	1000b540 <__cxa_throw>
+10000a32:	e7ea      	b.n	10000a0a <main+0x2a6>
+10000a34:	2120      	movs	r1, #32
+10000a36:	0020      	movs	r0, r4
+10000a38:	f009 ff7c 	bl	1000a934 <_ZdlPvj>
+10000a3c:	f00a f822 	bl	1000aa84 <__cxa_end_cleanup>
+10000a40:	a80d      	add	r0, sp, #52	; 0x34
+10000a42:	f009 fc75 	bl	1000a330 <_ZN7PicoLed17PicoLedControllerD1Ev>
+10000a46:	f00a f81d 	bl	1000aa84 <__cxa_end_cleanup>
+10000a4a:	f00a f909 	bl	1000ac60 <__cxa_begin_catch>
+10000a4e:	0020      	movs	r0, r4
+10000a50:	f7ff fc98 	bl	10000384 <_ZN7PicoLed7WS2812BD0Ev>
+10000a54:	f00a fd8e 	bl	1000b574 <__cxa_rethrow>
+10000a58:	0020      	movs	r0, r4
+10000a5a:	f009 ffeb 	bl	1000aa34 <__cxa_free_exception>
+10000a5e:	f00a f811 	bl	1000aa84 <__cxa_end_cleanup>
+10000a62:	f00a f937 	bl	1000acd4 <__cxa_end_catch>
+10000a66:	f00a f80d 	bl	1000aa84 <__cxa_end_cleanup>
+10000a6a:	46c0      	nop			; (mov r8, r8)
 10000a6c:	100143f0 	.word	0x100143f0
 10000a70:	2000243c 	.word	0x2000243c
 10000a74:	50200000 	.word	0x50200000
@@ -41637,7 +41637,7 @@ Disassembly of section .data:
 20001458:	ffffffff ffffffff 00000004 00000005     ................
 20001468:	00000006 ffffffff ffffffff ffffffff     ................
 20001478:	ffffffff ffffffff ffffffff ffffffff     ................
-20001488:	00000007 00000008 00000009 0000000a     ................
+20001488:	ffffffff 00000008 00000009 0000000a     ................
 20001498:	0000000b ffffffff ffffffff ffffffff     ................
 200014a8:	ffffffff ffffffff 00000017 00000016     ................
 200014b8:	00000015 00000014 ffffffff ffffffff     ................

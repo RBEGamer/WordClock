@@ -64,7 +64,7 @@ PicoLed::Color wordclock_helper::get_word_color(const wordclock_helper::wordcloc
 int wordclock_helper::CLOCKWORDS[27][10] = {
     {1, 2, -1, -1, -1, -1, -1, -1, -1, -1},       // es 0 X OK
     {4, 5, 6, -1, -1, -1, -1, -1, -1, -1},        // ist 1 X OK
-    {7, 8, 9, 10, 11, -1, -1, -1, -1, -1},        // fuenf 2 X OK
+    {-1, 8, 9, 10, 11, -1, -1, -1, -1, -1},        // fuenf 2 X OK
     {23, 22, 21, 20, -1, -1, -1, -1, -1, -1},     // zehn 3 X OK
     {13, 14, 15, 16, 17, 18, 19, -1, -1, -1},     //  zwanzig 4 X OK
     {28, 29, 30, 31, 32, 33, 34, -1, -1, -1},     // viertel 5 X OK
