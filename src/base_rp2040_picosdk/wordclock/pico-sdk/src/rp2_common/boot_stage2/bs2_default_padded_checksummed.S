@@ -1,4 +1,4 @@
-// Padded and checksummed version of: /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
+// Padded and checksummed version of: /home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin
 
 .cpu cortex-m0plus
 .thumb

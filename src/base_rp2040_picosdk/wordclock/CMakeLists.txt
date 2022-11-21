@@ -29,7 +29,7 @@ set(PICO_CXX_ENABLE_RTTI 1)
 # Initialise the Pico SDK
 pico_sdk_init()
 
-include("PicoLed/PicoLed.cmake")
+include(${CMAKE_CURRENT_LIST_DIR}/PicoLED/PicoLed.cmake)
 
 
 add_executable(wordclock src/rtc.h src/rtc.cpp src/helper.h src/helper.cpp src/wordclock_helper.h src/wifi_interface.h src/wifi_interface.cpp src/main.cpp src/wordclock_helper.cpp)

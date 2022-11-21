@@ -1,4 +1,4 @@
-# Install script for directory: /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common
+# Install script for directory: /home/marcel/WordClock/src/base_rp2040_picosdk/pico-sdk/src/common
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -32,24 +32,19 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "TRUE")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/local/bin/arm-none-eabi-objdump")
-endif()
-
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/boot_picoboot/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/boot_uf2/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_base/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_usb_reset_interface/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_bit_ops/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_binary_info/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_divider/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_sync/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_time/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_util/cmake_install.cmake")
-  include("/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_stdlib/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/boot_picoboot/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/boot_uf2/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_base/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_usb_reset_interface/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_bit_ops/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_binary_info/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_divider/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_sync/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_time/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_util/cmake_install.cmake")
+  include("/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/common/pico_stdlib/cmake_install.cmake")
 
 endif()
 

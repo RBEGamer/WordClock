@@ -1,13 +1,13 @@
 # Target labels
  ELF2UF2Build
 # Source files and their labels
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles/ELF2UF2Build
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles/ELF2UF2Build.rule
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/build/CMakeFiles/ELF2UF2Build-complete.rule
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-build.rule
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-configure.rule
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download.rule
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-install.rule
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-mkdir.rule
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-patch.rule
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-update.rule
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/CMakeFiles/ELF2UF2Build
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/CMakeFiles/ELF2UF2Build.rule
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/build/CMakeFiles/ELF2UF2Build-complete.rule
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-install.rule
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-mkdir.rule
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download.rule
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-update.rule
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-patch.rule
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-configure.rule
+/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-build.rule

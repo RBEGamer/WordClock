@@ -2,34 +2,34 @@
 	"sources" : 
 	[
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild"
 		},
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild.rule"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild.rule"
 		},
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild-complete.rule"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild-complete.rule"
 		},
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-build.rule"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-install.rule"
 		},
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-configure.rule"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir.rule"
 		},
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-download.rule"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-download.rule"
 		},
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-install.rule"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-update.rule"
 		},
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir.rule"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch.rule"
 		},
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch.rule"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-configure.rule"
 		},
 		{
-			"file" : "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-update.rule"
+			"file" : "/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/pico-sdk/src/rp2_common/cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-build.rule"
 		}
 	],
 	"target" : 
