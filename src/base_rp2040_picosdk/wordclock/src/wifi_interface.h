@@ -31,7 +31,8 @@ public:
     //see wifi_interface.cpp
     static std::string cmd_rx_buffer;
     static bool cmd_rx_complete;
-
+    static rxcmd manual_uart_rx();
+    static rxcmd parse_cmd(const std::string _cmd_rx_buffer, const bool _cmd_rx_complete);
     static rxcmd parse_cmd();
     static void init_uart();
     static void on_wifi_uart_rx(); // IRQ TO COLLECT CHARS FROM RX

@@ -179,7 +179,7 @@ int main()
     int last_tsec = -1;
 
     //enable uart rx irq for communication with wifi module
-    wifi_interface::enable_uart_irq(true);
+    //wifi_interface::enable_uart_irq(true);
     gpio_put(PICO_DEFAULT_LED_PIN, false);
     while (true)
     {
@@ -211,7 +211,7 @@ int main()
 
        
        //PARSE CMD FROM WIFIMOUDLE IF PRESENT
-       wifi_interface::rxcmd wmc = wifi_interface::parse_cmd();
+       wifi_interface::rxcmd wmc = wifi_interface::manual_uart_rx();
        if(wmc.cmdok){
             printf("got cmd %s %s \n", wmc.cmd.c_str(), wmc.payload.c_str());
             if(wmc.cmd == "st"){
