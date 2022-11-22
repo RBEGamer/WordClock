@@ -31,6 +31,7 @@ public:
     //see wifi_interface.cpp
     static std::string cmd_rx_buffer;
     static bool cmd_rx_complete;
+    static bool cmd_rx_started;
     static rxcmd manual_uart_rx();
     static rxcmd parse_cmd(const std::string _cmd_rx_buffer, const bool _cmd_rx_complete);
     static rxcmd parse_cmd();

@@ -137,7 +137,7 @@ int get_average_brightness()
     }
     average = avg_sum / num_readings;
     // 0-420lux => 0-255 led brightness and limit range
-    const int r = std::max(5, std::min(255, helper::map((int)average, 0, 420, 5, 255)));
+    const int r = std::max(5, std::min(255, helper::map((int)average, 0, 20, 5, 255)));
     return r;
 }
 

@@ -2,7 +2,7 @@
 
 std::string wifi_interface::cmd_rx_buffer;
 bool wifi_interface::cmd_rx_complete;
-
+bool wifi_interface::cmd_rx_started;
 uint16_t wifi_interface::crc16(const std::string _data, const uint16_t _poly = 0x8408)
 {
   uint16_t crc = 0xFFFF;
@@ -64,7 +64,7 @@ wifi_interface::rxcmd wifi_interface::manual_uart_rx(){
   return ret;
 }
 
-
+//TODO STARTCHAR
 void wifi_interface::on_wifi_uart_rx()
 {
   while (uart_is_readable(UART_WIFI))
