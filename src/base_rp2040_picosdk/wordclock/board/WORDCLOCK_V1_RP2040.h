@@ -13,7 +13,7 @@
 
 // For board detection
 #define WORDCLOCK_V1_RP2040
-
+#define WORDCLOCK_LANGUAGE_GERMAN
 
 // CUSTOM PCB COMPONENTS
 #define USE_RP2040RTC
