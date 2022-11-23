@@ -3,7 +3,7 @@
 
 
 
-######################### GERMAN ################################################
+//######################### GERMAN ################################################
 // 23 different word and max 10 leds per word (can be modified, see wordclock_word_index for wordindex)
 #ifdef WORDCLOCK_LANGUAGE_GERMAN
 int wordclock_helper::CLOCKWORDS[27][10] = {
@@ -36,7 +36,7 @@ int wordclock_helper::CLOCKWORDS[27][10] = {
     {113, -1, -1, -1, -1, -1, -1, -1, -1, -1}, // 26 minute dot four
 };
 #endif
-#################################################################################
+//#################################################################################
 
 
 

@@ -6,25 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/marcel/WordClock/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico/config.h
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico/config.h
 pico/config_autogen.h
-/home/marcel/WordClock/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico/pico/config_autogen.h
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_base/include/pico/pico/config_autogen.h
 
-/home/marcel/WordClock/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/boot_stage2/compile_time_choice.S
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/boot_stage2/compile_time_choice.S
 boot_stage2/config.h
-/home/marcel/WordClock/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/boot_stage2/boot_stage2/config.h
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/boot_stage2/boot_stage2/config.h
 
-/home/marcel/WordClock/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/boot_stage2/include/boot_stage2/config.h
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/boot_stage2/include/boot_stage2/config.h
 pico/config.h
-/home/marcel/WordClock/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/boot_stage2/include/boot_stage2/pico/config.h
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/boot_stage2/include/boot_stage2/pico/config.h
 
-/home/marcel/WordClock/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h
 
-/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/board/WORDCLOCK_V1_RP2040.h
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/board/WORDCLOCK_V1_RP2040.h
 
 generated/pico_base/pico/config_autogen.h
-/home/marcel/WordClock/src/base_rp2040_picosdk/wordclock/board/WORDCLOCK_V1_RP2040.h
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/board/WORDCLOCK_V1_RP2040.h
 -
-/home/marcel/WordClock/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h
+/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h
 -
 

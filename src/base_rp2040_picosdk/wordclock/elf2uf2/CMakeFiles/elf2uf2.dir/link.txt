@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/elf2uf2.dir/main.cpp.o  -o elf2uf2 
+/Library/Developer/CommandLineTools/usr/bin/c++  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.0.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/elf2uf2.dir/main.cpp.o -o elf2uf2 

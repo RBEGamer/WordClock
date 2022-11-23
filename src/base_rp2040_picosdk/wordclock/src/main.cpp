@@ -21,6 +21,14 @@
 int enable_bh1750_addr = -1;
 int enable_ds1307_addr = -1;
 
+
+int current_brightness = 10;
+int current_brightness_mode = 0; //0=auto >0-255 = manual
+int last_brightness = 0;
+int last_tmin = -1;
+int last_tsec = -1;
+
+
 void init_i2c()
 {
     i2c_init(i2c_default, 100 * 1000);
@@ -148,6 +156,22 @@ void update_display_time(PicoLed::PicoLedController &_leds, const int _h, const 
 
 
 
+void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip){
+        const char *delim = ".";
+        std::vector<std::string> out;
+        helper::tokenize(_ip, delim, out);
+        for (int i = 0; i <out.size(); i++)
+        {
+            _leds.setBrightness(128);
+          for(int j = 0; j <out.at(i).size(); j++){
+             wordclock_helper::display_time(_leds, (int)(out.at(i).at(j) - '0'), 0,0);
+             sleep_ms(1000);
+          } 
+          _leds.setBrightness(10);
+          sleep_ms(2000);    
+        }
+}
+
 int main()
 {
     stdio_init_all();
@@ -172,11 +196,7 @@ int main()
 
 
 
-    int current_brightness = get_average_brightness();
-    int current_brightness_mode = 0; //0=auto >0-255 = manual
-    int last_brightness = 0;
-    int last_tmin = -1;
-    int last_tsec = -1;
+   
 
     //enable uart rx irq for communication with wifi module
     //wifi_interface::enable_uart_irq(true);
@@ -218,6 +238,8 @@ int main()
                 rtc::set_rtc_time(wmc.payload);
             }else if(wmc.cmd == "sb"){
                 current_brightness_mode = std::max(0,std::min(255,std::atoi(wmc.payload.c_str())));
+            }else if(wmc.cmd == "ip"){
+                display_ip(ledStrip, wmc.payload);
             }
        }
 
