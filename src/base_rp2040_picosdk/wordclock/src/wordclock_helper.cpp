@@ -96,8 +96,8 @@ void wordclock_helper::display_time_with_words(PicoLed::PicoLedController &_leds
 {
 
     // MINUTE DOTS
-    if (_m < 5)
-    {
+    
+ 
         const int minute_dots = _m % 5;
         if (minute_dots > 0)
         {
@@ -117,7 +117,7 @@ void wordclock_helper::display_time_with_words(PicoLed::PicoLedController &_leds
         {
             wordclock_helper::set_word(_leds, wordclock_helper::wordclock_word_index::MD_FOUR, _s, PICO_DEFAULT_WS2812_OFFSET);
         }
-    }
+    
 
     // PREFIX WORDS IT IS xxx (OCLOCK)
     wordclock_helper::set_word(_leds, wordclock_helper::wordclock_word_index::C_ES, _s, PICO_DEFAULT_WS2812_OFFSET);
