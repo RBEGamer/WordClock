@@ -50,3 +50,11 @@ This resistor is missing on the PCB.
 * added rst/run to swd connector
 * removed german wordclock faceplate from the back of the pcb
 * added i2c eeprom to avoid flash as settings store
+
+
+### JUMPER SETTINGS
+
+* JP10 -> ESP_TX
+* JP11 -> ESP_RX
+* JP6 -> GP16
+* (JP1) -> OE  
