@@ -22,3 +22,4 @@
 * removed transistor base levelshifter (replaced with txb0101)
 * added rpi rst pullup (optional)
 * moved coincell to toplayer
+* added loadcaps 10pf for 12mhz osc
