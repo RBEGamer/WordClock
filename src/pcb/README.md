@@ -23,3 +23,4 @@
 * added rpi rst pullup (optional)
 * moved coincell to toplayer
 * added loadcaps 10pf for 12mhz osc
+* added rst/run to swd connector
