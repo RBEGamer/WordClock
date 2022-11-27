@@ -1,11 +1,18 @@
 #include "wordclock_faceplate_german.hpp"
 
-void wordclock_faceplate_german::set_word(PicoLed::PicoLedController &_leds, const WORDS_INDEX _word, const int _current_seconds)
+wordclock_faceplate_german::wordclock_faceplate_german()
+{
+}
+wordclock_faceplate_german::~wordclock_faceplate_german()
+{
+}
+
+void wordclock_faceplate_german::set_word(PicoLed::PicoLedController &_leds, const wordclock_faceplate_german::WORDS_INDEX _word, const int _current_seconds)
 {
     wordclock_faceplate::WORD_COLOR_CLASS color = wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT;
     if (_word > WORDS_INDEX::WORDS_INDEX_COMMON_BEGIN && _word < WORDS_INDEX::WORDS_INDEX_COMMON_END)
     {
-       color = wordclock_faceplate::WORD_COLOR_CLASS::COMMON;
+        color = wordclock_faceplate::WORD_COLOR_CLASS::COMMON;
     }
     else if (_word > WORDS_INDEX::WORDS_INDEX_MINUTE_BEGIN && _word < WORDS_INDEX::WORDS_INDEX_MINUTE_END)
     {
@@ -15,10 +22,8 @@ void wordclock_faceplate_german::set_word(PicoLed::PicoLedController &_leds, con
     {
         color = wordclock_faceplate::WORD_COLOR_CLASS::HOUR;
     }
-    
-    
-    wordclock_faceplate::set_word()
 
+    wordclock_faceplate::set_word(_leds, WORDCLOCKwORDS[(int)_word], color, _current_seconds);
 }
 
 void wordclock_faceplate_german::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)

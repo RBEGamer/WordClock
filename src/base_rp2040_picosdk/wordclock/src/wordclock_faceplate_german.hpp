@@ -99,7 +99,11 @@ class wordclock_faceplate_german : public wordclock_faceplate
     void set_word(PicoLed::PicoLedController& _leds, const WORDS_INDEX _word, const int _current_seconds);
 
 public:
-    void display_time_with_words(PicoLed::PicoLedController& _leds, const int _horig, const int _m, const int _s);
+    wordclock_faceplate_german();
+    ~wordclock_faceplate_german();
+
+    
+    void display_time_with_words(PicoLed::PicoLedController& _leds, const int _horig, const int _m, const int _s) override;
 
 };
 #endif
