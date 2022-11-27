@@ -204,7 +204,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/main.cpp" "CMakeFiles/wordclock.dir/src/main.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/main.cpp.obj.d"
   "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/rtc.cpp" "CMakeFiles/wordclock.dir/src/rtc.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/rtc.cpp.obj.d"
   "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/wifi_interface.cpp" "CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj.d"
-  "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/wordclock_helper.cpp" "CMakeFiles/wordclock.dir/src/wordclock_helper.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/wordclock_helper.cpp.obj.d"
+  "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/wordclock_faceplate.cpp" "CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj.d"
+  "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/wordclock_faceplate_german.cpp" "CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj.d"
   )
 
 # Targets to which this target links.

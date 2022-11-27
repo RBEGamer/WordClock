@@ -12,7 +12,7 @@
 
 
 #include "wifi_interface.h"
-#include "wordclock_helper.h"
+#include "wordclock_faceplate_german.hpp"
 #include "helper.h"
 #include "rtc.h"
 
@@ -27,6 +27,9 @@ int current_brightness_mode = 0; //0=auto >0-255 = manual
 int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
+
+
+wordclock_faceplate faceplate = wordclock_faceplate_german();
 
 
 void init_i2c()
@@ -151,7 +154,7 @@ int get_average_brightness()
 
 void update_display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s)
 {
-    wordclock_helper::display_time(_leds, _h, _m, _s);
+    faceplate.display_time(_leds, _h, _m, _s);
 }
 
 
@@ -164,7 +167,7 @@ void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip){
         {
             _leds.setBrightness(128);
           for(int j = 0; j <out.at(i).size(); j++){
-             wordclock_helper::display_time(_leds, (int)(out.at(i).at(j) - '0'), 0,0);
+             faceplate.display_time(_leds, (int)(out.at(i).at(j) - '0'), 0,0);
              sleep_ms(1000);
           } 
           _leds.setBrightness(10);

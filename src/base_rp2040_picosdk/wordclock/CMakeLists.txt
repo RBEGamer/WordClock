@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.13)
 
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD 17)
 set(CMAKE_CXX_STANDARD 17)
 
 # initalize pico_sdk from installed location
@@ -32,7 +32,20 @@ pico_sdk_init()
 include(${CMAKE_CURRENT_LIST_DIR}/PicoLED/PicoLed.cmake)
 
 
-add_executable(wordclock src/rtc.h src/rtc.cpp src/helper.h src/helper.cpp src/wordclock_helper.h src/wifi_interface.h src/wifi_interface.cpp src/main.cpp src/wordclock_helper.cpp)
+add_executable(wordclock 
+        src/wordclock_faceplate_german.cpp
+        src/wordclock_faceplate_german.hpp
+        src/rtc.h
+        src/rtc.cpp
+        src/helper.h
+        src/helper.cpp
+        src/wordclock_faceplate.hpp
+        src/wifi_interface.h
+        src/wifi_interface.cpp
+        src/main.cpp
+        src/wordclock_faceplate.cpp
+        src/wordclock_faceplate_constants.h
+        )
 
 pico_set_program_name(wordclock "wordclock")
 pico_set_program_version(wordclock "0.9")

@@ -164,8 +164,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/wordclock.dir/src/rtc.cpp.obj.d"
   "CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj"
   "CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj.d"
-  "CMakeFiles/wordclock.dir/src/wordclock_helper.cpp.obj"
-  "CMakeFiles/wordclock.dir/src/wordclock_helper.cpp.obj.d"
+  "CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj"
+  "CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj.d"
+  "CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj"
+  "CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj.d"
   "wordclock.elf"
   "wordclock.pdb"
 )

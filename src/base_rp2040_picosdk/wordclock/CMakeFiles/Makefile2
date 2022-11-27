@@ -1383,12 +1383,12 @@ pico-sdk/tools/clean:
 CMakeFiles/PicoLed_WS2812B_pio_h.dir/all: pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/PioasmBuild.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PicoLed_WS2812B_pio_h.dir/build.make CMakeFiles/PicoLed_WS2812B_pio_h.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/PicoLed_WS2812B_pio_h.dir/build.make CMakeFiles/PicoLed_WS2812B_pio_h.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles --progress-num= "Built target PicoLed_WS2812B_pio_h"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles --progress-num=7 "Built target PicoLed_WS2812B_pio_h"
 .PHONY : CMakeFiles/PicoLed_WS2812B_pio_h.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/PicoLed_WS2812B_pio_h.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/PicoLed_WS2812B_pio_h.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 0
 .PHONY : CMakeFiles/PicoLed_WS2812B_pio_h.dir/rule
@@ -1411,12 +1411,12 @@ CMakeFiles/wordclock.dir/all: CMakeFiles/ELF2UF2Build.dir/all
 CMakeFiles/wordclock.dir/all: pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_asm.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles --progress-num=22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 "Built target wordclock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 "Built target wordclock"
 .PHONY : CMakeFiles/wordclock.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/wordclock.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 97
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 98
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/wordclock.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 0
 .PHONY : CMakeFiles/wordclock.dir/rule
@@ -1437,12 +1437,12 @@ CMakeFiles/wordclock.dir/clean:
 CMakeFiles/ELF2UF2Build.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ELF2UF2Build.dir/build.make CMakeFiles/ELF2UF2Build.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ELF2UF2Build.dir/build.make CMakeFiles/ELF2UF2Build.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target ELF2UF2Build"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target ELF2UF2Build"
 .PHONY : CMakeFiles/ELF2UF2Build.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ELF2UF2Build.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ELF2UF2Build.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 0
 .PHONY : CMakeFiles/ELF2UF2Build.dir/rule
@@ -1541,12 +1541,12 @@ pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default_padded_checksummed_as
 pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/all:
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/build.make pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/depend
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/build.make pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles --progress-num=21 "Built target cyw43_firmware_package"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles --progress-num= "Built target cyw43_firmware_package"
 .PHONY : pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/all
 
 # Build rule for subdir invocation for target.
 pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/CMakeFiles 0
 .PHONY : pico-sdk/src/rp2_common/cyw43_driver/CMakeFiles/cyw43_firmware_package.dir/rule
