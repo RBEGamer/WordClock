@@ -24,3 +24,4 @@
 * moved coincell to toplayer
 * added loadcaps 10pf for 12mhz osc
 * added rst/run to swd connector
+* removed german wordclock faceplate from the back of the pcb
