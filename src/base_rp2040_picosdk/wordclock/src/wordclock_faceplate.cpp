@@ -10,6 +10,7 @@ wordclock_faceplate::~wordclock_faceplate(){
 }
 
 
+
 void wordclock_faceplate::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s){
     const std::vector<std::tuple<int, int>> corners = {{0, 0}, {LED_MATRIX_WIDTH-1, 0}, {0, LED_MATRIX_HEIGHT-1}, {LED_MATRIX_WIDTH, LED_MATRIX_HEIGHT}};
     set_leds(_leds,corners, wordclock_faceplate::WORD_COLOR_CLASS::HOUR ,_s);
@@ -31,7 +32,34 @@ PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_face
     }
 }
 
+int wordclock_faceplate::xy_to_led_index(const int _x, const int _y){
 
+
+    //TODO ROTATE POINTS
+    int x_tmp = 0;
+    int y_tmp = 0;
+    int index = 0;
+    
+    x_tmp = _x; //(LED_MATRIX_WIDTH-1)- _x;
+    y_tmp = _y;
+    
+    if(_y % 2){
+        index = x_tmp + (_y * LED_MATRIX_WIDTH);
+    }else{
+        index = ((LED_MATRIX_WIDTH-1)- x_tmp) + (y_tmp * LED_MATRIX_HEIGHT);
+    }
+
+    //ADD MINUTE DOT OFFSET
+    int minute_dot_offset = 0;
+    for(size_t i = 0; i < LED_MINUTEDOT_COUNT; i++){
+        if(index >= LED_MINUTEDOT_POSITIONS[i]){
+            minute_dot_offset++;
+        }
+    }
+   
+   
+   return index+minute_dot_offset;
+}
 
 
 void wordclock_faceplate::set_leds(PicoLed::PicoLedController &_leds, const std::vector<std::tuple<int, int>> _word, const WORD_COLOR_CLASS _basecolor, const int _current_seconds)
@@ -48,7 +76,7 @@ void wordclock_faceplate::set_leds(PicoLed::PicoLedController &_leds, const std:
         if (x == USE_DIRECT_LED_INDEXING){
             _leds.setPixelColor(y, get_word_color_by_class(_basecolor, _current_seconds));
         }else{
-            //TODO INTRODUCE MATRIX
+           _leds.setPixelColor(xy_to_led_index(x, y), get_word_color_by_class(_basecolor, _current_seconds));
         }
         
     }
