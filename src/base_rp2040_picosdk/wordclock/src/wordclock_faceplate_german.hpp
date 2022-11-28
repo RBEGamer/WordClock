@@ -83,10 +83,10 @@ class wordclock_faceplate_german : public wordclock_faceplate
         {{2, 0},{2, 1},{2, 2},{2, 3}},                          // M_DREI
         //-------- MINUTE DOTS ------------------------------- //
         // USE DIRECT LED INDEXING FOR MINUTE DOTS, BECAUSE THESE ARE NOT IN THE MATRIX SPACE
-        {{USE_DIRECT_LED_INDEXING, 0}},                         // M_DOT_ONE
-        {{USE_DIRECT_LED_INDEXING, 12}},                        // M_DOT_TWO
-        {{USE_DIRECT_LED_INDEXING, 101}},                       // M_DOT_THREE
-        {{USE_DIRECT_LED_INDEXING, 113}},                       // M_DOT_FOUR
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[0]}},// M_DOT_ONE
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[1]}},// M_DOT_TWO
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[2]}},// M_DOT_THREE
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[3]}},// M_DOT_FOUR
          //---- MINUTE WORDS END------ //
         {},  // DONT DELETE
         {},  // DONT DELETE
@@ -114,8 +114,6 @@ class wordclock_faceplate_german : public wordclock_faceplate
 public:
     wordclock_faceplate_german();
     ~wordclock_faceplate_german();
-
-    
     void display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s) override;
 
 };
