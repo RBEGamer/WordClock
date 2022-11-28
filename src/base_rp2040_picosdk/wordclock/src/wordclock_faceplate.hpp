@@ -19,8 +19,8 @@ protected:
 
 
   
-  // MAKE PURE VIRTUAL = INTERFACE SO NO IMPLEMENTATION IN BASE NEEDED
-  virtual void display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s);
+  // MAKE PURE VIRTUAL = 0 INTERFACE SO NO IMPLEMENTATION IN BASE NEEDED
+  virtual void display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s) = 0;
   void set_leds(PicoLed::PicoLedController &_leds, std::vector<std::tuple<int, int>> _word, const WORD_COLOR_CLASS _basecolor, const int _current_seconds);
   PicoLed::Color get_word_color_by_class(const WORD_COLOR_CLASS _basecolor, const int _current_seconds);
 
