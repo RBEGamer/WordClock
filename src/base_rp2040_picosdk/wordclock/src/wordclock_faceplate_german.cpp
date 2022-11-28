@@ -30,6 +30,8 @@ void wordclock_faceplate_german::set_word(PicoLed::PicoLedController &_leds, con
 
 void wordclock_faceplate_german::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)
 {
+
+  
     // MINUTE DOTS
     const int minute_dots = _m % 5;
     if (minute_dots > 0)

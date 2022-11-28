@@ -8,13 +8,15 @@ wordclock_faceplate::~wordclock_faceplate()
 {
 }
 
+
 void wordclock_faceplate::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)
 {
-    const std::vector<std::tuple<int, int>> corners = {{LED_MATRIX_WIDTH-1, LED_MATRIX_HEIGHT-1}, {LED_MATRIX_WIDTH - 1, 0}, {0, LED_MATRIX_HEIGHT - 1}, {0, 0}};
+    const std::vector<std::tuple<int, int>> corners = {{LED_MATRIX_HEIGHT-1, LED_MATRIX_WIDTH-1}, {0, LED_MATRIX_WIDTH - 1}, {LED_MATRIX_HEIGHT - 1, 0}, {0, 0}};
     set_leds(_leds, corners, wordclock_faceplate::WORD_COLOR_CLASS::HOUR, _s);
     const std::vector<std::tuple<int, int>> test = {{USE_DIRECT_LED_INDEXING, 0}, {USE_DIRECT_LED_INDEXING, 12}, {USE_DIRECT_LED_INDEXING, 101}, {USE_DIRECT_LED_INDEXING, 113}};
     set_leds(_leds, test, wordclock_faceplate::WORD_COLOR_CLASS::MINUTE, _s);
 }
+
 
 PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_faceplate::WORD_COLOR_CLASS _basecolor, const int _current_seconds)
 {
@@ -45,8 +47,8 @@ std::tuple<int, int> wordclock_faceplate::flip_xy(const std::tuple<int, int> _or
 int wordclock_faceplate::xy_to_led_index(const std::tuple<int, int> _xy)
 {
     // TODO ROTATE POINTS
-    const int x = std::get<0>(_xy);
-    const int y = std::get<1>(_xy);
+    const int x = std::get<1>(_xy);
+    const int y = std::get<0>(_xy);
     int index = 0;
 
    

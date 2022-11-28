@@ -6,31 +6,25 @@
 #include "hardware/i2c.h"
 #include "hardware/adc.h"
 
-
 #include <PicoLed.hpp>
 #include <Effects/Stars.hpp>
-
 
 #include "wifi_interface.h"
 #include "wordclock_faceplate_german.hpp"
 #include "helper.h"
 #include "rtc.h"
 
-
-//STORES IF i2C devices were found
+// STORES IF i2C devices were found
 int enable_bh1750_addr = -1;
 int enable_ds1307_addr = -1;
 
-
 int current_brightness = 10;
-int current_brightness_mode = 0; //0=auto >0-255 = manual
+int current_brightness_mode = 0; // 0=auto >0-255 = manual
 int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
 
-
-wordclock_faceplate faceplate = wordclock_faceplate_german();
-
+wordclock_faceplate *faceplate = new wordclock_faceplate_german();
 
 void init_i2c()
 {
@@ -51,11 +45,11 @@ void init_i2c()
         else
         {
             ret = i2c_read_blocking(i2c_default, addr, &rxdata, 1, false);
-            
         }
 
-        if (ret > 0){
-                printf("i2c device at %02x ", addr);
+        if (ret > 0)
+        {
+            printf("i2c device at %02x ", addr);
         }
 
         // CHECK FOR REQUESTED DEVIES FOUND
@@ -94,7 +88,6 @@ void init_bh1750()
     i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
 }
 
-
 int get_brightness()
 {
     // IF NO MODULE FOUND
@@ -104,12 +97,12 @@ int get_brightness()
     }
     int ret;
 
-    uint8_t buf[2];   
+    uint8_t buf[2];
     ret = i2c_read_blocking(i2c_default, enable_bh1750_addr, buf, 2, false);
 
     const uint16_t upper_byte = buf[0];
     const uint16_t lower_byte = buf[1];
-    
+
     if (ret <= 0)
     {
         return -1;
@@ -132,10 +125,10 @@ int get_average_brightness()
     avg_sum = avg_sum - readings[reading_index];
     // read the sensor:
     const int b = get_brightness();
-   
+
     if (b >= 0)
     {
-        readings[reading_index] = b; 
+        readings[reading_index] = b;
     }
 
     // add value to total:
@@ -154,25 +147,31 @@ int get_average_brightness()
 
 void update_display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s)
 {
-    faceplate.display_time(_leds, _h, _m, _s);
+    if(faceplate){
+        faceplate->display_time(_leds, _h, _m, _s);
+    }
+    
 }
 
-
-
-void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip){
-        const char *delim = ".";
-        std::vector<std::string> out;
-        helper::tokenize(_ip, delim, out);
-        for (int i = 0; i <out.size(); i++)
+void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip)
+{
+    const char *delim = ".";
+    std::vector<std::string> out;
+    helper::tokenize(_ip, delim, out);
+    for (int i = 0; i < out.size(); i++)
+    {
+        _leds.setBrightness(128);
+        for (int j = 0; j < out.at(i).size(); j++)
         {
-            _leds.setBrightness(128);
-          for(int j = 0; j <out.at(i).size(); j++){
-             faceplate.display_time(_leds, (int)(out.at(i).at(j) - '0'), 0,0);
-             sleep_ms(1000);
-          } 
-          _leds.setBrightness(10);
-          sleep_ms(2000);    
+            if (faceplate)
+            {
+                faceplate->display_time(_leds, (int)(out.at(i).at(j) - '0'), 0, 0);
+            }
+            sleep_ms(1000);
         }
+        _leds.setBrightness(10);
+        sleep_ms(2000);
+    }
 }
 
 int main()
@@ -183,68 +182,72 @@ int main()
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
-
-
     wifi_interface::init_uart();
-    sleep_ms(2000); //WAIT FOR UART / USB A BIT 
+    sleep_ms(2000); // WAIT FOR UART / USB A BIT
     printf("START");
     rtc::init_rtc();
     rtc::set_rtc_time(__TIME__);
     init_i2c();
     init_bh1750();
-    
 
-    //modified lib for 400khz
+    // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
 
-
-
-   
-
-    //enable uart rx irq for communication with wifi module
-    //wifi_interface::enable_uart_irq(true);
+    // enable uart rx irq for communication with wifi module
+    // wifi_interface::enable_uart_irq(true);
     gpio_put(PICO_DEFAULT_LED_PIN, false);
     while (true)
     {
-        
+
         // UPDATE DISPLAY IF NEEDED
         datetime_t t = rtc::read_rtc();
-        if(last_tsec != t.sec){
+        if (last_tsec != t.sec)
+        {
             last_tsec = t.sec;
             update_display_time(ledStrip, t.hour, t.min, t.sec);
         }
-        //SEND TIME TO WIFI MODULE IF NEEDED
-        if(last_tmin != t.min){
+        // SEND TIME TO WIFI MODULE IF NEEDED
+        if (last_tmin != t.min)
+        {
             last_tmin = t.min;
             wifi_interface::send_current_time(t.hour, t.min, t.sec);
         }
 
-        //UPDATE BRIGHTNESS IF NEEDED
-        if(current_brightness_mode == 0){
-             current_brightness = get_average_brightness(); //automatic if mode = 0
-        }else{
-            current_brightness = current_brightness_mode; //manual if mode 1-255
+        // UPDATE BRIGHTNESS IF NEEDED
+        if (current_brightness_mode == 0)
+        {
+            current_brightness = get_average_brightness(); // automatic if mode = 0
         }
-        
-        if (current_brightness != last_brightness){
+        else
+        {
+            current_brightness = current_brightness_mode; // manual if mode 1-255
+        }
+
+        if (current_brightness != last_brightness)
+        {
             last_brightness = current_brightness;
             wifi_interface::send_brightness(current_brightness);
             ledStrip.setBrightness(current_brightness);
         }
 
-       
-       //PARSE CMD FROM WIFIMOUDLE IF PRESENT
-       wifi_interface::rxcmd wmc = wifi_interface::manual_uart_rx();
-       if(wmc.cmdok){
+        // PARSE CMD FROM WIFIMOUDLE IF PRESENT
+        wifi_interface::rxcmd wmc = wifi_interface::manual_uart_rx();
+        if (wmc.cmdok)
+        {
             printf("got cmd %s %s \n", wmc.cmd.c_str(), wmc.payload.c_str());
-            if(wmc.cmd == "st"){
+            if (wmc.cmd == "st")
+            {
                 rtc::set_rtc_time(wmc.payload);
-            }else if(wmc.cmd == "sb"){
-                current_brightness_mode = std::max(0,std::min(255,std::atoi(wmc.payload.c_str())));
-            }else if(wmc.cmd == "ip"){
+            }
+            else if (wmc.cmd == "sb")
+            {
+                current_brightness_mode = std::max(0, std::min(255, std::atoi(wmc.payload.c_str())));
+            }
+            else if (wmc.cmd == "ip")
+            {
                 display_ip(ledStrip, wmc.payload);
             }
-       }
+        }
 
         sleep_ms(100);
     }
