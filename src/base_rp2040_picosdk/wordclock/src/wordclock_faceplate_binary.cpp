@@ -32,6 +32,27 @@ void wordclock_faceplate_binary::set_word(PicoLed::PicoLedController &_leds, con
 void wordclock_faceplate_binary::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)
 {
 
+    
+
+    if (_s > 10)
+    {
+        wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::S_SECONDS_1, _s);
+    }
+
+    if (_s > 25)
+    {
+        wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::S_SECONDS_2, _s);
+    }
+    if (_s > 40)
+    {
+        wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::S_SECONDS_3, _s);
+    }
+    if (_s > 55)
+    {
+        wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::S_SECONDS_4, _s);
+    }
+
+
     const std::vector<bool> min_bits_ones = helper::bits_from_int(_m);
     const std::vector<bool> min_bits_tens = helper::bits_from_int(_m/10);
     const std::vector<bool> hour_bits_ones = helper::bits_from_int(_horig);

@@ -17,6 +17,10 @@ class wordclock_faceplate_binary : public wordclock_faceplate
     {
         WORDS_INDEX_COMMON_BEGIN, // DONT DELETE
         //---- COMMON WORDS BEGIN------ //
+        S_SECONDS_1,
+        S_SECONDS_2,
+        S_SECONDS_3,
+        S_SECONDS_4,
         //---- COMMON WORDS END------ //
         WORDS_INDEX_COMMON_END, // DONT DELETE
         WORDS_INDEX_MINUTE_BEGIN, // DONT DELETE
@@ -52,6 +56,13 @@ class wordclock_faceplate_binary : public wordclock_faceplate
     static inline const std::vector<std::tuple<int, int>> WORDCLOCKwORDS[((int)WORDS_INDEX::LENGHT)] = {
         {},  // DONT DELETE
          //---- COMMON WORDS BEGIN------ //
+         //-------- MINUTE DOTS ------------------------------- //
+        // USE DIRECT LED INDEXING FOR MINUTE DOTS, BECAUSE THESE ARE NOT IN THE MATRIX SPACE
+        // SEE BOARD DEFINITION FOR ACTUAL VALUES AND DEFINITION => PCB VERSION DEPENDEND
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[0]}},// M_DOT_ONE
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[1]}},// M_DOT_TWO
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[2]}},// M_DOT_THREE
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[3]}},// M_DOT_FOUR
         //---- COMMON WORDS END------ //
         {},  // DONT DELETE
         {},  // DONT DELETE
