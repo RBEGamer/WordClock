@@ -33,8 +33,11 @@ include(${CMAKE_CURRENT_LIST_DIR}/PicoLED/PicoLed.cmake)
 
 
 add_executable(wordclock 
+        src/wordclock_faceplate_include.h
         src/wordclock_faceplate_german.cpp
         src/wordclock_faceplate_german.hpp
+        src/wordclock_faceplate_binary.cpp
+        src/wordclock_faceplate_binary.hpp
         src/rtc.h
         src/rtc.cpp
         src/helper.h

@@ -2193,6 +2193,30 @@ src/wordclock_faceplate.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.s
 .PHONY : src/wordclock_faceplate.cpp.s
 
+src/wordclock_faceplate_binary.obj: src/wordclock_faceplate_binary.cpp.obj
+.PHONY : src/wordclock_faceplate_binary.obj
+
+# target to build an object file
+src/wordclock_faceplate_binary.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+.PHONY : src/wordclock_faceplate_binary.cpp.obj
+
+src/wordclock_faceplate_binary.i: src/wordclock_faceplate_binary.cpp.i
+.PHONY : src/wordclock_faceplate_binary.i
+
+# target to preprocess a source file
+src/wordclock_faceplate_binary.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.i
+.PHONY : src/wordclock_faceplate_binary.cpp.i
+
+src/wordclock_faceplate_binary.s: src/wordclock_faceplate_binary.cpp.s
+.PHONY : src/wordclock_faceplate_binary.s
+
+# target to generate assembly for a file
+src/wordclock_faceplate_binary.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/wordclock.dir/build.make CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.s
+.PHONY : src/wordclock_faceplate_binary.cpp.s
+
 src/wordclock_faceplate_german.obj: src/wordclock_faceplate_german.cpp.obj
 .PHONY : src/wordclock_faceplate_german.obj
 
@@ -2479,6 +2503,9 @@ help:
 	@echo "... src/wordclock_faceplate.obj"
 	@echo "... src/wordclock_faceplate.i"
 	@echo "... src/wordclock_faceplate.s"
+	@echo "... src/wordclock_faceplate_binary.obj"
+	@echo "... src/wordclock_faceplate_binary.i"
+	@echo "... src/wordclock_faceplate_binary.s"
 	@echo "... src/wordclock_faceplate_german.obj"
 	@echo "... src/wordclock_faceplate_german.i"
 	@echo "... src/wordclock_faceplate_german.s"

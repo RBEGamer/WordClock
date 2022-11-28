@@ -15,3 +15,17 @@ void helper::tokenize(std::string const &str, const char *delim, std::vector<std
   }
 }
 
+
+std::vector<bool> helper::bits_from_int(const int integer)    // discern which bits of PLC codes are true
+{
+    std::vector <bool> bool_bits;
+    int tmp = integer;
+    // continously divide the integer by 2, if there is no remainder, the bit is 1, else it's 0
+    for (int i = 0; i < 8; i++)
+    {
+        bool_bits.push_back (tmp%2);    // remainder of dividing by 2
+        tmp /= 2;    // integer equals itself divided by 2
+    }
+
+    return bool_bits;
+}

@@ -10,9 +10,10 @@
 #include <Effects/Stars.hpp>
 
 #include "wifi_interface.h"
-#include "wordclock_faceplate_german.hpp"
+
 #include "helper.h"
 #include "rtc.h"
+#include "wordclock_faceplate_include.h"
 
 // STORES IF i2C devices were found
 int enable_bh1750_addr = -1;
@@ -24,7 +25,9 @@ int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
 
-wordclock_faceplate *faceplate = new wordclock_faceplate_german();
+//wordclock_faceplate *faceplate = new wordclock_faceplate_german();
+wordclock_faceplate *faceplate = new wordclock_faceplate_binary();
+
 
 void init_i2c()
 {

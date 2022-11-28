@@ -9,6 +9,8 @@ wordclock_faceplate_german::~wordclock_faceplate_german()
 
 }
 
+// SET WORD FUNCTION ALSO COLORS THE DIFFERENT WORD TYPES
+// AND USES THE SET LED FUNCTION FROM BASECLASS
 void wordclock_faceplate_german::set_word(PicoLed::PicoLedController &_leds, const wordclock_faceplate_german::WORDS_INDEX _word, const int _current_seconds)
 {
     wordclock_faceplate::WORD_COLOR_CLASS color = wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT;
@@ -30,8 +32,6 @@ void wordclock_faceplate_german::set_word(PicoLed::PicoLedController &_leds, con
 
 void wordclock_faceplate_german::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)
 {
-
-  
     // MINUTE DOTS
     const int minute_dots = _m % 5;
     if (minute_dots > 0)
