@@ -5,7 +5,15 @@ wordclock_faceplate::wordclock_faceplate(){
 
 }
 
+wordclock_faceplate::~wordclock_faceplate(){
 
+}
+
+
+void wordclock_faceplate::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s){
+    const std::vector<std::tuple<int, int>> corners = {{0, 0}, {LED_MATRIX_WIDTH-1, 0}, {0, LED_MATRIX_HEIGHT-1}, {LED_MATRIX_WIDTH, LED_MATRIX_HEIGHT}};
+    set_leds(_leds,corners, wordclock_faceplate::WORD_COLOR_CLASS::HOUR ,_s);
+}
 
 PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_faceplate::WORD_COLOR_CLASS _basecolor, const int _current_seconds){
     // calc position on color wheel
@@ -26,7 +34,7 @@ PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_face
 
 
 
-void wordclock_faceplate::set_word(PicoLed::PicoLedController &_leds, const std::vector<std::tuple<int, int>> _word, const WORD_COLOR_CLASS _basecolor, const int _current_seconds)
+void wordclock_faceplate::set_leds(PicoLed::PicoLedController &_leds, const std::vector<std::tuple<int, int>> _word, const WORD_COLOR_CLASS _basecolor, const int _current_seconds)
 {
    
 

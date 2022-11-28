@@ -3,8 +3,10 @@
 wordclock_faceplate_german::wordclock_faceplate_german()
 {
 }
+
 wordclock_faceplate_german::~wordclock_faceplate_german()
 {
+
 }
 
 void wordclock_faceplate_german::set_word(PicoLed::PicoLedController &_leds, const wordclock_faceplate_german::WORDS_INDEX _word, const int _current_seconds)
@@ -23,15 +25,11 @@ void wordclock_faceplate_german::set_word(PicoLed::PicoLedController &_leds, con
         color = wordclock_faceplate::WORD_COLOR_CLASS::HOUR;
     }
 
-    wordclock_faceplate::set_word(_leds, WORDCLOCKwORDS[(int)_word], color, _current_seconds);
+    wordclock_faceplate::set_leds(_leds, WORDCLOCKwORDS[(int)_word], color, _current_seconds);
 }
 
 void wordclock_faceplate_german::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)
 {
-
-    // CLEAR DISPLAY
-    _leds.clear();
-
     // MINUTE DOTS
     const int minute_dots = _m % 5;
     if (minute_dots > 0)
@@ -187,7 +185,4 @@ void wordclock_faceplate_german::display_time_with_words(PicoLed::PicoLedControl
     {
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_FUENF, _s);
     }
-
-    // FINALLY SHOW
-    _leds.show();
 }
