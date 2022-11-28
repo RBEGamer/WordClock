@@ -29,7 +29,7 @@ int last_tmin = -1;
 int last_tsec = -1;
 
 
-wordclock_faceplate faceplate = wordclock_faceplate_german();
+wordclock_faceplate faceplate = wordclock_faceplate();
 
 
 void init_i2c()
