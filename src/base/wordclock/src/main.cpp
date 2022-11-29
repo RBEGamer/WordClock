@@ -234,7 +234,7 @@ int main()
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
 
 
-    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::DOTS);
+    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
 
 
 
