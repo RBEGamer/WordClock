@@ -30,3 +30,25 @@ $ make
 $ ./picotool load ./wordclock/wordclock.u2f
 $ ./picotool reboot
 ```
+
+
+
+
+
+## SERIAL COMMANDS
+
+These commands will be used by the wifi-module.
+The basic command structure uses a key_value_crc approch.
+See `wifi_interface.cpp` for bidirection reference implementation.
+
+```
+# <COMMAND>_<VLAUE>_<CRC (from command+value)>
+```
+
+### POSSIBLE COMMANDS
+
+* `st` - set time with value: `hh:mm:ss`
+* `sb` - set brightness: `1-255` fixed or `0` for automatic
+* `fp` - frontplate: `0`(GERMAN), `1`(ENGLISH), ... (see `enum class FACEPLATES` in `wordclock_faceplate.hpp`)
+* `fd` - flip displaz: rotate the display 180 drg
+
