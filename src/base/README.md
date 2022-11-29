@@ -17,10 +17,23 @@ Here all basic functionalities are implemented such as:
 
 ## BUILD
 
+## FOR LATEST PCB VERSION
 ```bash
 $ cd ./wordclock
 $ cmake .
 $ make
+```
+
+## Different Board: PCBv1
+
+To select a different board configuration, thee the `wordclock/board/` folder.
+This folder contatins a configuration for each PCB version.
+
+To set the board, edit the `wordclock/CMakeLists.txt` and set `19 | set(PICO_BOARD "WORDCLOCK_V1_RP2040")` to the board filename without suffix.
+
+
+```bash
+$ cmake -DPICO_BOARD=WORDCLOCK_V1_RP2040 .
 ```
 
 ## FLASH
