@@ -39,6 +39,7 @@ public:
   {
     TEST,
     GERMAN,
+    ENGLISH,
     BINARY
   };
 
