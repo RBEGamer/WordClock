@@ -108,7 +108,8 @@ const char* file_dalight_saving_enabled = "/dls.txt";
 
 int timezone = 0;
 int brightness = 255;
-
+int fontface = 0;
+int flip_display = 0;
 String ntp_server_url = "pool.ntp.org";
 
 int rtc_hours = 0;
@@ -317,6 +318,18 @@ void set_brightness(bool _set_auto){
 }
 
 
+void set_flip_display(bool _set_flip){
+  if(_set_flip){
+    send_cmd_str("fd", "0");
+  }else{
+    send_cmd_str("fd", "0");
+  }
+}
+
+void set_fontface(int _fontface_id){
+    send_cmd_str("fd", String(abs(_fontface_id)));
+}
+
 
 // ONLY READ THE FIRST LINE UNTIL NEW LINE !!!!!
 String read_file(const char* _file, String _default = "")
@@ -442,8 +455,23 @@ void handleSave()
             brightness = server.arg(i).toInt();
             set_brightness(brightness);
             last_error = "set brightness to" + String(brightness);
-
         }
+        
+
+
+        if (server.argName(i) == "fd") {
+            flip_display = server.arg(i).toInt();
+            set_flip_display((bool)flip_display);
+            last_error = "set set_flip_display to" + String(flip_display);
+        }
+
+        if (server.argName(i) == "fp") {
+            fontface = server.arg(i).toInt();
+            set_fontface(fontface);
+            last_error = "set set_fontface to" + String(fontface);
+        }
+
+
 
 
         if (server.argName(i) == "dalight_saving_enabled") {
@@ -536,6 +564,43 @@ void handleRoot()
                      "<input type='submit' value='SEND NTP TIME TO CLOCK'/>"
                      "</form><br>";
 
+    control_forms += "<form name='btn_on' action='/save' method='GET' required ><select name='fp' id='fp'>";
+
+                         if(fontface == 0){
+                            control_forms += "<option value='0' selected>GERMAN</option>";
+                         }else{
+                            control_forms += "<option value='0'>GERMAN</option>";
+                         }
+                         if(fontface == 1){
+                            control_forms += "<option value='1' selected>ENGLISH</option>";
+                         }else{
+                            control_forms += "<option value='1'>ENGLISH</option>";
+                         }
+                         if(fontface == 2){
+                            control_forms += "<option value='2' selected>BINARY</option>";
+                         }else{
+                            control_forms += "<option value='2'>BINARY</option>";
+                         }
+                         if(fontface == 3){
+                            control_forms += "<option value='2' selected>DOTS</option>";
+                         }else{
+                            control_forms += "<option value='2'>DOTS</option>";
+                         }
+
+    control_forms += "<form name='btn_on' action='/save' method='GET' required ><select name='fd' id='fd'>";
+
+                         if(flip_display == 0){
+                            control_forms += "<option value='0' selected>NORMAL</option>";
+                         }else{
+                            control_forms += "<option value='0'>NORMAL</option>";
+                         }
+                         if(flip_display == 1){
+                            control_forms += "<option value='1' selected>ROTATED</option>";
+                         }else{
+                            control_forms += "<option value='1'>ROTATED</option>";
+                         }                     
+                     
+        control_forms += "</select><input type='submit' value='SAVE'/></form>";
 
 
      control_forms += "<br><h3>OTHER SETTINGS </h3>"
