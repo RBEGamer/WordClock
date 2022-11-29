@@ -60,7 +60,7 @@ public:
 
   wordclock_faceplate();
   virtual ~wordclock_faceplate();
-  void flip_state
+
   void display_testpattern();
   void display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s);
 };
