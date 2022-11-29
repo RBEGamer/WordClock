@@ -50,6 +50,10 @@ See `wifi_interface.cpp` for bidirection reference implementation.
 * `st` - set time with value: `hh:mm:ss`
 * `sb` - set brightness: `1-255` fixed or `0` for automatic
 * `fp` - frontplate: `0`(GERMAN), `1`(ENGLISH), ... (see `enum class FACEPLATES` in `wordclock_faceplate.hpp`)
-* `fd` - flip displaz: rotate the display 180 drg
+* `fd` - flip displaz: rotate the display 180 drg `0`(normal, lightsensor top) or `1`
 * `ip` - show ip string (used to indicate wifimodule ip) `192.168.0.1`
 
+
+## DEBUGGING
+
+All serial commands send through the serial pins `0`, `1` of the rp2040 will be mirrored to the USB-CDC connection.

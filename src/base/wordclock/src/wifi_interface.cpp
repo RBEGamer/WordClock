@@ -114,7 +114,7 @@ wifi_interface::rxcmd wifi_interface::parse_cmd(const std::string _cmd_rx_buffer
       // CHECK CRC
       const uint16_t crc_rx = wifi_interface::crc16(cmd + payload);
       // TODO FIX CRC
-      if (true || crc == std::to_string((int)crc_rx))
+      if (DISABLE_CRC || crc == std::to_string((int)crc_rx))
       {
         ret.cmdok = true;
         ret.cmd = cmd;

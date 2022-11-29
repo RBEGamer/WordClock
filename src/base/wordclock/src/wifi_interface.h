@@ -18,6 +18,9 @@
 #define UART_WIFI_IRQ UART1_IRQ
 #endif
 
+//#define DISABLE_CRC false
+#define DISABLE_CRC true
+
 class wifi_interface
 {
 public:
