@@ -70,6 +70,11 @@
 #define PICO_DEFAULT_I2C 1
 #endif
 
+#ifndef PICO_DEFAULT_I2C_SPEED
+#define PICO_DEFAULT_I2C_SPEED (100 * 1000)
+#endif
+
+
 #ifndef PICO_DEFAULT_I2C_SDA_PIN
 #define PICO_DEFAULT_I2C_SDA_PIN 2
 #endif

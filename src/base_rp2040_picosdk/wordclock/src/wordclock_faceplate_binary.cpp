@@ -32,8 +32,6 @@ void wordclock_faceplate_binary::set_word(PicoLed::PicoLedController &_leds, con
 void wordclock_faceplate_binary::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)
 {
 
-    
-
     if (_s > 10)
     {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::S_SECONDS_1, _s);
@@ -52,68 +50,76 @@ void wordclock_faceplate_binary::display_time_with_words(PicoLed::PicoLedControl
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::S_SECONDS_4, _s);
     }
 
-
     const std::vector<bool> min_bits_ones = helper::bits_from_int(_m);
-    const std::vector<bool> min_bits_tens = helper::bits_from_int(_m/10);
+    const std::vector<bool> min_bits_tens = helper::bits_from_int(_m / 10);
     const std::vector<bool> hour_bits_ones = helper::bits_from_int(_horig);
-    const std::vector<bool> hour_bits_tens = helper::bits_from_int(_horig/10);
+    const std::vector<bool> hour_bits_tens = helper::bits_from_int(_horig / 10);
 
     if (min_bits_ones[0])
     {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::M_ONES_ONE, _s);
     }
-    if(min_bits_ones[1]){
+    if (min_bits_ones[1])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::M_ONES_TWO, _s);
     }
-    if(min_bits_ones[2]){
+    if (min_bits_ones[2])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::M_ONES_FOUR, _s);
     }
-    if(min_bits_ones[3]){
+    if (min_bits_ones[3])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::M_ONES_EIGHT, _s);
     }
-
 
     if (min_bits_tens[0])
     {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::M_TENS_ONE, _s);
     }
-    if(min_bits_tens[1]){
+    if (min_bits_tens[1])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::M_TENS_TWO, _s);
     }
-    if(min_bits_tens[2]){
+    if (min_bits_tens[2])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::M_TENS_FOUR, _s);
     }
-    if(min_bits_tens[3]){
+    if (min_bits_tens[3])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::M_TENS_EIGHT, _s);
     }
-
 
     if (hour_bits_ones[0])
     {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::H_ONES_ONE, _s);
     }
-    if(hour_bits_ones[1]){
+    if (hour_bits_ones[1])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::H_ONES_TWO, _s);
     }
-    if(hour_bits_ones[2]){
+    if (hour_bits_ones[2])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::H_ONES_FOUR, _s);
     }
-    if(hour_bits_ones[3]){
+    if (hour_bits_ones[3])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::H_ONES_EIGHT, _s);
     }
-
 
     if (hour_bits_tens[0])
     {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::H_TENS_ONE, _s);
     }
-    if(hour_bits_tens[1]){
+    if (hour_bits_tens[1])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::H_TENS_TWO, _s);
     }
-    if(hour_bits_tens[2]){
+    if (hour_bits_tens[2])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::H_TENS_FOUR, _s);
     }
-    if(hour_bits_tens[3]){
+    if (hour_bits_tens[3])
+    {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::H_TENS_EIGHT, _s);
     }
 }

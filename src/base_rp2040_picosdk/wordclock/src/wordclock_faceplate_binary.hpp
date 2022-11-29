@@ -8,8 +8,6 @@
 #include "helper.h"
 #include "wordclock_faceplate.hpp"
 
-
-
 class wordclock_faceplate_binary : public wordclock_faceplate
 {
 
@@ -22,7 +20,7 @@ class wordclock_faceplate_binary : public wordclock_faceplate
         S_SECONDS_3,
         S_SECONDS_4,
         //---- COMMON WORDS END------ //
-        WORDS_INDEX_COMMON_END, // DONT DELETE
+        WORDS_INDEX_COMMON_END,   // DONT DELETE
         WORDS_INDEX_MINUTE_BEGIN, // DONT DELETE
         //---- MINUTE WORDS BEGIN------ //
         M_ONES_ONE,
@@ -47,57 +45,54 @@ class wordclock_faceplate_binary : public wordclock_faceplate
         H_TENS_EIGHT,
         //---- HOUR WORDS END------ //
         WORDS_INDEX_HOUR_END, // DONT DELETE
-        LENGHT // DONT DELETE
-    }; //27
-
+        LENGHT                // DONT DELETE
+    };                        // 27
 
     // INLINE FOR IN-CLASS INITIALISATION
-    // ARRAY WITH LED LOCATION FOR EACH WORD {{ROW, COLUMN} starting top/left corner (near battery)  
+    // ARRAY WITH LED LOCATION FOR EACH WORD {{ROW, COLUMN} starting top/left corner (near battery)
     static inline const std::vector<std::tuple<int, int>> WORDCLOCKwORDS[((int)WORDS_INDEX::LENGHT)] = {
-        {},  // DONT DELETE
-         //---- COMMON WORDS BEGIN------ //
-         //-------- MINUTE DOTS ------------------------------- //
+        {}, // DONT DELETE
+            //---- COMMON WORDS BEGIN------ //
+            //-------- MINUTE DOTS ------------------------------- //
         // USE DIRECT LED INDEXING FOR MINUTE DOTS, BECAUSE THESE ARE NOT IN THE MATRIX SPACE
         // SEE BOARD DEFINITION FOR ACTUAL VALUES AND DEFINITION => PCB VERSION DEPENDEND
-        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[0]}},// M_DOT_ONE
-        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[1]}},// M_DOT_TWO
-        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[2]}},// M_DOT_THREE
-        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[3]}},// M_DOT_FOUR
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[0]}}, // M_DOT_ONE
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[1]}}, // M_DOT_TWO
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[2]}}, // M_DOT_THREE
+        {{USE_DIRECT_LED_INDEXING, LED_MINUTEDOT_POSITIONS[3]}}, // M_DOT_FOUR
         //---- COMMON WORDS END------ //
-        {},  // DONT DELETE
-        {},  // DONT DELETE
-         //---- MINUTE WORDS BEGIN------ //
-        {{8, 9}, {8, 10}, {7, 9}, {7, 10}},                     // M_ONES_ONE
-        {{6, 9}, {6, 10}, {5, 9}, {5, 10}},                     // M_ONES_TWO
-        {{4, 9}, {4, 10}, {3, 9}, {3, 10}},                     // M_ONES_FOUR
-        {{2, 9}, {2, 10}, {1, 9}, {1, 10}},                     // M_ONES_EIGHT
-        {{8, 6}, {8, 7}, {7, 6}, {7, 7}},                       // M_TENS_ONW
-        {{6, 6}, {6, 7}, {5, 6}, {5, 7}},                       // M_TENS_TWO
-        {{4, 6}, {4, 7}, {3, 6}, {3, 7}},                       // M_TENS_FOUR
-        {{2, 6}, {2, 7}, {1, 6}, {1, 7}},                       // M_TENS_EIGHT
-         //---- MINUTE WORDS END------ //
-        {},  // DONT DELETE
-        {},  // DONT DELETE
+        {},                                 // DONT DELETE
+        {},                                 // DONT DELETE
+                                            //---- MINUTE WORDS BEGIN------ //
+        {{8, 9}, {8, 10}, {7, 9}, {7, 10}}, // M_ONES_ONE
+        {{6, 9}, {6, 10}, {5, 9}, {5, 10}}, // M_ONES_TWO
+        {{4, 9}, {4, 10}, {3, 9}, {3, 10}}, // M_ONES_FOUR
+        {{2, 9}, {2, 10}, {1, 9}, {1, 10}}, // M_ONES_EIGHT
+        {{8, 6}, {8, 7}, {7, 6}, {7, 7}},   // M_TENS_ONW
+        {{6, 6}, {6, 7}, {5, 6}, {5, 7}},   // M_TENS_TWO
+        {{4, 6}, {4, 7}, {3, 6}, {3, 7}},   // M_TENS_FOUR
+        {{2, 6}, {2, 7}, {1, 6}, {1, 7}},   // M_TENS_EIGHT
+                                            //---- MINUTE WORDS END------ //
+        {},                                 // DONT DELETE
+        {},                                 // DONT DELETE
         //---- HOUR WORDS BEGIN------ //
-        {{8, 3}, {8, 4}, {7, 3}, {7, 4}},                     // H_ONES_ONE
-        {{6, 3}, {6, 4}, {5, 3}, {5, 4}},                     // H_ONES_TWO
-        {{4, 3}, {4, 4}, {3, 3}, {3, 4}},                     // H_ONES_FOUR
-        {{2, 3}, {2, 4}, {1, 3}, {1, 4}},                     // H_ONES_EIGHT
-        {{8, 0}, {8, 1}, {7, 0}, {7, 1}},                       // H_TENS_ONW
-        {{6, 0}, {6, 1}, {5, 0}, {5, 1}},                       // H_TENS_TWO
-        {{4, 0}, {4, 1}, {3, 0}, {3, 1}},                       // H_TENS_FOUR
-        {{2, 0}, {2, 1}, {1, 0}, {1, 1}},                       // H_TENS_EIGHT
+        {{8, 3}, {8, 4}, {7, 3}, {7, 4}}, // H_ONES_ONE
+        {{6, 3}, {6, 4}, {5, 3}, {5, 4}}, // H_ONES_TWO
+        {{4, 3}, {4, 4}, {3, 3}, {3, 4}}, // H_ONES_FOUR
+        {{2, 3}, {2, 4}, {1, 3}, {1, 4}}, // H_ONES_EIGHT
+        {{8, 0}, {8, 1}, {7, 0}, {7, 1}}, // H_TENS_ONW
+        {{6, 0}, {6, 1}, {5, 0}, {5, 1}}, // H_TENS_TWO
+        {{4, 0}, {4, 1}, {3, 0}, {3, 1}}, // H_TENS_FOUR
+        {{2, 0}, {2, 1}, {1, 0}, {1, 1}}, // H_TENS_EIGHT
         //---- HOUR WORDS END------ //
-        {}  // DONT DELETE                          
+        {} // DONT DELETE
     };
 
-
-    void set_word(PicoLed::PicoLedController& _leds, const WORDS_INDEX _word, const int _current_seconds);
+    void set_word(PicoLed::PicoLedController &_leds, const WORDS_INDEX _word, const int _current_seconds);
 
 public:
     wordclock_faceplate_binary();
     ~wordclock_faceplate_binary();
     void display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s) override;
-
 };
 #endif

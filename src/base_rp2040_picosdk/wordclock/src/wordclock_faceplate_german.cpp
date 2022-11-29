@@ -6,7 +6,6 @@ wordclock_faceplate_german::wordclock_faceplate_german()
 
 wordclock_faceplate_german::~wordclock_faceplate_german()
 {
-
 }
 
 // SET WORD FUNCTION ALSO COLORS THE DIFFERENT WORD TYPES

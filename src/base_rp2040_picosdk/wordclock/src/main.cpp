@@ -25,13 +25,17 @@ int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
 
-//wordclock_faceplate *faceplate = new wordclock_faceplate_german();
-wordclock_faceplate *faceplate = new wordclock_faceplate_binary();
+wordclock_faceplate *faceplate = new wordclock_faceplate();
+//wordclock_faceplate *faceplate = new wordclock_faceplate_binary();
+
+wordclock_faceplate::switch_faceplate(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
+
+
 
 
 void init_i2c()
 {
-    i2c_init(i2c_default, 100 * 1000);
+    i2c_init(i2c_default, PICO_DEFAULT_I2C_SPEED); //100khz
     gpio_set_function(PICO_DEFAULT_I2C_SDA_PIN, GPIO_FUNC_I2C);
     gpio_set_function(PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C);
     gpio_pull_up(PICO_DEFAULT_I2C_SDA_PIN);
