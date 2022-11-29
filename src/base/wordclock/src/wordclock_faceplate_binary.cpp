@@ -52,11 +52,11 @@ void wordclock_faceplate_binary::display_time_with_words(PicoLed::PicoLedControl
     {
         wordclock_faceplate_binary::set_word(_leds, wordclock_faceplate_binary::WORDS_INDEX::S_SECONDS_4, _s);
     }
-
-    const std::vector<bool> min_bits_ones = helper::bits_from_int(_m);
-    const std::vector<bool> min_bits_tens = helper::bits_from_int(_m / 10);
-    const std::vector<bool> hour_bits_ones = helper::bits_from_int(_horig);
-    const std::vector<bool> hour_bits_tens = helper::bits_from_int(_horig / 10);
+ 
+    const std::vector<bool> min_bits_ones = helper::bits_from_int(_m % 10);
+    const std::vector<bool> min_bits_tens = helper::bits_from_int((_m % 100) / 10);
+    const std::vector<bool> hour_bits_ones = helper::bits_from_int(_horig % 10);
+    const std::vector<bool> hour_bits_tens = helper::bits_from_int((_horig % 100) / 10);
 
     if (min_bits_ones[0])
     {
