@@ -25,10 +25,36 @@ int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
 
+
+void switch_faceplate(wordclock_faceplate* _instance, wordclock_faceplate::FACEPLATES _faceplate)
+{
+    if (_instance)
+    {
+        delete _instance;
+    }
+    wordclock_faceplate::config.current_faceplate = _faceplate;
+    switch (_faceplate)
+    {
+    case wordclock_faceplate::FACEPLATES::TEST:
+        _instance = new wordclock_faceplate();
+        break;
+    case wordclock_faceplate::FACEPLATES::GERMAN:
+        _instance = new wordclock_faceplate_german();
+        break;
+    case wordclock_faceplate::FACEPLATES::BINARY:
+        _instance = new wordclock_faceplate_binary();
+        break;
+    default:
+        _instance = new wordclock_faceplate();
+        wordclock_faceplate::config.current_faceplate = wordclock_faceplate::FACEPLATES::TEST;
+        break;
+    }
+}
+
 wordclock_faceplate *faceplate = new wordclock_faceplate();
 //wordclock_faceplate *faceplate = new wordclock_faceplate_binary();
 
-wordclock_faceplate::switch_faceplate(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
+switch_faceplate(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
 
 
 

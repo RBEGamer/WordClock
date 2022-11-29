@@ -1,6 +1,7 @@
 #include "wordclock_faceplate.hpp"
 
-wordclock_faceplate::config config();
+
+
 
 wordclock_faceplate::wordclock_faceplate()
 {
@@ -10,34 +11,9 @@ wordclock_faceplate::~wordclock_faceplate()
 {
 }
 
-wordclock_faceplate::wordclock_faceplate(wordclock_faceplate::wordclock_faceplate const &)
-{
-}
 
-void wordclock_faceplate::switch_faceplate(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
-{
-    if (_instance)
-    {
-        delete _instance;
-    }
-    wordclock_faceplate::config.flip_state = _faceplate;
-    switch (_faceplate)
-    {
-    case wordclock_faceplate::FACEPLATES::TEST:
-        _faceplate = new wordclock_faceplate();
-        break;
-    case wordclock_faceplate::FACEPLATES::GERMAN:
-        _faceplate = new wordclock_faceplate_german();
-        break;
-    case wordclock_faceplate::FACEPLATES::BINARY:
-        _faceplate = new wordclock_faceplate_binary();
-        break;
-    default:
-        _faceplate = new wordclock_faceplate();
-        wordclock_faceplate::config.flip_state = wordclock_faceplate::FACEPLATES::TEST;
-        break;
-    }
-}
+
+
 
 
 

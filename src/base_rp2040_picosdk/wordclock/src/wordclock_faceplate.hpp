@@ -6,6 +6,11 @@
 #include <tuple>
 #include "wordclock_faceplate_constants.h"
 #include "wifi_interface.h"
+
+
+
+
+
 class wordclock_faceplate
 {
 protected:
@@ -17,25 +22,9 @@ protected:
     DEFAULT // DONT DELETE PLACE AS lAST ELEMENT
   };
 
-  enum class FACEPLATES
-  {
-    TEST,
-    GERMAN,
-    BINARY
-  }
+  
+  
 
-  struct FACEPLATE_CONFIG
-  {
-    bool flip_state;
-    FACEPLATES current_faceplate;
-
-    
-    FACEPLATE_CONFIG()
-    {
-      flip_state = false;
-      current_faceplate = FACEPLATES::TEST;
-    }
-  };
 
   virtual void display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s);
   void set_leds(PicoLed::PicoLedController &_leds, std::vector<std::tuple<int, int>> _word, const WORD_COLOR_CLASS _basecolor, const int _current_seconds);
@@ -45,12 +34,31 @@ protected:
   std::tuple<int, int> flip_xy(const std::tuple<int, int> _origin, const bool _flip);
 
 public:
-  static FACEPLATE_CONFIG config;
+
+  enum class FACEPLATES
+  {
+    TEST,
+    GERMAN,
+    BINARY
+  };
+
+  struct FACEPLATE_CONFIG
+  {
+    bool flip_state;
+    FACEPLATES current_faceplate;
+
+    FACEPLATE_CONFIG()
+    {
+      flip_state = false;
+      current_faceplate = FACEPLATES::TEST;
+    }
+  };
+  //INLINE IN C++17 no init in cpp needed
+  inline static struct FACEPLATE_CONFIG config;
 
   wordclock_faceplate();
-  wordclock_faceplate(wordclock_faceplate const &);
   virtual ~wordclock_faceplate();
-  void switch_faceplate(wordclock_faceplate *_instance, FACEPLATES _faceplate); // TODO SWITCH TO SINGLETON IMPLEMENTATION
+
   void display_testpattern();
   void display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s);
 };
