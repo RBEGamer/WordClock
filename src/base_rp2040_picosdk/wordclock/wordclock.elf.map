@@ -229,7 +229,6 @@ Discarded input sections
  .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
- .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .text          0x0000000000000000        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .data          0x0000000000000000        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
@@ -256,7 +255,6 @@ Discarded input sections
  .group         0x0000000000000000       0x14 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .group         0x0000000000000000       0x1c CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .group         0x0000000000000000       0x18 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
- .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
@@ -296,8 +294,6 @@ Discarded input sections
  .fini_array    0x0000000000000000        0x4 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .bss._ZGVN19wordclock_faceplate6configE
                 0x0000000000000000        0x4 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
- .bss._ZN19wordclock_faceplate6configE
-                0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .text          0x0000000000000000        0x0 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
  .data          0x0000000000000000        0x0 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
@@ -401,8 +397,6 @@ Discarded input sections
  .group         0x0000000000000000        0xc CMakeFiles/wordclock.dir/src/main.cpp.obj
  .group         0x0000000000000000        0xc CMakeFiles/wordclock.dir/src/main.cpp.obj
  .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
- .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
- .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .text          0x0000000000000000        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .data          0x0000000000000000        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
@@ -459,12 +453,7 @@ Discarded input sections
                 0x0000000000000000        0xc CMakeFiles/wordclock.dir/src/main.cpp.obj
  .rodata._ZTVN7PicoLed15InvalidPioBlockE
                 0x0000000000000000       0x14 CMakeFiles/wordclock.dir/src/main.cpp.obj
- .bss._ZN26wordclock_faceplate_binary14WORDCLOCKwORDSE
-                0x0000000000000000      0x138 CMakeFiles/wordclock.dir/src/main.cpp.obj
- .bss._ZN26wordclock_faceplate_german14WORDCLOCKwORDSE
-                0x0000000000000000      0x1a4 CMakeFiles/wordclock.dir/src/main.cpp.obj
- .bss._ZN19wordclock_faceplate6configE
-                0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+ .flashdata     0x0000000000000000      0x2e4 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .group         0x0000000000000000       0x14 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .group         0x0000000000000000       0x14 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .group         0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
@@ -521,8 +510,7 @@ Discarded input sections
  .fini_array    0x0000000000000000        0x4 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .bss._ZGVN19wordclock_faceplate6configE
                 0x0000000000000000        0x4 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
- .bss._ZN19wordclock_faceplate6configE
-                0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+ .flashdata     0x0000000000000000        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .text          0x0000000000000000        0x0 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
  .data          0x0000000000000000        0x0 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
  .bss           0x0000000000000000        0x0 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
@@ -2607,9 +2595,9 @@ Discarded input sections
                 0x0000000000000000       0x15 CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
  .rodata._ZTVN7PicoLed9ParticlesE
                 0x0000000000000000       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
- .text          0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccWDrRo7.o
- .data          0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccWDrRo7.o
- .bss           0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccWDrRo7.o
+ .text          0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//cc1Uwwdj.o
+ .data          0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//cc1Uwwdj.o
+ .bss           0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//cc1Uwwdj.o
  .text          0x0000000000000000        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
  .data          0x0000000000000000        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
  .bss           0x0000000000000000        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
@@ -7234,7 +7222,7 @@ LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-non
 .boot2          0x0000000010000000      0x100
                 0x0000000010000000                __boot2_start__ = .
  *(.boot2)
- .boot2         0x0000000010000000      0x100 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccWDrRo7.o
+ .boot2         0x0000000010000000      0x100 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//cc1Uwwdj.o
                 0x0000000010000100                __boot2_end__ = .
                 0x0000000000000001                ASSERT (((__boot2_end__ - __boot2_start__) == 0x100), ERROR: Pico second stage bootloader must be 256 bytes in size)
 
@@ -8763,7 +8751,7 @@ LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-non
 .iplt           0x00000000100172d0        0x0
  .iplt          0x00000000100172d0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.rodata         0x00000000100172d0     0x36c8
+.rodata         0x00000000100172d0     0x39b4
  *(EXCLUDE_FILE(*libm.a: *libc.a:*lib_a-mem*.o *libgcc.a:) .rodata*)
  .rodata._ZNSt6vectorISt5tupleIJiiEESaIS1_EEC2ESt16initializer_listIS1_ERKS2_.constprop.0.isra.0.str1.4
                 0x00000000100172d0       0x31 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
@@ -9220,740 +9208,745 @@ LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-non
                 0x000000001001a998                . = ALIGN (0x4)
  *fill*         0x000000001001a995        0x3 
  *(SORT_BY_ALIGNMENT(SORT_BY_NAME(.flashdata*)))
-                0x000000001001a998                . = ALIGN (0x4)
+ .flashdata     0x000000001001a998      0x1ac CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001a998                wordclock_faceplate_german::WORDCLOCKwORDS
+                0x000000001001ab3c                wordclock_faceplate::config
+ .flashdata     0x000000001001ab44      0x140 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001ab44                wordclock_faceplate_binary::WORDCLOCKwORDS
+                0x000000001001ac84                . = ALIGN (0x4)
 
-.ARM.extab      0x000000001001a998      0x8c4
+.ARM.extab      0x000000001001ac84      0x8c4
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  .ARM.extab.text._ZNSt15_Sp_counted_ptrIDnLN9__gnu_cxx12_Lock_policyE0EE10_M_disposeEv
-                0x000000001001a998        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001ac84        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.extab.text._ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE0EE10_M_destroyEv
-                0x000000001001a998        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001ac84        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.extab.text._ZNSt6vectorISt5tupleIJiiEESaIS1_EEC2ESt16initializer_listIS1_ERKS2_.constprop.0.isra.0
-                0x000000001001a998       0x14 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001ac84       0x14 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.extab.text._Z41__static_initialization_and_destruction_0ii.constprop.0
-                0x000000001001a9ac       0xc4 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001ac98       0xc4 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.extab.text._ZN26wordclock_faceplate_german8set_wordERN7PicoLed17PicoLedControllerENS_11WORDS_INDEXEi
-                0x000000001001aa70       0x1f CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
- *fill*         0x000000001001aa8f        0x1 
+                0x000000001001ad5c       0x1f CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+ *fill*         0x000000001001ad7b        0x1 
  .ARM.extab.text._ZN26wordclock_faceplate_german23display_time_with_wordsERN7PicoLed17PicoLedControllerEiii
-                0x000000001001aa90        0xc CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001ad7c        0xc CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.extab.text._ZN26wordclock_faceplate_binary8set_wordERN7PicoLed17PicoLedControllerENS_11WORDS_INDEXEi
-                0x000000001001aa9c       0x1f CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
- *fill*         0x000000001001aabb        0x1 
+                0x000000001001ad88       0x1f CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+ *fill*         0x000000001001ada7        0x1 
  .ARM.extab.text._ZNSt6vectorISt5tupleIJiiEESaIS1_EEC2ESt16initializer_listIS1_ERKS2_
-                0x000000001001aabc       0x14 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001ada8       0x14 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .ARM.extab.text._Z41__static_initialization_and_destruction_0ii.constprop.0
-                0x000000001001aad0       0x8d CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001adbc       0x8d CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .ARM.extab.text._ZNSt13_Bvector_baseISaIbEE13_M_deallocateEv
-                0x000000001001ab5d        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
- *fill*         0x000000001001ab5d        0x3 
+                0x000000001001ae49        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+ *fill*         0x000000001001ae49        0x3 
  .ARM.extab.text._ZN26wordclock_faceplate_binary23display_time_with_wordsERN7PicoLed17PicoLedControllerEiii
-                0x000000001001ab60       0x3a CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
- *fill*         0x000000001001ab9a        0x2 
+                0x000000001001ae4c       0x3a CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+ *fill*         0x000000001001ae86        0x2 
  .ARM.extab.text._ZN3rtc12set_rtc_timeENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-                0x000000001001ab9c       0x17 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
- *fill*         0x000000001001abb3        0x1 
+                0x000000001001ae88       0x17 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
+ *fill*         0x000000001001ae9f        0x1 
  .ARM.extab.text._ZNSt6vectorIbSaIbEE13_M_insert_auxESt13_Bit_iteratorb
-                0x000000001001abb4        0xc CMakeFiles/wordclock.dir/src/helper.cpp.obj
+                0x000000001001aea0        0xc CMakeFiles/wordclock.dir/src/helper.cpp.obj
  .ARM.extab.text._ZN6helper13bits_from_intEi
-                0x000000001001abc0       0x1b CMakeFiles/wordclock.dir/src/helper.cpp.obj
- *fill*         0x000000001001abdb        0x1 
+                0x000000001001aeac       0x1b CMakeFiles/wordclock.dir/src/helper.cpp.obj
+ *fill*         0x000000001001aec7        0x1 
  .ARM.extab.text._ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_insertIJS5_EEEvN9__gnu_cxx17__normal_iteratorIPS5_S7_EEDpOT_
-                0x000000001001abdc        0xc CMakeFiles/wordclock.dir/src/helper.cpp.obj
+                0x000000001001aec8        0xc CMakeFiles/wordclock.dir/src/helper.cpp.obj
  .ARM.extab.text._ZN6helper8tokenizeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKcRSt6vectorIS5_SaIS5_EE
-                0x000000001001abe8       0x1f CMakeFiles/wordclock.dir/src/helper.cpp.obj
+                0x000000001001aed4       0x1f CMakeFiles/wordclock.dir/src/helper.cpp.obj
  .ARM.extab.text._ZN14wifi_interface5rxcmdD2Ev
-                0x000000001001ac07        0x0 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
- *fill*         0x000000001001ac07        0x1 
+                0x000000001001aef3        0x0 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+ *fill*         0x000000001001aef3        0x1 
  .ARM.extab.text._ZN14wifi_interface9parse_cmdENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
-                0x000000001001ac08       0x74 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001aef4       0x74 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.extab.text._ZN14wifi_interface14manual_uart_rxEv
-                0x000000001001ac7c       0x27 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
- *fill*         0x000000001001aca3        0x1 
+                0x000000001001af68       0x27 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+ *fill*         0x000000001001af8f        0x1 
  .ARM.extab.text._ZN14wifi_interface12send_cmd_strENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_
-                0x000000001001aca4       0x6b CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
- *fill*         0x000000001001ad0f        0x1 
+                0x000000001001af90       0x6b CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+ *fill*         0x000000001001affb        0x1 
  .ARM.extab.text._ZN14wifi_interface17send_current_timeEiii
-                0x000000001001ad10       0x5d CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
- *fill*         0x000000001001ad6d        0x3 
+                0x000000001001affc       0x5d CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+ *fill*         0x000000001001b059        0x3 
  .ARM.extab.text._ZN14wifi_interface15send_brightnessEi
-                0x000000001001ad70       0x21 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
- *fill*         0x000000001001ad91        0x3 
+                0x000000001001b05c       0x21 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+ *fill*         0x000000001001b07d        0x3 
  .ARM.extab.text._ZN14wifi_interface8send_logENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-                0x000000001001ad94       0x20 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b080       0x20 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.extab.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EED2Ev
-                0x000000001001adb4        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EE10_M_disposeEv
-                0x000000001001adb4        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EE14_M_get_deleterERKSt9type_info
-                0x000000001001adb4        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EED0Ev
-                0x000000001001adb4        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EE10_M_destroyEv
-                0x000000001001adb4        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZN7PicoLed17StateMachineInUseD2Ev
-                0x000000001001adb4        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZN7PicoLed17StateMachineInUseD0Ev
-                0x000000001001adb4        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZN7PicoLed7WS2812BD2Ev
-                0x000000001001adb4        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZN7PicoLed7WS2812BD0Ev
-                0x000000001001adb4        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZNSt6vectorISt5tupleIJiiEESaIS1_EEC2ESt16initializer_listIS1_ERKS2_.constprop.0.isra.0
-                0x000000001001adb4       0x14 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b0a0       0x14 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._Z41__static_initialization_and_destruction_0ii.constprop.0
-                0x000000001001adc8      0x147 CMakeFiles/wordclock.dir/src/main.cpp.obj
- *fill*         0x000000001001af0f        0x1 
+                0x000000001001b0b4      0x147 CMakeFiles/wordclock.dir/src/main.cpp.obj
+ *fill*         0x000000001001b1fb        0x1 
  .ARM.extab.text._Z9switch_fpP19wordclock_faceplateNS_10FACEPLATESE
-                0x000000001001af10       0x30 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b1fc       0x30 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._Z8init_i2cv
-                0x000000001001af40        0xc CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b22c        0xc CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._Z10display_ipRN7PicoLed17PicoLedControllerENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-                0x000000001001af4c       0x1b CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b238       0x1b CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZNSt3mapIjS_IjSt10shared_ptrIN7PicoLed13PicoLedTargetEESt4lessIjESaISt4pairIKjS3_EEES5_SaIS6_IS7_SA_EEEixERS7_
-                0x000000001001af67        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b253        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE0EED2Ev
-                0x000000001001af67        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
- *fill*         0x000000001001af67        0x1 
+                0x000000001001b253        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+ *fill*         0x000000001001b253        0x1 
  .ARM.extab.text.startup.main
-                0x000000001001af68       0x84 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b254       0x84 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.extab.text._ZN19wordclock_faceplate15xy_to_led_indexESt5tupleIJiiEE
-                0x000000001001afec       0x1a CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
- *fill*         0x000000001001b006        0x2 
+                0x000000001001b2d8       0x1a CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+ *fill*         0x000000001001b2f2        0x2 
  .ARM.extab.text._ZN19wordclock_faceplate8set_ledsERN7PicoLed17PicoLedControllerESt6vectorISt5tupleIJiiEESaIS5_EENS_16WORD_COLOR_CLASSEi
-                0x000000001001b008        0xc CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b2f4        0xc CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .ARM.extab.text._ZN19wordclock_faceplate23display_time_with_wordsERN7PicoLed17PicoLedControllerEiii
-                0x000000001001b014       0x35 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
- *fill*         0x000000001001b049        0x3 
+                0x000000001001b300       0x35 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+ *fill*         0x000000001001b335        0x3 
  .ARM.extab.text._ZN19wordclock_faceplate12display_timeERN7PicoLed17PicoLedControllerEiii
-                0x000000001001b04c        0xc CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b338        0xc CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .ARM.extab.text._ZN7PicoLed13PicoLedTarget13setPixelColorEjNS_5ColorE
-                0x000000001001b058        0xc CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b344        0xc CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
  .ARM.extab.text._ZN7PicoLed13PicoLedTarget4fillENS_5ColorEjj
-                0x000000001001b064        0xc CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b350        0xc CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
  .ARM.extab.text._ZN7PicoLed17PicoLedController13setPixelColorEjNS_5ColorE
-                0x000000001001b070        0xc CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
+                0x000000001001b35c        0xc CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
  .ARM.extab.text._ZN7PicoLed8PioStripC2EP8pio_hw_tjjjNS_8DataByteES3_S3_S3_
-                0x000000001001b07c       0x1c CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
+                0x000000001001b368       0x1c CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
  .ARM.extab.text._ZN7PicoLed7WS2812BC2EP8pio_hw_tjjjNS_8DataByteES3_S3_S3_
-                0x000000001001b098       0x1f CMakeFiles/wordclock.dir/PicoLED/WS2812B.cpp.obj
- *fill*         0x000000001001b0b7        0x1 
+                0x000000001001b384       0x1f CMakeFiles/wordclock.dir/PicoLED/WS2812B.cpp.obj
+ *fill*         0x000000001001b3a3        0x1 
  .ARM.extab.text.__cxa_type_match
-                0x000000001001b0b8        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_arm.o)
+                0x000000001001b3a4        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_arm.o)
  .ARM.extab.text.__cxa_begin_catch
-                0x000000001001b0c4        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_catch.o)
+                0x000000001001b3b0        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_catch.o)
  .ARM.extab.text._ZL28read_encoded_value_with_basehjPKhPj
-                0x000000001001b0d0        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
+                0x000000001001b3bc        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
  .ARM.extab.text.__gxx_personality_v0
-                0x000000001001b0dc       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
+                0x000000001001b3c8       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
  .ARM.extab.text._ZN10__cxxabiv111__terminateEPFvvE
-                0x000000001001b104       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
+                0x000000001001b3f0       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
  .ARM.extab.text._ZNK10__cxxabiv120__si_class_type_info12__do_dyncastEiNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x000000001001b12c        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
+                0x000000001001b418        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
  .ARM.extab.text._ZN9__gnu_cxx27__verbose_terminate_handlerEv
-                0x000000001001b138       0x34 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(vterminate.o)
+                0x000000001001b424       0x34 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(vterminate.o)
  .ARM.extab.text.unlikely._ZSt19__throw_logic_errorPKc
-                0x000000001001b16c       0x14 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
+                0x000000001001b458       0x14 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
  .ARM.extab.text.unlikely._ZSt20__throw_length_errorPKc
-                0x000000001001b180       0x14 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
+                0x000000001001b46c       0x14 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
  .ARM.extab.text._ZSt24__throw_out_of_range_fmtPKcz
-                0x000000001001b194       0x1c /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
+                0x000000001001b480       0x1c /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
  .ARM.extab.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERjj
-                0x000000001001b1b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b49c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.extab.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructEjc
-                0x000000001001b1b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b49c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.extab.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_
-                0x000000001001b1b0        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b49c        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.extab.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_mutateEjjPKcj
-                0x000000001001b1bc        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b4a8        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.extab.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE14_M_replace_auxEjjjc
-                0x000000001001b1c8        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b4b4        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.extab.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEjjPKcj
-                0x000000001001b1d4        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b4c0        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.extab.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcj
-                0x000000001001b1e0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b4cc        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.extab.text._ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7compareEPKc
-                0x000000001001b1e0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b4cc        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.extab.text.unlikely.__cxa_call_unexpected
-                0x000000001001b1e0       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_call.o)
+                0x000000001001b4cc       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_call.o)
  .ARM.extab.text._ZNK10__cxxabiv117__pbase_type_info15__pointer_catchEPKS0_PPvj
-                0x000000001001b208        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
+                0x000000001001b4f4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
  .ARM.extab.text._ZNK10__cxxabiv117__pbase_type_info10__do_catchEPKSt9type_infoPPvj
-                0x000000001001b208        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
+                0x000000001001b4f4        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
  .ARM.extab.text._ZNSt11logic_errorC2EPKc
-                0x000000001001b214       0x18 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-stdexcept.o)
+                0x000000001001b500       0x18 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-stdexcept.o)
  .ARM.extab.text._ZNSs4_Rep9_S_createEjjRKSaIcE
-                0x000000001001b22c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
+                0x000000001001b518        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
  .ARM.extab.text._ZNSs4_Rep10_M_destroyERKSaIcE
-                0x000000001001b22c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
- .ARM.extab     0x000000001001b22c       0x24 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(unwind-arm.o)
- .ARM.extab     0x000000001001b250        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(pr-support.o)
-                0x000000001001b25c                __exidx_start = .
+                0x000000001001b518        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
+ .ARM.extab     0x000000001001b518       0x24 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(unwind-arm.o)
+ .ARM.extab     0x000000001001b53c        0xc /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(pr-support.o)
+                0x000000001001b548                __exidx_start = .
 
-.ARM.exidx      0x000000001001b25c      0x470
+.ARM.exidx      0x000000001001b548      0x470
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
  .ARM.exidx.text._ZNSt15_Sp_counted_ptrIDnLN9__gnu_cxx12_Lock_policyE0EE10_M_disposeEv
-                0x000000001001b25c        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b548        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.exidx.text._ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE0EE10_M_destroyEv
-                0x000000001001b264        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b550        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN26wordclock_faceplate_germanD2Ev
-                0x000000001001b264        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b550        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN26wordclock_faceplate_germanD0Ev
-                0x000000001001b264        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b550        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt6vectorISt5tupleIJiiEESaIS1_EEC2ESt16initializer_listIS1_ERKS2_.constprop.0.isra.0
-                0x000000001001b264        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b550        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.exidx.text._ZNSt8_Rb_treeIjSt4pairIKjSt10shared_ptrIN7PicoLed13PicoLedTargetEEESt10_Select1stIS6_ESt4lessIjESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E.isra.0
-                0x000000001001b26c        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b558        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.exidx.text._ZNSt8_Rb_treeIjSt4pairIKjSt3mapIjSt10shared_ptrIN7PicoLed13PicoLedTargetEESt4lessIjESaIS0_IS1_S6_EEEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E.isra.0
-                0x000000001001b274        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b560        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._Z41__static_initialization_and_destruction_0ii.constprop.0
-                0x000000001001b274        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b560        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.exidx.text._ZN26wordclock_faceplate_germanC2Ev
-                0x000000001001b27c        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b568        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.exidx.text._ZN26wordclock_faceplate_german8set_wordERN7PicoLed17PicoLedControllerENS_11WORDS_INDEXEi
-                0x000000001001b284        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b570        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.exidx.text._ZN26wordclock_faceplate_german23display_time_with_wordsERN7PicoLed17PicoLedControllerEiii
-                0x000000001001b28c        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b578        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN26wordclock_faceplate_germanC2Ev
-                0x000000001001b294        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x000000001001b580        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .ARM.exidx.text._ZN26wordclock_faceplate_binaryD2Ev
-                0x000000001001b29c        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b588        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN26wordclock_faceplate_binaryD0Ev
-                0x000000001001b29c        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b588        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt8_Rb_treeIjSt4pairIKjSt10shared_ptrIN7PicoLed13PicoLedTargetEEESt10_Select1stIS6_ESt4lessIjESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E.isra.0
-                0x000000001001b29c        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b588        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt8_Rb_treeIjSt4pairIKjSt3mapIjSt10shared_ptrIN7PicoLed13PicoLedTargetEESt4lessIjESaIS0_IS1_S6_EEEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E.isra.0
-                0x000000001001b29c        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b588        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN26wordclock_faceplate_binaryC2Ev
-                0x000000001001b29c        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b588        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .ARM.exidx.text._ZN26wordclock_faceplate_binary8set_wordERN7PicoLed17PicoLedControllerENS_11WORDS_INDEXEi
-                0x000000001001b2a4        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b590        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .ARM.exidx.text._ZNSt6vectorISt5tupleIJiiEESaIS1_EEC2ESt16initializer_listIS1_ERKS2_
-                0x000000001001b2ac        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b598        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .ARM.exidx.text._Z41__static_initialization_and_destruction_0ii.constprop.0
-                0x000000001001b2b4        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b5a0        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .ARM.exidx.text._ZNSt13_Bvector_baseISaIbEE13_M_deallocateEv
-                0x000000001001b2bc        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b5a8        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .ARM.exidx.text._ZN26wordclock_faceplate_binary23display_time_with_wordsERN7PicoLed17PicoLedControllerEiii
-                0x000000001001b2c4        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b5b0        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN26wordclock_faceplate_binaryC2Ev
-                0x000000001001b2cc        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x000000001001b5b8        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .ARM.exidx.text._ZN3rtc12set_rtc_timeENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-                0x000000001001b2d4        0x8 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
+                0x000000001001b5c0        0x8 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
  .ARM.exidx.text._ZN3rtc8init_rtcEv
-                0x000000001001b2dc        0x8 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
+                0x000000001001b5c8        0x8 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
  .ARM.exidx.text._ZN3rtc8read_rtcEv
-                0x000000001001b2e4        0x0 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
+                0x000000001001b5d0        0x0 CMakeFiles/wordclock.dir/src/rtc.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN6helper3mapEiiiii
-                0x000000001001b2e4        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
+                0x000000001001b5d0        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
  .ARM.exidx.text._ZNSt6vectorIbSaIbEE13_M_insert_auxESt13_Bit_iteratorb
-                0x000000001001b2ec        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
+                0x000000001001b5d8        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
  .ARM.exidx.text._ZN6helper13bits_from_intEi
-                0x000000001001b2f4        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
+                0x000000001001b5e0        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
  .ARM.exidx.text._ZNSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS5_EE17_M_realloc_insertIJS5_EEEvN9__gnu_cxx17__normal_iteratorIPS5_S7_EEDpOT_
-                0x000000001001b2fc        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
+                0x000000001001b5e8        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
  .ARM.exidx.text._ZN6helper8tokenizeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPKcRSt6vectorIS5_SaIS5_EE
-                0x000000001001b304        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
+                0x000000001001b5f0        0x8 CMakeFiles/wordclock.dir/src/helper.cpp.obj
  .ARM.exidx.text._ZN14wifi_interface5rxcmdD2Ev
-                0x000000001001b30c        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b5f8        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.exidx.text._ZN14wifi_interface9parse_cmdENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
-                0x000000001001b314        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b600        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.exidx.text._ZN14wifi_interface14manual_uart_rxEv
-                0x000000001001b31c        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b608        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.exidx.text._ZN14wifi_interface9init_uartEv
-                0x000000001001b324        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b610        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.exidx.text._ZN14wifi_interface12send_cmd_strENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_
-                0x000000001001b32c        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b618        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.exidx.text._ZN14wifi_interface17send_current_timeEiii
-                0x000000001001b334        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b620        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.exidx.text._ZN14wifi_interface15send_brightnessEi
-                0x000000001001b33c        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b628        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.exidx.text._ZN14wifi_interface8send_logENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-                0x000000001001b344        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b630        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN14wifi_interface13cmd_rx_bufferB5cxx11E
-                0x000000001001b34c        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
+                0x000000001001b638        0x8 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
  .ARM.exidx.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EED2Ev
-                0x000000001001b354        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EE10_M_disposeEv
-                0x000000001001b354        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EE14_M_get_deleterERKSt9type_info
-                0x000000001001b354        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EED0Ev
-                0x000000001001b354        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt15_Sp_counted_ptrIPN7PicoLed7WS2812BELN9__gnu_cxx12_Lock_policyE0EE10_M_destroyEv
-                0x000000001001b354        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed17StateMachineInUseD2Ev
-                0x000000001001b354        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed17StateMachineInUseD0Ev
-                0x000000001001b354        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed7WS2812BD2Ev
-                0x000000001001b354        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed7WS2812BD0Ev
-                0x000000001001b354        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt6vectorISt5tupleIJiiEESaIS1_EEC2ESt16initializer_listIS1_ERKS2_.constprop.0.isra.0
-                0x000000001001b354        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b640        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._ZNSt8_Rb_treeIjSt4pairIKjSt10shared_ptrIN7PicoLed13PicoLedTargetEEESt10_Select1stIS6_ESt4lessIjESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E.isra.0
-                0x000000001001b35c        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b648        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._ZNSt8_Rb_treeIjSt4pairIKjSt3mapIjSt10shared_ptrIN7PicoLed13PicoLedTargetEESt4lessIjESaIS0_IS1_S6_EEEESt10_Select1stISC_ES8_SaISC_EE8_M_eraseEPSt13_Rb_tree_nodeISC_E.isra.0
-                0x000000001001b364        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b650        0x0 CMakeFiles/wordclock.dir/src/main.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._Z41__static_initialization_and_destruction_0ii.constprop.0
-                0x000000001001b364        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b650        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._Z9switch_fpP19wordclock_faceplateNS_10FACEPLATESE
-                0x000000001001b36c        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b658        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._Z8init_i2cv
-                0x000000001001b374        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b660        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._Z11init_bh1750v
-                0x000000001001b37c        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b668        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._Z22get_average_brightnessv
-                0x000000001001b384        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b670        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._Z10display_ipRN7PicoLed17PicoLedControllerENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
-                0x000000001001b38c        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b678        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._ZNSt3mapIjS_IjSt10shared_ptrIN7PicoLed13PicoLedTargetEESt4lessIjESaISt4pairIKjS3_EEES5_SaIS6_IS7_SA_EEEixERS7_
-                0x000000001001b394        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b680        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._ZNSt14__shared_countILN9__gnu_cxx12_Lock_policyE0EED2Ev
-                0x000000001001b39c        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b688        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text.startup.main
-                0x000000001001b3a4        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b690        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I_enable_bh1750_addr
-                0x000000001001b3ac        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x000000001001b698        0x8 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .ARM.exidx.text._ZN19wordclock_faceplateD2Ev
-                0x000000001001b3b4        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b6a0        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN19wordclock_faceplateD0Ev
-                0x000000001001b3b4        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b6a0        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN19wordclock_faceplateC2Ev
-                0x000000001001b3b4        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b6a0        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN19wordclock_faceplate23get_word_color_by_classENS_16WORD_COLOR_CLASSEi
-                0x000000001001b3b4        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b6a0        0x0 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN19wordclock_faceplate15xy_to_led_indexESt5tupleIJiiEE
-                0x000000001001b3b4        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b6a0        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .ARM.exidx.text._ZN19wordclock_faceplate8set_ledsERN7PicoLed17PicoLedControllerESt6vectorISt5tupleIJiiEESaIS5_EENS_16WORD_COLOR_CLASSEi
-                0x000000001001b3bc        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b6a8        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .ARM.exidx.text._ZN19wordclock_faceplate23display_time_with_wordsERN7PicoLed17PicoLedControllerEiii
-                0x000000001001b3c4        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b6b0        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .ARM.exidx.text._ZN19wordclock_faceplate12display_timeERN7PicoLed17PicoLedControllerEiii
-                0x000000001001b3cc        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b6b8        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN19wordclock_faceplateC2Ev
-                0x000000001001b3d4        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x000000001001b6c0        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget10getNumLedsEv
-                0x000000001001b3dc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6c8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget13getBrightnessEv
-                0x000000001001b3dc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6c8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget13setBrightnessEh
-                0x000000001001b3dc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6c8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget7getDataEj
-                0x000000001001b3dc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6c8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget7setDataEjm
-                0x000000001001b3dc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6c8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget4showEv
-                0x000000001001b3dc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6c8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed13PicoLedTargetC2EjNS_8DataByteES1_S1_S1_
-                0x000000001001b3dc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6c8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed13PicoLedTargetD2Ev
-                0x000000001001b3dc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6c8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget13getPixelColorEj
-                0x000000001001b3dc        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6c8        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget13setPixelColorEjNS_5ColorE
-                0x000000001001b3e4        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6d0        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget4fillENS_5ColorEjj
-                0x000000001001b3ec        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6d8        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
  .ARM.exidx.text._ZN7PicoLed13PicoLedTarget14scalePixelDataEmt
-                0x000000001001b3f4        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6e0        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN7PicoLed13PicoLedTargetC2EjNS_8DataByteES1_S1_S1_
-                0x000000001001b3fc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x000000001001b6e8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed17PicoLedControllerC2ESt10shared_ptrINS_13PicoLedTargetEE
-                0x000000001001b3fc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
+                0x000000001001b6e8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed17PicoLedControllerD2Ev
-                0x000000001001b3fc        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
+                0x000000001001b6e8        0x0 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed17PicoLedController13setBrightnessEh
-                0x000000001001b3fc        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
+                0x000000001001b6e8        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
  .ARM.exidx.text._ZN7PicoLed17PicoLedController13setPixelColorEjNS_5ColorE
-                0x000000001001b404        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
+                0x000000001001b6f0        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
  .ARM.exidx.text._ZN7PicoLed17PicoLedController5clearEv
-                0x000000001001b40c        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
+                0x000000001001b6f8        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
  .ARM.exidx.text._ZN7PicoLed17PicoLedController4showEv
-                0x000000001001b414        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
+                0x000000001001b700        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN7PicoLed17PicoLedControllerC2ESt10shared_ptrINS_13PicoLedTargetEE
-                0x000000001001b41c        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
+                0x000000001001b708        0x8 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
  .ARM.exidx.text._ZN7PicoLed8PioStrip7getDataEj
-                0x000000001001b424        0x0 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
+                0x000000001001b710        0x0 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed8PioStrip7setDataEjm
-                0x000000001001b424        0x0 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
+                0x000000001001b710        0x0 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed8PioStripD2Ev
-                0x000000001001b424        0x0 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
+                0x000000001001b710        0x0 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN7PicoLed8PioStrip4showEv
-                0x000000001001b424        0x8 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
+                0x000000001001b710        0x8 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
  .ARM.exidx.text._ZN7PicoLed8PioStripD0Ev
-                0x000000001001b42c        0x8 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
+                0x000000001001b718        0x8 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
  .ARM.exidx.text._ZN7PicoLed8PioStripC2EP8pio_hw_tjjjNS_8DataByteES3_S3_S3_
-                0x000000001001b434        0x8 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
+                0x000000001001b720        0x8 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN7PicoLed8PioStripC2EP8pio_hw_tjjjNS_8DataByteES3_S3_S3_
-                0x000000001001b43c        0x8 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
+                0x000000001001b728        0x8 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
  .ARM.exidx.text._ZN7PicoLed7WS2812BC2EP8pio_hw_tjjjNS_8DataByteES3_S3_S3_
-                0x000000001001b444        0x8 CMakeFiles/wordclock.dir/PicoLED/WS2812B.cpp.obj
+                0x000000001001b730        0x8 CMakeFiles/wordclock.dir/PicoLED/WS2812B.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN7PicoLed4FadeC2ERNS_17PicoLedControllerENS_5ColorEd
-                0x000000001001b44c        0x8 CMakeFiles/wordclock.dir/PicoLED/Effects/Fade.cpp.obj
+                0x000000001001b738        0x8 CMakeFiles/wordclock.dir/PicoLED/Effects/Fade.cpp.obj
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN7PicoLed7MarqueeC2ERNS_17PicoLedControllerESt6vectorINS_5ColorESaIS4_EEdd
-                0x000000001001b454        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Marquee.cpp.obj
+                0x000000001001b740        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Marquee.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN7PicoLed5StarsC2ERNS_17PicoLedControllerENS_5ColorEd
-                0x000000001001b454        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Stars.cpp.obj
+                0x000000001001b740        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Stars.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN7PicoLed5CometC2ERNS_17PicoLedControllerENS_5ColorEdd
-                0x000000001001b454        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Comet.cpp.obj
+                0x000000001001b740        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Comet.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN7PicoLed6BounceC2ERNS_17PicoLedControllerEdd
-                0x000000001001b454        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Bounce.cpp.obj
+                0x000000001001b740        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Bounce.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN7PicoLed9ParticlesC2ERNS_17PicoLedControllerESt6vectorINS_5ColorESaIS4_EE
-                0x000000001001b454        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
+                0x000000001001b740        0x0 CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PPv
-                0x000000001001b454        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
+                0x000000001001b740        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info20__do_find_public_srcEiPKvPKS0_S2_
-                0x000000001001b45c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
+                0x000000001001b748        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
  .ARM.exidx.text._ZN10__cxxabiv117__class_type_infoD2Ev
-                0x000000001001b464        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
+                0x000000001001b750        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN10__cxxabiv117__class_type_infoD0Ev
-                0x000000001001b464        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
+                0x000000001001b750        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info12__do_dyncastEiNS0_10__sub_kindEPKS0_PKvS3_S5_RNS0_16__dyncast_resultE
-                0x000000001001b464        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
+                0x000000001001b750        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info11__do_upcastEPKS0_PKvRNS0_15__upcast_resultE
-                0x000000001001b464        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
+                0x000000001001b750        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__class_type_info10__do_catchEPKSt9type_infoPPvj
-                0x000000001001b464        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
+                0x000000001001b750        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
  .ARM.exidx.text._ZdlPvj
-                0x000000001001b46c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(del_ops.o)
+                0x000000001001b758        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(del_ops.o)
  .ARM.exidx.text._ZN12_GLOBAL__N_14pool4freeEPv.constprop.0
-                0x000000001001b474        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
+                0x000000001001b760        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN12_GLOBAL__N_14pool8allocateEj.constprop.0
-                0x000000001001b474        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
+                0x000000001001b760        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.__cxa_allocate_exception
-                0x000000001001b474        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
+                0x000000001001b760        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.__cxa_free_exception
-                0x000000001001b474        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
+                0x000000001001b760        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.startup._GLOBAL__sub_I__ZN9__gnu_cxx9__freeresEv
-                0x000000001001b474        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
+                0x000000001001b760        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_alloc.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.__cxa_type_match
-                0x000000001001b474        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_arm.o)
+                0x000000001001b760        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_arm.o)
  .ARM.exidx.text.__cxa_begin_cleanup
-                0x000000001001b47c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_arm.o)
+                0x000000001001b768        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_arm.o)
  .ARM.exidx.text.__gnu_end_cleanup
-                0x000000001001b484        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_arm.o)
+                0x000000001001b770        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_arm.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.unlikely.__cxa_bad_typeid
-                0x000000001001b484        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_aux_runtime.o)
+                0x000000001001b770        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_aux_runtime.o)
  .ARM.exidx.text.unlikely.__cxa_throw_bad_array_new_length
-                0x000000001001b48c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_aux_runtime.o)
+                0x000000001001b778        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_aux_runtime.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.__cxa_begin_catch
-                0x000000001001b48c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_catch.o)
+                0x000000001001b778        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_catch.o)
  .ARM.exidx.text.__cxa_end_catch
-                0x000000001001b494        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_catch.o)
+                0x000000001001b780        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_catch.o)
  .ARM.exidx.text._ZNSt9exceptionD2Ev
-                0x000000001001b49c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
+                0x000000001001b788        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
  .ARM.exidx.text._ZNSt13bad_exceptionD2Ev
-                0x000000001001b4a4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
+                0x000000001001b790        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNKSt9exception4whatEv
-                0x000000001001b4a4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
+                0x000000001001b790        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNKSt13bad_exception4whatEv
-                0x000000001001b4a4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
+                0x000000001001b790        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt13bad_exceptionD0Ev
-                0x000000001001b4a4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
+                0x000000001001b790        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_exception.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.__cxa_get_globals_fast
-                0x000000001001b4a4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_globals.o)
+                0x000000001001b790        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_globals.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.__cxa_get_globals
-                0x000000001001b4a4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_globals.o)
+                0x000000001001b790        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_globals.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZL28read_encoded_value_with_basehjPKhPj
-                0x000000001001b4a4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
+                0x000000001001b790        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
  .ARM.exidx.text._ZL21base_of_encoded_valuehP15_Unwind_Context
-                0x000000001001b4ac        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
+                0x000000001001b798        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
  .ARM.exidx.text._ZL17parse_lsda_headerP15_Unwind_ContextPKhP16lsda_header_info
-                0x000000001001b4b4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
+                0x000000001001b7a0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
  .ARM.exidx.text.__gxx_personality_v0
-                0x000000001001b4bc        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
+                0x000000001001b7a8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_personality.o)
  .ARM.exidx.text._ZN10__cxxabiv111__terminateEPFvvE
-                0x000000001001b4c4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
+                0x000000001001b7b0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
  .ARM.exidx.text._ZSt9terminatev
-                0x000000001001b4cc        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
+                0x000000001001b7b8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
  .ARM.exidx.text._ZN10__cxxabiv112__unexpectedEPFvvE
-                0x000000001001b4d4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
+                0x000000001001b7c0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
  .ARM.exidx.text._ZSt10unexpectedv
-                0x000000001001b4dc        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
+                0x000000001001b7c8        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZSt13get_terminatev
-                0x000000001001b4dc        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
+                0x000000001001b7c8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
  .ARM.exidx.text._ZSt14get_unexpectedv
-                0x000000001001b4e4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
+                0x000000001001b7d0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_terminate.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZL23__gxx_exception_cleanup19_Unwind_Reason_CodeP21_Unwind_Control_Block
-                0x000000001001b4e4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_throw.o)
+                0x000000001001b7d0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_throw.o)
  .ARM.exidx.text.__cxa_init_primary_exception
-                0x000000001001b4ec        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_throw.o)
+                0x000000001001b7d8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_throw.o)
  .ARM.exidx.text.__cxa_throw
-                0x000000001001b4f4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_throw.o)
+                0x000000001001b7e0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_throw.o)
  .ARM.exidx.text.__cxa_rethrow
-                0x000000001001b4fc        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_throw.o)
+                0x000000001001b7e8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_throw.o)
  .ARM.exidx.text._Znwj
-                0x000000001001b504        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(new_op.o)
+                0x000000001001b7f0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(new_op.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._Znaj
-                0x000000001001b504        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(new_opv.o)
+                0x000000001001b7f0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(new_opv.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv119__pointer_type_info14__is_pointer_pEv
-                0x000000001001b504        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pointer_type_info.o)
+                0x000000001001b7f0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pointer_type_info.o)
  .ARM.exidx.text._ZN10__cxxabiv119__pointer_type_infoD2Ev
-                0x000000001001b50c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pointer_type_info.o)
+                0x000000001001b7f8        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pointer_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN10__cxxabiv119__pointer_type_infoD0Ev
-                0x000000001001b50c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pointer_type_info.o)
+                0x000000001001b7f8        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pointer_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv119__pointer_type_info15__pointer_catchEPKNS_17__pbase_type_infoEPPvj
-                0x000000001001b50c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pointer_type_info.o)
+                0x000000001001b7f8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pointer_type_info.o)
  .ARM.exidx.text._ZN10__cxxabiv120__si_class_type_infoD2Ev
-                0x000000001001b514        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
+                0x000000001001b800        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
  .ARM.exidx.text._ZN10__cxxabiv120__si_class_type_infoD0Ev
-                0x000000001001b51c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
+                0x000000001001b808        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv120__si_class_type_info20__do_find_public_srcEiPKvPKNS_17__class_type_infoES2_
-                0x000000001001b51c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
+                0x000000001001b808        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
  .ARM.exidx.text._ZNK10__cxxabiv120__si_class_type_info12__do_dyncastEiNS_17__class_type_info10__sub_kindEPKS1_PKvS4_S6_RNS1_16__dyncast_resultE
-                0x000000001001b524        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
+                0x000000001001b810        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
  .ARM.exidx.text._ZNK10__cxxabiv120__si_class_type_info11__do_upcastEPKNS_17__class_type_infoEPKvRNS1_15__upcast_resultE
-                0x000000001001b52c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
+                0x000000001001b818        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(si_class_type_info.o)
  .ARM.exidx.text._ZNSt9type_infoD2Ev
-                0x000000001001b534        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
+                0x000000001001b820        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
  .ARM.exidx.text._ZNKSt9type_info14__is_pointer_pEv
-                0x000000001001b53c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
+                0x000000001001b828        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNKSt9type_info11__do_upcastEPKN10__cxxabiv117__class_type_infoEPPv
-                0x000000001001b53c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
+                0x000000001001b828        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNKSt9type_info10__do_catchEPKS_PPvj
-                0x000000001001b53c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
+                0x000000001001b828        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNKSt9type_infoeqERKS_
-                0x000000001001b53c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
+                0x000000001001b828        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tinfo.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN9__gnu_cxx27__verbose_terminate_handlerEv
-                0x000000001001b53c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(vterminate.o)
+                0x000000001001b828        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(vterminate.o)
  .ARM.exidx.text._ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base
-                0x000000001001b544        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tree.o)
+                0x000000001001b830        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tree.o)
  .ARM.exidx.text._ZSt18_Rb_tree_decrementPSt18_Rb_tree_node_base
-                0x000000001001b54c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tree.o)
+                0x000000001001b838        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tree.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_
-                0x000000001001b54c        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tree.o)
+                0x000000001001b838        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(tree.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.unlikely._ZSt17__throw_bad_allocv
-                0x000000001001b54c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
+                0x000000001001b838        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
  .ARM.exidx.text.unlikely._ZSt19__throw_logic_errorPKc
-                0x000000001001b554        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
+                0x000000001001b840        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
  .ARM.exidx.text.unlikely._ZSt20__throw_length_errorPKc
-                0x000000001001b55c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
+                0x000000001001b848        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
  .ARM.exidx.text._ZSt24__throw_out_of_range_fmtPKcz
-                0x000000001001b564        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
+                0x000000001001b850        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(functexcept.o)
  .ARM.exidx.text._ZN9__gnu_cxx26__throw_insufficient_spaceEPKcS1_
-                0x000000001001b56c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(snprintf_lite.o)
+                0x000000001001b858        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(snprintf_lite.o)
  .ARM.exidx.text._ZN9__gnu_cxx15__concat_size_tEPcjj
-                0x000000001001b574        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(snprintf_lite.o)
+                0x000000001001b860        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(snprintf_lite.o)
  .ARM.exidx.text._ZN9__gnu_cxx15__snprintf_liteEPcjPKcSt9__va_list
-                0x000000001001b57c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(snprintf_lite.o)
+                0x000000001001b868        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(snprintf_lite.o)
  .ARM.exidx.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_createERjj
-                0x000000001001b584        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b870        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.exidx.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructEjc
-                0x000000001001b58c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b878        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.exidx.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_assignERKS4_
-                0x000000001001b594        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b880        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.exidx.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_mutateEjjPKcj
-                0x000000001001b59c        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b888        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.exidx.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE14_M_replace_auxEjjjc
-                0x000000001001b5a4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b890        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.exidx.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE10_M_replaceEjjPKcj
-                0x000000001001b5ac        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b898        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.exidx.text._ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcj
-                0x000000001001b5b4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b8a0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.exidx.text._ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE7compareEPKc
-                0x000000001001b5bc        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
+                0x000000001001b8a8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(string-inst.o)
  .ARM.exidx.text._ZNKSt9bad_alloc4whatEv
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_alloc.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_alloc.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt9bad_allocD2Ev
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_alloc.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_alloc.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt9bad_allocD0Ev
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_alloc.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_alloc.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNKSt20bad_array_new_length4whatEv
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_array_new.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_array_new.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt20bad_array_new_lengthD2Ev
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_array_new.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_array_new.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt20bad_array_new_lengthD0Ev
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_array_new.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_array_new.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNKSt10bad_typeid4whatEv
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_typeid.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_typeid.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt10bad_typeidD2Ev
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_typeid.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_typeid.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt10bad_typeidD0Ev
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_typeid.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(bad_typeid.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZdlPv
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(del_op.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(del_op.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN10__cxxabiv1L24__is_gxx_exception_classEPc
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_call.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_call.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.__cxa_call_terminate
-                0x000000001001b5c4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_call.o)
+                0x000000001001b8b0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_call.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text.unlikely.__cxa_call_unexpected
-                0x000000001001b5c4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_call.o)
+                0x000000001001b8b0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_call.o)
  .ARM.exidx.text.__cxa_current_exception_type
-                0x000000001001b5cc        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_type.o)
+                0x000000001001b8b8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(eh_type.o)
  .ARM.exidx.text._ZN10__cxxabiv123__fundamental_type_infoD2Ev
-                0x000000001001b5d4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(fundamental_type_info.o)
+                0x000000001001b8c0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(fundamental_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZN10__cxxabiv123__fundamental_type_infoD0Ev
-                0x000000001001b5d4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(fundamental_type_info.o)
+                0x000000001001b8c0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(fundamental_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZSt15get_new_handlerv
-                0x000000001001b5d4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(new_handler.o)
+                0x000000001001b8c0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(new_handler.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__pbase_type_info15__pointer_catchEPKS0_PPvj
-                0x000000001001b5d4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
+                0x000000001001b8c0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
  .ARM.exidx.text._ZN10__cxxabiv117__pbase_type_infoD2Ev
-                0x000000001001b5dc        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
+                0x000000001001b8c8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
  .ARM.exidx.text._ZN10__cxxabiv117__pbase_type_infoD0Ev
-                0x000000001001b5e4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
+                0x000000001001b8d0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNK10__cxxabiv117__pbase_type_info10__do_catchEPKSt9type_infoPPvj
-                0x000000001001b5e4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
+                0x000000001001b8d0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(pbase_type_info.o)
  .ARM.exidx.text._ZNKSt11logic_error4whatEv
-                0x000000001001b5ec        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
+                0x000000001001b8d8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
  .ARM.exidx.text._ZNSt11logic_errorD2Ev
-                0x000000001001b5f4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
+                0x000000001001b8e0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt12length_errorD2Ev
-                0x000000001001b5f4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
+                0x000000001001b8e0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt12out_of_rangeD2Ev
-                0x000000001001b5f4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
+                0x000000001001b8e0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt11logic_errorD0Ev
-                0x000000001001b5f4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
+                0x000000001001b8e0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt12out_of_rangeD0Ev
-                0x000000001001b5f4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
+                0x000000001001b8e0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt12length_errorD0Ev
-                0x000000001001b5f4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
+                0x000000001001b8e0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(stdexcept.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSt11logic_errorC2EPKc
-                0x000000001001b5f4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-stdexcept.o)
+                0x000000001001b8e0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-stdexcept.o)
  .ARM.exidx.text._ZNSt12length_errorC2EPKc
-                0x000000001001b5fc        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-stdexcept.o)
+                0x000000001001b8e8        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-stdexcept.o)
  .ARM.exidx.text._ZNSt12out_of_rangeC2EPKc
-                0x000000001001b604        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-stdexcept.o)
+                0x000000001001b8f0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-stdexcept.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSs4_Rep9_S_createEjjRKSaIcE
-                0x000000001001b604        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
+                0x000000001001b8f0        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
                                           0x8 (size before relaxing)
  .ARM.exidx.text._ZNSs4_Rep10_M_destroyERKSaIcE
-                0x000000001001b604        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
- .ARM.exidx     0x000000001001b60c       0x90 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(unwind-arm.o)
+                0x000000001001b8f0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
+ .ARM.exidx     0x000000001001b8f8       0x90 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(unwind-arm.o)
                                          0xd8 (size before relaxing)
- .ARM.exidx     0x000000001001b69c       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(pr-support.o)
+ .ARM.exidx     0x000000001001b988       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(pr-support.o)
                                          0x38 (size before relaxing)
  .ARM.exidx.text.unlikely
-                0x000000001001b6c4        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(pr-support.o)
+                0x000000001001b9b0        0x8 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a(pr-support.o)
                                          0x10 (size before relaxing)
-                0x000000001001b6cc                __exidx_end = .
+                0x000000001001b9b8                __exidx_end = .
 
-.rel.dyn        0x000000001001b6cc        0x0
- .rel.iplt      0x000000001001b6cc        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/crtbegin.o
-                0x000000001001b6cc                . = ALIGN (0x4)
-                0x000000001001b6cc                __binary_info_start = .
+.rel.dyn        0x000000001001b9b8        0x0
+ .rel.iplt      0x000000001001b9b8        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/crtbegin.o
+                0x000000001001b9b8                . = ALIGN (0x4)
+                0x000000001001b9b8                __binary_info_start = .
 
-.binary_info    0x000000001001b6cc       0x24
+.binary_info    0x000000001001b9b8       0x24
  *(.binary_info.keep.*)
  .binary_info.keep.__bi_ptr22
-                0x000000001001b6cc        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x000000001001b9b8        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr30
-                0x000000001001b6d0        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x000000001001b9bc        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr38
-                0x000000001001b6d4        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x000000001001b9c0        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr44
-                0x000000001001b6d8        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x000000001001b9c4        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr50
-                0x000000001001b6dc        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x000000001001b9c8        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr56
-                0x000000001001b6e0        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x000000001001b9cc        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr75
-                0x000000001001b6e4        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x000000001001b9d0        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  .binary_info.keep.__bi_ptr81
-                0x000000001001b6e8        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+                0x000000001001b9d4        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
  *(.binary_info.*)
  .binary_info.__bi_ptr118
-                0x000000001001b6ec        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
-                0x000000001001b6f0                __binary_info_end = .
-                0x000000001001b6f0                . = ALIGN (0x4)
-                0x000000001001b6f0                __etext = .
+                0x000000001001b9d8        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x000000001001b9dc                __binary_info_end = .
+                0x000000001001b9dc                . = ALIGN (0x4)
+                0x000000001001b9dc                __etext = .
 
 .ram_vector_table
                 0x0000000020000000       0xc0
@@ -9962,7 +9955,7 @@ LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-non
                 0x0000000020000000       0xc0 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
                 0x0000000020000000                ram_vector_table
 
-.data           0x00000000200000c0     0x1d14 load address 0x000000001001b6f0
+.data           0x00000000200000c0     0x1d14 load address 0x000000001001b9dc
                 0x00000000200000c0                __data_start__ = .
  *(vtable)
  *(.time_critical*)
@@ -10172,29 +10165,29 @@ LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-non
                 0x0000000020001dd4                . = ALIGN (0x4)
                 0x0000000020001dd4                __data_end__ = .
 
-.igot.plt       0x0000000020001dd4        0x0 load address 0x000000001001d404
+.igot.plt       0x0000000020001dd4        0x0 load address 0x000000001001d6f0
  .igot.plt      0x0000000020001dd4        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/crtbegin.o
 
 .uninitialized_data
-                0x0000000020001dd4        0x0 load address 0x000000001001d404
+                0x0000000020001dd4        0x0 load address 0x000000001001d6f0
                 0x0000000020001dd4                . = ALIGN (0x4)
  *(.uninitialized_data*)
 
-.scratch_x      0x0000000020040000        0x0 load address 0x000000001001d404
+.scratch_x      0x0000000020040000        0x0 load address 0x000000001001d6f0
                 0x0000000020040000                __scratch_x_start__ = .
  *(.scratch_x.*)
                 0x0000000020040000                . = ALIGN (0x4)
                 0x0000000020040000                __scratch_x_end__ = .
-                0x000000001001d404                __scratch_x_source__ = LOADADDR (.scratch_x)
+                0x000000001001d6f0                __scratch_x_source__ = LOADADDR (.scratch_x)
 
-.scratch_y      0x0000000020041000        0x0 load address 0x000000001001d404
+.scratch_y      0x0000000020041000        0x0 load address 0x000000001001d6f0
                 0x0000000020041000                __scratch_y_start__ = .
  *(.scratch_y.*)
                 0x0000000020041000                . = ALIGN (0x4)
                 0x0000000020041000                __scratch_y_end__ = .
-                0x000000001001d404                __scratch_y_source__ = LOADADDR (.scratch_y)
+                0x000000001001d6f0                __scratch_y_source__ = LOADADDR (.scratch_y)
 
-.bss            0x0000000020001dd8     0x12d8
+.bss            0x0000000020001dd8      0xff4
                 0x0000000020001dd8                . = ALIGN (0x4)
                 0x0000000020001dd8                __bss_start__ = .
  *(SORT_BY_ALIGNMENT(SORT_BY_NAME(.bss*)))
@@ -10223,181 +10216,172 @@ LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-non
  .bss._ZN14wifi_interface13cmd_rx_bufferB5cxx11E
                 0x0000000020002028       0x18 CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj
                 0x0000000020002028                wifi_interface::cmd_rx_buffer[abi:cxx11]
- .bss._ZN19wordclock_faceplate6configE
-                0x0000000020002040        0x8 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
-                0x0000000020002040                wordclock_faceplate::config
- .bss._ZN26wordclock_faceplate_binary14WORDCLOCKwORDSE
-                0x0000000020002048      0x138 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
-                0x0000000020002048                wordclock_faceplate_binary::WORDCLOCKwORDS
- .bss._ZN26wordclock_faceplate_german14WORDCLOCKwORDSE
-                0x0000000020002180      0x1a4 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
-                0x0000000020002180                wordclock_faceplate_german::WORDCLOCKwORDS
  .bss._ZN7PicoLedL7targetsE
-                0x0000000020002324       0x18 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
+                0x0000000020002040       0x18 CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x000000002000233c       0x18 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
+                0x0000000020002058       0x18 CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x0000000020002354       0x18 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x0000000020002070       0x18 CMakeFiles/wordclock.dir/src/main.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x000000002000236c       0x18 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
+                0x0000000020002088       0x18 CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x0000000020002384       0x18 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
+                0x00000000200020a0       0x18 CMakeFiles/wordclock.dir/PicoLED/PicoLedTarget.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x000000002000239c       0x18 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
+                0x00000000200020b8       0x18 CMakeFiles/wordclock.dir/PicoLED/PicoLedController.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x00000000200023b4       0x18 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
+                0x00000000200020d0       0x18 CMakeFiles/wordclock.dir/PicoLED/PioStrip.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x00000000200023cc       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Fade.cpp.obj
+                0x00000000200020e8       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Fade.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x00000000200023e4       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Marquee.cpp.obj
+                0x0000000020002100       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Marquee.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x00000000200023fc       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Stars.cpp.obj
+                0x0000000020002118       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Stars.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x0000000020002414       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Comet.cpp.obj
+                0x0000000020002130       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Comet.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x000000002000242c       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Bounce.cpp.obj
+                0x0000000020002148       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Bounce.cpp.obj
  .bss._ZN7PicoLedL7targetsE
-                0x0000000020002444       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
+                0x0000000020002160       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
  .bss._ZNSs4_Rep20_S_empty_rep_storageE
-                0x000000002000245c       0x10 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
-                0x000000002000245c                std::string::_Rep::_S_empty_rep_storage
+                0x0000000020002178       0x10 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(cow-string-inst.o)
+                0x0000000020002178                std::string::_Rep::_S_empty_rep_storage
  .bss.__lock___malloc_recursive_mutex
-                0x000000002000246c        0x1 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-lock.o)
-                0x000000002000246c                __lock___malloc_recursive_mutex
- *fill*         0x000000002000246d        0x3 
+                0x0000000020002188        0x1 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-lock.o)
+                0x0000000020002188                __lock___malloc_recursive_mutex
+ *fill*         0x0000000020002189        0x3 
  .bss.__lock___sfp_recursive_mutex
-                0x0000000020002470        0x1 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-lock.o)
-                0x0000000020002470                __lock___sfp_recursive_mutex
- *fill*         0x0000000020002471        0x3 
+                0x000000002000218c        0x1 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-lock.o)
+                0x000000002000218c                __lock___sfp_recursive_mutex
+ *fill*         0x000000002000218d        0x3 
  .bss.__lock___sinit_recursive_mutex
-                0x0000000020002474        0x1 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-lock.o)
-                0x0000000020002474                __lock___sinit_recursive_mutex
- *fill*         0x0000000020002475        0x3 
+                0x0000000020002190        0x1 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-lock.o)
+                0x0000000020002190                __lock___sinit_recursive_mutex
+ *fill*         0x0000000020002191        0x3 
  .bss.__malloc_current_mallinfo
-                0x0000000020002478       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-mallocr.o)
-                0x0000000020002478                __malloc_current_mallinfo
+                0x0000000020002194       0x28 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-mallocr.o)
+                0x0000000020002194                __malloc_current_mallinfo
  .bss.__malloc_max_sbrked_mem
-                0x00000000200024a0        0x4 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-mallocr.o)
-                0x00000000200024a0                __malloc_max_sbrked_mem
+                0x00000000200021bc        0x4 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-mallocr.o)
+                0x00000000200021bc                __malloc_max_sbrked_mem
  .bss.__malloc_max_total_mem
-                0x00000000200024a4        0x4 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-mallocr.o)
-                0x00000000200024a4                __malloc_max_total_mem
+                0x00000000200021c0        0x4 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-mallocr.o)
+                0x00000000200021c0                __malloc_max_total_mem
  .bss.__malloc_top_pad
-                0x00000000200024a8        0x4 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-mallocr.o)
-                0x00000000200024a8                __malloc_top_pad
+                0x00000000200021c4        0x4 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-mallocr.o)
+                0x00000000200021c4                __malloc_top_pad
  .bss._app_driver
-                0x00000000200024ac        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x00000000200021c8        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
  .bss._cdcd_itf
-                0x00000000200024b0      0x2d8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+                0x00000000200021cc      0x2d8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
  .bss._ctrl_xfer
-                0x0000000020002788       0x14 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+                0x00000000200024a4       0x14 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
  .bss._ubsd_mutexdef
-                0x000000002000279c        0x8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x00000000200024b8        0x8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
  .bss._usbd_ctrl_buf
-                0x00000000200027a4       0x40 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+                0x00000000200024c0       0x40 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
  .bss._usbd_dev
-                0x00000000200027e4       0x53 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
- *fill*         0x0000000020002837        0x1 
+                0x0000000020002500       0x53 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+ *fill*         0x0000000020002553        0x1 
  .bss._usbd_mutex
-                0x0000000020002838        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
- .bss._usbd_q   0x000000002000283c        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x0000000020002554        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+ .bss._usbd_q   0x0000000020002558        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
  .bss._usbd_qdef_buf
-                0x0000000020002840       0xc0 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
-                0x0000000020002840                _usbd_qdef_buf
+                0x000000002000255c       0xc0 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x000000002000255c                _usbd_qdef_buf
  .bss._used_instruction_space
-                0x0000000020002900        0x8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
+                0x000000002000261c        0x8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
  .bss.alarm_callbacks
-                0x0000000020002908       0x10 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
- .bss.avg_sum   0x0000000020002918        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
-                0x0000000020002918                avg_sum
+                0x0000000020002624       0x10 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+ .bss.avg_sum   0x0000000020002634        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x0000000020002634                avg_sum
  .bss.boot2_copyout
-                0x000000002000291c      0x100 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
- .bss.claimed   0x0000000020002a1c        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+                0x0000000020002638      0x100 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+ .bss.claimed   0x0000000020002738        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
  .bss.configured_freq
-                0x0000000020002a20       0x28 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+                0x000000002000273c       0x28 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
  .bss.current_brightness_mode
-                0x0000000020002a48        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
-                0x0000000020002a48                current_brightness_mode
+                0x0000000020002764        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x0000000020002764                current_brightness_mode
  .bss.default_alarm_pool_entry_ids_high
-                0x0000000020002a4c       0x10 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_time/time.c.obj
+                0x0000000020002768       0x10 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_time/time.c.obj
  .bss.default_alarm_pool_heap_nodes
-                0x0000000020002a5c       0x30 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_time/time.c.obj
+                0x0000000020002778       0x30 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_time/time.c.obj
  .bss.desc_str.0
-                0x0000000020002a8c       0x28 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
- .bss.drivers   0x0000000020002ab4        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
- .bss.errno     0x0000000020002ab8        0x4 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-reent.o)
-                0x0000000020002ab8                errno
+                0x00000000200027a8       0x28 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+ .bss.drivers   0x00000000200027d0        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+ .bss.errno     0x00000000200027d4        0x4 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a(lib_a-reent.o)
+                0x00000000200027d4                errno
  .bss.faceplate
-                0x0000000020002abc        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
-                0x0000000020002abc                faceplate
- .bss.filter    0x0000000020002ac0        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+                0x00000000200027d8        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x00000000200027d8                faceplate
+ .bss.filter    0x00000000200027dc        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
  .bss.heap_end.0
-                0x0000000020002ac4        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+                0x00000000200027e0        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
  .bss.hw_endpoints
-                0x0000000020002ac8      0x400 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+                0x00000000200027e4      0x400 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
  .bss.last_brightness
-                0x0000000020002ec8        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
-                0x0000000020002ec8                last_brightness
+                0x0000000020002be4        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x0000000020002be4                last_brightness
  .bss.lazy_vsnprintf
-                0x0000000020002ecc        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+                0x0000000020002be8        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
  .bss.load_value
-                0x0000000020002ed0        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+                0x0000000020002bec        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
  .bss.next_buffer_ptr
-                0x0000000020002ed4        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
- .bss.pools     0x0000000020002ed8       0x10 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_time/time.c.obj
+                0x0000000020002bf0        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+ .bss.pools     0x0000000020002bf4       0x10 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_time/time.c.obj
  .bss.reading_index
-                0x0000000020002ee8        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
-                0x0000000020002ee8                reading_index
- .bss.readings  0x0000000020002eec       0x78 CMakeFiles/wordclock.dir/src/main.cpp.obj
-                0x0000000020002eec                readings
+                0x0000000020002c04        0x4 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x0000000020002c04                reading_index
+ .bss.readings  0x0000000020002c08       0x78 CMakeFiles/wordclock.dir/src/main.cpp.obj
+                0x0000000020002c08                readings
  .bss.retrieved_id
-                0x0000000020002f64        0x8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+                0x0000000020002c80        0x8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
  .bss.sf_clz_func
-                0x0000000020002f6c        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
-                0x0000000020002f6c                sf_clz_func
- .bss.sf_table  0x0000000020002f70      0x100 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
-                0x0000000020002f70                sf_table
+                0x0000000020002c88        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+                0x0000000020002c88                sf_clz_func
+ .bss.sf_table  0x0000000020002c8c      0x100 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+                0x0000000020002c8c                sf_table
  .bss.sleep_notifier
-                0x0000000020003070        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_time/time.c.obj
+                0x0000000020002d8c        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/common/pico_time/time.c.obj
  .bss.stdio_usb_mutex
-                0x0000000020003074        0x8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x0000000020002d90        0x8 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
  .bss.target_hi
-                0x000000002000307c       0x10 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x0000000020002d98       0x10 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
  .bss.uart_char_to_line_feed
-                0x000000002000308c        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
-                0x000000002000308c                uart_char_to_line_feed
+                0x0000000020002da8        0x4 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+                0x0000000020002da8                uart_char_to_line_feed
  .bss.usbd_serial_str
-                0x0000000020003090       0x11 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
- *fill*         0x00000000200030a1        0x3 
+                0x0000000020002dac       0x11 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+ *fill*         0x0000000020002dbd        0x3 
  .bss.user_irq_claimed
-                0x00000000200030a4        0x2 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+                0x0000000020002dc0        0x2 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
  .bss._ZZN9__gnu_cxx27__verbose_terminate_handlerEvE11terminating
-                0x00000000200030a6        0x1 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(vterminate.o)
+                0x0000000020002dc2        0x1 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(vterminate.o)
  .bss._app_driver_count
-                0x00000000200030a7        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x0000000020002dc3        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
  .bss._usbd_initialized
-                0x00000000200030a8        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+                0x0000000020002dc4        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
  .bss.boot2_copyout_valid
-                0x00000000200030a9        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
- .bss.claimed   0x00000000200030aa        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x0000000020002dc5        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+ .bss.claimed   0x0000000020002dc6        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
  .bss.irq_hander_chain_free_slot_head
-                0x00000000200030ab        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
- .bss.itf_num   0x00000000200030ac        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
+                0x0000000020002dc7        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+ .bss.itf_num   0x0000000020002dc8        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c.obj
  .bss.low_priority_irq_num
-                0x00000000200030ad        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+                0x0000000020002dc9        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
  .bss.timer_callbacks_pending
-                0x00000000200030ae        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+                0x0000000020002dca        0x1 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
  *(COMMON)
-                0x00000000200030b0                . = ALIGN (0x4)
- *fill*         0x00000000200030af        0x1 
-                0x00000000200030b0                __bss_end__ = .
+                0x0000000020002dcc                . = ALIGN (0x4)
+ *fill*         0x0000000020002dcb        0x1 
+                0x0000000020002dcc                __bss_end__ = .
 
-.heap           0x00000000200030b0      0x800
-                0x00000000200030b0                __end__ = .
-                0x00000000200030b0                end = __end__
+.heap           0x0000000020002dcc      0x800
+                0x0000000020002dcc                __end__ = .
+                0x0000000020002dcc                end = __end__
  *(.heap*)
- .heap          0x00000000200030b0      0x800 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
-                0x00000000200038b0                __HeapLimit = .
+ .heap          0x0000000020002dcc      0x800 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
+                0x00000000200035cc                __HeapLimit = .
 
 .stack1_dummy   0x0000000020040000        0x0
  *(.stack1*)
@@ -10406,8 +10390,8 @@ LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-non
  *(.stack*)
  .stack         0x0000000020041000      0x800 CMakeFiles/wordclock.dir/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
 
-.flash_end      0x000000001001d404        0x0
-                0x000000001001d404                __flash_binary_end = .
+.flash_end      0x000000001001d6f0        0x0
+                0x000000001001d6f0                __flash_binary_end = .
                 0x0000000020040000                __StackLimit = (ORIGIN (RAM) + LENGTH (RAM))
                 0x0000000020041000                __StackOneTop = (ORIGIN (SCRATCH_X) + LENGTH (SCRATCH_X))
                 0x0000000020042000                __StackTop = (ORIGIN (SCRATCH_Y) + LENGTH (SCRATCH_Y))
@@ -10507,7 +10491,7 @@ LOAD CMakeFiles/wordclock.dir/PicoLED/Effects/Stars.cpp.obj
 LOAD CMakeFiles/wordclock.dir/PicoLED/Effects/Comet.cpp.obj
 LOAD CMakeFiles/wordclock.dir/PicoLED/Effects/Bounce.cpp.obj
 LOAD CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
-LOAD /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccWDrRo7.o
+LOAD /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//cc1Uwwdj.o
 LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a
 LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a
 START GROUP
@@ -10661,7 +10645,7 @@ LOAD linker stubs
  .ARM.attributes
                 0x0000000000000af6       0x2c CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
  .ARM.attributes
-                0x0000000000000b22       0x22 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccWDrRo7.o
+                0x0000000000000b22       0x22 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//cc1Uwwdj.o
  .ARM.attributes
                 0x0000000000000b44       0x2c /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
  .ARM.attributes

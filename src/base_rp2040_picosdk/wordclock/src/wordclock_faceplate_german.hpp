@@ -58,7 +58,7 @@ class wordclock_faceplate_german : public wordclock_faceplate
 
     // INLINE FOR IN-CLASS INITIALISATION
     // ARRAY WITH LED LOCATION FOR EACH WORD {{ROW, COLUMN} starting top/left corner (near battery)
-    static inline const std::vector<std::tuple<int, int>> WORDCLOCKwORDS[((int)WORDS_INDEX::LENGHT)] = {
+    static inline const __in_flash() std::vector<std::tuple<int, int>> WORDCLOCKwORDS[((int)WORDS_INDEX::LENGHT)] = {
         {},                               // DONT DELETE
                                           //---- COMMON WORDS BEGIN------ //
         {{0, 0}, {0, 1}},                 // C_ES

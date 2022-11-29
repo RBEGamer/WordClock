@@ -1,6 +1,6 @@
 #ifndef __WORDCLOCK_FACEPLATE_H__
 #define __WORDCLOCK_FACEPLATE_H__
-
+#include <pico/platform.h>
 #include <PicoLed.hpp>
 #include <vector>
 #include <tuple>
@@ -54,7 +54,7 @@ public:
     }
   };
   //INLINE IN C++17 no init in cpp needed
-  inline static struct FACEPLATE_CONFIG config;
+  inline static __in_flash() struct FACEPLATE_CONFIG config;
 
   wordclock_faceplate();
   virtual ~wordclock_faceplate();
