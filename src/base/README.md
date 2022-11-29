@@ -57,3 +57,4 @@ See `wifi_interface.cpp` for bidirection reference implementation.
 ## DEBUGGING
 
 All serial commands send through the serial pins `0`, `1` of the rp2040 will be mirrored to the USB-CDC connection.
+For advanced debugging use the SWD `RPSWD - P1` connector on PCBv2, to connect a Picoprobe or J-LINK.
