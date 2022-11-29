@@ -57,7 +57,7 @@ void wordclock_faceplate_english::display_time_with_words(PicoLed::PicoLedContro
     wordclock_faceplate_english::set_word(_leds, wordclock_faceplate_english::WORDS_INDEX::C_IT, _s);
     wordclock_faceplate_english::set_word(_leds, wordclock_faceplate_english::WORDS_INDEX::C_IS, _s);
 
-    if(_h > 12){
+    if(_horig > 12){
         wordclock_faceplate_english::set_word(_leds, wordclock_faceplate_english::WORDS_INDEX::H_PM, _s);
     }else{
         wordclock_faceplate_english::set_word(_leds, wordclock_faceplate_english::WORDS_INDEX::H_AM, _s);

@@ -206,6 +206,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/wifi_interface.cpp" "CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/wifi_interface.cpp.obj.d"
   "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/wordclock_faceplate.cpp" "CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj.d"
   "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/wordclock_faceplate_binary.cpp" "CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj.d"
+  "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/wordclock_faceplate_english.cpp" "CMakeFiles/wordclock.dir/src/wordclock_faceplate_english.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/wordclock_faceplate_english.cpp.obj.d"
   "/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/wordclock/src/wordclock_faceplate_german.cpp" "CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj" "gcc" "CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj.d"
   )
 

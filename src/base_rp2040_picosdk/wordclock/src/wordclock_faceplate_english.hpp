@@ -50,7 +50,7 @@ class wordclock_faceplate_english : public wordclock_faceplate
         H_TWELVE,
         H_TEN,
         H_AM,
-        H_PM
+        H_PM,
         //---- HOUR WORDS END------ //
         WORDS_INDEX_HOUR_END, // DONT DELETE
         LENGHT                // DONT DELETE
@@ -107,8 +107,8 @@ class wordclock_faceplate_english : public wordclock_faceplate
     void set_word(PicoLed::PicoLedController &_leds, const WORDS_INDEX _word, const int _current_seconds);
 
 public:
-    wordclock_faceplate_german();
-    ~wordclock_faceplate_german();
+    wordclock_faceplate_english();
+    ~wordclock_faceplate_english();
     void display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s) override;
 };
 #endif
