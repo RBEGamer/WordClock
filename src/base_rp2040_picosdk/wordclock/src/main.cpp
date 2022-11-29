@@ -26,8 +26,10 @@ int last_tmin = -1;
 int last_tsec = -1;
 
 
-void switch_faceplate(wordclock_faceplate* _instance, wordclock_faceplate::FACEPLATES _faceplate)
-{
+wordclock_faceplate *faceplate = new wordclock_faceplate();
+
+
+void switch_fp(wordclock_faceplate* _instance, wordclock_faceplate::FACEPLATES _faceplate){
     if (_instance)
     {
         delete _instance;
@@ -51,10 +53,10 @@ void switch_faceplate(wordclock_faceplate* _instance, wordclock_faceplate::FACEP
     }
 }
 
-wordclock_faceplate *faceplate = new wordclock_faceplate();
-//wordclock_faceplate *faceplate = new wordclock_faceplate_binary();
 
-switch_faceplate(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
+
+
+
 
 
 
@@ -152,7 +154,6 @@ long avg_sum = 0;
 
 int get_average_brightness()
 {
-
     long average;
     // subtract the last reading:
     avg_sum = avg_sum - readings[reading_index];
@@ -225,6 +226,11 @@ int main()
 
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
+
+
+    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
+
+
 
     // enable uart rx irq for communication with wifi module
     // wifi_interface::enable_uart_irq(true);
