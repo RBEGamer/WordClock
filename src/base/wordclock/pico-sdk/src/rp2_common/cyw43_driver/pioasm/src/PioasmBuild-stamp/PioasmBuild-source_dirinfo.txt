@@ -4,6 +4,6 @@
 
 method=source_dir
 command=
-source_dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base_rp2040_picosdk/pico-sdk/tools/pioasm
+source_dir=/Users/marcelochsendorf/Downloads/WordClockNew/src/base/pico-sdk/tools/pioasm
 work_dir=
 
