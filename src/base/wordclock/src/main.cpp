@@ -233,8 +233,9 @@ int main()
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
 
-
+    update_display_time(ledStrip, 0, 0, 0);
     switch_fp(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
+    
 
 
 
@@ -301,6 +302,7 @@ int main()
         }
 
         sleep_ms(100);
+        
     }
 
     return 0;

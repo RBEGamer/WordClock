@@ -56,7 +56,7 @@ public:
     }
   };
   //INLINE IN C++17 no init in cpp needed
-  inline static __in_flash() struct FACEPLATE_CONFIG config;
+  inline static struct FACEPLATE_CONFIG config;
 
   wordclock_faceplate();
   virtual ~wordclock_faceplate();

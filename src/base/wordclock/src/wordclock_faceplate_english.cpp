@@ -68,7 +68,7 @@ void wordclock_faceplate_english::display_time_with_words(PicoLed::PicoLedContro
 
     // after >30 min the hour word need to be set to the nex full hour
     int _h = _horig;
-    if (_m > 30)
+    if (_m >= 25)
     {
         _h = (_horig + 1) % 24;
     }
