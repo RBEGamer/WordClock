@@ -26,7 +26,7 @@ $ make
 ## FLASH
 
 ```
+# RP2040 IN DFU MODE
 $ ./picotool load ./wordclock/wordclock.u2f
 $ ./picotool reboot
-
 ```
