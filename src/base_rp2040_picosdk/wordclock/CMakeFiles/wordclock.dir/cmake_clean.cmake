@@ -168,6 +168,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/wordclock.dir/src/wordclock_faceplate.cpp.obj.d"
   "CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj"
   "CMakeFiles/wordclock.dir/src/wordclock_faceplate_binary.cpp.obj.d"
+  "CMakeFiles/wordclock.dir/src/wordclock_faceplate_dots.cpp.obj"
+  "CMakeFiles/wordclock.dir/src/wordclock_faceplate_dots.cpp.obj.d"
   "CMakeFiles/wordclock.dir/src/wordclock_faceplate_english.cpp.obj"
   "CMakeFiles/wordclock.dir/src/wordclock_faceplate_english.cpp.obj.d"
   "CMakeFiles/wordclock.dir/src/wordclock_faceplate_german.cpp.obj"
