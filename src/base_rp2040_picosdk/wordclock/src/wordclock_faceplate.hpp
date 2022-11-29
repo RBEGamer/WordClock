@@ -19,7 +19,7 @@ protected:
     HOUR,
     MINUTE,
     COMMON,
-    DEFAULT // DONT DELETE PLACE AS lAST ELEMENT
+    DEFAULT // DONT DELETE PLACE AS lAST ELEMENT used as length indicator
   };
 
   
@@ -37,11 +37,11 @@ public:
 
   enum class FACEPLATES
   {
-    TEST,
     GERMAN,
     ENGLISH,
     BINARY,
-    DOTS
+    DOTS,
+    TEST// DONT DELETE TEST PLACE AS lAST ELEMENT used as length indicator
   };
 
   struct FACEPLATE_CONFIG

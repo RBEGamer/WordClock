@@ -291,6 +291,12 @@ int main()
             else if (wmc.cmd == "ip")
             {
                 display_ip(ledStrip, wmc.payload);
+            }else if (wmc.cmd == "fp") //FACEPLATE
+            {
+                switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(std::max(0, std::min((int)wordclock_faceplate::FACEPLATES::TEST, std::atoi(wmc.payload.c_str())))));
+            }else if (wmc.cmd == "fd") //FLIP DISPLAY
+            {
+                wordclock_faceplate::config.flip_state = (bool)std::max(0, std::min(1, std::atoi(wmc.payload.c_str())));
             }
         }
 
