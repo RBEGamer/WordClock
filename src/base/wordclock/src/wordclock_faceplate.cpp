@@ -14,7 +14,9 @@ wordclock_faceplate::~wordclock_faceplate()
 
 
 
-
+void wordclock_faceplate::display_testpattern(PicoLed::PicoLedController &_leds){
+    wordclock_faceplate::display_time(_leds, 0, 0, 0);
+}
 
 
 void wordclock_faceplate::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)

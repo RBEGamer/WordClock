@@ -25,11 +25,10 @@ int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
 
-
 wordclock_faceplate *faceplate = new wordclock_faceplate();
 
-
-void switch_fp(wordclock_faceplate* _instance, wordclock_faceplate::FACEPLATES _faceplate){
+void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
+{
     if (_instance)
     {
         delete _instance;
@@ -59,17 +58,9 @@ void switch_fp(wordclock_faceplate* _instance, wordclock_faceplate::FACEPLATES _
     }
 }
 
-
-
-
-
-
-
-
-
 void init_i2c()
 {
-    i2c_init(i2c_default, PICO_DEFAULT_I2C_SPEED); //100khz
+    i2c_init(i2c_default, PICO_DEFAULT_I2C_SPEED); // 100khz
     gpio_set_function(PICO_DEFAULT_I2C_SDA_PIN, GPIO_FUNC_I2C);
     gpio_set_function(PICO_DEFAULT_I2C_SCL_PIN, GPIO_FUNC_I2C);
     gpio_pull_up(PICO_DEFAULT_I2C_SDA_PIN);
@@ -187,10 +178,10 @@ int get_average_brightness()
 
 void update_display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s)
 {
-    if(faceplate){
+    if (faceplate)
+    {
         faceplate->display_time(_leds, _h, _m, _s);
     }
-    
 }
 
 void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip)
@@ -233,11 +224,12 @@ int main()
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
 
-    update_display_time(ledStrip, 0, 0, 0);
+    // DISPLAY TESTPATTERN => light up all corners to test matrix settings
+    faceplate->display_testpattern(ledStrip);
+    sleep_ms(500);
+
+    // switch to a better faceplate
     switch_fp(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
-    
-
-
 
     // enable uart rx irq for communication with wifi module
     // wifi_interface::enable_uart_irq(true);
@@ -269,7 +261,7 @@ int main()
             current_brightness = current_brightness_mode; // manual if mode 1-255
         }
 
-        if (current_brightness != last_brightness)
+        if (abs(current_brightness - last_brightness) > 1)
         {
             last_brightness = current_brightness;
             wifi_interface::send_brightness(current_brightness);
@@ -292,17 +284,18 @@ int main()
             else if (wmc.cmd == "ip")
             {
                 display_ip(ledStrip, wmc.payload);
-            }else if (wmc.cmd == "fp") //FACEPLATE
+            }
+            else if (wmc.cmd == "fp") // FACEPLATE
             {
                 switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(std::max(0, std::min((int)wordclock_faceplate::FACEPLATES::TEST, std::atoi(wmc.payload.c_str())))));
-            }else if (wmc.cmd == "fd") //FLIP DISPLAY
+            }
+            else if (wmc.cmd == "fd") // FLIP DISPLAY
             {
                 wordclock_faceplate::config.flip_state = (bool)std::max(0, std::min(1, std::atoi(wmc.payload.c_str())));
             }
         }
 
         sleep_ms(100);
-        
     }
 
     return 0;
