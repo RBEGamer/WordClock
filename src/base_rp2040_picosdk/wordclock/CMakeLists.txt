@@ -40,6 +40,8 @@ add_executable(wordclock
         src/wordclock_faceplate_english.hpp
         src/wordclock_faceplate_binary.cpp
         src/wordclock_faceplate_binary.hpp
+        src/wordclock_faceplate_dots.cpp
+        src/wordclock_faceplate_dots.hpp
         src/rtc.h
         src/rtc.cpp
         src/helper.h

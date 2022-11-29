@@ -29,6 +29,9 @@ void wordclock_faceplate_binary::set_word(PicoLed::PicoLedController &_leds, con
     wordclock_faceplate::set_leds(_leds, WORDCLOCKwORDS[(int)_word], color, _current_seconds);
 }
 
+
+
+
 void wordclock_faceplate_binary::display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s)
 {
 

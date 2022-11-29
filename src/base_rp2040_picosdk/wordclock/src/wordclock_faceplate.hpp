@@ -40,7 +40,8 @@ public:
     TEST,
     GERMAN,
     ENGLISH,
-    BINARY
+    BINARY,
+    DOTS
   };
 
   struct FACEPLATE_CONFIG
