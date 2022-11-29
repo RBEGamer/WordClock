@@ -51,4 +51,5 @@ See `wifi_interface.cpp` for bidirection reference implementation.
 * `sb` - set brightness: `1-255` fixed or `0` for automatic
 * `fp` - frontplate: `0`(GERMAN), `1`(ENGLISH), ... (see `enum class FACEPLATES` in `wordclock_faceplate.hpp`)
 * `fd` - flip displaz: rotate the display 180 drg
+* `ip` - show ip string (used to indicate wifimodule ip) `192.168.0.1`
 
