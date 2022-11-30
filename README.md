@@ -1,5 +1,8 @@
 # Wordclock
 
+![4_digit_complete_alt](./documentation/images/IMG_9906.JPG)
+
+
 Simple easy to build tabletop wordclock with many features:
 
 * wifi base sync and control
