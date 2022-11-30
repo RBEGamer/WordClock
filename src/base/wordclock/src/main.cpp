@@ -229,7 +229,7 @@ int main()
     sleep_ms(500);
 
     // switch to a better faceplate
-    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
+    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::BINARY);
 
     // enable uart rx irq for communication with wifi module
     // wifi_interface::enable_uart_irq(true);
