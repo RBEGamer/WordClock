@@ -2,6 +2,7 @@
 
 ![4_digit_complete_alt](./documentation/images/IMG_9906.png)
 
+## FEATURES
 
 Simple easy to build tabletop wordclock with many features:
 
@@ -12,6 +13,16 @@ Simple easy to build tabletop wordclock with many features:
 * temperature sensor
 * alternative datasources: mqtt, rest-api
 * alternative modes: running text
+
+
+
+## PARTS
+
+### ELECTRICAL
+
+* 1x ASSEMBLED PCB - `./src/pcb/vX`
+* 1x MicroUSB to DIP breakout or USB Cable with open leads
+
 
 
 
