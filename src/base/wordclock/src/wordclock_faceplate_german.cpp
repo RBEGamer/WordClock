@@ -131,7 +131,7 @@ void wordclock_faceplate_german::display_time_with_words(PicoLed::PicoLedControl
     {
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_VOR, _s);
     }
-    else if (_m >= 40 && _m < 59)
+    else if (_m >= 40 && _m =< 59)
     {
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_VOR, _s);
     }
