@@ -32,18 +32,19 @@ The `drawing.svg` contatins every layer (as seperate object), so it can be seper
 * 1x - plexiglas - >220x220 >=3mm, solid color for faceplate (with words cut in)
 * 1x - plexiglas - opaque <30% transparent , >=3mm 
 
-
+#### OPTIONAL
 * 8x neodym magnets - 10x3mm (if you want to make the faceplate removable/rotatable)
 
 
 ### OTHER
+
 * woodglue - to glue spacers together
 * ACRIFIX Plexiglas glue - to glue faceplate and opaque frontplate together
 
 ### TOOLS
 
 * lasercutter / cnc for cutting wood / plexiglas with working-area of at least 220mmx220mm
-* 3d rpinter can be used to print the faceplates (conversion from svg-> 3mm stl is needed)
+* 3d rpinter can be used to print the faceplates and spacers(conversion from svg-> 3mm stl is needed)
 
 
 
