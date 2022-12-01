@@ -33,6 +33,13 @@ The `drawing.svg` contatins every layer (as seperate object), so it can be seper
 * 1x - plexiglas - opaque <30% transparent , >=3mm 
 
 
+* 8x neodym magnets - 10x3mm (if you want to make the faceplate removable/rotatable)
+
+
+### OTHER
+* woodglue - to glue spacers together
+* ACRIFIX Plexiglas glue - to glue faceplate and opaque frontplate together
+
 ### TOOLS
 
 * lasercutter / cnc for cutting wood / plexiglas with working-area of at least 220mmx220mm
