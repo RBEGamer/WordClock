@@ -71,3 +71,26 @@ See `wifi_interface.cpp` for bidirection reference implementation.
 
 All serial commands send through the serial pins `0`, `1` of the rp2040 will be mirrored to the USB-CDC connection.
 For advanced debugging use the SWD `RPSWD - P1` connector on PCBv2, to connect a Picoprobe or J-LINK.
+
+
+
+## ADDING CUSTOM FACEPLATES
+
+The current software implementation is very flexible in order to add new faceplates.
+There are two template files provided with a simple implementation of a clockface.
+
+* `./wordclock/src/wordclock_faceplate_template.hpp`
+* `./wordclock/src/wordclock_faceplate_template.cpp`
+
+Please see reference implementation for a word-base clockface:
+
+* `./wordclock/src/wordclock_faceplate_german.hpp`
+* `./wordclock/src/wordclock_faceplate_german.cpp`
+
+If you dont have words on your fontface and wanto to implement other stlyes (like random dots, binary, for fancy animations), see the reference implementation for a dot based clockface:
+
+* `./wordclock/src/wordclock_faceplate_dots.hpp`
+* `./wordclock/src/wordclock_faceplate_dots.cpp`
+
+
+
