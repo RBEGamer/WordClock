@@ -53,10 +53,10 @@ $ ./picotool reboot
 
 These commands will be used by the wifi-module.
 The basic command structure uses a key_value_crc approch.
-See `wifi_interface.cpp` for bidirection reference implementation.
+See `./wordclock/src/wifi_interface.cpp` for bidirectional reference implementation.
 
 ```
-# <COMMAND>_<VLAUE>_<CRC (from command+value)>
+# <COMMAND>_<VLAUE>_<CRC16 (from command+value with poly=0x8408)>
 ```
 
 ### POSSIBLE COMMANDS
