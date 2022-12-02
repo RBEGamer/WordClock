@@ -1,8 +1,20 @@
 #include "wifi_interface.h"
 
-std::string wifi_interface::cmd_rx_buffer;
-bool wifi_interface::cmd_rx_complete;
-bool wifi_interface::cmd_rx_started;
+bool wifi_interface::register_rx_callback(const std::function<void(const std::string _payload)> _callback, const wifi_interface::CMD_INDEX _cmd)
+{
+  if (_cmd == wifi_interface::CMD_INDEX)
+  {
+    return false;
+  }
+  if (_callback != nullptr)
+  {
+    callback_setup = true;
+    RX_CMD_CALLBACK_LUT[CMD_LUT[(int)_cmd]] = _callback;
+  }
+
+  return true:
+}
+
 uint16_t wifi_interface::crc16(const std::string _data, const uint16_t _poly = 0x8408)
 {
   uint16_t crc = 0xFFFF;
@@ -36,10 +48,11 @@ void wifi_interface::enable_uart_irq(bool _irq_state)
   irq_set_enabled(UART_WIFI_IRQ, _irq_state);
   // Now enable the UART to send interrupts - RX only
   uart_set_irq_enables(UART_WIFI, _irq_state, false);
+  wifi_interface::prev_irq_state = _irq_state;
 }
 
-
-wifi_interface::rxcmd wifi_interface::manual_uart_rx(){
+wifi_interface::rxcmd wifi_interface::manual_uart_rx()
+{
   std::string tmp = "";
   bool complete = false;
   while (uart_is_readable_within_us(UART_WIFI, 100))
@@ -64,7 +77,8 @@ wifi_interface::rxcmd wifi_interface::manual_uart_rx(){
   return ret;
 }
 
-//TODO STARTCHAR
+// TODO STARTCHAR
+//  IRQ BLOCKING IS OK
 void wifi_interface::on_wifi_uart_rx()
 {
   while (uart_is_readable(UART_WIFI))
@@ -74,7 +88,18 @@ void wifi_interface::on_wifi_uart_rx()
     if (ch == '\n')
     {
       wifi_interface::cmd_rx_complete = true;
+
+      uart_set_irq_enables(UART_WIFI, _irq_state, false);
+      parse_cmd();
+      // RESTORE IRW
+      uart_set_irq_enables(UART_WIFI, wifi_interface::prev_irq_state, true);
+
       break;
+    }
+    else if (ch == CMD_START_CHARACTER && !cmd_cmd_started)
+    {
+      wifi_interface::cmd_rx_buffer = "";
+      cmd_cmd_started = true;
     }
     else
     {
@@ -83,12 +108,30 @@ void wifi_interface::on_wifi_uart_rx()
   }
 }
 
+wifi_interface::rxcmd wifi_interface::parse_cmd()
+{
+  wifi_interface::rxcmd res = parse_cmd(wifi_interface::cmd_rx_buffer, wifi_interface::cmd_rx_complete);
+  if (res.cmdok)
+  {
 
-wifi_interface::rxcmd wifi_interface::parse_cmd(){
-  wifi_interface::rxcmd res= parse_cmd(wifi_interface::cmd_rx_buffer, wifi_interface::cmd_rx_complete);
-  if(res.cmdok){
+    // IF SETUP CALL CALLBACKFKT
+    if (wifi_interface::callback_setup)
+    {
+
+      if (wifi_interface::RX_CALLBACK_FUNCTIONS.find(res.cmd) != wifi_interface::RX_CALLBACK_FUNCTIONS.end())
+      {
+        //CALL FUNCTION
+        wifi_interface::RX_CALLBACK_FUNCTIONS[res.cmd](res..payload);
+      }
+      else
+      {
+        printf("parsecmd callback %s not found", res.cmdok.c_str());
+      }
+    }
+    // GET READY FOR NEXT EVENT
     wifi_interface::cmd_rx_buffer = "";
     wifi_interface::cmd_rx_complete = false;
+    wifi_interface::cmd_cmd_started = false;
   }
   return res;
 }
@@ -98,18 +141,18 @@ wifi_interface::rxcmd wifi_interface::parse_cmd(const std::string _cmd_rx_buffer
   wifi_interface::rxcmd ret;
   ret.cmdok = false;
   const std::string raw = _cmd_rx_buffer + '_'; // workaround add _ for tokenize
-  if (_cmd_rx_complete && raw.length() > 2) //cmd has at least 2 chars
+  if (_cmd_rx_complete && raw.length() > 2)     // cmd has at least 2 chars
   {
- 
+
     const char *delim = "_";
     std::vector<std::string> out;
-    helper::tokenize(raw,  delim, out);
+    helper::tokenize(raw, delim, out);
     if (out.size() > 2)
     {
 
       const std::string cmd = out.at(0);
       const std::string payload = out.at(1);
-      const std::string crc= out.at(2);
+      const std::string crc = out.at(2);
 
       // CHECK CRC
       const uint16_t crc_rx = wifi_interface::crc16(cmd + payload);
@@ -124,7 +167,9 @@ wifi_interface::rxcmd wifi_interface::parse_cmd(const std::string _cmd_rx_buffer
       {
         printf("crc mismatch got_crc:-%s- exp_crc:-%i- for cmd:-%s- payload:-%s- orig:-%s-\n", crc.c_str(), crc_rx, cmd.c_str(), payload.c_str(), raw.c_str());
       }
-    }else{
+    }
+    else
+    {
       printf("elemtn mismatch for %s  got:%i exp:3 \n", raw.c_str(), out.size());
     }
   }
@@ -139,9 +184,16 @@ void wifi_interface::init_uart()
   uart_set_fifo_enabled(UART_WIFI, true);
 }
 
-void wifi_interface::send_cmd_str(const std::string _command, const std::string _payload)
+void wifi_interface::send_cmd_str(const wifi_interface::CMD_INDEX _cmd, const std::string _payload)
 {
-  const std::string tosend = _command + "_" + _payload + "_" + std::to_string(wifi_interface::crc16(_command + _payload)) + "\n";
+
+  if (_cmd == wifi_interface::CMD_INDEX::LENGHT)
+  {
+    return;
+  }
+
+  const std::string command = CMD_LUT[(int)_cmd];
+  const std::string tosend = CMD_START_CHARACTER + command + "_" + _payload + "_" + std::to_string(wifi_interface::crc16(command + _payload)) + "\n";
   printf("%s", tosend.c_str());
   uart_puts(UART_WIFI, tosend.c_str());
 }

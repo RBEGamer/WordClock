@@ -29,3 +29,14 @@ std::vector<bool> helper::bits_from_int(const int integer)    // discern which b
 
     return bool_bits;
 }
+
+
+int helper::limit(const int _value, const int _min, const int _max){
+  return std::max(_min, std::min(_max, _value));
+}
+
+int helper::limit(const std::string& _value, const int _min, const int _max){
+  return helper::limit(std::atoi(_value.c_str()), _min, _max);
+}
+
+

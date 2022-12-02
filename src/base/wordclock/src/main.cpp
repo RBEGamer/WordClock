@@ -205,6 +205,27 @@ void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip)
     }
 }
 
+
+
+
+void set_brightnesmode(const std::string _payload){
+    if(_payload.empty()){
+        current_brightness_mode = 0;
+    }
+    current_brightness_mode = helper::limit(_payload, 0, 255);
+}
+
+void set_faceplate(const std::string _payload){
+     const int faceplate_index = helper::limit(wmc.payload.c_str(), 0, (int)wordclock_faceplate::FACEPLATES::TEST);
+     switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
+}
+
+
+void set_displayorientation(const std::string  _payload){
+    wordclock_faceplate::config.flip_state = (bool) helper::limit(_payload, 0, 1);
+}
+
+
 int main()
 {
     stdio_init_all();
@@ -214,10 +235,11 @@ int main()
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
     wifi_interface::init_uart();
-    sleep_ms(2000); // WAIT FOR UART / USB A BIT
-    printf("START");
+    sleep_ms(2000); // WAIT FOR UART/USB A BIT
+
+
     rtc::init_rtc();
-    rtc::set_rtc_time(__TIME__);
+    //rtc::set_rtc_time(__TIME__);
     init_i2c();
     init_bh1750();
 
@@ -229,11 +251,19 @@ int main()
     sleep_ms(500);
 
     // switch to a better faceplate
-    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::BINARY);
+    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
 
     // enable uart rx irq for communication with wifi module
     // wifi_interface::enable_uart_irq(true);
+    wifi_interface::register_rx_callback(rtc::set_rtc_time, wifi_interface::CMD_INDEX::SET_TIME);
+    wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::SET_BRIGHTNES);
+    wifi_interface::register_rx_callback(set_faceplate, wifi_interface::CMD_INDEX::SET_FACEPLATE);
+    
+    
+    
+    // DISBALE YELLOW LED TO INDICATE SETUP COMPLETE
     gpio_put(PICO_DEFAULT_LED_PIN, false);
+    wifi_interface::send_log("setupcomplete");
     while (true)
     {
 
@@ -270,30 +300,18 @@ int main()
 
         // PARSE CMD FROM WIFIMOUDLE IF PRESENT
         wifi_interface::rxcmd wmc = wifi_interface::manual_uart_rx();
-        if (wmc.cmdok)
-        {
-            printf("got cmd %s %s \n", wmc.cmd.c_str(), wmc.payload.c_str());
-            if (wmc.cmd == "st")
-            {
-                rtc::set_rtc_time(wmc.payload);
-            }
-            else if (wmc.cmd == "sb")
-            {
-                current_brightness_mode = std::max(0, std::min(255, std::atoi(wmc.payload.c_str())));
-            }
-            else if (wmc.cmd == "ip")
-            {
-                display_ip(ledStrip, wmc.payload);
-            }
-            else if (wmc.cmd == "fp") // FACEPLATE
-            {
-                switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(std::max(0, std::min((int)wordclock_faceplate::FACEPLATES::TEST, std::atoi(wmc.payload.c_str())))));
-            }
-            else if (wmc.cmd == "fd") // FLIP DISPLAY
-            {
-                wordclock_faceplate::config.flip_state = (bool)std::max(0, std::min(1, std::atoi(wmc.payload.c_str())));
-            }
-        }
+
+
+        
+
+
+        //if (wmc.cmdok)
+        //{
+        //    if (wmc.cmd == "ip")
+        //    {
+        //        display_ip(ledStrip, wmc.payload);
+        //    }
+        //}
 
         sleep_ms(100);
     }
