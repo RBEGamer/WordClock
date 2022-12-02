@@ -31,6 +31,8 @@ You can place screws in the holes to align everything during curing.
 
 ### BACKCOVER
 
+![backcover](../../documentation/images/IMG_9905.jpg)
+
 * 1x - `3_backcover_with_mangets` - this is placed on the back of the pcb and has cutouts to place mangets and to access all connectors
 * 1x - `3_backcover_without_mangets`
 
