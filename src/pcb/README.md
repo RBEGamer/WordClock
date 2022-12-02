@@ -58,3 +58,8 @@ This resistor is missing on the PCB.
 * JP11 -> ESP_RX
 * JP6 -> GP16
 * (JP1) -> OE  
+
+
+## ISSUES
+
+* with the current v2 lasercut part the position of C121 is not ideal
