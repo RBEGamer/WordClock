@@ -10,6 +10,9 @@ Each layer object in the svg will be used to cut one piece for the clock.
 Some layers are needed multible times and will be glued together to form a higher single layer.
 
 ### FACEPLATE (PLEXIGLAS)
+
+![4_digit_complete_alt](../../documentation/images/IMG_9894.jpg)
+
 * 1x - `0_opaque_layer` - this is the semi-transparent toplayer plexiglas
 * 1x - `1_text_<LANGUAGE>` - this is the textlayer with the cut out characters
 
