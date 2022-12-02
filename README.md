@@ -32,6 +32,9 @@ The `drawing.svg` contatins every layer (as seperate object), so it can be seper
 * 1x - plexiglas - >220x220 >=3mm, solid color for faceplate (with words cut in)
 * 1x - plexiglas - opaque <30% transparent , >=3mm 
 
+
+*See `./src/lasercut` for cutting instructions*
+
 #### OPTIONAL
 * 8x neodym magnets - 10x3mm (if you want to make the faceplate removable/rotatable)
 
