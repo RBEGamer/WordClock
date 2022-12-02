@@ -27,7 +27,7 @@ Some layers are needed multible times and will be glued together to form a highe
 
 Glue two of the three sheets together and before adding the third one add one sheet of sandwich paper/ semi transparent diffusor between them.
 In the end this additional diffusor sit ontop of the leds with one lightguide seperating them.
-
+You can place screws in the holes to align everything during curing.
 
 ### BACKCOVER
 
