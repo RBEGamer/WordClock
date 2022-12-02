@@ -41,14 +41,26 @@ uint16_t wifi_interface::crc16(const std::string _data, const uint16_t _poly = 0
   return crc & 0xFFFF;
 }
 
+
+
+
 void wifi_interface::enable_uart_irq(bool _irq_state)
 {
+  #if defined(IS_PICO)
   // set up and enable the interrupt handlers
   irq_set_exclusive_handler(UART_WIFI_IRQ, wifi_interface::on_wifi_uart_rx);
   irq_set_enabled(UART_WIFI_IRQ, _irq_state);
   // Now enable the UART to send interrupts - RX only
   uart_set_irq_enables(UART_WIFI, _irq_state, false);
   wifi_interface::prev_irq_state = _irq_state;
+  #endif
+
+  #if defined(IS_ARDUINO)
+ 
+
+  wifi_interface::prev_irq_state = _irq_state;
+  #endif
+
 }
 
 wifi_interface::rxcmd wifi_interface::manual_uart_rx()
@@ -79,6 +91,7 @@ wifi_interface::rxcmd wifi_interface::manual_uart_rx()
 
 // TODO STARTCHAR
 //  IRQ BLOCKING IS OK
+#if defined(IS_PICO)
 void wifi_interface::on_wifi_uart_rx()
 {
   while (uart_is_readable(UART_WIFI))
@@ -91,7 +104,7 @@ void wifi_interface::on_wifi_uart_rx()
 
       uart_set_irq_enables(UART_WIFI, _irq_state, false);
       parse_cmd();
-      // RESTORE IRW
+      // RESTORE IRQ
       uart_set_irq_enables(UART_WIFI, wifi_interface::prev_irq_state, true);
 
       break;
@@ -107,6 +120,42 @@ void wifi_interface::on_wifi_uart_rx()
     }
   }
 }
+#endif
+
+
+#if defined(IS_ARDUINO)
+void wifi_interface::on_wifi_uart_rx()
+{
+  while (Serial.available() > 0)
+  {
+    uint8_t ch = Serial.read();
+    // READ UNTIL NEW LINE
+    if (ch == '\n')
+    {
+      wifi_interface::cmd_rx_complete = true;
+
+      cli(); 
+      parse_cmd();
+      // RESTORE IRQ
+      if(wifi_interface::prev_irq_state){
+        sei(); 
+      }
+
+      break;
+    }
+    else if (ch == CMD_START_CHARACTER && !cmd_cmd_started)
+    {
+      wifi_interface::cmd_rx_buffer = "";
+      cmd_cmd_started = true;
+    }
+    else
+    {
+      wifi_interface::cmd_rx_buffer += ch;
+    }
+  }
+}
+#endif
+
 
 wifi_interface::rxcmd wifi_interface::parse_cmd()
 {
@@ -178,10 +227,16 @@ wifi_interface::rxcmd wifi_interface::parse_cmd(const std::string _cmd_rx_buffer
 
 void wifi_interface::init_uart()
 {
+  #if defined(IS_PICO)
   uart_init(UART_WIFI, PICO_DEFAULT_UART_BAUDRATE);
   gpio_set_function(PICO_DEFAULT_UART_TX_PIN, GPIO_FUNC_UART);
   gpio_set_function(PICO_DEFAULT_UART_RX_PIN, GPIO_FUNC_UART);
   uart_set_fifo_enabled(UART_WIFI, true);
+  #endif
+
+  #if defined(IS_PICO)
+  Serial.begin(PICO_DEFAULT_UART_BAUDRATE);
+  #endif
 }
 
 void wifi_interface::send_cmd_str(const wifi_interface::CMD_INDEX _cmd, const std::string _payload)

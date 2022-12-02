@@ -1,17 +1,26 @@
 #ifndef __WIFI_INTERFACE_H__
 #define __WIFI_INTERFACE_H__
 
-#include <string>
+
 #include <vector>
 #include <cstring>
 #include <functional>
 #include <unordered_map>
 
+#include "helper.h"
+// ADD ARDUINO SUPPORT
+#if defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(ESP8266) || defined(ESP32)
+#define IS_ARDUINO
+#define std::string String
+#define printf() Serial.printf(x)
+#define PICO_DEFAULT_UART_BAUDRATE 9600
+#else
+#define IS_PICO
+#include <string>
 #include "pico/stdlib.h"
 #include "hardware/uart.h"
 #include "hardware/irq.h"
 
-#include "helper.h"
 #if defined(PICO_DEFAULT_UART0)
 #define UART_WIFI uart0
 #define UART_WIFI_IRQ UART0_IRQ
@@ -20,9 +29,24 @@
 #define UART_WIFI_IRQ UART1_IRQ
 #endif
 
+
+#endif
+
+
+
+
+
+
+
+
+
 //#define DISABLE_CRC false
 #define DISABLE_CRC true
 #define CMD_START_CHARACTER '%'
+
+
+
+
 class wifi_interface
 {
 public:
