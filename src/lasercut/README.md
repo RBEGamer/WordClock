@@ -6,6 +6,8 @@
 
 the V2 lasercutting files are loacated in the `./v2` folder.
 The main source files is the single `drawing.svg` file, which contains several numbered layer object in it.
+Objects in `[]` can be ignored, these are used for reference linke the `[PCBv2]` image of the PCB.
+
 Each layer object in the svg will be used to cut one piece for the clock.
 Some layers are needed multible times and will be glued together to form a higher single layer.
 
