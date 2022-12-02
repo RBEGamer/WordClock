@@ -41,6 +41,7 @@ The `drawing.svg` contatins every layer (as seperate object), so it can be seper
 
 ### OTHER
 
+* sandwich paper - as additional semi transparent diffusor ontop of the leds
 * woodglue - to glue spacers together
 * ACRIFIX Plexiglas glue - to glue faceplate and opaque frontplate together
 
