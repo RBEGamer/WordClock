@@ -11,7 +11,7 @@ Some layers are needed multible times and will be glued together to form a highe
 
 ### FACEPLATE (PLEXIGLAS)
 
-![4_digit_complete_alt](../../documentation/images/IMG_9894.jpg)
+![topcover](../../documentation/images/IMG_9894.jpg)
 
 * 1x - `0_opaque_layer` - this is the semi-transparent toplayer plexiglas
 * 1x - `1_text_<LANGUAGE>` - this is the textlayer with the cut out characters
@@ -19,6 +19,9 @@ Some layers are needed multible times and will be glued together to form a highe
  Clean (isopropanol), place and clamp! the `0_opaque_layer` and `1_text` layer ontop of each other and use the `ACRIFIX Plexiglas glue` to fill the minute dot holes with the glue and let it dry for at least 8h.
 
 ### LIGHTGUIDE (WOOD)
+
+![lightguide](../../documentation/images/IMG_9898_2.jpg)
+
 
 * 3x - `2_lightguide` - its use to get some space between the leds and the text faceplate
 
