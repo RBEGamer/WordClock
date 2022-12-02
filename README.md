@@ -1,6 +1,6 @@
 # Wordclock
 
-![4_digit_complete_alt](./documentation/images/IMG_9906.png)
+![complete](./documentation/images/IMG_9906.png)
 
 ## FEATURES
 
