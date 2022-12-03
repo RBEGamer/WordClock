@@ -216,7 +216,7 @@ void set_brightnesmode(const std::string _payload){
 }
 
 void set_faceplate(const std::string _payload){
-     const int faceplate_index = helper::limit(wmc.payload.c_str(), 0, (int)wordclock_faceplate::FACEPLATES::TEST);
+     const int faceplate_index = helper::limit(_payload.c_str(), 0, (int)wordclock_faceplate::FACEPLATES::TEST);
      switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
 }
 
@@ -225,6 +225,9 @@ void set_displayorientation(const std::string  _payload){
     wordclock_faceplate::config.flip_state = (bool) helper::limit(_payload, 0, 1);
 }
 
+void set_time(const std::string _payload){
+    rtc::set_rtc_time(_payload);
+}
 
 int main()
 {
@@ -255,7 +258,7 @@ int main()
 
     // enable uart rx irq for communication with wifi module
     // wifi_interface::enable_uart_irq(true);
-    wifi_interface::register_rx_callback(rtc::set_rtc_time, wifi_interface::CMD_INDEX::SET_TIME);
+    wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::SET_TIME);
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::SET_BRIGHTNES);
     wifi_interface::register_rx_callback(set_faceplate, wifi_interface::CMD_INDEX::SET_FACEPLATE);
     
@@ -294,7 +297,7 @@ int main()
         if (abs(current_brightness - last_brightness) > 1)
         {
             last_brightness = current_brightness;
-            wifi_interface::send_brightness(current_brightness);
+            wifi_interface::send_current_brightness(current_brightness);
             ledStrip.setBrightness(current_brightness);
         }
 
