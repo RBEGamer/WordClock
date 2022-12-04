@@ -273,7 +273,7 @@ uint16_t crc16(String _data, uint16_t _poly=0x8408)
 }
 
 void send_cmd_str(String _command, String _payload){
-    Serial.println("%"+_command + "_" + _payload + "_" + crc16(_command + _payload) + "\n");
+    Serial.println("%"+_command + "_" + _payload + "_" + crc16(_command + _payload));
 }
 
 
@@ -746,7 +746,7 @@ void setup(void)
     timeClient.forceUpdate();
 
         
-  Serial.println("");
+
 
 }
 
