@@ -659,7 +659,7 @@ void setup(void)
 
 
     Serial.begin(SERIAL_BAUD_RATE);
-    Serial.println("_setup_started_");
+    Serial.println("");
     // START THE FILESYSTEM
     int fsok = SPIFFS.begin();
 
