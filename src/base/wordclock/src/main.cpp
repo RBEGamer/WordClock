@@ -209,6 +209,7 @@ void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip)
 
 
 void set_brightnesmode(const std::string _payload){
+    printf("called set_brightnesmode");
     if(_payload.empty()){
         current_brightness_mode = 0;
     }
@@ -226,6 +227,7 @@ void set_displayorientation(const std::string  _payload){
 }
 
 void set_time(const std::string _payload){
+
     rtc::set_rtc_time(_payload);
 }
 
@@ -235,11 +237,14 @@ int main()
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
-    gpio_put(PICO_DEFAULT_LED_PIN, true);
-
+  //  gpio_put(PICO_DEFAULT_LED_PIN, true);
+    
+    
+    sleep_ms(3000); // WAIT FOR UART/USB A BIT
+   printf("1233");
     wifi_interface::init_uart();
-    sleep_ms(2000); // WAIT FOR UART/USB A BIT
 
+    
 
     rtc::init_rtc();
     //rtc::set_rtc_time(__TIME__);
@@ -254,10 +259,10 @@ int main()
     sleep_ms(500);
 
     // switch to a better faceplate
-    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::GERMAN);
+    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::BINARY);
 
     // enable uart rx irq for communication with wifi module
-    // wifi_interface::enable_uart_irq(true);
+     wifi_interface::enable_uart_irq(true);
     wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::SET_TIME);
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::SET_BRIGHTNES);
     wifi_interface::register_rx_callback(set_faceplate, wifi_interface::CMD_INDEX::SET_FACEPLATE);
@@ -302,7 +307,7 @@ int main()
         }
 
         // PARSE CMD FROM WIFIMOUDLE IF PRESENT
-        wifi_interface::rxcmd wmc = wifi_interface::manual_uart_rx();
+       // wifi_interface::rxcmd wmc = wifi_interface::manual_uart_rx();
 
 
         
