@@ -650,17 +650,7 @@ String IpAddress2String(const IPAddress& ipAddress)
 
 void display_ip(){
   const String ip = IpAddress2String(WiFi.localIP());
-      Serial.println("_ip_" + ip + "_");
-      for(int i =0; i < strlen(ip.c_str()); i++ ) {
-        
-        if(ip[i] == '.'){
-          //update_clock_display(0,0,0,128,64,false); //DISPLAY WIFI ERROR
-        }else{
-          //update_clock_display(ip[i]-'0',0,0,0,255,false); //DISPLAY WIFI ERROR
-         // Serial.println("_st_" + String(ip[i]-'0') + "_0_");
-        }
-        delay(1000);
-      }
+  send_cmd_str("ip", ip);
   }
 
   
@@ -697,7 +687,7 @@ void setup(void)
 
     // START WFIFIMANAGER FOR CAPTIVE PORTAL
     WiFiManager wifiManager;
-    wifiManager.setDebugOutput(true);
+    wifiManager.setDebugOutput(false);
     wifiManager.setTimeout(60);
     wifiManager.setConfigPortalTimeout(180);
    // wifiManager.setAPClientCheck(true);
@@ -756,7 +746,7 @@ void setup(void)
     timeClient.forceUpdate();
 
         
-  //Serial.println("_setup_complete_");
+  Serial.println("");
 
 }
 
