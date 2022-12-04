@@ -35,7 +35,12 @@ void rtc::init_rtc()
 {
 #ifdef USE_RP2040RTC
     rtc_init();
+    //IF WE USE THE INTERNAL RTC WE HAVE TO SET A TIME OTHERWISE THE CLOCK DOES NOT START
+    rtc::set_rtc_time(__TIME__);
 #endif
+
+
+
 }
 
 datetime_t rtc::read_rtc()

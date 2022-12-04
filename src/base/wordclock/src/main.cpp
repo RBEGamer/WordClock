@@ -24,7 +24,7 @@ int current_brightness_mode = 0; // 0=auto >0-255 = manual
 int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
-
+std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 wordclock_faceplate *faceplate = new wordclock_faceplate();
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
@@ -172,8 +172,7 @@ int get_average_brightness()
     }
     average = avg_sum / num_readings;
     // 0-420lux => 0-255 led brightness and limit range
-    const int r = std::max(5, std::min(255, helper::map((int)average, 0, 20, 5, 255)));
-    return r;
+    return helper::limit(helper::map((int)average, 0, 50, 5, 255), 5, 255);
 }
 
 void update_display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s)
@@ -191,6 +190,8 @@ void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip)
     helper::tokenize(_ip, delim, out);
     for (int i = 0; i < out.size(); i++)
     {
+        printf("display_ip %s", out.at(i).c_str());
+
         _leds.setBrightness(128);
         for (int j = 0; j < out.at(i).size(); j++)
         {
@@ -205,30 +206,38 @@ void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip)
     }
 }
 
-
-
-
-void set_brightnesmode(const std::string _payload){
+void set_brightnesmode(const std::string _payload)
+{
     printf("called set_brightnesmode");
-    if(_payload.empty()){
+    if (_payload.empty())
+    {
         current_brightness_mode = 0;
     }
     current_brightness_mode = helper::limit(_payload, 0, 255);
 }
 
-void set_faceplate(const std::string _payload){
-     const int faceplate_index = helper::limit(_payload.c_str(), 0, (int)wordclock_faceplate::FACEPLATES::TEST);
-     switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
+void set_faceplate(const std::string _payload)
+{
+    const int faceplate_index = helper::limit(_payload.c_str(), 0, (int)wordclock_faceplate::FACEPLATES::TEST);
+    switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
 }
 
-
-void set_displayorientation(const std::string  _payload){
-    wordclock_faceplate::config.flip_state = (bool) helper::limit(_payload, 0, 1);
+void set_displayorientation(const std::string _payload)
+{
+    wordclock_faceplate::config.flip_state = (bool)helper::limit(_payload, 0, 1);
 }
 
-void set_time(const std::string _payload){
-
+void set_time(const std::string _payload)
+{
     rtc::set_rtc_time(_payload);
+}
+
+void prepare_display_ip(const std::string _payload)
+{
+    if (_payload.size() > 0)
+    {
+        display_to_ip = _payload;
+    }
 }
 
 int main()
@@ -237,17 +246,14 @@ int main()
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
-  //  gpio_put(PICO_DEFAULT_LED_PIN, true);
-    
-    
-    sleep_ms(3000); // WAIT FOR UART/USB A BIT
-   printf("1233");
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
+
+    sleep_ms(3000); // WAIT A BIT FOR UART/USB
+
     wifi_interface::init_uart();
 
-    
-
     rtc::init_rtc();
-    //rtc::set_rtc_time(__TIME__);
+
     init_i2c();
     init_bh1750();
 
@@ -262,18 +268,21 @@ int main()
     switch_fp(faceplate, wordclock_faceplate::FACEPLATES::BINARY);
 
     // enable uart rx irq for communication with wifi module
-     wifi_interface::enable_uart_irq(true);
+    wifi_interface::enable_uart_irq(true);
     wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::SET_TIME);
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::SET_BRIGHTNES);
     wifi_interface::register_rx_callback(set_faceplate, wifi_interface::CMD_INDEX::SET_FACEPLATE);
-    
-    
-    
+    wifi_interface::register_rx_callback(prepare_display_ip, wifi_interface::CMD_INDEX::DISPLAY_IP);
     // DISBALE YELLOW LED TO INDICATE SETUP COMPLETE
     gpio_put(PICO_DEFAULT_LED_PIN, false);
     wifi_interface::send_log("setupcomplete");
     while (true)
     {
+        if (display_to_ip.size() > 0)
+        {
+            display_ip(ledStrip, display_to_ip);
+            display_to_ip = "";
+        }
 
         // UPDATE DISPLAY IF NEEDED
         datetime_t t = rtc::read_rtc();
@@ -305,21 +314,6 @@ int main()
             wifi_interface::send_current_brightness(current_brightness);
             ledStrip.setBrightness(current_brightness);
         }
-
-        // PARSE CMD FROM WIFIMOUDLE IF PRESENT
-       // wifi_interface::rxcmd wmc = wifi_interface::manual_uart_rx();
-
-
-        
-
-
-        //if (wmc.cmdok)
-        //{
-        //    if (wmc.cmd == "ip")
-        //    {
-        //        display_ip(ledStrip, wmc.payload);
-        //    }
-        //}
 
         sleep_ms(100);
     }
