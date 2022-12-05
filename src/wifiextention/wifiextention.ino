@@ -320,14 +320,14 @@ void set_brightness(bool _set_auto){
 
 void set_flip_display(bool _set_flip){
   if(_set_flip){
-    send_cmd_str("fd", "0");
+    send_cmd_str("sdo", "1");
   }else{
-    send_cmd_str("fd", "0");
+    send_cmd_str("sdo", "0");
   }
 }
 
 void set_fontface(int _fontface_id){
-    send_cmd_str("fd", String(abs(_fontface_id)));
+    send_cmd_str("sfp", String(abs(_fontface_id)));
 }
 
 

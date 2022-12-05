@@ -218,6 +218,7 @@ void set_brightnesmode(const std::string _payload)
 
 void set_faceplate(const std::string _payload)
 {
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
     const int faceplate_index = helper::limit(_payload.c_str(), 0, (int)wordclock_faceplate::FACEPLATES::TEST);
     switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
 }
@@ -278,7 +279,7 @@ int main()
     wifi_interface::send_log("setupcomplete");
     while (true)
     {
-
+        //PROCEESS ANY RECEIEVED COMMANDS 
         wifi_interface::process_cmd();
 
 

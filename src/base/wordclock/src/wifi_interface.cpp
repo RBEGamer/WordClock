@@ -80,12 +80,9 @@ void wifi_interface::process_cmd()
 {
   if (wifi_interface::rx_recieved_queue.size() > 0)
   {
-    gpio_put(PICO_DEFAULT_LED_PIN, true);
     const std::string front_cmd = wifi_interface::rx_recieved_queue.front();
     wifi_interface::rx_recieved_queue.pop();
     parse_cmd(front_cmd);
-
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
   }
 }
 
