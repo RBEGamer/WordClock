@@ -278,6 +278,10 @@ int main()
     wifi_interface::send_log("setupcomplete");
     while (true)
     {
+
+        wifi_interface::process_cmd();
+
+
         if (display_to_ip.size() > 0)
         {
             display_ip(ledStrip, display_to_ip);
