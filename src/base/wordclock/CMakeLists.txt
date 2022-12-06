@@ -56,7 +56,9 @@ add_executable(wordclock
         )
 
 pico_set_program_name(wordclock "wordclock")
-pico_set_program_version(wordclock "0.9")
+pico_set_program_version(wordclock "1.0")
+pico_set_program_url(wordclock "https://marcelochsendorf.com")
+pico_set_program_description(wordclock "software for a rp2040 base 10x11 wordclock")
 
 pico_enable_stdio_uart(wordclock 0)
 pico_enable_stdio_usb(wordclock 1)
@@ -68,6 +70,8 @@ target_link_libraries(wordclock
         hardware_i2c
         hardware_adc
 )
+
+
 
 
 # MOVED TO BOARD DEFINITIoN
