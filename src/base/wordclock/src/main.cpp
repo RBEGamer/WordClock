@@ -219,8 +219,10 @@ void set_brightnesmode(const std::string _payload)
 void set_faceplate(const std::string _payload)
 {
     gpio_put(PICO_DEFAULT_LED_PIN, true);
-    const int faceplate_index = helper::limit(_payload.c_str(), 0, (int)wordclock_faceplate::FACEPLATES::TEST);
-    switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
+    const int faceplate_index = helper::limit(_payload, 0, (int)wordclock_faceplate::FACEPLATES::TEST);
+    switch_fp(faceplate, (wordclock_faceplate::FACEPLATES)faceplate_index);//static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
+
 }
 
 void set_displayorientation(const std::string _payload)
@@ -260,7 +262,8 @@ int main()
 
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
-
+    // set initial brightness
+    ledStrip.setBrightness(get_average_brightness());
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
     sleep_ms(500);
