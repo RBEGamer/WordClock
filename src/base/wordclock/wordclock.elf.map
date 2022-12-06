@@ -2992,9 +2992,9 @@ Discarded input sections
                 0x0000000000000000       0x15 CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
  .rodata._ZTVN7PicoLed9ParticlesE
                 0x0000000000000000       0x18 CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
- .text          0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccw17SdA.o
- .data          0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccw17SdA.o
- .bss           0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccw17SdA.o
+ .text          0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccc4RYam.o
+ .data          0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccc4RYam.o
+ .bss           0x0000000000000000        0x0 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccc4RYam.o
  .text          0x0000000000000000        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
  .data          0x0000000000000000        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
  .bss           0x0000000000000000        0x0 /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
@@ -7794,7 +7794,7 @@ LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-non
 .boot2          0x0000000010000000      0x100
                 0x0000000010000000                __boot2_start__ = .
  *(.boot2)
- .boot2         0x0000000010000000      0x100 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccw17SdA.o
+ .boot2         0x0000000010000000      0x100 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccc4RYam.o
                 0x0000000010000100                __boot2_end__ = .
                 0x0000000000000001                ASSERT (((__boot2_end__ - __boot2_start__) == 0x100), ERROR: Pico second stage bootloader must be 256 bytes in size)
 
@@ -11498,7 +11498,7 @@ LOAD CMakeFiles/wordclock.dir/PicoLED/Effects/Stars.cpp.obj
 LOAD CMakeFiles/wordclock.dir/PicoLED/Effects/Comet.cpp.obj
 LOAD CMakeFiles/wordclock.dir/PicoLED/Effects/Bounce.cpp.obj
 LOAD CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
-LOAD /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccw17SdA.o
+LOAD /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccc4RYam.o
 LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a
 LOAD /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a
 START GROUP
@@ -11658,7 +11658,7 @@ LOAD linker stubs
  .ARM.attributes
                 0x0000000000000b7a       0x2c CMakeFiles/wordclock.dir/PicoLED/Effects/Particles.cpp.obj
  .ARM.attributes
-                0x0000000000000ba6       0x22 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccw17SdA.o
+                0x0000000000000ba6       0x22 /var/folders/d4/md38s76s2hq1thfsv9mvt52m0000gn/T//ccc4RYam.o
  .ARM.attributes
                 0x0000000000000bc8       0x2c /usr/local/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libstdc++.a(class_type_info.o)
  .ARM.attributes

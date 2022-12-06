@@ -220,7 +220,7 @@ void set_faceplate(const std::string _payload)
 {
     gpio_put(PICO_DEFAULT_LED_PIN, true);
     const int faceplate_index = helper::limit(_payload, 0, (int)wordclock_faceplate::FACEPLATES::TEST);
-    switch_fp(faceplate, (wordclock_faceplate::FACEPLATES)faceplate_index);//static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
+    switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 
 }
