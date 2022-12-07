@@ -10,20 +10,32 @@
 #include <Effects/Stars.hpp>
 
 #include "wifi_interface.h"
-
+#include "settings_storage.h"
 #include "helper.h"
 #include "rtc.h"
 #include "wordclock_faceplate_include.h"
 
+
+
+extern char __flash_binary_end;
 // STORES IF i2C devices were found
+//clock works if no of this additional device is present but with limited features
 int enable_bh1750_addr = -1;
 int enable_ds1307_addr = -1;
+int enable_m24c02_addr = -1;
 
 int current_brightness = 10;
 int current_brightness_mode = 0; // 0=auto >0-255 = manual
 int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
+
+//ROLLING AVERAGE
+const int num_readings = 30;
+int readings[num_readings];
+int reading_index = 0;
+long avg_sum = 0;
+
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 wordclock_faceplate *faceplate = new wordclock_faceplate();
 
@@ -96,7 +108,10 @@ void init_i2c()
         else if (ret >= 0 && addr == DS1307_I2C_ADDR)
         {
             enable_ds1307_addr = addr;
-        }
+        }else if (ret >= 0 && addr == M24C02_I2C_ADDR)
+        {
+            enable_m24c02_addr = addr;
+        }        
     }
 }
 
@@ -118,6 +133,17 @@ void init_bh1750()
     i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
     buf[0] = 0x13;
     i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
+}
+
+void init_m24c02(){
+     if (enable_m24c02_addr < 0)
+    {
+        printf("init_m24c02 failed");
+        return;
+    }
+    uint8_t buf[1];
+    buf[0] = 0x00;
+    i2c_write_blocking(i2c_default, enable_m24c02_addr, buf, 1, true);
 }
 
 int get_brightness()
@@ -144,10 +170,6 @@ int get_brightness()
     return lux;
 }
 
-const int num_readings = 30;
-int readings[num_readings];
-int reading_index = 0;
-long avg_sum = 0;
 
 int get_average_brightness()
 {
@@ -214,6 +236,7 @@ void set_brightnesmode(const std::string _payload)
         current_brightness_mode = 0;
     }
     current_brightness_mode = helper::limit(_payload, 0, 255);
+    settings_storage::write(settings_storage::SETTING_ENTRY::SET_BRIGHTNES, current_brightness);
 }
 
 void set_faceplate(const std::string _payload)
@@ -259,11 +282,18 @@ int main()
 
     init_i2c();
     init_bh1750();
+    init_m24c02();
 
+   
+
+    settings_storage::init();
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
     // set initial brightness
     ledStrip.setBrightness(get_average_brightness());
+
+    current_brightness_mode = settings_storage::read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
+    
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
     sleep_ms(500);

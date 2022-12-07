@@ -33,6 +33,8 @@ include(${CMAKE_CURRENT_LIST_DIR}/PicoLED/PicoLed.cmake)
 
 
 add_executable(wordclock 
+        src/settings_storage.h
+        src/settings_storage.cpp
         src/programinfo.h
         src/wordclock_faceplate_include.h
         src/wordclock_faceplate_german.cpp
@@ -69,15 +71,11 @@ target_link_libraries(wordclock
         hardware_rtc
         hardware_i2c
         hardware_adc
+        hardware_flash
+        hardware_sync
 )
 
 
-
-
-# MOVED TO BOARD DEFINITIoN
-# https://forums.raspberrypi.com/viewtopic.php?t=313306
-#target_compile_definitions(wordclock PRIVATE PICO_FLASH_SPI_CLKDIV=4)
-#target_compile_definitions(wordclock PRIVATE PICO_XOSC_STARTUP_DELAY_MULTIPLIER=64)
 
 # Add the standard library to the build
 target_link_libraries(wordclock pico_stdlib PicoLed)

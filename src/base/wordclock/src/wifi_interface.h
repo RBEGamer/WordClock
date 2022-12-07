@@ -22,7 +22,7 @@
 #define UART_WIFI_IRQ UART1_IRQ
 #endif
 
-// #define DISABLE_CRC false
+
 #define DISABLE_CRC true
 #define CMD_START_CHARACTER '%'
 
@@ -31,7 +31,7 @@ class wifi_interface
 public:
     enum class CMD_INDEX
     {
-        INVALID,
+        INVALID, //DONT DELETE
         CURRENT_TIME,
         CURRENT_BRIGHTNES,
         LOG,

@@ -103,7 +103,9 @@ wifi_interface::rxcmd wifi_interface::parse_cmd(const std::string _rx_buffer)
       if (wifi_interface::RX_CALLBACK_FUNCTIONS.find(cmd_str) != wifi_interface::RX_CALLBACK_FUNCTIONS.end())
       {
         // FINALLY CALL FUNCTION
+        gpio_put(PICO_DEFAULT_LED_PIN, true);
         wifi_interface::RX_CALLBACK_FUNCTIONS[cmd_str](res.payload);
+        gpio_put(PICO_DEFAULT_LED_PIN, false);
       }
       else
       {
