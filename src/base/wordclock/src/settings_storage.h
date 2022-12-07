@@ -53,9 +53,10 @@ public:
     static inline const uint32_t FLASH_SECTOR_COUNT = FLASH_SECTOR_SIZE * REQUIRED_SECTORS;
 
 
-    static inline const uint32_t FLASH_TARGET_OFFSET =(PICO_FLASH_SIZE_BYTES - 4 - FLASH_SECTOR_COUNT);
+    static inline const uint32_t FLASH_TARGET_OFFSET = (1792*1024); //(PICO_FLASH_SIZE_BYTES - FLASH_DATA_COUNT); // (1792*1024) % 256 = 0
     static inline uint8_t storage_data[FLASH_DATA_COUNT]; // (FLASH_PAGE_SIZE)256 ALIGNMENT
     
+
 
     
     static void init();

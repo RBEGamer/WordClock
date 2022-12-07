@@ -7,14 +7,15 @@
 
 void settings_storage::init(){
 
-
+    return;
+    
     if(settings_storage::read(settings_storage::SETTING_ENTRY::INVALID) != FLASH_CHECK_VALUE_START || settings_storage::read(settings_storage::SETTING_ENTRY::LENGHT) != FLASH_CHECK_VALUE_END){
       
        printf("settings_storage erase data due checksum mismatch");
 
 
         uint32_t interrupts = save_and_disable_interrupts();
-        flash_range_erase(FLASH_TARGET_OFFSET, FLASH_SECTOR_COUNT);
+        flash_range_erase(FLASH_TARGET_OFFSET, FLASH_DATA_COUNT);//FLASH_SECTOR_COUNT);
         restore_interrupts(interrupts);
 
         //ERASE CONTENT

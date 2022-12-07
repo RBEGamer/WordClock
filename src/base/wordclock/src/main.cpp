@@ -239,18 +239,22 @@ void set_brightnesmode(const std::string _payload)
     settings_storage::write(settings_storage::SETTING_ENTRY::SET_BRIGHTNES, current_brightness);
 }
 
-void set_faceplate(const std::string _payload)
-{
-    gpio_put(PICO_DEFAULT_LED_PIN, true);
-    const int faceplate_index = helper::limit(_payload, 0, (int)wordclock_faceplate::FACEPLATES::TEST);
+int set_faceplate(const int _fp){
+    const int faceplate_index = helper::limit(_fp, 0, (int)wordclock_faceplate::FACEPLATES::TEST);
     switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
+    return faceplate_index;
+}
 
+void set_faceplate_str(const std::string _payload)
+{
+   const int actual_fb =  set_faceplate(helper::limit(_payload, 0, (int)wordclock_faceplate::FACEPLATES::TEST));
+   settings_storage::write(settings_storage::SETTING_ENTRY::SET_FACEPLATE, actual_fb);
 }
 
 void set_displayorientation(const std::string _payload)
 {
     wordclock_faceplate::config.flip_state = (bool)helper::limit(_payload, 0, 1);
+    settings_storage::write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
 }
 
 void set_time(const std::string _payload)
@@ -266,6 +270,13 @@ void prepare_display_ip(const std::string _payload)
     }
 }
 
+
+void restore_settings(){
+    current_brightness_mode = settings_storage::read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
+    set_faceplate(settings_storage::read(settings_storage::SETTING_ENTRY::SET_FACEPLATE));
+    wordclock_faceplate::config.flip_state = (bool)helper::limit(settings_storage::read(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION), 0, 1);
+}
+
 int main()
 {
     stdio_init_all();
@@ -274,7 +285,7 @@ int main()
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
-    sleep_ms(3000); // WAIT A BIT FOR UART/USB
+    sleep_ms(1000); // WAIT A BIT FOR UART/USB
 
     wifi_interface::init_uart();
 
@@ -286,26 +297,27 @@ int main()
 
    
 
-    settings_storage::init();
+    
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
     // set initial brightness
     ledStrip.setBrightness(get_average_brightness());
 
-    current_brightness_mode = settings_storage::read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
-    
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
     sleep_ms(500);
 
-    // switch to a better faceplate
-    switch_fp(faceplate, wordclock_faceplate::FACEPLATES::BINARY);
+    //RESTORE ALL SETTTINGS SUCH AS FACEPLATE, ORIENTATION
+    settings_storage::init();
+    restore_settings();
+
+
 
     // enable uart rx irq for communication with wifi module
     wifi_interface::enable_uart_irq(true);
     wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::SET_TIME);
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::SET_BRIGHTNES);
-    wifi_interface::register_rx_callback(set_faceplate, wifi_interface::CMD_INDEX::SET_FACEPLATE);
+    wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::SET_FACEPLATE);
     wifi_interface::register_rx_callback(prepare_display_ip, wifi_interface::CMD_INDEX::DISPLAY_IP);
     // DISBALE YELLOW LED TO INDICATE SETUP COMPLETE
     gpio_put(PICO_DEFAULT_LED_PIN, false);
