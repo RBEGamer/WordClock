@@ -251,7 +251,13 @@ void set_faceplate_str(const std::string _payload)
    settings_storage::write(settings_storage::SETTING_ENTRY::SET_FACEPLATE, actual_fb);
 }
 
-void set_displayorientation(const std::string _payload)
+void set_displayorientation_str(const std::string _payload)
+{
+    wordclock_faceplate::config.flip_state = (bool)helper::limit(_payload, 0, 1);
+    settings_storage::write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
+}
+
+void set_displayorientation(const int _payload)
 {
     wordclock_faceplate::config.flip_state = (bool)helper::limit(_payload, 0, 1);
     settings_storage::write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
@@ -304,13 +310,16 @@ int main()
     ledStrip.setBrightness(get_average_brightness());
 
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
+    set_displayorientation((int)WORDCLOCK_DISPlAY_ORIENTATION);
     faceplate->display_testpattern(ledStrip);
     sleep_ms(500);
-
+    set_faceplate(WORDCLOCK_LANGUAGE);
+    
     //RESTORE ALL SETTTINGS SUCH AS FACEPLATE, ORIENTATION
     settings_storage::init();
     restore_settings();
 
+   
 
 
     // enable uart rx irq for communication with wifi module
@@ -319,6 +328,8 @@ int main()
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::SET_BRIGHTNES);
     wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::SET_FACEPLATE);
     wifi_interface::register_rx_callback(prepare_display_ip, wifi_interface::CMD_INDEX::DISPLAY_IP);
+    wifi_interface::register_rx_callback(set_displayorientation_str, wifi_interface::CMD_INDEX::SET_DISPLAYORIENTATION);
+
     // DISBALE YELLOW LED TO INDICATE SETUP COMPLETE
     gpio_put(PICO_DEFAULT_LED_PIN, false);
     wifi_interface::send_log("setupcomplete");

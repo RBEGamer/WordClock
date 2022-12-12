@@ -107,7 +107,7 @@ void wordclock_faceplate::set_leds(PicoLed::PicoLedController &_leds, const std:
         else
         {
             // FLIP PIXEL IF NEEDED
-            const std::tuple<int, int> final = led_pos; //flip_xy(led_pos, wordclock_faceplate::config.flip_state);
+            const std::tuple<int, int> final = flip_xy(led_pos, wordclock_faceplate::config.flip_state);
             _leds.setPixelColor(xy_to_led_index(final) + LED_MATRIX_START_OFFSET, get_word_color_by_class(_basecolor, _current_seconds));
         }
     }

@@ -88,7 +88,7 @@
 
 String time_last = "not synced";
 long last = 0;
-
+long last_ee = 0;
 #if defined(ESP8266)
 const String BOARD_INFO = "WORDCLOCKWIFIMODULE_FW_" + String(VERSION) + "_BOARD_" + "ESP8266";
 #elif defined(ESP32)
@@ -381,6 +381,7 @@ void write_deffault_to_eeprom(){
   brightness = DEFAULT_BEIGHTNESS;
   dalight_saving_enabled = DEFAULT_DLS;          
   save_values_to_eeprom();
+  restore_eeprom_values();
 }
 
 
@@ -511,7 +512,12 @@ void handleSave()
 
 
 
+void send_eeprom_to_clock(){
+  restore_eeprom_values();
+  set_brightness(brightness);
+  delay(100);
 
+}
 
 
 void handleRoot()
@@ -746,7 +752,7 @@ void setup(void)
     timeClient.forceUpdate();
 
         
-
+    send_eeprom_to_clock();
 
 }
 
@@ -761,7 +767,11 @@ void loop(void)
     //HANDLE SERVER
     server.handleClient();
 
-    
+
+    if ((millis() - last_ee) > (1000*NTP_SEND_TIME_INTERVAL*3)) {
+      last_ee = millis();
+      send_eeprom_to_clock();
+    }
 
  
     //UPDATE NTP NTP

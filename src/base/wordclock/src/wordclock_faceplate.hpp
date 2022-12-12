@@ -48,7 +48,7 @@ public:
 
     FACEPLATE_CONFIG()
     {
-      flip_state = false;
+      flip_state = WORDCLOCK_DISPlAY_ORIENTATION;
       current_faceplate = FACEPLATES::TEST;
     }
   };
