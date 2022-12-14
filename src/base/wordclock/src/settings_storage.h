@@ -58,7 +58,7 @@ public:
     
 
 
-    
+    static void restore_default();
     static void init();
     static uint8_t read(SETTING_ENTRY _entry);
     static bool write(SETTING_ENTRY _entry, uint8_t _value);
