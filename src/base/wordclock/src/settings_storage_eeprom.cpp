@@ -53,7 +53,8 @@ bool settings_storage_eeprom::write(settings_storage::SETTING_ENTRY _entry, uint
     settings_storage::storage_data[(uint8_t)_entry] = _value;
     // WRITE
     const uint8_t buf_tx[2] = {(uint8_t)(EEPROM_DATA_START_OFFSET + (uint8_t)_entry), _value};
-    i2c_write_blocking(i2c_default, eeprom_i2c_addr, buf_tx, 2, true);
-
+    if(i2c_write_blocking(i2c_default, eeprom_i2c_addr, buf_tx, 2, true) == PICO_ERROR_GENERIC){
+        return false;
+    }
     return true;
 }

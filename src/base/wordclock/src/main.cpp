@@ -150,7 +150,7 @@ void init_m24c02()
         return;
     }
 
-#ifndef USE_EEPROM_IF_EEPROM_IS_PRESENT
+#ifdef USE_EEPROM_IF_EEPROM_IS_PRESENT
     if (settings)
     {
         delete settings;
