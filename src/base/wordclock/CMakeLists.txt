@@ -16,7 +16,12 @@ set(PICO_BOARD_HEADER_DIRS ${CMAKE_CURRENT_LIST_DIR}/board)
 #set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_LIST_DIR}/build)
 
 
-set(PICO_BOARD "WORDCLOCK_V1_RP2040")
+#set(PICO_BOARD "WORDCLOCK_V1_RP2040")
+set(PICO_BOARD "WORDCLOCK_V1_RP2040_GERMAN_ROTATED")
+#set(PICO_BOARD "WORDCLOCK_V2_RP2040")
+
+
+
 # Pull in Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
@@ -33,8 +38,12 @@ include(${CMAKE_CURRENT_LIST_DIR}/PicoLED/PicoLed.cmake)
 
 
 add_executable(wordclock 
-        src/settings_storage.h
+        src/settings_storage.hpp
         src/settings_storage.cpp
+        src/settings_storage_flash.hpp
+        src/settings_storage_flash.cpp
+        src/settings_storage_eeprom.hpp
+        src/settings_storage_eeprom.cpp
         src/programinfo.h
         src/wordclock_faceplate_include.h
         src/wordclock_faceplate_german.cpp

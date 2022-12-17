@@ -10,16 +10,15 @@
 #include <Effects/Stars.hpp>
 
 #include "wifi_interface.h"
-#include "settings_storage.h"
+#include "settings_storage.hpp"
+#include "settings_storage_flash.hpp"
+#include "settings_storage_eeprom.hpp"
 #include "helper.h"
 #include "rtc.h"
 #include "wordclock_faceplate_include.h"
 
-
-
-extern char __flash_binary_end;
 // STORES IF i2C devices were found
-//clock works if no of this additional device is present but with limited features
+// clock works if no of this additional device is present but with limited features
 int enable_bh1750_addr = -1;
 int enable_ds1307_addr = -1;
 int enable_m24c02_addr = -1;
@@ -30,7 +29,7 @@ int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
 
-//ROLLING AVERAGE
+// ROLLING AVERAGE
 const int num_readings = 30;
 int readings[num_readings];
 int reading_index = 0;
@@ -38,6 +37,13 @@ long avg_sum = 0;
 
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 wordclock_faceplate *faceplate = new wordclock_faceplate();
+
+// settings_storage *settings = nullptr;
+#if defined(USE_FLASH_AS_EEPROM)
+settings_storage *settings = new settings_storage_flash();
+#else
+settings_storage *settings = new settings_storage();
+#endif
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
 {
@@ -108,10 +114,11 @@ void init_i2c()
         else if (ret >= 0 && addr == DS1307_I2C_ADDR)
         {
             enable_ds1307_addr = addr;
-        }else if (ret >= 0 && addr == M24C02_I2C_ADDR)
+        }
+        else if (ret >= 0 && addr == M24C02_I2C_ADDR)
         {
             enable_m24c02_addr = addr;
-        }        
+        }
     }
 }
 
@@ -135,15 +142,21 @@ void init_bh1750()
     i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
 }
 
-void init_m24c02(){
-     if (enable_m24c02_addr < 0)
+void init_m24c02()
+{
+    if (enable_m24c02_addr < 0)
     {
         printf("init_m24c02 failed");
         return;
     }
-    uint8_t buf[1];
-    buf[0] = 0x00;
-    i2c_write_blocking(i2c_default, enable_m24c02_addr, buf, 1, true);
+
+#ifndef USE_EEPROM_IF_EEPROM_IS_PRESENT
+    if (settings)
+    {
+        delete settings;
+    }
+    settings = new settings_storage_eeprom(enable_m24c02_addr);
+#endif
 }
 
 int get_brightness()
@@ -169,7 +182,6 @@ int get_brightness()
     const int lux = ((upper_byte << 8) + lower_byte) / (1.2 * 2); // custom 1.5 factor added
     return lux;
 }
-
 
 int get_average_brightness()
 {
@@ -236,10 +248,11 @@ void set_brightnesmode(const std::string _payload)
         current_brightness_mode = 0;
     }
     current_brightness_mode = helper::limit(_payload, 0, 255);
-    settings_storage::write(settings_storage::SETTING_ENTRY::SET_BRIGHTNES, current_brightness);
+    settings->write(settings_storage::SETTING_ENTRY::SET_BRIGHTNES, current_brightness);
 }
 
-int set_faceplate(const int _fp){
+int set_faceplate(const int _fp)
+{
     const int faceplate_index = helper::limit(_fp, 0, (int)wordclock_faceplate::FACEPLATES::TEST);
     switch_fp(faceplate, static_cast<wordclock_faceplate::FACEPLATES>(faceplate_index));
     return faceplate_index;
@@ -247,20 +260,20 @@ int set_faceplate(const int _fp){
 
 void set_faceplate_str(const std::string _payload)
 {
-   const int actual_fb =  set_faceplate(helper::limit(_payload, 0, (int)wordclock_faceplate::FACEPLATES::TEST));
-   settings_storage::write(settings_storage::SETTING_ENTRY::SET_FACEPLATE, actual_fb);
+    const int actual_fb = set_faceplate(helper::limit(_payload, 0, (int)wordclock_faceplate::FACEPLATES::TEST));
+    settings->write(settings_storage::SETTING_ENTRY::SET_FACEPLATE, actual_fb);
 }
 
 void set_displayorientation_str(const std::string _payload)
 {
     wordclock_faceplate::config.flip_state = (bool)helper::limit(_payload, 0, 1);
-    settings_storage::write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
+    settings->write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
 }
 
 void set_displayorientation(const int _payload)
 {
     wordclock_faceplate::config.flip_state = (bool)helper::limit(_payload, 0, 1);
-    settings_storage::write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
+    settings->write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
 }
 
 void set_time(const std::string _payload)
@@ -276,11 +289,11 @@ void prepare_display_ip(const std::string _payload)
     }
 }
 
-
-void restore_settings(){
-    current_brightness_mode = settings_storage::read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
-    set_faceplate(settings_storage::read(settings_storage::SETTING_ENTRY::SET_FACEPLATE));
-    wordclock_faceplate::config.flip_state = (bool)helper::limit(settings_storage::read(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION), 0, 1);
+void restore_settings()
+{
+    current_brightness_mode = settings->read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
+    set_faceplate(settings->read(settings_storage::SETTING_ENTRY::SET_FACEPLATE));
+    wordclock_faceplate::config.flip_state = (bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION), 0, 1);
 }
 
 int main()
@@ -289,21 +302,16 @@ int main()
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
-    gpio_put(PICO_DEFAULT_LED_PIN, true);
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
 
     sleep_ms(1000); // WAIT A BIT FOR UART/USB
-
-    wifi_interface::init_uart();
-
-    rtc::init_rtc();
 
     init_i2c();
     init_bh1750();
     init_m24c02();
 
-   
-
-    
+    wifi_interface::init_uart();
+    rtc::init_rtc();
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
     // set initial brightness
@@ -314,13 +322,10 @@ int main()
     faceplate->display_testpattern(ledStrip);
     sleep_ms(500);
     set_faceplate(WORDCLOCK_LANGUAGE);
-    
-    //RESTORE ALL SETTTINGS SUCH AS FACEPLATE, ORIENTATION
-    settings_storage::init();
+
+    // RESTORE ALL SETTTINGS SUCH AS FACEPLATE, ORIENTATION
+    settings->init();
     restore_settings();
-
-   
-
 
     // enable uart rx irq for communication with wifi module
     wifi_interface::enable_uart_irq(true);
@@ -331,13 +336,12 @@ int main()
     wifi_interface::register_rx_callback(set_displayorientation_str, wifi_interface::CMD_INDEX::SET_DISPLAYORIENTATION);
 
     // DISBALE YELLOW LED TO INDICATE SETUP COMPLETE
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
+    // gpio_put(PICO_DEFAULT_LED_PIN, false);
     wifi_interface::send_log("setupcomplete");
     while (true)
     {
-        //PROCEESS ANY RECEIEVED COMMANDS 
+        // PROCEESS ANY RECEIEVED COMMANDS
         wifi_interface::process_cmd();
-
 
         if (display_to_ip.size() > 0)
         {
