@@ -20,7 +20,7 @@
 // STORES IF i2C devices were found
 // clock works if no of this additional device is present but with limited features
 int enable_bh1750_addr = -1;
-int enable_ds1307_addr = -1;
+int enable_pcf85263_addr = -1;
 int enable_m24c02_addr = -1;
 
 int current_brightness = 10;
@@ -111,9 +111,10 @@ void init_i2c()
         {
             enable_bh1750_addr = addr;
         }
-        else if (ret >= 0 && addr == DS1307_I2C_ADDR)
+        else if (ret >= 0 && addr == PCF85263_I2C_ADDR)
         {
-            enable_ds1307_addr = addr;
+    
+            enable_pcf85263_addr = addr;
         }
         else if (ret >= 0 && addr == M24C02_I2C_ADDR)
         {
@@ -248,7 +249,7 @@ void set_brightnesmode(const std::string _payload)
         current_brightness_mode = 0;
     }
     current_brightness_mode = helper::limit(_payload, 0, 255);
-    settings->write(settings_storage::SETTING_ENTRY::SET_BRIGHTNES, current_brightness);
+    settings->write(settings_storage::SETTING_ENTRY::SET_BRIGHTNES, current_brightness_mode);
 }
 
 int set_faceplate(const int _fp)

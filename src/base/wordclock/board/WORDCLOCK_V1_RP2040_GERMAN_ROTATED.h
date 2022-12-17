@@ -29,7 +29,7 @@
 // I2C DEVICE ADDRESSES
 #define BH1750_I2C_ADDR 0x23
 #define BH1750_I2C_ADDR_ALT 0x5C
-#define DS1307_I2C_ADDR 0x68
+#define PCF85263_I2C_ADDR 0x51
 #define M24C02_I2C_ADDR 0x50
 
 // On some samples, the xosc can take longer to stabilize than is usual

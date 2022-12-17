@@ -7,7 +7,6 @@
 #include "hardware/i2c.h"
 #include "pico/stdlib.h"
 
-
 #include "settings_storage.hpp"
 
 class settings_storage_eeprom: public settings_storage{
