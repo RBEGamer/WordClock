@@ -103,9 +103,7 @@ wifi_interface::rxcmd wifi_interface::parse_cmd(const std::string _rx_buffer)
       if (wifi_interface::RX_CALLBACK_FUNCTIONS.find(cmd_str) != wifi_interface::RX_CALLBACK_FUNCTIONS.end())
       {
         // FINALLY CALL FUNCTION
-        gpio_put(PICO_DEFAULT_LED_PIN, true);
         wifi_interface::RX_CALLBACK_FUNCTIONS[cmd_str](res.payload);
-        gpio_put(PICO_DEFAULT_LED_PIN, false);
       }
       else
       {
@@ -166,7 +164,6 @@ wifi_interface::rxcmd wifi_interface::check_extract_cmd(const std::string _cmd_r
 
 void wifi_interface::init_uart()
 {
-  gpio_put(PICO_DEFAULT_LED_PIN, true);
   uart_init(UART_WIFI, PICO_DEFAULT_UART_BAUDRATE);
   gpio_set_function(PICO_DEFAULT_UART_TX_PIN, GPIO_FUNC_UART);
   gpio_set_function(PICO_DEFAULT_UART_RX_PIN, GPIO_FUNC_UART);

@@ -149,7 +149,7 @@ void init_m24c02()
         printf("init_m24c02 failed");
         return;
     }
-
+ 
 #ifdef USE_EEPROM_IF_EEPROM_IS_PRESENT
     if (settings)
     {
@@ -305,7 +305,6 @@ int main()
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 
     sleep_ms(1000); // WAIT A BIT FOR UART/USB
-
     init_i2c();
     init_bh1750();
     init_m24c02();
@@ -318,14 +317,17 @@ int main()
     ledStrip.setBrightness(get_average_brightness());
 
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
-    set_displayorientation((int)WORDCLOCK_DISPlAY_ORIENTATION);
     faceplate->display_testpattern(ledStrip);
     sleep_ms(500);
-    set_faceplate(WORDCLOCK_LANGUAGE);
 
+
+    set_faceplate(settings->read(settings_storage::SETTING_ENTRY::SET_FACEPLATE));
+    current_brightness_mode = settings->read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
+    set_displayorientation(settings->read(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION));
     // RESTORE ALL SETTTINGS SUCH AS FACEPLATE, ORIENTATION
-    settings->init();
-    restore_settings();
+    
+
+    
 
     // enable uart rx irq for communication with wifi module
     wifi_interface::enable_uart_irq(true);
@@ -336,7 +338,6 @@ int main()
     wifi_interface::register_rx_callback(set_displayorientation_str, wifi_interface::CMD_INDEX::SET_DISPLAYORIENTATION);
 
     // DISBALE YELLOW LED TO INDICATE SETUP COMPLETE
-    // gpio_put(PICO_DEFAULT_LED_PIN, false);
     wifi_interface::send_log("setupcomplete");
     while (true)
     {

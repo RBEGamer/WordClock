@@ -1,6 +1,7 @@
 #include "settings_storage.hpp"
 
 settings_storage::settings_storage(){
+    
 }
 
 settings_storage::~settings_storage(){

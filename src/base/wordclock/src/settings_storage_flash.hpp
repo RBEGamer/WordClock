@@ -33,6 +33,7 @@ public:
 
     void restore_default();
     void init();
+    void format_flash();
     uint8_t read(SETTING_ENTRY _entry);
     bool write(SETTING_ENTRY _entry, uint8_t _value);
 
