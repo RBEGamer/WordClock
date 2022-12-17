@@ -8,7 +8,7 @@
 #include "hardware/rtc.h"
 #endif
 
-#include "helper.h"
+#include "../helper.h"
 class rtc
 {
 public:

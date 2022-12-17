@@ -5,7 +5,7 @@
 #include <vector>
 #include <tuple>
 #include "wordclock_faceplate_constants.h"
-#include "wifi_interface.h"
+#include "../wifi_interface.h"
 
 
 

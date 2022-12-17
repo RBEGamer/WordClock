@@ -11,7 +11,7 @@
 
 
 #ifdef USE_WIFIINTERFACE_SETTINGS
-#include "wifi_interface.h"
+#include "../wifi_interface.h"
 //#define SETTING_ENTRY wifi_interface::CMD_INDEX SETTINGS_ENTRY
 #endif
 

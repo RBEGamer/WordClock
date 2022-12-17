@@ -10,12 +10,12 @@
 #include <Effects/Stars.hpp>
 
 #include "wifi_interface.h"
-#include "settings_storage.hpp"
-#include "settings_storage_flash.hpp"
-#include "settings_storage_eeprom.hpp"
+#include "settings_storage/settings_storage.hpp"
+#include "settings_storage/settings_storage_flash.hpp"
+#include "settings_storage/settings_storage_eeprom.hpp"
 #include "helper.h"
-#include "rtc.h"
-#include "wordclock_faceplate_include.h"
+#include "rtc/rtc.h"
+#include "wordclock_faceplate/wordclock_faceplate_include.h"
 
 // STORES IF i2C devices were found
 // clock works if no of this additional device is present but with limited features

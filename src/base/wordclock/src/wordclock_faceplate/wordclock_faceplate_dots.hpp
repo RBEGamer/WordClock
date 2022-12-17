@@ -5,7 +5,7 @@
 #include <vector>
 #include <tuple>
 
-#include "helper.h"
+#include "../helper.h"
 #include "wordclock_faceplate.hpp"
 
 class wordclock_faceplate_dots : public wordclock_faceplate
