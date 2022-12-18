@@ -56,8 +56,18 @@ This resistor is missing on the PCB.
 
 * JP10 -> ESP_TX
 * JP11 -> ESP_RX
-* JP6 -> GP16
-* (JP1) -> OE  
+* JP7 -> GP16
+* (JP1) -> TBX01-OE  
+* JP6 -> GP22
+* 
+Use `WORDCLOCK_V2_RP2040.h` with this jumper settings:
+
+* JP7
+* JP1
+* JP8
+* JP10
+* JP11
+
 
 
 ## ISSUES
@@ -68,6 +78,8 @@ This resistor is missing on the PCB.
 
 * esp rst flash buttons arent connected with gnd...
 * flash header not 2.54
-* 
+* tx01 not working
+
+
 
 ## V3
