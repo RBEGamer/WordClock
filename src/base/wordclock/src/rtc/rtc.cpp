@@ -1,5 +1,14 @@
 #include "rtc.h"
 
+rtc::rtc(){
+    //rtc::init_rtc();
+}
+
+rtc::~rtc(){
+
+}
+
+
 void rtc::set_rtc_time(const std::string _time)
 {
     if (_time.length() > 0)
@@ -24,20 +33,17 @@ void rtc::set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _s)
         .hour = _h,
         .min = _m,
         .sec = _s};
-
-#ifdef USE_RP2040RTC
     rtc_set_datetime(&t);
     sleep_us(64);
-#endif
 }
 
 void rtc::init_rtc()
 {
-#ifdef USE_RP2040RTC
+
     rtc_init();
     //IF WE USE THE INTERNAL RTC WE HAVE TO SET A TIME OTHERWISE THE CLOCK DOES NOT START
     rtc::set_rtc_time(__TIME__);
-#endif
+
 
 
 
@@ -47,8 +53,8 @@ datetime_t rtc::read_rtc()
 {
     datetime_t t;
 
-#ifdef USE_RP2040RTC
+
     rtc_get_datetime(&t);
-#endif
+
     return t;
 }

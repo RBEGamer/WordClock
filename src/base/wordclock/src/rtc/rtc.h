@@ -12,10 +12,15 @@
 class rtc
 {
 public:
-    static void set_rtc_time(const std::string _time);
-    static void set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _s);
-    static void init_rtc();
-    static datetime_t read_rtc();
+
+    rtc();
+    virtual ~rtc();
+
+    
+    void set_rtc_time(const std::string _time);
+    void set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _s);
+    void init_rtc();
+    datetime_t read_rtc();
 
 };
 #endif

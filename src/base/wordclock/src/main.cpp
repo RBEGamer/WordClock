@@ -7,12 +7,9 @@
 #include "hardware/adc.h"
 
 #include <PicoLed.hpp>
-#include <Effects/Stars.hpp>
 
 #include "wifi_interface.h"
-#include "settings_storage/settings_storage.hpp"
-#include "settings_storage/settings_storage_flash.hpp"
-#include "settings_storage/settings_storage_eeprom.hpp"
+#include "settings_storage/settings_storage_include.h"
 #include "helper.h"
 #include "rtc/rtc.h"
 #include "wordclock_faceplate/wordclock_faceplate_include.h"
@@ -38,12 +35,15 @@ long avg_sum = 0;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 wordclock_faceplate *faceplate = new wordclock_faceplate();
 
-// settings_storage *settings = nullptr;
+
 #if defined(USE_FLASH_AS_EEPROM)
-settings_storage *settings = new settings_storage_flash();
+settings_storage* settings = new settings_storage_flash();
 #else
-settings_storage *settings = new settings_storage();
+settings_storage* settings = new settings_storage();
 #endif
+
+rtc* rtc = new rtc();
+
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
 {
@@ -152,6 +152,22 @@ void init_m24c02()
     }
  
 #ifdef USE_EEPROM_IF_EEPROM_IS_PRESENT
+    if (settings)
+    {
+        delete settings;
+    }
+    settings = new settings_storage_eeprom(enable_m24c02_addr);
+#endif
+}
+
+
+void init_pcf85263(){
+     if (enable_pcf85263_addr < 0)
+    {
+        printf("init_pcf85263 failed");
+        return;
+    }
+    #ifdef USE_RTC_IF_RTC_IS_PRESENT
     if (settings)
     {
         delete settings;
@@ -279,7 +295,7 @@ void set_displayorientation(const int _payload)
 
 void set_time(const std::string _payload)
 {
-    rtc::set_rtc_time(_payload);
+    rtc->set_rtc_time(_payload);
 }
 
 void prepare_display_ip(const std::string _payload)
@@ -311,7 +327,7 @@ int main()
     init_m24c02();
 
     wifi_interface::init_uart();
-    rtc::init_rtc();
+
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
     // set initial brightness
@@ -322,7 +338,7 @@ int main()
     sleep_ms(500);
 
 
-    set_faceplate(settings->read(settings_storage::SETTING_ENTRY::SET_FACEPLATE));
+    set_faceplate((int)settings->read(settings_storage::SETTING_ENTRY::SET_FACEPLATE));
     current_brightness_mode = settings->read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
     set_displayorientation(settings->read(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION));
     // RESTORE ALL SETTTINGS SUCH AS FACEPLATE, ORIENTATION
@@ -352,7 +368,7 @@ int main()
         }
 
         // UPDATE DISPLAY IF NEEDED
-        datetime_t t = rtc::read_rtc();
+        datetime_t t = rtc->read_rtc();
         if (last_tsec != t.sec)
         {
             last_tsec = t.sec;
