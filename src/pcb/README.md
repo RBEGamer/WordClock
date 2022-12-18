@@ -63,4 +63,11 @@ This resistor is missing on the PCB.
 ## ISSUES
 
 * with the current v2 lasercut part the position of C121 is not ideal
-* led alignet is not perfect on left/right lines (check with svg)
+* led alignment is not perfect on left/right lines (check with svg)
+
+
+* esp rst flash buttons arent connected with gnd...
+* flash header not 2.54
+* 
+
+## V3
