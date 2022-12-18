@@ -295,7 +295,7 @@ void set_displayorientation(const int _payload)
 
 void set_time(const std::string _payload)
 {
-    rtc->set_rtc_time(_payload);
+    timekeeper->set_rtc_time(_payload);
 }
 
 void prepare_display_ip(const std::string _payload)
@@ -368,7 +368,7 @@ int main()
         }
 
         // UPDATE DISPLAY IF NEEDED
-        datetime_t t = rtc->read_rtc();
+        datetime_t t = timekeeper->read_rtc();
         if (last_tsec != t.sec)
         {
             last_tsec = t.sec;
