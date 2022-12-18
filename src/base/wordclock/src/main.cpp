@@ -42,7 +42,7 @@ settings_storage* settings = new settings_storage_flash();
 settings_storage* settings = new settings_storage();
 #endif
 
-rtc* rtc = new rtc();
+rtc* timekeeper = new rtc();
 
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
@@ -168,11 +168,11 @@ void init_pcf85263(){
         return;
     }
     #ifdef USE_RTC_IF_RTC_IS_PRESENT
-    if (settings)
+    if (timekeeper)
     {
-        delete settings;
+        delete timekeeper;
     }
-    settings = new settings_storage_eeprom(enable_m24c02_addr);
+    //timekeeper = new rtc_pcf85623(enable_pcf85263_addr);
 #endif
 }
 
