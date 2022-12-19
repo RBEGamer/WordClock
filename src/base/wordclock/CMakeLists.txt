@@ -44,6 +44,7 @@ add_executable(wordclock
         src/settings_storage_flash.cpp
         src/settings_storage_eeprom.hpp
         src/settings_storage_eeprom.cpp
+        src/settings_storage/settings_storage_include.h
         src/settings_storage/settings_storage.hpp
         src/settings_storage/settings_storage.cpp
         src/settings_storage/settings_storage_flash.hpp
@@ -76,6 +77,11 @@ add_executable(wordclock
         src/wordclock_faceplate/wordclock_faceplate_constants.h
         src/rtc/rtc.h
         src/rtc/rtc.cpp
+        src/rtc/rtc_rp2040.h
+        src/rtc/rtc_rp2040.cpp
+        src/rtc/rtc_include.h
+        src/rtc/rtc_pcf85263.cpp
+        src/rtc/rtc_pcf85263.h
         src/helper.h
         src/helper.cpp
         src/wordclock_faceplate.hpp
