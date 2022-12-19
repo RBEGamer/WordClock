@@ -158,10 +158,10 @@ void init_m24c02()
 #ifdef USE_EEPROM_IF_EEPROM_IS_PRESENT
     if (settings)
     {
- //       delete settings;
+        delete settings;
     }
-  //  settings = new settings_storage_eeprom(enable_m24c02_addr);
-  //  settings->init();
+    settings = new settings_storage_eeprom(enable_m24c02_addr);
+    settings->init();
 #endif
 }
 
@@ -335,6 +335,7 @@ int main()
     init_i2c();
     init_bh1750();
     init_m24c02();
+    init_pcf85263();
 
    
 
