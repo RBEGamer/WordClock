@@ -11,7 +11,7 @@
 #include "wifi_interface.h"
 #include "settings_storage/settings_storage_include.h"
 #include "helper.h"
-#include "rtc/rtc.h"
+#include "rtc/rtc_include.h"
 #include "wordclock_faceplate/wordclock_faceplate_include.h"
 
 // STORES IF i2C devices were found
@@ -42,7 +42,11 @@ settings_storage* settings = new settings_storage_flash();
 settings_storage* settings = new settings_storage();
 #endif
 
+#if defined(USE_RP2040RTC)
+rtc* timekeeper = new rtc_rp2040();
+#else
 rtc* timekeeper = new rtc();
+#endif
 
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
@@ -99,7 +103,7 @@ void init_i2c()
 
         if (ret > 0)
         {
-            printf("i2c device at %02x ", addr);
+            printf("i2c device at %02x \n", addr);
         }
 
         // CHECK FOR REQUESTED DEVIES FOUND
@@ -154,9 +158,10 @@ void init_m24c02()
 #ifdef USE_EEPROM_IF_EEPROM_IS_PRESENT
     if (settings)
     {
-        delete settings;
+ //       delete settings;
     }
-    settings = new settings_storage_eeprom(enable_m24c02_addr);
+  //  settings = new settings_storage_eeprom(enable_m24c02_addr);
+  //  settings->init();
 #endif
 }
 
@@ -172,7 +177,7 @@ void init_pcf85263(){
     {
         delete timekeeper;
     }
-    //timekeeper = new rtc_pcf85623(enable_pcf85263_addr);
+    timekeeper = new rtc_pcf85263(enable_pcf85263_addr);
 #endif
 }
 
@@ -319,14 +324,19 @@ int main()
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
 
     sleep_ms(1000); // WAIT A BIT FOR UART/USB
+
+
+    timekeeper->init_rtc();
+
+
     init_i2c();
     init_bh1750();
     init_m24c02();
 
-    wifi_interface::init_uart();
+   
 
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
@@ -335,27 +345,29 @@ int main()
 
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
-    sleep_ms(500);
+   
 
 
-    set_faceplate((int)settings->read(settings_storage::SETTING_ENTRY::SET_FACEPLATE));
-    current_brightness_mode = settings->read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
-    set_displayorientation(settings->read(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION));
+  //  set_faceplate((int)settings->read(settings_storage::SETTING_ENTRY::SET_FACEPLATE));
+ //   current_brightness_mode = settings->read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
+ //   set_displayorientation(settings->read(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION));
     // RESTORE ALL SETTTINGS SUCH AS FACEPLATE, ORIENTATION
+
+   
     
 
-    
-
-    // enable uart rx irq for communication with wifi module
+    // enable uart rx irq for communication with wifi module and register callback functions
+    wifi_interface::init_uart();
     wifi_interface::enable_uart_irq(true);
     wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::SET_TIME);
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::SET_BRIGHTNES);
     wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::SET_FACEPLATE);
     wifi_interface::register_rx_callback(prepare_display_ip, wifi_interface::CMD_INDEX::DISPLAY_IP);
     wifi_interface::register_rx_callback(set_displayorientation_str, wifi_interface::CMD_INDEX::SET_DISPLAYORIENTATION);
-
+    settings->write(settings_storage::SETTING_ENTRY::SET_FACEPLATE, 42);
     // DISBALE YELLOW LED TO INDICATE SETUP COMPLETE
     wifi_interface::send_log("setupcomplete");
+ int i = 0;
     while (true)
     {
         // PROCEESS ANY RECEIEVED COMMANDS
@@ -398,7 +410,8 @@ int main()
             ledStrip.setBrightness(current_brightness);
         }
 
-        sleep_ms(100);
+        sleep_ms(200);
+        
     }
 
     return 0;

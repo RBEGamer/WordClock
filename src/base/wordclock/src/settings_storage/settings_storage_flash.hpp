@@ -13,11 +13,6 @@
 
 class settings_storage_flash: public settings_storage{
 public:
-    
-
-    
- 
-  
 
     
     static inline const int SETTINGS_COUNT = ((int)SETTING_ENTRY::LENGHT+1); //+1 we want to write to LENGHT too
@@ -31,11 +26,11 @@ public:
     settings_storage_flash();
     ~settings_storage_flash();
 
-    void restore_default();
-    void init();
+    void restore_default() override;
+    void init() override;
     void format_flash();
-    uint8_t read(SETTING_ENTRY _entry);
-    bool write(SETTING_ENTRY _entry, uint8_t _value);
+    uint8_t read(SETTING_ENTRY _entry) override;
+    bool write(SETTING_ENTRY _entry, uint8_t _value) override; 
 
 
 };

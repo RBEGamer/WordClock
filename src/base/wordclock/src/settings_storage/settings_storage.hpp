@@ -44,10 +44,10 @@ public:
     settings_storage();
     virtual ~settings_storage();
 
-    void restore_default();
-    void init();
-    uint8_t read(SETTING_ENTRY _entry);
-    bool write(SETTING_ENTRY _entry, uint8_t _value);
+    virtual void restore_default();
+    virtual void init();
+    virtual uint8_t read(SETTING_ENTRY _entry);
+    virtual bool write(SETTING_ENTRY _entry, uint8_t _value);
 
 
 };
