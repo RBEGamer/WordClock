@@ -59,7 +59,8 @@ This resistor is missing on the PCB.
 * JP7 -> GP16
 * (JP1) -> TBX01-OE  
 * JP6 -> GP22
-* 
+
+
 Use `WORDCLOCK_V2_RP2040.h` with this jumper settings:
 
 * JP7
@@ -85,6 +86,6 @@ Use `WORDCLOCK_V2_RP2040.h` with this jumper settings:
 * remove jp4, d1, add button to gpio22 instead of jp6
 * add bigger soldermask field for mac address
 * white skilkscreen
-
+* bridge jumper per default
 
 ## V3
