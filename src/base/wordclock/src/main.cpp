@@ -314,13 +314,13 @@ void prepare_display_ip(const std::string _payload)
     }
 }
 
-void restore_settings()
+void restore_settings(bool _force = false)
 {
     // USED TO CHECK VALUE OF SETTING_ENTRY::INVALID AND  SETTING_ENTRY::LENGHT
     // IF VALUES ARENT MATCHING => ERASE FLASH/EEPROM
     const int FLASH_CHECK_VALUE_START = 20;
     const int FLASH_CHECK_VALUE_END = 24;
-    if (settings->read(settings_storage::SETTING_ENTRY::INVALID) != FLASH_CHECK_VALUE_START || settings->read(settings_storage::SETTING_ENTRY::LENGHT) != FLASH_CHECK_VALUE_END)
+    if (_force || settings->read(settings_storage::SETTING_ENTRY::INVALID) != FLASH_CHECK_VALUE_START || settings->read(settings_storage::SETTING_ENTRY::LENGHT) != FLASH_CHECK_VALUE_END)
     {
         settings->write(settings_storage::SETTING_ENTRY::INVALID, FLASH_CHECK_VALUE_START);
         settings->write(settings_storage::SETTING_ENTRY::LENGHT, FLASH_CHECK_VALUE_END);
@@ -360,11 +360,12 @@ int main()
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
     // set initial brightness
-    ledStrip.setBrightness(get_average_brightness());
-
+    ledStrip.setBrightness(100);
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
-
+    sleep_ms(1000);
+    ledStrip.setBrightness(get_average_brightness());
+    
     // enable uart rx irq for communication with wifi module and register callback functions
     wifi_interface::init_uart();
     wifi_interface::enable_uart_irq(true);
@@ -376,8 +377,9 @@ int main()
 
     // RESTORE ALLE SETTINGS
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
-    restore_settings();
+    restore_settings(false);
     wifi_interface::send_log("setupcomplete");
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
 
     while (true)
     {
