@@ -3,6 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <functional>
+#include <typeinfo>
+
 
 #include "pico/stdlib.h"
 
@@ -19,10 +22,7 @@
 
 class settings_storage{
 public:
-    //USED TO CHECK VALUE OF SETTING_ENTRY::INVALID AND  SETTING_ENTRY::LENGHT
-    //IF VALUES ARENT MATCHING => ERASE FLASH/EEPROM
-    const int FLASH_CHECK_VALUE_START = 42;
-    const int FLASH_CHECK_VALUE_END = 24;
+
 #ifdef USE_WIFIINTERFACE_SETTINGS
     //c++11 typedef
     using SETTING_ENTRY = wifi_interface::CMD_INDEX;
@@ -40,7 +40,7 @@ public:
     
     settings_storage();
     virtual ~settings_storage();
-    virtual void restore_default();
+   
     virtual void init();
     virtual void format();
     virtual uint8_t read(SETTING_ENTRY _entry);

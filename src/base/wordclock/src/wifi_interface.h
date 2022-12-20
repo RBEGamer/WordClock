@@ -69,7 +69,7 @@ public:
         "ip",  // DISPLAY_IP
         "sfp", // SET_FACEPLATE
         "sdo", // SET_DISPLAYORIENTATION
-        "ctmp"
+        "ctmp", //CURRENT_TEMPERATURE
         };
 
     // MAP FOR FAST LUT  FKT <> CMD_LUT will be used in parse_cmd

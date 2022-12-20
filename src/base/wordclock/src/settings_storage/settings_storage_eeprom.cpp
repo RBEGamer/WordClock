@@ -15,6 +15,9 @@ void settings_storage_eeprom::format(){
 
 }
 
+void settings_storage_eeprom::init()
+{
+}
 
 
 void settings_storage_eeprom::set_eeprom_i2c_addr(const int _eeprom_i2c_addr)
