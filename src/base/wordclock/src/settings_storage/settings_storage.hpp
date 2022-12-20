@@ -19,7 +19,10 @@
 
 class settings_storage{
 public:
-    
+    //USED TO CHECK VALUE OF SETTING_ENTRY::INVALID AND  SETTING_ENTRY::LENGHT
+    //IF VALUES ARENT MATCHING => ERASE FLASH/EEPROM
+    const int FLASH_CHECK_VALUE_START = 42;
+    const int FLASH_CHECK_VALUE_END = 24;
 #ifdef USE_WIFIINTERFACE_SETTINGS
     //c++11 typedef
     using SETTING_ENTRY = wifi_interface::CMD_INDEX;
@@ -33,22 +36,18 @@ public:
         LENGHT // DONT DELETE ALSO USED FOR INIT CHECK
     };
 #endif
-    //USED TO CHECK VALUE OF SETTING_ENTRY::INVALID AND  SETTING_ENTRY::LENGHT
-    //IF VALUES ARENT MATCHING => ERASE FLASH
-    const int FLASH_CHECK_VALUE_START = 42;
-    const int FLASH_CHECK_VALUE_END = 24;
+
     
-    uint8_t storage_data[((int)SETTING_ENTRY::LENGHT)+1];
-
-
     settings_storage();
     virtual ~settings_storage();
-
     virtual void restore_default();
     virtual void init();
+    virtual void format();
     virtual uint8_t read(SETTING_ENTRY _entry);
     virtual bool write(SETTING_ENTRY _entry, uint8_t _value);
 
+private: 
+    uint8_t storage_data_dummy[((int)SETTING_ENTRY::LENGHT)+1];
 
 };
 

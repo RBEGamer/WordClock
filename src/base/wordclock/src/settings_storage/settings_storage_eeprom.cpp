@@ -3,30 +3,19 @@
 settings_storage_eeprom::settings_storage_eeprom(const int _eeprom_i2c_addr)
 {
     set_eeprom_i2c_addr(_eeprom_i2c_addr);
-    settings_storage_eeprom::init();
+    init();
 }
 
 settings_storage_eeprom::~settings_storage_eeprom()
 {
 }
 
-void settings_storage_eeprom::restore_default()
-{
-    settings_storage_eeprom::write(settings_storage::SETTING_ENTRY::INVALID, settings_storage::FLASH_CHECK_VALUE_START);
-    settings_storage_eeprom::write(settings_storage::SETTING_ENTRY::LENGHT, settings_storage::FLASH_CHECK_VALUE_END);
-    settings_storage_eeprom::write(settings_storage::SETTING_ENTRY::SET_FACEPLATE, WORDCLOCK_LANGUAGE);
-    settings_storage_eeprom::write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, WORDCLOCK_DISPlAY_ORIENTATION);
-    settings_storage_eeprom::write(settings_storage::SETTING_ENTRY::SET_BRIGHTNES, WORDCLOC_BRIGHTNESS_MODE);
+
+void settings_storage_eeprom::format(){
+
 }
 
-void settings_storage_eeprom::init()
-{
-    //CHECK IF THE SETTINGS ARE SET ONCE, ELSE SET THEM
-    if (settings_storage_eeprom::read(settings_storage::SETTING_ENTRY::INVALID) != settings_storage::FLASH_CHECK_VALUE_START || settings_storage_eeprom::read(settings_storage::SETTING_ENTRY::LENGHT) != settings_storage::FLASH_CHECK_VALUE_END)
-    {
-       settings_storage_eeprom::restore_default();
-    }
-}
+
 
 void settings_storage_eeprom::set_eeprom_i2c_addr(const int _eeprom_i2c_addr)
 {
