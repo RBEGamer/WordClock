@@ -38,6 +38,7 @@ long avg_sum = 0;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 wordclock_faceplate *faceplate = new wordclock_faceplate();
 
+
 #if defined(USE_FLASH_AS_EEPROM)
 settings_storage *settings = new settings_storage_flash();
 #else
@@ -354,8 +355,8 @@ int main()
 
     init_i2c();
     init_bh1750();
-    //init_m24c02();
-    //init_pcf85263();
+    init_m24c02();
+    // init_pcf85263();
 
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
@@ -365,7 +366,7 @@ int main()
     faceplate->display_testpattern(ledStrip);
     sleep_ms(1000);
     ledStrip.setBrightness(get_average_brightness());
-    
+
     // enable uart rx irq for communication with wifi module and register callback functions
     wifi_interface::init_uart();
     wifi_interface::enable_uart_irq(true);
