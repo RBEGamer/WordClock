@@ -80,6 +80,11 @@ Use `WORDCLOCK_V2_RP2040.h` with this jumper settings:
 * flash header not 2.54
 * tx01 not working
 
+## TODO 
+
+* remove jp4, d1, add button to gpio22 instead of jp6
+* add bigger soldermask field for mac address
+* white skilkscreen
 
 
 ## V3
