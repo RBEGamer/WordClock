@@ -63,8 +63,8 @@ add_executable(wordclock
         src/rtc/rtc_rp2040.h
         src/rtc/rtc_rp2040.cpp
         src/rtc/rtc_include.h
-        src/rtc/rtc_pcf85263.cpp
-        src/rtc/rtc_pcf85263.h
+        src/rtc/rtc_ds1307.cpp
+        src/rtc/rtc_ds1307.h
         src/helper.h
         src/helper.cpp
         src/wifi_interface.h

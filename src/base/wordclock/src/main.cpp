@@ -104,7 +104,7 @@ void init_bh1750(const int _i2_addr)
     i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
 }
 
-void init_m24c02(const int _i2_addr)
+void init_eeprom_i2c(const int _i2_addr)
 {
     if (_i2_addr < 0)
     {
@@ -122,7 +122,7 @@ void init_m24c02(const int _i2_addr)
 #endif
 }
 
-void init_pcf85263(const int _i2_addr)
+void init_rtc_i2c(const int _i2_addr)
 {
     if (_i2_addr < 0)
     {
@@ -134,11 +134,10 @@ void init_pcf85263(const int _i2_addr)
     {
         delete timekeeper;
     }
-    timekeeper = new rtc_ds1307();
+    timekeeper = new rtc_i2c();
 
 #endif
 }
-
 
 void init_i2c()
 {
@@ -173,16 +172,14 @@ void init_i2c()
         }
         else if (ret >= 0 && addr == RTC_I2C_ADDR)
         {
-            init_pcf85263(addr);
+            init_rtc_i2c(addr);
         }
         else if (ret >= 0 && addr == M24C02_I2C_ADDR)
         {
-            init_m24c02(addr);
+            init_eeprom_i2c(addr);
         }
     }
 }
-
-
 
 int get_brightness()
 {

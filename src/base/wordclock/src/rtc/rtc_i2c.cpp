@@ -1,16 +1,16 @@
-#include "rtc_ds1307.h"
+#include "rtc_i2c.h"
 
-rtc_ds1307::rtc_ds1307()
+rtc_i2c::rtc_i2c()
 {
 }
 
-rtc_ds1307::~rtc_ds1307()
+rtc_i2c::~rtc_i2c()
 {
 }
 
 
 
-void rtc_ds1307::set_rtc_time(const std::string _time)
+void rtc_i2c::set_rtc_time(const std::string _time)
 {
     if (_time.length() > 0)
     {
@@ -24,18 +24,18 @@ void rtc_ds1307::set_rtc_time(const std::string _time)
     }
 }
 
-void rtc_ds1307::set_rtc_time(const uint8_t _h, const uint8_t _m, const uint8_t _s)
+void rtc_i2c::set_rtc_time(const uint8_t _h, const uint8_t _m, const uint8_t _s)
 {
    // s, m, h, day, dayofweek sunday=0, month, year
     uint8_t buf_tx[7] = {decToBcd(_s), decToBcd(_m), decToBcd(_h), decToBcd(1), decToBcd(2), decToBcd(1), decToBcd(20)};
     const int ret = helper::reg_write(i2c_default, RTC_I2C_ADDR, 0x01, buf_tx, (sizeof(buf_tx) / sizeof(uint8_t)));
 }
 
-void rtc_ds1307::init_rtc()
+void rtc_i2c::init_rtc()
 {
 }
 
-datetime_t rtc_ds1307::read_rtc()
+datetime_t rtc_i2c::read_rtc()
 {
     uint8_t buf_rx[7] = {0};
     helper::reg_read(i2c_default, RTC_I2C_ADDR, 0x01, buf_rx, (sizeof(buf_rx) / sizeof(uint8_t)));
@@ -54,13 +54,12 @@ datetime_t rtc_ds1307::read_rtc()
 
 
 
-
-uint8_t rtc_ds1307::bcdToDec(const uint8_t _value)
+uint8_t rtc_i2c::bcdToDec(const uint8_t _value)
 {
     return ((_value / 16) * 10 + _value % 16);
 }
 
-uint8_t rtc_ds1307::decToBcd(const uint8_t _value)
+uint8_t rtc_i2c::decToBcd(const uint8_t _value)
 {
     return (_value / 10 * 16 + _value % 10);
 }
