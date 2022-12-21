@@ -10,7 +10,7 @@ settings_storage::~settings_storage()
 
 void settings_storage::format()
 {
-    for (size_t i = (size_t)settings_storage::SETTING_ENTRY::INVALID; i < (size_t)settings_storage::SETTING_ENTRY::LENGHT; i++)
+    for (size_t i = (size_t)settings_storage::SETTING_ENTRY::INVALID; i < (size_t)settings_storage::SETTING_ENTRY::LENGHT+1; i++)
     {
         settings_storage::storage_data_dummy[(int)i] = 0;
     }

@@ -1,21 +1,19 @@
 #include "rtc_pcf85263.h"
 
-
-
-rtc_pcf85263::rtc_pcf85263(const int _pcf85263_i2c_addr){
-    rtc_pcf85263::set_pcf85263_i2c_addr(_pcf85263_i2c_addr);
+rtc_pcf85263::rtc_pcf85263(const int _pcf85263_i2c_addr)
+{
+    // rtc_pcf85263::set_pcf85263_i2c_addr(_pcf85263_i2c_addr);
+    //  gpio_put(PICO_DEFAULT_LED_PIN, false);
 }
 
-
-void rtc_pcf85263::set_pcf85263_i2c_addr(const int _pcf85263_i2c_addr){
-    rtc_pcf85263::pcf85263_i2c_addr = _pcf85263_i2c_addr;
+void rtc_pcf85263::set_pcf85263_i2c_addr(const int _pcf85263_i2c_addr)
+{
+    // rtc_pcf85263::pcf85263_i2c_addr = _pcf85263_i2c_addr;
 }
 
-
-rtc_pcf85263::~rtc_pcf85263(){
-
+rtc_pcf85263::~rtc_pcf85263()
+{
 }
-
 
 void rtc_pcf85263::set_rtc_time(const std::string _time)
 {
@@ -41,20 +39,17 @@ void rtc_pcf85263::set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _
         .hour = _h,
         .min = _m,
         .sec = _s};
-
-
-    sleep_us(64);
-    
 }
 
 void rtc_pcf85263::init_rtc()
 {
-
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
 }
 
 datetime_t rtc_pcf85263::read_rtc()
 {
+   // gpio_put(PICO_DEFAULT_LED_PIN, false);
     datetime_t t;
-
     return t;
 }
+

@@ -121,7 +121,6 @@ void init_i2c()
         }
         else if (ret >= 0 && addr == PCF85263_I2C_ADDR)
         {
-
             enable_pcf85263_addr = addr;
         }
         else if (ret >= 0 && addr == M24C02_I2C_ADDR)
@@ -169,8 +168,7 @@ void init_m24c02()
 #endif
 }
 
-void init_pcf85263()
-{
+void init_pcf85263(){
     if (enable_pcf85263_addr < 0)
     {
         printf("init_pcf85263 failed");
@@ -179,9 +177,11 @@ void init_pcf85263()
 #ifdef USE_RTC_IF_RTC_IS_PRESENT
     if (timekeeper)
     {
+        
         delete timekeeper;
     }
     timekeeper = new rtc_pcf85263(enable_pcf85263_addr);
+    timekeeper->init_rtc();
 #endif
 }
 
@@ -348,15 +348,15 @@ int main()
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
     settings->init();
+    timekeeper->init_rtc();
 
     sleep_ms(1000); // WAIT A BIT FOR UART/USB
 
-    timekeeper->init_rtc();
-
+    
     init_i2c();
     init_bh1750();
     init_m24c02();
-    // init_pcf85263();
+    init_pcf85263();
 
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
@@ -380,11 +380,11 @@ int main()
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
     restore_settings(false);
     wifi_interface::send_log("setupcomplete");
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
+    //gpio_put(PICO_DEFAULT_LED_PIN, false);
 
     while (true)
     {
-
+        
         // PROCEESS ANY RECEIEVED COMMANDS
         wifi_interface::process_cmd();
 
