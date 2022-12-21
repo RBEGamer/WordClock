@@ -80,6 +80,6 @@ int helper::reg_read(i2c_inst *_i2c, const uint _addr, const uint8_t _reg, uint8
     // Read data from register(s) over I2C
     i2c_write_blocking(_i2c, _addr, &_reg, 1, true);
     num_bytes_read = i2c_read_blocking(_i2c, _addr, _buf, _bytes, false);
-    printf("read %i %i\n", _buf[0], num_bytes_read);
+    //printf("read %i %i\n", _buf[0], num_bytes_read);
     return num_bytes_read;
 }

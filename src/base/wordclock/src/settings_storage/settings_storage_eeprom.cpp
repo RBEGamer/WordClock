@@ -25,7 +25,8 @@ void settings_storage_eeprom::init()
 uint8_t settings_storage_eeprom::read(settings_storage::SETTING_ENTRY _entry)
 {
     uint8_t buf_rx[1] = {0};
-    helper::reg_read(i2c_default, EEPROM_I2C_ADDR, EEPROM_WRITE_OFFSET+ (uint8_t)_entry, buf_rx, 1);
+    const int res = helper::reg_read(i2c_default, EEPROM_I2C_ADDR, EEPROM_WRITE_OFFSET+ (uint8_t)_entry, buf_rx, 1);
+    //printf("read %i %i\n", buf_rx[0], res);
     return buf_rx[0];
 }
 
@@ -38,7 +39,9 @@ bool settings_storage_eeprom::write(settings_storage::SETTING_ENTRY _entry, uint
     }
     // WRITE
     uint8_t buf_tx[1] = {_value};
-    return helper::reg_write(i2c_default, EEPROM_I2C_ADDR, EEPROM_WRITE_OFFSET+ (uint8_t)_entry, buf_tx, 1);
+    const int res = helper::reg_write(i2c_default, EEPROM_I2C_ADDR, EEPROM_WRITE_OFFSET+ (uint8_t)_entry, buf_tx, 1);
+    //printf("write %i %i\n", buf_tx[0], res);
+    return res;
 }
 
 

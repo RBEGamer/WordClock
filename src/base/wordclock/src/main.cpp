@@ -255,15 +255,12 @@ void prepare_display_ip(const std::string _payload)
 
 void restore_settings(bool _force = false)
 {
-    // USED TO CHECK VALUE OF SETTING_ENTRY::INVALID AND  SETTING_ENTRY::LENGHT
+    // USED TO CHECK VALUE OF SETTING_ENTRY::INVALID
     // IF VALUES ARENT MATCHING => ERASE FLASH/EEPROM
     const int FLASH_CHECK_VALUE_START = 20;
-    const int FLASH_CHECK_VALUE_END = 24;
-    if (_force || settings->read(settings_storage::SETTING_ENTRY::INVALID) != FLASH_CHECK_VALUE_START || settings->read(settings_storage::SETTING_ENTRY::LENGHT) != FLASH_CHECK_VALUE_END)
+    if (_force || settings->read(settings_storage::SETTING_ENTRY::INVALID) != FLASH_CHECK_VALUE_START);//|| settings->read(settings_storage::SETTING_ENTRY::LENGHT) != FLASH_CHECK_VALUE_END)
     {
         settings->write(settings_storage::SETTING_ENTRY::INVALID, FLASH_CHECK_VALUE_START);
-        settings->write(settings_storage::SETTING_ENTRY::LENGHT, FLASH_CHECK_VALUE_END);
-
         // WRITE DEFAULT VALUES HERE
         // USED FROM THE BOARD SETTINGS
         settings->write(settings_storage::SETTING_ENTRY::SET_FACEPLATE, WORDCLOCK_LANGUAGE);
@@ -289,7 +286,7 @@ int main()
     timekeeper->init_rtc();
     light_sensor->init();
 
-    sleep_ms(30000); // WAIT A BIT FOR UART/USB
+    sleep_ms(3000); // WAIT A BIT FOR UART/USB
 
     init_i2c();
    
@@ -316,10 +313,11 @@ int main()
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
     restore_settings(false);
     wifi_interface::send_log("setupcomplete");
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
-    int b = 0;
+    //gpio_put(PICO_DEFAULT_LED_PIN, false);
+  
     while (true)
     {
+        settings->read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
         // PROCEESS ANY RECEIEVED COMMANDS
         wifi_interface::process_cmd();
 
