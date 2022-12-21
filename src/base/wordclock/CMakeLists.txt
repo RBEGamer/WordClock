@@ -17,8 +17,11 @@ set(PICO_BOARD_HEADER_DIRS ${CMAKE_CURRENT_LIST_DIR}/board)
 
 
 #set(PICO_BOARD "WORDCLOCK_V1_RP2040")
-set(PICO_BOARD "WORDCLOCK_V1_RP2040_GERMAN_ROTATED")
-#set(PICO_BOARD "WORDCLOCK_V2_RP2040")
+#set(PICO_BOARD "WORDCLOCK_V1_RP2040_GERMAN_ROTATED")
+
+
+set(PICO_BOARD "WORDCLOCK_V2_RP2040")
+#set(PICO_BOARD "WORDCLOCK_V2_RP2040_ROTATED")
 
 
 
@@ -79,7 +82,7 @@ add_executable(wordclock
         )
 
 pico_set_program_name(wordclock "wordclock")
-pico_set_program_version(wordclock "1.0")
+pico_set_program_version(wordclock "2.0")
 pico_set_program_url(wordclock "https://marcelochsendorf.com")
 pico_set_program_description(wordclock "software for a rp2040 base 10x11 wordclock")
 
