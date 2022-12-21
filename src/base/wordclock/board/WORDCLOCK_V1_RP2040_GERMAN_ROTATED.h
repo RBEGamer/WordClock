@@ -30,10 +30,9 @@
 #define USE_WIFIINTERFACE_SETTINGS //USE CONFIG SETTINGS FROM WIFIINTERFACE, NEW ENTRIES MUST BE DECLARED IN WIFI_INTERFACE.H
 
 // I2C DEVICE ADDRESSES
-#define BH1750_I2C_ADDR 0x23
-#define BH1750_I2C_ADDR_ALT 0x5C
-#define PCF85263_I2C_ADDR 0x51
-#define M24C02_I2C_ADDR 0x50
+#define BH1750_I2C_ADDR 0x23 // BH1750 0x23 or 0x5C
+#define RTC_I2C_ADDR 0x68 // (PCBv1)FOR DS1307/DS3231 0x68, (PCBv2)FOR PCF PCF85263AT 0x51
+#define EEPROM_I2C_ADDR 0x50 //FOR m24c02 0x50, FOR at24c02 0x50
 
 // On some samples, the xosc can take longer to stabilize than is usual
 #ifndef PICO_XOSC_STARTUP_DELAY_MULTIPLIER
@@ -69,7 +68,7 @@
 #define PICO_DEFAULT_WS2812_PIN 16
 #endif
 
-#define LED_MATRIX_START_OFFSET 1 // on pcb v1 there is an additional led before the first matrix led
+#define LED_MATRIX_START_OFFSET 1 // PCBv2 = 0,PCBv1 = 1 (on pcb v1 there is an additional led before the first matrix led)
 #define LED_MATRIX_WIDTH 11
 #define LED_MATRIX_HEIGHT 10
 #define LED_MINUTEDOT_COUNT 4

@@ -166,15 +166,15 @@ void init_i2c()
         }
 
         // CHECK FOR REQUESTED DEVIES FOUND
-        if (ret >= 0 && addr == BH1750_I2C_ADDR)
+        if (addr == BH1750_I2C_ADDR)
         {
             init_bh1750(addr);
         }
-        else if (ret >= 0 && addr == RTC_I2C_ADDR)
+        else if (addr == RTC_I2C_ADDR)
         {
             init_rtc_i2c(addr);
         }
-        else if (ret >= 0 && addr == M24C02_I2C_ADDR)
+        else if (addr == EEPROM_I2C_ADDR)
         {
             init_eeprom_i2c(addr);
         }

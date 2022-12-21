@@ -65,6 +65,8 @@ add_executable(wordclock
         src/rtc/rtc_include.h
         src/rtc/rtc_ds1307.cpp
         src/rtc/rtc_ds1307.h
+        src/rtc/rtc_i2c.cpp
+        src/rtc/rtc_i2c.h
         src/helper.h
         src/helper.cpp
         src/wifi_interface.h
