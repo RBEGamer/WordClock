@@ -16,7 +16,7 @@ public:
 
     
     virtual void set_rtc_time(const std::string _time);
-    virtual void set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _s);
+    virtual void set_rtc_time(const uint8_t _h, const uint8_t _m, const uint8_t _s);
     virtual void init_rtc();
     virtual datetime_t read_rtc();
 private:

@@ -23,7 +23,7 @@ void rtc::set_rtc_time(const std::string _time)
     }
 }
 
-void rtc::set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _s)
+void rtc::set_rtc_time(const uint8_t _h, const uint8_t _m, const uint8_t _s)
 {
      rtc::current_time = {
         .year = 2020,

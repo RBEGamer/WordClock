@@ -5,6 +5,8 @@
 #include <vector>
 #include <cstring>
 
+#include "pico/stdlib.h"
+#include "hardware/i2c.h"
 
 class helper
 {
@@ -15,6 +17,9 @@ static std::vector<bool> bits_from_int(const int integer);
 static int limit(const int _value, const int _min, const int _max);
 static int limit(const std::string& _value, const int _min, const int _max);
 
+
+static int reg_write(i2c_inst* _i2c, const uint _addr, const uint8_t _reg, uint8_t* _buf, const uint8_t _bytes);
+static int reg_read(i2c_inst* _i2c, const uint _addr, const uint8_t _reg, uint8_t* _buf, const uint8_t _bytes);
 
 };
 #endif

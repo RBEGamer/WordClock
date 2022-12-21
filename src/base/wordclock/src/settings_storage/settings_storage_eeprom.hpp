@@ -4,9 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "hardware/i2c.h"
-#include "pico/stdlib.h"
 
+#include "pico/stdlib.h"
 #include "settings_storage.hpp"
 
 class settings_storage_eeprom: public settings_storage{
@@ -30,8 +29,7 @@ public:
     uint8_t read(SETTING_ENTRY _entry) override;
     bool write(SETTING_ENTRY _entry, uint8_t _value) override;
 
-    int reg_write(i2c_inst* _i2c, const uint _addr, const uint8_t _reg, uint8_t* _buf, const uint8_t _bytes);
-    int reg_read(i2c_inst* _i2c, const uint _addr, const uint8_t _reg, uint8_t* _buf, const uint8_t _bytes);
+   
 
 };
 

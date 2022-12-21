@@ -17,7 +17,7 @@ public:
 
     
     void set_rtc_time(const std::string _time) override;
-    void set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _s) override;
+    void set_rtc_time(const uint8_t _h, const uint8_t _m, const uint8_t _s) override;
     void init_rtc() override;
     datetime_t read_rtc() override;
 

@@ -22,7 +22,7 @@ void rtc_rp2040::set_rtc_time(const std::string _time)
     }
 }
 
-void rtc_rp2040::set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _s)
+void rtc_rp2040::set_rtc_time(const uint8_t _h, const uint8_t _m, const uint8_t _s)
 {
     datetime_t t = {
         .year = 2020,

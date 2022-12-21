@@ -21,11 +21,14 @@ public:
 
     void set_pcf85263_i2c_addr(const int _pcf85263_i2c_addr);
     void set_rtc_time(const std::string _time) override;
-    void set_rtc_time(const int8_t _h, const int8_t _m, const int8_t _s) override;
+    void set_rtc_time(const uint8_t _h, const uint8_t _m, const uint8_t _s) override;
     void init_rtc() override;
     datetime_t read_rtc() override;
 
 
 
+private:
+    uint8_t bcdToDec(const uint8_t _value);
+    uint8_t decToBcd(const uint8_t _value);
 };
 #endif

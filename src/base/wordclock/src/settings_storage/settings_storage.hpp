@@ -9,10 +9,9 @@
 
 #include "pico/stdlib.h"
 
+#include "../helper.h"
+
 //ITS POSSIBLE TO REUSE THE CMD ENUM FROM THE WIFISETTINGS
-
-
-
 #ifdef USE_WIFIINTERFACE_SETTINGS
 #include "../wifi_interface.h"
 //#define SETTING_ENTRY wifi_interface::CMD_INDEX SETTINGS_ENTRY
@@ -40,15 +39,15 @@ public:
     
     settings_storage();
     virtual ~settings_storage();
-   
     virtual void init();
     virtual void format();
     virtual uint8_t read(SETTING_ENTRY _entry);
     virtual bool write(SETTING_ENTRY _entry, uint8_t _value);
 
 private: 
+    //THE BASECLaSS IMPLEMENTS A SIMPLE RAM BASED CONFIG STORAGE SYSTEM WHICH ISNT PERSISTANT
+    // FOR PERSISTANT STORAGE USE FLASH OR EEPROM BASED 
     uint8_t storage_data_dummy[((int)SETTING_ENTRY::LENGHT)+1];
-
 };
 
 #endif
