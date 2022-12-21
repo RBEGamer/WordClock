@@ -65,7 +65,7 @@
 #define PICO_DEFAULT_LED_PIN 25
 #endif
 //------------- WS2812 -------------//
-// PiN 16 IF JP7 CLOSED
+// PIN 16 IF JP7 CLOSED
 // PIN 22 IF JP6 CLOSED
 #ifndef PICO_DEFAULT_WS2812_PIN
 #define PICO_DEFAULT_WS2812_PIN 16
