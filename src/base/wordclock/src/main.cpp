@@ -16,10 +16,7 @@
 #include "helper.h"
 #include "rtc/rtc_include.h"
 #include "wordclock_faceplate/wordclock_faceplate_include.h"
-
-// STORES IF i2C devices were found
-// clock works if no of this additional device is present but with limited features
-int enable_bh1750_addr = -1;
+#include "ambient_light/ambient_light_include.h"
 
 
 int current_brightness = 10;
@@ -28,11 +25,7 @@ int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
 
-// ROLLING AVERAGE
-const int num_readings = 30;
-int readings[num_readings];
-int reading_index = 0;
-long avg_sum = 0;
+
 
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 wordclock_faceplate *faceplate = new wordclock_faceplate();
@@ -49,6 +42,7 @@ rtc *timekeeper = new rtc_rp2040();
 rtc *timekeeper = new rtc();
 #endif
 
+ambient_light* light_sensor = new ambient_light();
 
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
@@ -85,23 +79,18 @@ void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _
 
 void init_bh1750(const int _i2_addr)
 {
-    enable_bh1750_addr = _i2_addr;
-    if (enable_bh1750_addr < 0)
+    if (_i2_addr < 0)
     {
         printf("init_bh1750 failed");
         return;
     }
 
-    // INIT SEQUENCE POWER DOWN, POWER UP, RESET, CONT READING MODE
-    uint8_t buf[1];
-    buf[0] = 0x00;
-    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
-    buf[0] = 0x01;
-    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
-    buf[0] = 0x07;
-    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
-    buf[0] = 0x13;
-    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
+    if(light_sensor){
+        delete light_sensor;
+    }
+    light_sensor = new ambient_light_bh1750();
+    light_sensor->init();
+
 }
 
 void init_eeprom_i2c(const int _i2_addr)
@@ -168,6 +157,7 @@ void init_i2c()
         // CHECK FOR REQUESTED DEVIES FOUND
         if (addr == BH1750_I2C_ADDR)
         {
+            gpio_put(PICO_DEFAULT_LED_PIN, false);
             init_bh1750(addr);
         }
         else if (addr == RTC_I2C_ADDR)
@@ -181,55 +171,7 @@ void init_i2c()
     }
 }
 
-int get_brightness()
-{
-    // IF NO MODULE FOUND
-    if (enable_bh1750_addr < 0)
-    {
-        return -1;
-    }
-    int ret;
 
-    uint8_t buf[2];
-    ret = i2c_read_blocking(i2c_default, enable_bh1750_addr, buf, 2, false);
-
-    const uint16_t upper_byte = buf[0];
-    const uint16_t lower_byte = buf[1];
-
-    if (ret <= 0)
-    {
-        return -1;
-    }
-
-    const int lux = ((upper_byte << 8) + lower_byte) / (1.2 * 2); // custom 1.5 factor added
-    return lux;
-}
-
-int get_average_brightness()
-{
-    long average;
-    // subtract the last reading:
-    avg_sum = avg_sum - readings[reading_index];
-    // read the sensor:
-    const int b = get_brightness();
-
-    if (b >= 0)
-    {
-        readings[reading_index] = b;
-    }
-
-    // add value to total:
-    avg_sum = avg_sum + readings[reading_index];
-    // handle index
-    reading_index = reading_index + 1;
-    if (reading_index >= num_readings)
-    {
-        reading_index = 0;
-    }
-    average = avg_sum / num_readings;
-    // 0-420lux => 0-255 led brightness and limit range
-    return helper::limit(helper::map((int)average, 0, 50, 5, 255), 5, 255);
-}
 
 void update_display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s)
 {
@@ -345,8 +287,9 @@ int main()
 
     settings->init();
     timekeeper->init_rtc();
+    light_sensor->init();
 
-    sleep_ms(1000); // WAIT A BIT FOR UART/USB
+    sleep_ms(30000); // WAIT A BIT FOR UART/USB
 
     init_i2c();
    
@@ -354,11 +297,11 @@ int main()
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
     // set initial brightness
-    ledStrip.setBrightness(100);
+    ledStrip.setBrightness(128);
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
     sleep_ms(1000);
-    ledStrip.setBrightness(get_average_brightness());
+    ledStrip.setBrightness(light_sensor->get_average_brightness());
 
     // enable uart rx irq for communication with wifi module and register callback functions
     wifi_interface::init_uart();
@@ -373,7 +316,7 @@ int main()
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
     restore_settings(false);
     wifi_interface::send_log("setupcomplete");
-    // gpio_put(PICO_DEFAULT_LED_PIN, false);
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
     int b = 0;
     while (true)
     {
@@ -403,7 +346,7 @@ int main()
         // UPDATE BRIGHTNESS IF NEEDED
         if (current_brightness_mode == 0)
         {
-            current_brightness = get_average_brightness(); // automatic if mode = 0
+            current_brightness = light_sensor->get_average_brightness(); // automatic if mode = 0
         }
         else
         {
