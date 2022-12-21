@@ -2,8 +2,8 @@
 
 rtc_pcf85263::rtc_pcf85263(const int _pcf85263_i2c_addr)
 {
-    rtc_pcf85263::set_pcf85263_i2c_addr(_pcf85263_i2c_addr);
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
+    //rtc_pcf85263::set_pcf85263_i2c_addr(_pcf85263_i2c_addr);
+   
 }
 
 void rtc_pcf85263::set_pcf85263_i2c_addr(const int _pcf85263_i2c_addr)
@@ -38,12 +38,12 @@ void rtc_pcf85263::set_rtc_time(const uint8_t _h, const uint8_t _m, const uint8_
 
 void rtc_pcf85263::init_rtc()
 {
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
+   // gpio_put(PICO_DEFAULT_LED_PIN, false);
 }
 
 datetime_t rtc_pcf85263::read_rtc()
 {
-    // gpio_put(PICO_DEFAULT_LED_PIN, false);
+   // gpio_put(PICO_DEFAULT_LED_PIN, false);
 
     uint8_t buf_rx[7] = {0};
     helper::reg_read(i2c_default, rtc_pcf85263::pcf85263_i2c_addr, 0x01, buf_rx, (sizeof(buf_rx) / sizeof(uint8_t)));
@@ -56,7 +56,6 @@ datetime_t rtc_pcf85263::read_rtc()
         .hour = bcdToDec(buf_rx[2] & 0b00111111),
         .min = bcdToDec(buf_rx[1] & 0b01111111),
         .sec =  bcdToDec(buf_rx[0] & 0b01111111)};
-
     return t;
 }
 

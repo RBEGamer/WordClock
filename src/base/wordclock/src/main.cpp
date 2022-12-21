@@ -20,8 +20,7 @@
 // STORES IF i2C devices were found
 // clock works if no of this additional device is present but with limited features
 int enable_bh1750_addr = -1;
-int enable_pcf85263_addr = -1;
-int enable_m24c02_addr = -1;
+
 
 int current_brightness = 10;
 int current_brightness_mode = 0; // 0=auto >0-255 = manual
@@ -38,7 +37,6 @@ long avg_sum = 0;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 wordclock_faceplate *faceplate = new wordclock_faceplate();
 
-
 #if defined(USE_FLASH_AS_EEPROM)
 settings_storage *settings = new settings_storage_flash();
 #else
@@ -51,7 +49,7 @@ rtc *timekeeper = new rtc_rp2040();
 rtc *timekeeper = new rtc();
 #endif
 
-extern char __flash_binary_end;
+
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
 {
@@ -84,6 +82,64 @@ void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _
     }
 }
 
+
+void init_bh1750(const int _i2_addr)
+{
+    enable_bh1750_addr = _i2_addr;
+    if (enable_bh1750_addr < 0)
+    {
+        printf("init_bh1750 failed");
+        return;
+    }
+
+    // INIT SEQUENCE POWER DOWN, POWER UP, RESET, CONT READING MODE
+    uint8_t buf[1];
+    buf[0] = 0x00;
+    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
+    buf[0] = 0x01;
+    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
+    buf[0] = 0x07;
+    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
+    buf[0] = 0x13;
+    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
+}
+
+void init_m24c02(const int _i2_addr)
+{
+    if (_i2_addr < 0)
+    {
+        printf("init_m24c02 failed");
+        return;
+    }
+
+#ifdef USE_EEPROM_IF_EEPROM_IS_PRESENT
+    if (settings)
+    {
+        delete settings;
+    }
+    settings = new settings_storage_eeprom();
+    settings->init();
+#endif
+}
+
+void init_pcf85263(const int _i2_addr)
+{
+    if (_i2_addr < 0)
+    {
+        printf("init_pcf85263 failed");
+        return;
+    }
+#ifdef USE_RTC_IF_RTC_IS_PRESENT
+    if (timekeeper)
+    {
+        delete timekeeper;
+    }
+    timekeeper = new rtc_ds1307();
+
+#endif
+}
+
+
 void init_i2c()
 {
     i2c_init(i2c_default, PICO_DEFAULT_I2C_SPEED); // 100khz
@@ -113,77 +169,20 @@ void init_i2c()
         // CHECK FOR REQUESTED DEVIES FOUND
         if (ret >= 0 && addr == BH1750_I2C_ADDR)
         {
-            enable_bh1750_addr = addr;
+            init_bh1750(addr);
         }
-        else if (ret >= 0 && addr == BH1750_I2C_ADDR_ALT)
+        else if (ret >= 0 && addr == RTC_I2C_ADDR)
         {
-            enable_bh1750_addr = addr;
-        }
-        else if (ret >= 0 && addr == PCF85263_I2C_ADDR)
-        {
-            enable_pcf85263_addr = addr;
+            init_pcf85263(addr);
         }
         else if (ret >= 0 && addr == M24C02_I2C_ADDR)
         {
-            enable_m24c02_addr = addr;
+            init_m24c02(addr);
         }
     }
 }
 
-void init_bh1750()
-{
-    if (enable_bh1750_addr < 0)
-    {
-        printf("init_bh1750 failed");
-        return;
-    }
 
-    // INIT SEQUENCE POWER DOWN, POWER UP, RESET, CONT READING MODE
-    uint8_t buf[1];
-    buf[0] = 0x00;
-    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
-    buf[0] = 0x01;
-    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
-    buf[0] = 0x07;
-    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
-    buf[0] = 0x13;
-    i2c_write_blocking(i2c_default, enable_bh1750_addr, buf, 1, true);
-}
-
-void init_m24c02()
-{
-    if (enable_m24c02_addr < 0)
-    {
-        printf("init_m24c02 failed");
-        return;
-    }
-
-#ifdef USE_EEPROM_IF_EEPROM_IS_PRESENT
-    if (settings)
-    {
-        delete settings;
-    }
-    settings = new settings_storage_eeprom(enable_m24c02_addr);
-    settings->init();
-#endif
-}
-
-void init_pcf85263(){
-    if (enable_pcf85263_addr < 0)
-    {
-        printf("init_pcf85263 failed");
-        return;
-    }
-#ifdef USE_RTC_IF_RTC_IS_PRESENT
-    if (timekeeper)
-    {
-        
-        delete timekeeper;
-    }
-    timekeeper = new rtc_pcf85263(enable_pcf85263_addr);
-    timekeeper->init_rtc();
-#endif
-}
 
 int get_brightness()
 {
@@ -352,11 +351,8 @@ int main()
 
     sleep_ms(1000); // WAIT A BIT FOR UART/USB
 
-    
     init_i2c();
-    init_bh1750();
-    init_m24c02();
-    init_pcf85263();
+   
 
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
@@ -380,11 +376,10 @@ int main()
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
     restore_settings(false);
     wifi_interface::send_log("setupcomplete");
-    //gpio_put(PICO_DEFAULT_LED_PIN, false);
-
+    // gpio_put(PICO_DEFAULT_LED_PIN, false);
+    int b = 0;
     while (true)
     {
-        
         // PROCEESS ANY RECEIEVED COMMANDS
         wifi_interface::process_cmd();
 

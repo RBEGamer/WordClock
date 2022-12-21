@@ -17,11 +17,9 @@ public:
   
 private:
     const uint8_t EEPROM_WRITE_OFFSET = 0x01; //START USERDATA LATER IF WANTED
-    int eeprom_i2c_addr = 0x50;
-    void set_eeprom_i2c_addr(const int _eeprom_i2c_addr);
 
 public:
-    settings_storage_eeprom(const int _eeprom_i2c_addr);
+    settings_storage_eeprom();
     ~settings_storage_eeprom();
     
     void init() override;

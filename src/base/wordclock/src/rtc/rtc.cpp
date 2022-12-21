@@ -1,8 +1,6 @@
 #include "rtc.h"
 
 rtc::rtc(){
-    rtc::init_rtc();
-    
 }
 
 rtc::~rtc(){
