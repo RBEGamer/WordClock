@@ -29,7 +29,7 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="717"
+     inkscape:cx="365"
      inkscape:cy="310.5"
      inkscape:window-width="1512"
      inkscape:window-height="945"
@@ -188,13 +188,6 @@
        type="xygrid"
        id="grid8486" /></sodipodi:namedview><defs
      id="defs2" /><rect
-     style="display:inline;fill:none;stroke:#ff0000;stroke-width:0.108496;stroke-dasharray:none;stroke-opacity:1;shape-rendering:crispEdges"
-     id="rect26622-2-9"
-     width="173.54573"
-     height="19.055458"
-     x="19.406878"
-     y="0.30204517"
-     inkscape:label="electric_cutout_top" /><rect
      style="display:inline;fill:none;stroke:#ff0000;stroke-width:0.360867;stroke-opacity:1"
      id="rect27102-5"
      width="13.639132"
@@ -1184,4 +1177,9 @@ rect, circle, ellipse, polyline, line, polygon, path {shape-rendering:crispEdges
      height="209.77408"
      x="0.34852296"
      y="0.41712722"
-     inkscape:label="outside_frame" /></svg>
+     inkscape:label="outside_frame" /><path
+     id="rect26622-2-9"
+     style="display:inline;fill:none;stroke:#ff0000;stroke-width:0.108496;stroke-linecap:round;stroke-linejoin:round;shape-rendering:crispEdges"
+     inkscape:label="electric_cutout_top"
+     d="M 19.407248,0.302248 H 192.95298 v 19.055458 h -29.8605 V 17.219162 H 49.862207 l -0.112554,2.138544 H 19.407248 Z"
+     sodipodi:nodetypes="ccccccccc" /></svg>

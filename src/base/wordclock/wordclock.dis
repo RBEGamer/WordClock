@@ -1,5 +1,5 @@
 
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base/wordclock/wordclock.elf:     file format elf32-littlearm
+/Users/marcelochsendorf/Downloads/WordClock/src/base/wordclock/wordclock.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -42,7 +42,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
  18 .stabstr      0000014f  00000000  00000000  0002b6d0  2**0
                   CONTENTS, READONLY, DEBUGGING
 
-/Users/marcelochsendorf/Downloads/WordClockNew/src/base/wordclock/wordclock.elf:     file format elf32-littlearm
+/Users/marcelochsendorf/Downloads/WordClock/src/base/wordclock/wordclock.elf:     file format elf32-littlearm
 
 
 Disassembly of section .boot2:
