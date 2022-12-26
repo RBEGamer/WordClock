@@ -208,3 +208,7 @@ void wifi_interface::send_log(const std::string _payload)
 {
   send_cmd_str(wifi_interface::CMD_INDEX::LOG, _payload.c_str());
 }
+
+void wifi_interface::send_daylightsaving(const bool _dls){
+   send_cmd_str(wifi_interface::CMD_INDEX::DAYLIGHTSAVING, std::to_string((int)_dls));
+}

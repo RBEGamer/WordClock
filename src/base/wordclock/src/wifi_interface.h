@@ -40,6 +40,7 @@ public:
         DISPLAYORIENTATION,
         BRIGHTNESSCURVE,
         DATE,
+        DAYLIGHTSAVING,
         LENGHT // DONT DELETE
     };
 
@@ -67,7 +68,8 @@ public:
         "sfp",  // FACEPLATE
         "sdo",  // DISPLAYORIENTATION
         "sbc",  // BRIGHTNESS CURVE
-        "sd"    // DATE
+        "sd",   // DATE
+        "dls"   // DAYLIGHTSAVING
         };
 
     // MAP FOR FAST LUT  FKT <> CMD_LUT will be used in parse_cmd
@@ -99,6 +101,7 @@ public:
     static void send_date(const int _day, const int _month, const int _year);
     static void send_brightness(const int _b);
     static void send_brightnesscurve(const int _bc);
+    static void send_daylightsaving(const bool _dls);
 
 };
 #endif

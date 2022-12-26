@@ -250,6 +250,18 @@ void set_date(const std::string _payload)
     timekeeper->set_rtc_date(_payload);
 }
 
+void set_dls(const std::string _payload){
+    const int v = (bool)helper::limit(_payload, 0, 1);
+    timekeeper->set_daylightsaving(v);
+    settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, v);
+}
+
+void set_brightnesscurve(const std::string _payload){
+    const int v = (bool)helper::limit(_payload, 10, 100);
+    light_sensor->set_brightness_curve(v);
+    settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, v);
+}
+
 void prepare_display_ip(const std::string _payload)
 {
     if (_payload.size() > 0)
@@ -270,13 +282,19 @@ void restore_settings(bool _force = false)
         // USED FROM THE BOARD SETTINGS
         settings->write(settings_storage::SETTING_ENTRY::FACEPLATE, WORDCLOCK_LANGUAGE);
         settings->write(settings_storage::SETTING_ENTRY::DISPLAYORIENTATION, WORDCLOCK_DISPlAY_ORIENTATION);
-        settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESS, WORDCLOC_BRIGHTNESS_MODE);
+        settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESS, WORDCLOCK_BRIGHTNESS_MODE);
+        settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, WORDCLOCK_DAYLIGHTSAVING);
+        settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, WORDCLOCK_BRIGHTNESS_MODE_AUTO_CURVE);
+        
     }
 
     // LOAD VALUES FROM STORAGE
     current_brightness_mode = settings->read(settings_storage::SETTING_ENTRY::BRIGHTNESS);
     set_faceplate(settings->read(settings_storage::SETTING_ENTRY::FACEPLATE));
     wordclock_faceplate::config.flip_state = (bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::DISPLAYORIENTATION), 0, 1);
+    timekeeper->set_daylightsaving((bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING), 0, 1));
+    light_sensor->set_brightness_curve(settings->read(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE));
+
 }
 
 int main()
@@ -313,6 +331,8 @@ int main()
     wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::FACEPLATE);
     wifi_interface::register_rx_callback(prepare_display_ip, wifi_interface::CMD_INDEX::DISPLAYIP);
     wifi_interface::register_rx_callback(set_displayorientation_str, wifi_interface::CMD_INDEX::DISPLAYORIENTATION);
+    wifi_interface::register_rx_callback(set_dls, wifi_interface::CMD_INDEX::DAYLIGHTSAVING);
+    wifi_interface::register_rx_callback(set_brightnesscurve, wifi_interface::CMD_INDEX::BRIGHTNESSCURVE);
     wifi_interface::register_rx_callback(set_date, wifi_interface::CMD_INDEX::DATE);
 
     // RESTORE ALLE SETTINGS

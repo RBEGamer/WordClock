@@ -42,7 +42,7 @@ include(${CMAKE_CURRENT_LIST_DIR}/PicoLED/PicoLed.cmake)
 
 add_executable(wordclock 
         src/ambient_light/ambient_light_include.h
-        src/ambient_light/ambient_light.h
+        src/ambient_light/ambient_light.hpp
         src/ambient_light/ambient_light.cpp
         src/ambient_light/ambient_light_bh1750.hpp
         src/ambient_light/ambient_light_bh1750.cpp
@@ -66,13 +66,13 @@ add_executable(wordclock
         src/wordclock_faceplate/wordclock_faceplate.hpp
         src/wordclock_faceplate/wordclock_faceplate.cpp
         src/wordclock_faceplate/wordclock_faceplate_constants.h
-        src/rtc/rtc.h
+        src/rtc/rtc.hpp
         src/rtc/rtc.cpp
-        src/rtc/rtc_rp2040.h
+        src/rtc/rtc_rp2040.hpp
         src/rtc/rtc_rp2040.cpp
         src/rtc/rtc_include.h
         src/rtc/rtc_i2c.cpp
-        src/rtc/rtc_i2c.h
+        src/rtc/rtc_i2c.hpp
         src/helper.h
         src/helper.cpp
         src/wifi_interface.h

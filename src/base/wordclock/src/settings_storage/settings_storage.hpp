@@ -36,6 +36,7 @@ public:
         DISPLAYORIENTATION,
         BRIGHTNESS_CURVE,
         DATE,
+        DAYLIGHTSAVING,
         LENGHT // DONT DELETE
     };
 #endif

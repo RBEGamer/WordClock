@@ -32,7 +32,7 @@ int ambient_light_bh1750::get_brightness()
     {
         return -1;
     }
-    const int lux = ((buf[0] << 8) + buf[1]) / (WORDCLOC_BRIGHTNESS_MODE_AUTO_CURVE * 2); // custom 1.2 factor added
+    const int lux = ((buf[0] << 8) + buf[1]) / (ambient_light::brightness_curve * 2) / 10; // custom 1.2 factor added
     return lux;
 }
 
@@ -57,7 +57,7 @@ int ambient_light_bh1750::get_average_brightness()
     }
     average = avg_sum / NUM_READINGS;
     // 0-420lux => 0-255 led brightness and limit range
-    return helper::limit(helper::map((int)average, BH1750_RAW_OUTPUT_MIN, BH1750_RAW_OUTPUT_MAX, WORDCLOC_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOC_BRIGHTNESS_MODE_AUTO_MAX), WORDCLOC_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOC_BRIGHTNESS_MODE_AUTO_MAX);
+    return helper::limit(helper::map((int)average, BH1750_RAW_OUTPUT_MIN, BH1750_RAW_OUTPUT_MAX, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX), WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX);
 }
 
 

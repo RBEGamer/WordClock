@@ -4,19 +4,11 @@
 #include "pico/stdlib.h"
 
 #include "../helper.h"
-#include "ambient_light.h"
+#include "ambient_light.hpp"
 
 
 class ambient_light_bh1750: public ambient_light
 {
-public:
-
-    ambient_light_bh1750();
-    ~ambient_light_bh1750();
-    
-    virtual int get_brightness() override;
-    virtual int get_average_brightness() override;
-    virtual void init() override;
 
 protected:
     // ROLLING AVERAGE
@@ -28,6 +20,17 @@ protected:
     // these lux values will be mapped from 0-50 to led WORDCLOC_BRIGHTNESS_MODE_AUTO_MIN-WORDCLOC_BRIGHTNESS_MODE_AUTO_MAX values
     const int BH1750_RAW_OUTPUT_MIN = 0;
     const int BH1750_RAW_OUTPUT_MAX = 50;
+
+public:
+
+    ambient_light_bh1750();
+    ~ambient_light_bh1750();
+    
+    virtual int get_brightness() override;
+    virtual int get_average_brightness() override;
+    virtual void init() override;
+
+
 
 
 };

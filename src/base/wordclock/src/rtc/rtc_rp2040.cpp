@@ -1,4 +1,4 @@
-#include "rtc_rp2040.h"
+#include "rtc_rp2040.hpp"
 
 rtc_rp2040::rtc_rp2040()
 {
@@ -88,5 +88,10 @@ datetime_t rtc_rp2040::read_rtc()
 {
     datetime_t t;
     rtc_get_datetime(&t);
+
+    if(rtc::enable_daylightsaving && rtc::summertime_eu(t.year, t.month, t.day, t.hour)){
+        t.hour = (t.hour + 1) % 24;
+    } 
+    
     return t;
 }

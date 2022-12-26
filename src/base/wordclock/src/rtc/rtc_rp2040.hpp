@@ -1,12 +1,12 @@
-#ifndef __RTC_RP2040_H__
-#define __RTC_RP2040_H__
+#ifndef __RTC_RP2040_HPP__
+#define __RTC_RP2040_HPP__
 
 #include "pico/stdlib.h"
 #include "pico/util/datetime.h"
 #include "hardware/rtc.h"
 
 #include "../helper.h"
-#include "rtc.h"
+#include "rtc.hpp"
 
 class rtc_rp2040: public rtc
 {

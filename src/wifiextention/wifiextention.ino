@@ -298,6 +298,9 @@ void set_clock_time(const int _h, const int _m, const int _s){
   send_cmd_str("st", String(_h) + ":" + String(_m) + ":" + String(_s));
 }
 
+void set_clock_date(const int _day, const int _month, const int _year){
+  send_cmd_str("sd", String(_day) + ":" + String(_month) + ":" + String(_year));
+}
 
 int last_set_brightness = 255;
 void set_brightness(int _b){
@@ -329,6 +332,20 @@ void set_flip_display(bool _set_flip){
 void set_fontface(int _fontface_id){
     send_cmd_str("sfp", String(abs(_fontface_id)));
 }
+
+
+void set_daylightsaving(bool _en){
+  if(_en){
+    send_cmd_str("dls", "1");
+  }else{
+    send_cmd_str("dls", "0");
+  }
+}
+//0-100
+void set_brightnesscurve(int _brght_curve){
+  send_cmd_str("sbc", String(abs(_brght_curve)));
+}
+
 
 
 // ONLY READ THE FIRST LINE UNTIL NEW LINE !!!!!
@@ -794,6 +811,13 @@ void loop(void)
        }
       }
       set_clock_time(rtc_hours, rtc_mins, rtc_secs);
+      // DATE
+      time_t epochTime = timeClient.getEpochTime();
+      struct tm *ptm = gmtime ((time_t *)&epochTime); 
+      const int monthDay = ptm->tm_mday;
+      const int currentMonth = ptm->tm_mon+1;
+      const int currentYear = ptm->tm_year+1900;
+      set_clock_date(monthDay, currentMonth, currentYear);
     }
 
  

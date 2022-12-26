@@ -1,12 +1,12 @@
-#ifndef __RTC_I2C_H__
-#define __RTC_I2C_H__
+#ifndef __RTC_I2C_HPP__
+#define __RTC_I2C_HPP__
 
 #include "pico/stdlib.h"
 #include "pico/util/datetime.h"
 #include "hardware/rtc.h"
 
 #include "../helper.h"
-#include "rtc.h"
+#include "rtc.hpp"
 
 class rtc_i2c: public rtc
 {

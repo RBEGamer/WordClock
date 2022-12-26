@@ -1,4 +1,4 @@
-#include "rtc_i2c.h"
+#include "rtc_i2c.hpp"
 
 rtc_i2c::rtc_i2c()
 {
@@ -49,7 +49,7 @@ void rtc_i2c::set_rtc_date(const signed char _day, const signed char _month, con
     datetime_t t = read_rtc();
     const signed char dow = (signed char)rtc::day_of_week(_day, _month, _year);
     const signed char year = (signed char)rtc::year_formatter(_year);
-    
+
     uint8_t buf_tx[7] = {decToBcd(t.sec), decToBcd(t.min), decToBcd(t.hour), decToBcd(dow), decToBcd(_day), decToBcd(_month), decToBcd(year)};
     const int ret = helper::reg_write(i2c_default, RTC_I2C_ADDR, 0x01, buf_tx, (sizeof(buf_tx) / sizeof(uint8_t)));
 }
@@ -72,6 +72,9 @@ datetime_t rtc_i2c::read_rtc()
         .min = (int8_t)bcdToDec(buf_rx[1] & 0b01111111),
         .sec = (int8_t)bcdToDec(buf_rx[0] & 0b01111111)};
 
+    if(rtc::enable_daylightsaving && rtc::summertime_eu(t.year, t.month, t.day, t.hour)){
+        t.hour = (t.hour + 1) % 24;
+    } 
     return t;
 }
 
