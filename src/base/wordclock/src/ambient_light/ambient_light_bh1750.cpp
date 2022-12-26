@@ -57,7 +57,7 @@ int ambient_light_bh1750::get_average_brightness()
     }
     average = avg_sum / NUM_READINGS;
     // 0-420lux => 0-255 led brightness and limit range
-    return helper::limit(helper::map((int)average, 0, 50, WORDCLOC_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOC_BRIGHTNESS_MODE_AUTO_MAX), WORDCLOC_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOC_BRIGHTNESS_MODE_AUTO_MAX);
+    return helper::limit(helper::map((int)average, BH1750_RAW_OUTPUT_MIN, BH1750_RAW_OUTPUT_MAX, WORDCLOC_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOC_BRIGHTNESS_MODE_AUTO_MAX), WORDCLOC_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOC_BRIGHTNESS_MODE_AUTO_MAX);
 }
 
 

@@ -32,15 +32,14 @@ public:
     enum class CMD_INDEX
     {
         INVALID, //DONT DELETE
-        CURRENT_TIME,
-        CURRENT_BRIGHTNES,
         LOG,
-        SET_TIME,
-        SET_BRIGHTNES,
-        DISPLAY_IP,
-        SET_FACEPLATE,
-        SET_DISPLAYORIENTATION,
-        CURRENT_TEMPERATURE,
+        TIME,
+        BRIGHTNESS,
+        DISPLAYIP,
+        FACEPLATE,
+        DISPLAYORIENTATION,
+        BRIGHTNESSCURVE,
+        DATE,
         LENGHT // DONT DELETE
     };
 
@@ -61,15 +60,14 @@ public:
     // ARRAY WITH LED LOCATION FOR EACH WORD {{ROW, COLUMN} starting top/left corner (near battery)
     static inline const std::string CMD_LUT[((int)CMD_INDEX::LENGHT)] = {
         "",     // INVALID
-        "ct",  // CURRENT_TIME
-        "cb",  // CURRENT_BRIGHTNES
-        "log", // LOG
-        "st",  // SET_TIME
-        "sb",  // SET_BRIGHTNES
-        "ip",  // DISPLAY_IP
-        "sfp", // SET_FACEPLATE
-        "sdo", // SET_DISPLAYORIENTATION
-        "ctmp", //CURRENT_TEMPERATURE
+        "log",  // LOG
+        "st",   // TIME
+        "sb",   // BRIGHTNESS
+        "ip",   // DISPLAY_IP
+        "sfp",  // FACEPLATE
+        "sdo",  // DISPLAYORIENTATION
+        "sbc",  // BRIGHTNESS CURVE
+        "sd"    // DATE
         };
 
     // MAP FOR FAST LUT  FKT <> CMD_LUT will be used in parse_cmd
@@ -97,7 +95,10 @@ public:
     // TODO IMPLEMENT COMMAND LIST
 
     // IMPLEMENT FOR NEW COMMANDS TO MAKE USAGE EASIER
-    static void send_current_time(const int _h, const int _m, const int _s);
-    static void send_current_brightness(const int _b);
+    static void send_time(const int _h, const int _m, const int _s);
+    static void send_date(const int _day, const int _month, const int _year);
+    static void send_brightness(const int _b);
+    static void send_brightnesscurve(const int _bc);
+
 };
 #endif

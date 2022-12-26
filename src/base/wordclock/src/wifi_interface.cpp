@@ -184,14 +184,24 @@ void wifi_interface::send_cmd_str(const wifi_interface::CMD_INDEX _cmd, const st
   uart_puts(UART_WIFI, tosend.c_str());
 }
 
-void wifi_interface::send_current_time(const int _h, const int _m, const int _s)
+void wifi_interface::send_time(const int _h, const int _m, const int _s)
 {
-  send_cmd_str(wifi_interface::CMD_INDEX::CURRENT_TIME, std::to_string(_h) + ":" + std::to_string(_m) + ":" + std::to_string(_s));
+  send_cmd_str(wifi_interface::CMD_INDEX::TIME, std::to_string(_h) + ":" + std::to_string(_m) + ":" + std::to_string(_s));
 }
 
-void wifi_interface::send_current_brightness(const int _b)
+void wifi_interface::send_date(const int _day, const int _month, const int _year)
 {
-  send_cmd_str(wifi_interface::CMD_INDEX::CURRENT_BRIGHTNES, std::to_string(_b));
+  send_cmd_str(wifi_interface::CMD_INDEX::DATE, std::to_string(_day) + ":" + std::to_string(_month) + ":" + std::to_string(_year));
+}
+
+void wifi_interface::send_brightness(const int _b)
+{
+  send_cmd_str(wifi_interface::CMD_INDEX::BRIGHTNESS, std::to_string(_b));
+}
+
+void wifi_interface::send_brightnesscurve(const int _bc)
+{
+  send_cmd_str(wifi_interface::CMD_INDEX::BRIGHTNESSCURVE, std::to_string(_bc));
 }
 
 void wifi_interface::send_log(const std::string _payload)

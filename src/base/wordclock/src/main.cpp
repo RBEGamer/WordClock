@@ -212,7 +212,7 @@ void set_brightnesmode(const std::string _payload)
         current_brightness_mode = 0;
     }
     current_brightness_mode = helper::limit(_payload, 0, 255);
-    settings->write(settings_storage::SETTING_ENTRY::SET_BRIGHTNES, current_brightness_mode);
+    settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESS, current_brightness_mode);
 }
 
 int set_faceplate(const int _fp)
@@ -225,24 +225,29 @@ int set_faceplate(const int _fp)
 void set_faceplate_str(const std::string _payload)
 {
     const int actual_fb = set_faceplate(helper::limit(_payload, 0, (int)wordclock_faceplate::FACEPLATES::TEST));
-    settings->write(settings_storage::SETTING_ENTRY::SET_FACEPLATE, actual_fb);
+    settings->write(settings_storage::SETTING_ENTRY::FACEPLATE, actual_fb);
 }
 
 void set_displayorientation_str(const std::string _payload)
 {
     wordclock_faceplate::config.flip_state = (bool)helper::limit(_payload, 0, 1);
-    settings->write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
+    settings->write(settings_storage::SETTING_ENTRY::DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
 }
 
 void set_displayorientation(const int _payload)
 {
     wordclock_faceplate::config.flip_state = (bool)helper::limit(_payload, 0, 1);
-    settings->write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
+    settings->write(settings_storage::SETTING_ENTRY::DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
 }
 
 void set_time(const std::string _payload)
 {
     timekeeper->set_rtc_time(_payload);
+}
+
+void set_date(const std::string _payload)
+{
+    timekeeper->set_rtc_date(_payload);
 }
 
 void prepare_display_ip(const std::string _payload)
@@ -263,15 +268,15 @@ void restore_settings(bool _force = false)
         settings->write(settings_storage::SETTING_ENTRY::INVALID, FLASH_CHECK_VALUE_START);
         // WRITE DEFAULT VALUES HERE
         // USED FROM THE BOARD SETTINGS
-        settings->write(settings_storage::SETTING_ENTRY::SET_FACEPLATE, WORDCLOCK_LANGUAGE);
-        settings->write(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION, WORDCLOCK_DISPlAY_ORIENTATION);
-        settings->write(settings_storage::SETTING_ENTRY::SET_BRIGHTNES, WORDCLOC_BRIGHTNESS_MODE);
+        settings->write(settings_storage::SETTING_ENTRY::FACEPLATE, WORDCLOCK_LANGUAGE);
+        settings->write(settings_storage::SETTING_ENTRY::DISPLAYORIENTATION, WORDCLOCK_DISPlAY_ORIENTATION);
+        settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESS, WORDCLOC_BRIGHTNESS_MODE);
     }
 
     // LOAD VALUES FROM STORAGE
-    current_brightness_mode = settings->read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
-    set_faceplate(settings->read(settings_storage::SETTING_ENTRY::SET_FACEPLATE));
-    wordclock_faceplate::config.flip_state = (bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::SET_DISPLAYORIENTATION), 0, 1);
+    current_brightness_mode = settings->read(settings_storage::SETTING_ENTRY::BRIGHTNESS);
+    set_faceplate(settings->read(settings_storage::SETTING_ENTRY::FACEPLATE));
+    wordclock_faceplate::config.flip_state = (bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::DISPLAYORIENTATION), 0, 1);
 }
 
 int main()
@@ -303,11 +308,12 @@ int main()
     // enable uart rx irq for communication with wifi module and register callback functions
     wifi_interface::init_uart();
     wifi_interface::enable_uart_irq(true);
-    wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::SET_TIME);
-    wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::SET_BRIGHTNES);
-    wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::SET_FACEPLATE);
-    wifi_interface::register_rx_callback(prepare_display_ip, wifi_interface::CMD_INDEX::DISPLAY_IP);
-    wifi_interface::register_rx_callback(set_displayorientation_str, wifi_interface::CMD_INDEX::SET_DISPLAYORIENTATION);
+    wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::TIME);
+    wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::BRIGHTNESS);
+    wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::FACEPLATE);
+    wifi_interface::register_rx_callback(prepare_display_ip, wifi_interface::CMD_INDEX::DISPLAYIP);
+    wifi_interface::register_rx_callback(set_displayorientation_str, wifi_interface::CMD_INDEX::DISPLAYORIENTATION);
+    wifi_interface::register_rx_callback(set_date, wifi_interface::CMD_INDEX::DATE);
 
     // RESTORE ALLE SETTINGS
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
@@ -317,7 +323,6 @@ int main()
   
     while (true)
     {
-        settings->read(settings_storage::SETTING_ENTRY::SET_BRIGHTNES);
         // PROCEESS ANY RECEIEVED COMMANDS
         wifi_interface::process_cmd();
 
@@ -338,7 +343,7 @@ int main()
         if (last_tmin != t.min)
         {
             last_tmin = t.min;
-            wifi_interface::send_current_time(t.hour, t.min, t.sec);
+            wifi_interface::send_time(t.hour, t.min, t.sec);
         }
 
         // UPDATE BRIGHTNESS IF NEEDED
@@ -354,7 +359,7 @@ int main()
         if (abs(current_brightness - last_brightness) > 1)
         {
             last_brightness = current_brightness;
-            wifi_interface::send_current_brightness(current_brightness);
+            wifi_interface::send_brightness(current_brightness);
             ledStrip.setBrightness(current_brightness);
         }
 

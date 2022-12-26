@@ -27,12 +27,16 @@ public:
     using SETTING_ENTRY = wifi_interface::CMD_INDEX;
 #else
     enum class SETTING_ENTRY{
-        INVALID, // DONT DELETE USED FOR INIT CHECK
+        INVALID, //DONT DELETE
+        LOG,
         TIME,
-        BRIGHTNES,
+        BRIGHTNESS,
+        DISPLAY_IP,
         FACEPLATE,
         DISPLAYORIENTATION,
-        LENGHT // DONT DELETE ALSO USED FOR INIT CHECK
+        BRIGHTNESS_CURVE,
+        DATE,
+        LENGHT // DONT DELETE
     };
 #endif
 
