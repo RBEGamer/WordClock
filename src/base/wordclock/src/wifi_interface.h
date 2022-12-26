@@ -22,7 +22,6 @@
 #define UART_WIFI_IRQ UART1_IRQ
 #endif
 
-
 #define DISABLE_CRC true
 #define CMD_START_CHARACTER '%'
 
@@ -31,7 +30,7 @@ class wifi_interface
 public:
     enum class CMD_INDEX
     {
-        INVALID, //DONT DELETE
+        INVALID, // DONT DELETE
         LOG,
         TIME,
         BRIGHTNESS,
@@ -60,31 +59,27 @@ public:
     // INLINE FOR IN-CLASS INITIALISATION
     // ARRAY WITH LED LOCATION FOR EACH WORD {{ROW, COLUMN} starting top/left corner (near battery)
     static inline const std::string CMD_LUT[((int)CMD_INDEX::LENGHT)] = {
-        "",     // INVALID
-        "log",  // LOG
-        "st",   // TIME
-        "sb",   // BRIGHTNESS
-        "ip",   // DISPLAY_IP
-        "sfp",  // FACEPLATE
-        "sdo",  // DISPLAYORIENTATION
-        "sbc",  // BRIGHTNESS CURVE
-        "sd",   // DATE
-        "dls"   // DAYLIGHTSAVING
-        };
+        "",    // INVALID
+        "log", // LOG
+        "st",  // TIME
+        "sb",  // BRIGHTNESS
+        "ip",  // DISPLAY_IP
+        "sfp", // FACEPLATE
+        "sdo", // DISPLAYORIENTATION
+        "sbc", // BRIGHTNESS CURVE
+        "sd",  // DATE
+        "dls"  // DAYLIGHTSAVING
+    };
 
     // MAP FOR FAST LUT  FKT <> CMD_LUT will be used in parse_cmd
     static inline std::unordered_map<std::string, std::function<void(const std::string _payload)>> RX_CALLBACK_FUNCTIONS = {};
-
     static inline std::queue<std::string> rx_recieved_queue;
     static inline std::string cmd_rx_buffer = "";
-    
     static inline bool cmd_started = false;
-
     static inline bool callback_setup = false;
 
-
-   // static rxcmd manual_uart_rx();
-   static void process_cmd();
+    // static rxcmd manual_uart_rx();
+    static void process_cmd();
     static rxcmd check_extract_cmd(const std::string _cmd_rx_buffer);
     static rxcmd parse_cmd(const std::string _rx_buffer);
     static void init_uart();
@@ -102,6 +97,5 @@ public:
     static void send_brightness(const int _b);
     static void send_brightnesscurve(const int _bc);
     static void send_daylightsaving(const bool _dls);
-
 };
 #endif
