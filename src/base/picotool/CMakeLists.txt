@@ -2,14 +2,16 @@ cmake_minimum_required(VERSION 3.12)
 
 project(picotool)
 
+set(PICO_SDK_PATH ${CMAKE_CURRENT_LIST_DIR}/../pico-sdk)
+
 if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
 endif()
 
-if (DEFINED ENV{PICO_SDK_PATH} AND (NOT PICO_SDK_PATH))
-    set(PICO_SDK_PATH $ENV{PICO_SDK_PATH})
-    message("Using PICO_SDK_PATH from environment ('${PICO_SDK_PATH}')")
-endif ()
+#if (DEFINED ENV{PICO_SDK_PATH} AND (NOT PICO_SDK_PATH))
+#    set(PICO_SDK_PATH $ENV{PICO_SDK_PATH})
+#    message("Using PICO_SDK_PATH from environment ('${PICO_SDK_PATH}')")
+#endif ()
 if (NOT PICO_SDK_PATH)
     message(FATAL_ERROR "PICO_SDK_PATH is not defined")
 endif()

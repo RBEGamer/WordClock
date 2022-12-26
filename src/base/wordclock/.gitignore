@@ -12,3 +12,9 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
+wordclock.bin
+wordclock.dis
+wordclock.elf
+wordclock.elf.map
+wordclock.hex
+wordclock.uf2
