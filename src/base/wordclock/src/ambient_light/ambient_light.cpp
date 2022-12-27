@@ -1,6 +1,5 @@
 #include "ambient_light.hpp"
 
-int ambient_light::brightness_curve = WORDCLOCK_BRIGHTNESS_MODE_AUTO_CURVE;
 
 ambient_light::ambient_light()
 {

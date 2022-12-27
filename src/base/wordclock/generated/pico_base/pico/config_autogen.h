@@ -4,7 +4,7 @@
 
 // based on PICO_CONFIG_HEADER_FILES:
 
-#include "/Users/marcelochsendorf/Downloads/WordClock/src/base/wordclock/board/WORDCLOCK_V2_RP2040.h"
+#include "/Users/marcelochsendorf/Downloads/WordClock/src/base/wordclock/board/WORDCLOCK_V1_RP2040.h"
 
 // based on PICO_RP2040_CONFIG_HEADER_FILES:
 

@@ -1,6 +1,6 @@
 #include "settings_storage_flash.hpp"
 
-settings_storage_flash::settings_storage_flash()
+settings_storage_flash::settings_storage_flash(): settings_storage()
 {
 }
 

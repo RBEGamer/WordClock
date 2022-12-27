@@ -1,6 +1,6 @@
 #include "settings_storage_eeprom.hpp"
 
-settings_storage_eeprom::settings_storage_eeprom()
+settings_storage_eeprom::settings_storage_eeprom() : settings_storage()
 {
     settings_storage_eeprom::init();
 }

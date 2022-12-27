@@ -4,6 +4,8 @@
 #include "pico/stdlib.h"
 #include "pico/util/datetime.h"
 
+
+
 #include "../helper.h"
 #define RTC_TIME_DELIMITER ":"
 #define RTC_DATE_DELIMITER "."
@@ -30,7 +32,7 @@ public:
     static int day_of_week(const int year, const signed char month, const signed char day);
     static int year_formatter(const int _year); // formats the year 2022 -> 22 1943 -> 43
     static bool summertime_eu(const int _year, const signed char _month, const signed char _day, const signed char _hour);
-
+    static std::string get_compiletime_date();
     rtc();
     virtual ~rtc();
 

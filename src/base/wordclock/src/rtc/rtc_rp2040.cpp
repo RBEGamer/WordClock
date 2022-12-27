@@ -1,6 +1,6 @@
 #include "rtc_rp2040.hpp"
 
-rtc_rp2040::rtc_rp2040()
+rtc_rp2040::rtc_rp2040(): rtc()
 {
 }
 
@@ -80,7 +80,7 @@ void rtc_rp2040::init_rtc()
     rtc_rp2040::set_rtc_date(1, 1, 22);
 #else
     rtc_rp2040::set_rtc_time(__TIME__);
-    rtc_rp2040::set_rtc_date(__DATE__);
+    rtc_rp2040::set_rtc_date(rtc::get_compiletime_date());
 #endif
 }
 
@@ -89,9 +89,14 @@ datetime_t rtc_rp2040::read_rtc()
     datetime_t t;
     rtc_get_datetime(&t);
 
-    if(rtc::enable_daylightsaving && rtc::summertime_eu(t.year, t.month, t.day, t.hour)){
-        t.hour = (t.hour + 1) % 24;
-    } 
+    if (rtc::enable_daylightsaving && !rtc::summertime_eu(t.year, t.month, t.day, t.hour))
+    {
+        signed char tmp = t.hour -1;
+        if(tmp < 0){
+            tmp += 24;
+        }
+        t.hour = tmp % 24;    
+    }
     
     return t;
 }

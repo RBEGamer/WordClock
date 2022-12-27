@@ -67,6 +67,13 @@ void rtc::set_rtc_date(const signed char _day, const signed char _month, const i
 
 void rtc::init_rtc()
 {
+#ifdef SET_INITIAL_TIME_ZERO
+    rtc_rp2040::set_rtc_time(0, 0, 0);
+    rtc_rp2040::set_rtc_date(1, 1, 22);
+#else
+    rtc::set_rtc_time(__TIME__);
+    rtc::set_rtc_date(rtc::get_compiletime_date());
+#endif
 }
 
 void rtc::set_daylightsaving(bool _enable_daylightsaving)
@@ -74,12 +81,18 @@ void rtc::set_daylightsaving(bool _enable_daylightsaving)
     rtc::enable_daylightsaving = _enable_daylightsaving;
 }
 
+
 datetime_t rtc::read_rtc()
 {
     datetime_t t = rtc::current_time;
     if (rtc::enable_daylightsaving && rtc::summertime_eu(t.year, t.month, t.day, t.hour))
     {
-        t.hour = (t.hour + 1) % 24;
+        signed char tmp = t.hour - 1;
+        if (tmp < 0)
+        {
+            tmp += 24;
+        }
+        t.hour = tmp % 24;
     }
     return t;
 }
@@ -141,4 +154,69 @@ bool rtc::summertime_eu(const int _year, const signed char _month, const signed 
     {
         return false;
     }
+}
+
+std::string rtc::get_compiletime_date()
+{
+    const char *delim = " ";
+    const std::string date = __DATE__;
+    std::vector<std::string> out;
+    helper::tokenize(date, delim, out);
+   
+    if (out.size() > 2)
+    {
+        int month = 0;
+        const std::string ms = out.at(0);
+        if (ms == "Jan")
+        {
+            month = 1;
+        }
+        else if (ms == "Feb")
+        {
+            month = 2;
+        }
+        else if (ms == "Mar")
+        {
+            month = 3;
+        }
+        else if (ms == "Apr")
+        {
+            month = 4;
+        }
+        else if (ms == "May")
+        {
+            month = 5;
+        }
+        else if (ms == "Jun")
+        {
+            month = 6;
+        }
+        else if (ms == "Jul")
+        {
+            month = 7;
+        }
+        else if (ms == "Aug")
+        {
+            month = 8;
+        }
+        else if (ms == "Sep")
+        {
+            month = 9;
+        }
+        else if (ms == "Oct")
+        {
+            month = 10;
+        }
+        else if (ms == "Nov")
+        {
+            month = 11;
+        }
+        else if (ms == "Dec")
+        {
+            month = 12;
+        }
+        return out.at(1) + ":" + std::to_string(month) + ":" + out.at(2);
+    }
+
+    return "1:1:1900";
 }

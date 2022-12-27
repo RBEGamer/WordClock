@@ -6,42 +6,39 @@
 #include <functional>
 #include <typeinfo>
 
-
 #include "pico/stdlib.h"
 
 #include "../helper.h"
 
-//ITS POSSIBLE TO REUSE THE CMD ENUM FROM THE WIFISETTINGS
+// ITS POSSIBLE TO REUSE THE CMD ENUM FROM THE WIFISETTINGS
 #ifdef USE_WIFIINTERFACE_SETTINGS
 #include "../wifi_interface.h"
-//#define SETTING_ENTRY wifi_interface::CMD_INDEX SETTINGS_ENTRY
+// #define SETTING_ENTRY wifi_interface::CMD_INDEX SETTINGS_ENTRY
 #endif
 
-
-
-class settings_storage{
+class settings_storage
+{
 public:
-
 #ifdef USE_WIFIINTERFACE_SETTINGS
-    //c++11 typedef
+    // c++11 typedef
     using SETTING_ENTRY = wifi_interface::CMD_INDEX;
 #else
-    enum class SETTING_ENTRY{
-        INVALID, //DONT DELETE
+    enum class SETTING_ENTRY
+    {
+        INVALID, // DONT DELETE
         LOG,
         TIME,
         BRIGHTNESS,
-        DISPLAY_IP,
+        DISPLAYIP,
         FACEPLATE,
         DISPLAYORIENTATION,
-        BRIGHTNESS_CURVE,
+        BRIGHTNESSCURVE,
         DATE,
         DAYLIGHTSAVING,
         LENGHT // DONT DELETE
     };
 #endif
 
-    
     settings_storage();
     virtual ~settings_storage();
     virtual void init();
@@ -49,11 +46,10 @@ public:
     virtual uint8_t read(SETTING_ENTRY _entry);
     virtual bool write(SETTING_ENTRY _entry, uint8_t _value);
 
-private: 
-    //THE BASECLaSS IMPLEMENTS A SIMPLE RAM BASED CONFIG STORAGE SYSTEM WHICH ISNT PERSISTANT
-    // FOR PERSISTANT STORAGE USE FLASH OR EEPROM BASED 
-    uint8_t storage_data_dummy[((int)SETTING_ENTRY::LENGHT)+1];
+private:
+    // THE BASECLaSS IMPLEMENTS A SIMPLE RAM BASED CONFIG STORAGE SYSTEM WHICH ISNT PERSISTANT
+    //  FOR PERSISTANT STORAGE USE FLASH OR EEPROM BASED
+    uint8_t storage_data_dummy[((int)SETTING_ENTRY::LENGHT) + 1];
 };
 
 #endif
-

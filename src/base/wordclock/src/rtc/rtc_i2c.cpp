@@ -1,6 +1,6 @@
 #include "rtc_i2c.hpp"
 
-rtc_i2c::rtc_i2c()
+rtc_i2c::rtc_i2c() : rtc()
 {
 }
 
@@ -58,7 +58,7 @@ void rtc_i2c::init_rtc()
 {
 }
 
-datetime_t rtc_i2c::read_rtc()
+datetime_t rtc_i2c::read_rtc_raw()
 {
     uint8_t buf_rx[7] = {0};
     helper::reg_read(i2c_default, RTC_I2C_ADDR, 0x01, buf_rx, (sizeof(buf_rx) / sizeof(uint8_t)));
@@ -71,10 +71,20 @@ datetime_t rtc_i2c::read_rtc()
         .hour = (int8_t)bcdToDec(buf_rx[2] & 0b00111111),
         .min = (int8_t)bcdToDec(buf_rx[1] & 0b01111111),
         .sec = (int8_t)bcdToDec(buf_rx[0] & 0b01111111)};
+}
 
-    if(rtc::enable_daylightsaving && rtc::summertime_eu(t.year, t.month, t.day, t.hour)){
-        t.hour = (t.hour + 1) % 24;
-    } 
+datetime_t rtc_i2c::read_rtc()
+{
+    datetime_t t = rtc_i2c::read_rtc_raw();
+    if (rtc::enable_daylightsaving && !rtc::summertime_eu(t.year, t.month, t.day, t.hour))
+    {
+        signed char tmp = t.hour - 1;
+        if (tmp < 0)
+        {
+            tmp += 24;
+        }
+        t.hour = tmp % 24;
+    }
     return t;
 }
 

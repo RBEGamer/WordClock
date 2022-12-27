@@ -12,7 +12,7 @@ class ambient_light_bh1750: public ambient_light
 
 protected:
     // ROLLING AVERAGE
-    static const int NUM_READINGS = 20;
+    static const int NUM_READINGS = 10;
     static inline int readings[NUM_READINGS] = { 0 };
 
     int reading_index = 0;
@@ -26,9 +26,9 @@ public:
     ambient_light_bh1750();
     ~ambient_light_bh1750();
     
-    virtual int get_brightness() override;
-    virtual int get_average_brightness() override;
-    virtual void init() override;
+    int get_brightness() override;
+    int get_average_brightness() override;
+    void init() override;
 
 
 

@@ -14,7 +14,7 @@ class rtc_i2c: public rtc
 private:
     uint8_t bcdToDec(const uint8_t _value);
     uint8_t decToBcd(const uint8_t _value);
-
+    datetime_t read_rtc_raw();
 public:
 
     rtc_i2c();

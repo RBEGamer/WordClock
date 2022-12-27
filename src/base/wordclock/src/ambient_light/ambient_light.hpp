@@ -9,12 +9,9 @@ class ambient_light
 {
 
 protected:
-    static int brightness_curve;
+   static inline int brightness_curve = WORDCLOCK_BRIGHTNESS_MODE_AUTO_CURVE;
 
-    
 public:
-
-
 
 
     ambient_light();
@@ -24,6 +21,8 @@ public:
     virtual void init();
 
     void set_brightness_curve(const int _brightness_curve);
+
+
 
 
 };
