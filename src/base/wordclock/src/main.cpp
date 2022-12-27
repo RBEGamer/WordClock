@@ -261,7 +261,7 @@ void set_brightnesscurve(const std::string _payload)
     settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, brighness_curve);
 }
 
-int apply_brighnresscurve(const int _in){
+int apply_brightnesscurve(const int _in){
     //LINEAR IF brighness_curve <= 10
     if(brighness_curve < 11){
         return _in;
@@ -367,7 +367,7 @@ int main()
         // UPDATE BRIGHTNESS IF NEEDED
         if (current_brightness_mode == 0)
         {
-            current_brightness = apply_brighnresscurve(light_sensor->get_average_brightness()); // automatic if mode = 0
+            current_brightness = apply_brightnesscurve(light_sensor->get_average_brightness()); // automatic if mode = 0
         }
         else
         {
