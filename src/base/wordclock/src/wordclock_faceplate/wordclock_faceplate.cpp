@@ -29,18 +29,25 @@ void wordclock_faceplate::display_time_with_words(PicoLed::PicoLedController &_l
 
 PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_faceplate::WORD_COLOR_CLASS _basecolor, const int _current_seconds)
 {
-    // calc position on color wheel
-    const int wheel_pos = (255 / 60) * (_current_seconds % 60);
-    const int offset = 255 / (int)wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT;
-
-    // COLOR DEPENDING WORD TYPE
     if (_basecolor == wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT)
     {
         return PicoLed::RGB(128, 128, 128);
     }
-    else
-    {
-        return PicoLed::HSV(((wheel_pos + offset * (int)_basecolor)), 255, 255);
+
+     // calc position on color wheel
+    const int wheel_pos = (255 / 60) * (_current_seconds % 60);
+
+    if(wordclock_faceplate::config.color_mode == wordclock_faceplate::COLORMODE::RAINBOW_SEPARATE){
+         const int offset = 255 / (int)wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT;
+         return PicoLed::HSV(((wheel_pos + offset * (int)_basecolor)), 255, 255);
+    }else if(wordclock_faceplate::config.color_mode == wordclock_faceplate::COLORMODE::RAINBOW_SAME){
+        return PicoLed::HSV(wheel_pos, 255, 255);
+    }else if(wordclock_faceplate::config.color_mode == wordclock_faceplate::COLORMODE::COLD_WHITE){
+        return PicoLed::RGB(255, 250, 250);
+    }else if(wordclock_faceplate::config.color_mode == wordclock_faceplate::COLORMODE::WARM_WHITE){
+        return PicoLed::RGB(243, 231, 211);
+    }else{
+        return PicoLed::RGB(128, 128, 128);
     }
 }
 
@@ -121,3 +128,11 @@ void wordclock_faceplate::display_time(PicoLed::PicoLedController &_leds, const 
     display_time_with_words(_leds, _h, _m, _s);
     _leds.show();
 }
+
+ void wordclock_faceplate::set_colormode(wordclock_faceplate::COLORMODE _colormode){
+    if(_colormode < wordclock_faceplate::COLORMODE::RAINBOW_SEPARATE || _colormode >= wordclock_faceplate::COLORMODE::LENGTH){
+        return;
+    }
+
+    wordclock_faceplate::config.color_mode = _colormode;
+ }

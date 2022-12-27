@@ -260,6 +260,12 @@ void set_brightnesscurve(const std::string _payload){
     settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, brighness_curve);
 }
 
+void set_colormode(const std::string _payload){
+    const int colormode_index = helper::limit(_payload, 0, (int)wordclock_faceplate::COLORMODE::LENGTH);
+    faceplate->set_colormode(static_cast<wordclock_faceplate::COLORMODE>(colormode_index));
+    settings->write(settings_storage::SETTING_ENTRY::COLORMODE, (int)wordclock_faceplate::config.color_mode);
+}
+
 int apply_brightnesscurve(const int _in){
     //LINEAR IF brighness_curve <= 10
     if(brighness_curve < 11){
@@ -299,6 +305,7 @@ void restore_settings(bool _force = false)
     wordclock_faceplate::config.flip_state = (bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::DISPLAYORIENTATION), 0, 1);
     timekeeper->set_daylightsaving((bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING), 0, 1));
     brighness_curve = settings->read(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE);
+    faceplate->set_colormode(static_cast<wordclock_faceplate::COLORMODE>(settings->read(settings_storage::SETTING_ENTRY::COLORMODE)));
 }
 
 int main()
@@ -338,7 +345,10 @@ int main()
     wifi_interface::register_rx_callback(set_dls, wifi_interface::CMD_INDEX::DAYLIGHTSAVING);
     wifi_interface::register_rx_callback(set_brightnesscurve, wifi_interface::CMD_INDEX::BRIGHTNESSCURVE);
     wifi_interface::register_rx_callback(set_date, wifi_interface::CMD_INDEX::DATE);
+    wifi_interface::register_rx_callback(set_colormode, wifi_interface::CMD_INDEX::COLORMODE);
 
+
+    
     // RESTORE ALLE SETTINGS
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
     restore_settings(false);

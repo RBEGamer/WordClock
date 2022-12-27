@@ -40,6 +40,7 @@ public:
         BRIGHTNESSCURVE,
         DATE,
         DAYLIGHTSAVING,
+        COLORMODE,
         LENGHT // DONT DELETE
     };
 
@@ -68,7 +69,8 @@ public:
         "sdo", // DISPLAYORIENTATION
         "sbc", // BRIGHTNESS CURVE
         "sd",  // DATE
-        "dls"  // DAYLIGHTSAVING
+        "dls", // DAYLIGHTSAVING
+        "col"  // COLORMODE
     };
 
     // MAP FOR FAST LUT  FKT <> CMD_LUT will be used in parse_cmd

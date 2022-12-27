@@ -35,6 +35,7 @@ public:
         BRIGHTNESSCURVE,
         DATE,
         DAYLIGHTSAVING,
+        COLORMODE,
         LENGHT // DONT DELETE
     };
 #endif

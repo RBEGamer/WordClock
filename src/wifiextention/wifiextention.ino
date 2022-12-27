@@ -379,8 +379,8 @@ void handleRoot() {
   control_forms += "<p>BRIGHTNESS: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sb' id='sb' min='0' max='255' required placeholder='0=AUTO 10-255=MANUAL'/><input type='submit' value='SAVE'/></form><br>";
   //BRIGHTNESS CURVE
   control_forms += "<p>BRIGHTNESS CURVE: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sbc' id='sbc' min='10' max='100' required placeholder='0=LINEAR 10-100=EXPONENTIAL'/><input type='submit' value='SAVE'/></form><br>";
-
-
+  //COLORMODE
+  control_forms += "<p>COLOR MODE: </p><form name='btn_on' action='/save' method='GET'><select name='col' id='col'><option value='0'>RAINBOW SEPARATE</option><option value='1'>RAINBOW EQUAL</option><option value='2'>COLD WHITE</option><option value='3'>WARM WHITE</option></select><input type='submit' value='SAVE'/></form><br>";
 
   // SYSTEM SETTINGS
   control_forms += "<form name='btn_on' action='/save' method='GET' required ><input type='hidden' value='eepromread' name='eepromread' /><input type='submit' value='READ STORED CONFIG'/></form><br>";
