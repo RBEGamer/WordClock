@@ -255,8 +255,7 @@ void set_dls(const std::string _payload)
     settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, v);
 }
 
-void set_brightnesscurve(const std::string _payload)
-{
+void set_brightnesscurve(const std::string _payload){
     brighness_curve = (bool)helper::limit(_payload, 10, 100);
     settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, brighness_curve);
 }
