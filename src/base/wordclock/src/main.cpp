@@ -266,7 +266,7 @@ int apply_brightnesscurve(const int _in){
         return _in;
     }
     //EXPONENTIAL IN 0.02 steps
-    return helper::limit(std::pow(_in,1+(brighness_curve / 50.0)), WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX);
+    return helper::limit(std::pow(_in,0.5+(brighness_curve / 50.0)), WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX);
 }
 void prepare_display_ip(const std::string _payload)
 {
