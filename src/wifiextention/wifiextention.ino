@@ -378,7 +378,7 @@ void handleRoot() {
   //BRIGHTNESS
   control_forms += "<p>BRIGHTNESS: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sb' id='sb' min='0' max='255' required placeholder='0=AUTO 10-255=MANUAL'/><input type='submit' value='SAVE'/></form><br>";
   //BRIGHTNESS CURVE
-  control_forms += "<p>BRIGHTNESS CURVE: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sbc' id='sbc' min='10' max='100' required placeholder='10 -100'/><input type='submit' value='SAVE'/></form><br>";
+  control_forms += "<p>BRIGHTNESS CURVE: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sbc' id='sbc' min='10' max='100' required placeholder='0=LINEAR 10-100=EXPONENTIAL'/><input type='submit' value='SAVE'/></form><br>";
 
 
 
