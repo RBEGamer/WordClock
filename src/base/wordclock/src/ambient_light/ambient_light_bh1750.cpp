@@ -3,7 +3,7 @@
 
 
 
-ambient_light_bh1750::ambient_light_bh1750() : ambient_light(){
+ambient_light_bh1750::ambient_light_bh1750(){
 
 }
 ambient_light_bh1750::~ambient_light_bh1750(){
@@ -32,7 +32,7 @@ int ambient_light_bh1750::get_brightness()
     {
         return -1;
     }
-    const int lux = ambient_light::brightness_curve * ((buf[0] << 8) + buf[1]) / (1.2 * 2 * 10 ); // custom 1.2 factor added
+    const int lux = ((buf[0] << 8) + buf[1]) / (1.2 * 2); // custom 1.2 factor added
     return lux;
 }
 

@@ -10,6 +10,9 @@
 
 class rtc_rp2040: public rtc
 {
+
+private:
+    datetime_t read_rtc_raw();
 public:
 
     rtc_rp2040();

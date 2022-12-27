@@ -24,6 +24,7 @@ int last_brightness = 0;
 int last_tmin = -1;
 int last_tsec = -1;
 
+int brighness_curve = 10;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 wordclock_faceplate *faceplate = new wordclock_faceplate_german();
 
@@ -88,12 +89,10 @@ void init_bh1750(const int _i2_addr)
     {
         delete light_sensor;
     }
-
     light_sensor = new ambient_light_bh1750();
     if (light_sensor)
     {
         light_sensor->init();
-
     }
 #endif
 }
@@ -258,11 +257,18 @@ void set_dls(const std::string _payload)
 
 void set_brightnesscurve(const std::string _payload)
 {
-    const int v = (bool)helper::limit(_payload, 10, 100);
-    light_sensor->set_brightness_curve(v);
-    settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, v);
+    brighness_curve = (bool)helper::limit(_payload, 10, 100);
+    settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, brighness_curve);
 }
 
+int apply_brighnresscurve(const int _in){
+    //LINEAR IF brighness_curve <= 10
+    if(brighness_curve < 11){
+        return _in;
+    }
+    //EXPONENTIAL IN 0.02 steps
+    return helper::limit(std::pow(_in,1+(brighness_curve / 50.0)), WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX);
+}
 void prepare_display_ip(const std::string _payload)
 {
     if (_payload.size() > 0)
@@ -293,7 +299,7 @@ void restore_settings(bool _force = false)
     set_faceplate(settings->read(settings_storage::SETTING_ENTRY::FACEPLATE));
     wordclock_faceplate::config.flip_state = (bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::DISPLAYORIENTATION), 0, 1);
     timekeeper->set_daylightsaving((bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING), 0, 1));
-    light_sensor->set_brightness_curve(settings->read(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE));
+    brighness_curve = settings->read(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE);
 }
 
 int main()
@@ -361,7 +367,7 @@ int main()
         // UPDATE BRIGHTNESS IF NEEDED
         if (current_brightness_mode == 0)
         {
-            current_brightness = light_sensor->get_average_brightness(); // automatic if mode = 0
+            current_brightness = apply_brighnresscurve(light_sensor->get_average_brightness()); // automatic if mode = 0
         }
         else
         {

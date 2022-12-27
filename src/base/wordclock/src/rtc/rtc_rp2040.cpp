@@ -24,12 +24,12 @@ void rtc_rp2040::set_rtc_time(const std::string _time)
 
 void rtc_rp2040::set_rtc_time(const signed char _h, const signed char _m, const signed char _s)
 {
-    datetime_t t = read_rtc();
+    datetime_t t = read_rtc_raw();
     t = {
-        .year = 2020,
-        .month = 06,
-        .day = 05,
-        .dotw = 0, // 0 is Sunday, so 5 is Friday
+        .year = t.year,
+        .month = t.month,
+        .day = t.day,
+        .dotw = t.dotw, // 0 is Sunday, so 5 is Friday
         .hour = _h,
         .min = _m,
         .sec = _s};
@@ -55,7 +55,7 @@ void rtc_rp2040::set_rtc_date(const std::string _time)
 
 void rtc_rp2040::set_rtc_date(const signed char _day, const signed char _month, const int _year)
 {
-    datetime_t t = read_rtc();
+    datetime_t t = read_rtc_raw();
     t = {
         .year = (signed char)rtc::year_formatter(_year),
         .month = _month,
@@ -84,10 +84,17 @@ void rtc_rp2040::init_rtc()
 #endif
 }
 
-datetime_t rtc_rp2040::read_rtc()
-{
+
+datetime_t rtc_rp2040::read_rtc_raw(){
     datetime_t t;
     rtc_get_datetime(&t);
+    return t;
+}
+
+datetime_t rtc_rp2040::read_rtc()
+{
+    datetime_t t = rtc_rp2040::read_rtc_raw();
+
 
     if (rtc::enable_daylightsaving && !rtc::summertime_eu(t.year, t.month, t.day, t.hour))
     {
