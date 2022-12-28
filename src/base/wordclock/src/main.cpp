@@ -115,7 +115,9 @@ void init_eeprom_i2c(const int _i2_addr)
         delete settings;
     }
     settings = new settings_storage_eeprom();
-    settings->init();
+    if(settings){
+        settings->init();
+    }
 #endif
 }
 
@@ -132,6 +134,9 @@ void init_rtc_i2c(const int _i2_addr)
         delete timekeeper;
     }
     timekeeper = new rtc_i2c();
+    if(timekeeper){
+        timekeeper->init();
+    }
 
 #endif
 }
@@ -285,6 +290,10 @@ void prepare_display_ip(const std::string _payload)
     }
 }
 
+
+void set_restoresettings(const std::string _payload){
+    
+}
 void restore_settings(bool _force = false)
 {
     // USED TO CHECK VALUE OF SETTING_ENTRY::INVALID
@@ -325,11 +334,12 @@ int main()
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
-    init_i2c();
-
     settings->init();
     timekeeper->init();
     light_sensor->init();
+
+    //init_i2c();
+
 
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
@@ -341,11 +351,11 @@ int main()
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
     sleep_ms(1000);
-    ledStrip.setBrightness(light_sensor->get_average_brightness());
+    //ledStrip.setBrightness(light_sensor->get_brightness());
 
     // enable uart rx irq for communication with wifi module and register callback functions
-    wifi_interface::init_uart();
-    wifi_interface::enable_uart_irq(true);
+    //wifi_interface::init_uart();
+    //wifi_interface::enable_uart_irq(true);
     wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::TIME);
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::BRIGHTNESS);
     wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::FACEPLATE);
@@ -355,10 +365,12 @@ int main()
     wifi_interface::register_rx_callback(set_brightnesscurve, wifi_interface::CMD_INDEX::BRIGHTNESSCURVE);
     wifi_interface::register_rx_callback(set_date, wifi_interface::CMD_INDEX::DATE);
     wifi_interface::register_rx_callback(set_colormode, wifi_interface::CMD_INDEX::COLORMODE);
-
+    wifi_interface::register_rx_callback(set_restoresettings, wifi_interface::CMD_INDEX::RESTORESETTINGS);
 
     
+    
     // RESTORE ALLE SETTINGS
+    
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
     restore_settings(false);
     gpio_put(PICO_DEFAULT_LED_PIN, false);
@@ -372,13 +384,13 @@ int main()
         wifi_interface::process_cmd();
 
       
-
+    /*
         if (display_to_ip.size() > 0)
         {
             display_ip(ledStrip, display_to_ip);
             display_to_ip = "";
         }
-
+*/
         // UPDATE DISPLAY IF NEEDED
         const datetime_t t = timekeeper->read_rtc();
         printf("%i\n", t.sec);
@@ -387,6 +399,7 @@ int main()
             last_tsec = t.sec;
             update_display_time(ledStrip, t.hour, t.min, t.sec);
         }
+        /*
         // UPDATE BRIGHTNESS IF NEEDED
         if (current_brightness_mode == 0)
         {
@@ -402,7 +415,7 @@ int main()
             last_brightness = current_brightness;
             ledStrip.setBrightness(current_brightness);
         }
-       
+       */
     }
 
     return 0;

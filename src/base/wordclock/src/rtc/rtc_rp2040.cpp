@@ -26,7 +26,7 @@ void rtc_rp2040::set_rtc_time(const signed char _h, const signed char _m, const 
 {
     if (_initial)
     {
-                const datetime_t tmp = read_rtc_raw();
+        const datetime_t tmp = read_rtc_raw();
         datetime_t t = {
             .year = 22,
             .month = 1,
