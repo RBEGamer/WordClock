@@ -41,6 +41,7 @@ public:
         DATE,
         DAYLIGHTSAVING,
         COLORMODE,
+        RESTORESETTINGS,
         LENGHT // DONT DELETE
     };
 
@@ -70,7 +71,8 @@ public:
         "sbc", // BRIGHTNESS CURVE
         "sd",  // DATE
         "dls", // DAYLIGHTSAVING
-        "col"  // COLORMODE
+        "col",  // COLORMODE
+        "res", // RESTORESETTINGS
     };
 
     // MAP FOR FAST LUT  FKT <> CMD_LUT will be used in parse_cmd

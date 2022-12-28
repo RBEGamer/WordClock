@@ -36,6 +36,7 @@ public:
         DATE,
         DAYLIGHTSAVING,
         COLORMODE,
+        RESTORESETTINGS,
         LENGHT // DONT DELETE
     };
 #endif

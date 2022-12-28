@@ -240,6 +240,9 @@ void set_clock_date(const int _day, const int _month, const int _year) {
   send_cmd_str("sd", String(_day) + ":" + String(_month) + ":" + String(_year));
 }
 
+void set_restdefaults(){
+  send_cmd_str("res", "1");
+}
 // ONLY READ THE FIRST LINE UNTIL NEW LINE !!!!!
 String read_file(const char* _file, String _default = "") {
   File f = SPIFFS.open(_file, "r");
@@ -279,6 +282,8 @@ void write_deffault_to_eeprom() {
   ntp_server_url = DEFAULT_NTP_SERVER;
   save_values_to_eeprom();
   restore_eeprom_values();
+
+  set_restdefaults();
 }
 
 
@@ -349,7 +354,7 @@ void handleSave() {
 void handleRoot() {
   String control_forms = "<hr><h2>DEVICE INFO</h2><h3>" + String(MDNS_NAME) + String(get_esp_chip_id()) + "<br><br>" + BOARD_INFO + "</h3><br>";
 
-  control_forms += "<hr><h2>CURRENT NTP TIME</h2><h1>" + String(rtc_hours) + ":" + String(rtc_mins) + ":" + String(rtc_secs) + " " + String(rtc_day) + "." + String(rtc_month) + "." + String(rtc_year) + "</h1>"
+  control_forms += "<hr><h2>CURRENT NTP TIME</h2><h1>" + String(rtc_hours) + ":" + String(rtc_mins) + ":" + String(rtc_secs) + " " + String(rtc_day) + "." + String(rtc_month) + "." + String(rtc_year) + "</h1>";
 
 
 
@@ -381,11 +386,14 @@ void handleRoot() {
   control_forms += "<p>BRIGHTNESS CURVE: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sbc' id='sbc' min='10' max='100' required placeholder='0=LINEAR 10-100=EXPONENTIAL'/><input type='submit' value='SAVE'/></form><br>";
   //COLORMODE
   control_forms += "<p>COLOR MODE: </p><form name='btn_on' action='/save' method='GET'><select name='col' id='col'><option value='0'>RAINBOW SEPARATE</option><option value='1'>RAINBOW EQUAL</option><option value='2'>COLD WHITE</option><option value='3'>WARM WHITE</option></select><input type='submit' value='SAVE'/></form><br>";
+  // CLOCKRESET
+  control_forms += "<form name='btn_on' action='/save' method='GET' required ><input type='hidden' value='res' name='res' /><input type='submit' value='CLOCK RESET'/></form><br>";
 
-  // SYSTEM SETTINGS
+  // SYSTEM SETTINGS  
   control_forms += "<form name='btn_on' action='/save' method='GET' required ><input type='hidden' value='eepromread' name='eepromread' /><input type='submit' value='READ STORED CONFIG'/></form><br>";
   control_forms += "<form name='btn_on' action='/save' method='GET' required ><input type='hidden' value='fsformat' name='fsformat' /><input type='submit' value='DELETE CONFIGURATION'/></form><br>";
   control_forms += "<form name='btn_on' action='/save' method='GET' required ><input type='hidden' value='factreset' name='factreset' /><input type='submit' value='FACTORY RESET'/></form><br>";
+  
 
   control_forms += "<br><hr><h3>LAST SYSTEM MESSAGE</h3><br>" + last_error;
 

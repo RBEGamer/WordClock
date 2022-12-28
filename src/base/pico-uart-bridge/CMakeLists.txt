@@ -1,10 +1,13 @@
 # SPDX-License-Identifier: MIT
-
 cmake_minimum_required(VERSION 3.13)
 
-include(pico-sdk/pico_sdk_init.cmake)
+set(PICO_SDK_PATH ${CMAKE_CURRENT_LIST_DIR}/../pico-sdk)
+include(pico_sdk_import.cmake)
 
-project(pico_uart_bridge)
+project(pico_uart_bridge C CXX ASM)
+
+set(PICO_CXX_ENABLE_EXCEPTIONS 1)
+set(PICO_CXX_ENABLE_RTTI 1)
 
 pico_sdk_init()
 
