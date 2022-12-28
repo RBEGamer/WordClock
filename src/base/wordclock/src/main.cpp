@@ -28,24 +28,9 @@ int brighness_curve = 10;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 wordclock_faceplate *faceplate = new wordclock_faceplate_german();
 
-#if defined(USE_FLASH_AS_EEPROM)
-settings_storage *settings = new settings_storage_flash();
-#else
-settings_storage *settings = new settings_storage();
-#endif
-
-#if defined(USE_RP2040RTC)
-rtc *timekeeper = new rtc_rp2040();
-#else
-rtc *timekeeper = new rtc();
-#endif
-
-#ifdef FORCE_BH1750
-    ambient_light *light_sensor = new ambient_light_bh1750();
-#else
-    ambient_light *light_sensor = new ambient_light();
-#endif
-
+ambient_light *lightsensor = nullptr;
+rtc *timekeeper = nullptr;
+settings_storage *settings = nullptr;
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
 {
@@ -86,18 +71,12 @@ void init_bh1750(const int _i2_addr)
         return;
     }
 
-#ifndef DISBALE_BH1750 
-#ifndef FORCE_BH1750
-    if (light_sensor)
+#ifdef USE_BH1750_IF_PRESENT
+    if (lightsensor)
     {
-        delete light_sensor;
+        delete lightsensor;
     }
-    light_sensor = new ambient_light_bh1750();
-    if (light_sensor)
-    {
-        light_sensor->init();
-    }
-#endif
+    lightsensor = new ambient_light_bh1750();
 #endif
 }
 
@@ -109,15 +88,12 @@ void init_eeprom_i2c(const int _i2_addr)
         return;
     }
 
-#ifdef USE_EEPROM_IF_EEPROM_IS_PRESENT
+#ifdef USE_EEPROM_IF_PRESENT
     if (settings)
     {
         delete settings;
     }
     settings = new settings_storage_eeprom();
-    if(settings){
-        settings->init();
-    }
 #endif
 }
 
@@ -128,16 +104,12 @@ void init_rtc_i2c(const int _i2_addr)
         printf("init_pcf85263 failed");
         return;
     }
-#ifdef USE_RTC_IF_RTC_IS_PRESENT
+#ifdef USE_I2CRTC_IF_PRESENT
     if (timekeeper)
     {
         delete timekeeper;
     }
     timekeeper = new rtc_i2c();
-    if(timekeeper){
-        timekeeper->init();
-    }
-
 #endif
 }
 
@@ -170,7 +142,7 @@ void init_i2c()
         // CHECK FOR REQUESTED DEVIES FOUND
         if (addr == BH1750_I2C_ADDR)
         {
-           init_bh1750(addr);
+            init_bh1750(addr);
         }
         else if (addr == RTC_I2C_ADDR)
         {
@@ -249,7 +221,7 @@ void set_displayorientation(const int _payload)
 
 void set_time(const std::string _payload)
 {
-    timekeeper->set_rtc_time(_payload, false); //false = update time
+    timekeeper->set_rtc_time(_payload, false); // false = update time
 }
 
 void set_date(const std::string _payload)
@@ -257,30 +229,35 @@ void set_date(const std::string _payload)
     timekeeper->set_rtc_date(_payload);
 }
 
-void set_dls(const std::string _payload){
+void set_dls(const std::string _payload)
+{
     const int v = (bool)helper::limit(_payload, 0, 1);
     timekeeper->set_daylightsaving(v);
     settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, v);
 }
 
-void set_brightnesscurve(const std::string _payload){
+void set_brightnesscurve(const std::string _payload)
+{
     brighness_curve = (bool)helper::limit(_payload, 10, 100);
     settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, brighness_curve);
 }
 
-void set_colormode(const std::string _payload){
+void set_colormode(const std::string _payload)
+{
     const int colormode_index = helper::limit(_payload, 0, (int)wordclock_faceplate::COLORMODE::LENGTH);
     faceplate->set_colormode(static_cast<wordclock_faceplate::COLORMODE>(colormode_index));
     settings->write(settings_storage::SETTING_ENTRY::COLORMODE, (int)wordclock_faceplate::config.color_mode);
 }
 
-int apply_brightnesscurve(const int _in){
-    //LINEAR IF brighness_curve <= 10
-    if(brighness_curve < 11){
+int apply_brightnesscurve(const int _in)
+{
+    // LINEAR IF brighness_curve <= 10
+    if (brighness_curve < 11)
+    {
         return _in;
     }
-    //EXPONENTIAL IN 0.02 steps
-    return helper::limit(std::pow(_in,0.5+(brighness_curve / 50.0)), WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX);
+    // EXPONENTIAL IN 0.02 steps
+    return helper::limit(std::pow(_in, 0.5 + (brighness_curve / 50.0)), WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX);
 }
 void prepare_display_ip(const std::string _payload)
 {
@@ -290,10 +267,6 @@ void prepare_display_ip(const std::string _payload)
     }
 }
 
-
-void set_restoresettings(const std::string _payload){
-    
-}
 void restore_settings(bool _force = false)
 {
     // USED TO CHECK VALUE OF SETTING_ENTRY::INVALID
@@ -311,8 +284,9 @@ void restore_settings(bool _force = false)
         settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, WORDCLOCK_BRIGHTNESS_MODE_AUTO_CURVE);
         settings->write(settings_storage::SETTING_ENTRY::COLORMODE, WORDCLOCK_COLOR_MODE);
 
-        //SET THE RTC TO A DEFINED TIME
-        if(timekeeper){
+        // SET THE RTC TO A DEFINED TIME
+        if (timekeeper)
+        {
             timekeeper->set_initial_time();
         }
     }
@@ -326,20 +300,63 @@ void restore_settings(bool _force = false)
     faceplate->set_colormode(static_cast<wordclock_faceplate::COLORMODE>(settings->read(settings_storage::SETTING_ENTRY::COLORMODE)));
 }
 
+void set_restoresettings(const std::string _payload)
+{
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
+    restore_settings(true);
+    sleep_ms(100);
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
+}
+
 int main()
 {
+    bool led_state = false;
     stdio_init_all();
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
-    gpio_put(PICO_DEFAULT_LED_PIN, true);
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
+
+    init_i2c();
+    // AFTER CALLING init_i2c all needed instances of timekeeper lightsensor settings objects should be created.
+    //  IF A I2C DEVICE ISNT PRESENT CREATE DEFAULT ONES
+    if (!settings)
+    {
+#if defined(USE_FLASH_AS_EEPROM)
+        settings = new settings_storage_flash();
+#else
+        settings = new settings_storage();
+#endif
+    }
+
+    if (!timekeeper)
+    {
+#if defined(USE_RP2040RTC)
+        timekeeper = new rtc_rp2040();
+#else
+        timekeeper = new rtc();
+#endif
+    }
+
+    if (!lightsensor)
+    {
+        lightsensor = new ambient_light();
+    }
+
+    if (!settings || !timekeeper || !lightsensor)
+    {
+        while (1)
+        {
+            printf("init failed: settings_%i timekeeper_%i lightsensor_%i\n", settings, timekeeper, lightsensor);
+            led_state = !led_state;
+            gpio_put(PICO_DEFAULT_LED_PIN, led_state);
+            sleep_ms(100);
+        }
+    }
 
     settings->init();
     timekeeper->init();
-    light_sensor->init();
-
-    //init_i2c();
-
+    lightsensor->init();
 
     // modified lib for 400khz
     PicoLed::PicoLedController ledStrip = PicoLed::addLeds<PicoLed::WS2812B>(pio0, 0, PICO_DEFAULT_WS2812_PIN, PICO_DEFAULT_WS2812_NUM, PicoLed::FORMAT_GRB);
@@ -351,11 +368,12 @@ int main()
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
     sleep_ms(1000);
-    //ledStrip.setBrightness(light_sensor->get_brightness());
+    current_brightness = lightsensor->get_brightness();
+    ledStrip.setBrightness(current_brightness);
 
     // enable uart rx irq for communication with wifi module and register callback functions
-    //wifi_interface::init_uart();
-    //wifi_interface::enable_uart_irq(true);
+    wifi_interface::init_uart();
+    wifi_interface::enable_uart_irq(true);
     wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::TIME);
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::BRIGHTNESS);
     wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::FACEPLATE);
@@ -367,55 +385,62 @@ int main()
     wifi_interface::register_rx_callback(set_colormode, wifi_interface::CMD_INDEX::COLORMODE);
     wifi_interface::register_rx_callback(set_restoresettings, wifi_interface::CMD_INDEX::RESTORESETTINGS);
 
-    
-    
     // RESTORE ALLE SETTINGS
-    
+
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
     restore_settings(false);
     gpio_put(PICO_DEFAULT_LED_PIN, false);
     int i = 0;
+
     while (true)
     {
-        sleep_ms(1000);
-
+        sleep_ms(100);
 
         // PROCEESS ANY RECEIEVED COMMANDS
         wifi_interface::process_cmd();
 
-      
-    /*
         if (display_to_ip.size() > 0)
         {
             display_ip(ledStrip, display_to_ip);
             display_to_ip = "";
         }
-*/
+
         // UPDATE DISPLAY IF NEEDED
         const datetime_t t = timekeeper->read_rtc();
-        printf("%i\n", t.sec);
         if (last_tsec != t.sec)
         {
             last_tsec = t.sec;
             update_display_time(ledStrip, t.hour, t.min, t.sec);
         }
-        /*
+
         // UPDATE BRIGHTNESS IF NEEDED
         if (current_brightness_mode == 0)
         {
-            current_brightness = apply_brightnesscurve(light_sensor->get_average_brightness()); // automatic if mode = 0
+            const int sensor_read = apply_brightnesscurve(lightsensor->get_average_brightness()); // automatic if mode = 0
+            if (sensor_read > current_brightness)
+            {
+                current_brightness++;
+            }
+            else if (sensor_read < current_brightness && current_brightness > 10)
+            {
+                current_brightness--;
+            }
+            printf("fade %i \n", current_brightness);
         }
         else
         {
             current_brightness = current_brightness_mode; // manual if mode 1-255
         }
 
-        if (abs(current_brightness - last_brightness) > 1)
+        if (abs(current_brightness - last_brightness) > 0)
         {
             last_brightness = current_brightness;
             ledStrip.setBrightness(current_brightness);
+#ifdef ENABLE_SMMOTH_FADE
+            // UPDATE DISPLAY AGAIN TO APPLY NEW BRIGHTNESS
+            update_display_time(ledStrip, t.hour, t.min, t.sec);
+#endif
         }
-       */
     }
 
     return 0;

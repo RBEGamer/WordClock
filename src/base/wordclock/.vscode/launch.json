@@ -51,11 +51,16 @@
             "servertype": "jlink",
             "interface": "swd",
             //"ipAddress": "127.0.0.1",
-            "device": "RP2040_M0_0",
-            "serverpath": "JLinkGDBServerCLExe",
+            
             "svdFile": "${workspaceRoot}/../pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
-            "armToolchainPath": "/usr/bin",
-            "toolchainPrefix" : "arm-none-eabi",
+            "device": "RP2040_M0_0",
+            "osx": {
+                //"serverpath": "JLinkGDBServerCLExe",
+            },
+            "linux": {
+               "armToolchainPath": "/usr/bin",
+                "toolchainPrefix" : "arm-none-eabi",
+            },
             "postRestartCommands": [
                 "break main",
                 "continue"
