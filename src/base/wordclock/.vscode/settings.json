@@ -1,4 +1,23 @@
 {
+    "editor.minimap.enabled": true,
+    "cmake.statusbar.advanced": {
+        "debug": {
+            "visibility": "hidden"
+        },
+        "launch": {
+            "visibility": "hidden"
+        },
+        "build": {
+            "visibility": "hidden"
+        },
+        "buildTarget": {
+            "visibility": "hidden"
+        }
+    },
+    "cmake.buildBeforeRun": true,
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    // This may need to be arm-none-eabi-gdb depending on your system
+   // "cortex-debug.gdbPath": "gdb-multiarch",
     "files.associations": {
         "*.ejs": "html",
         "array": "cpp",
