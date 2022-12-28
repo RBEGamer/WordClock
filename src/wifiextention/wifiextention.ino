@@ -505,10 +505,11 @@ void loop(void) {
     // DATE
     time_t epochTime = timeClient.getEpochTime();
     struct tm* ptm = gmtime((time_t*)&epochTime);
-    const int monthDay = ptm->tm_mday;
-    const int currentMonth = ptm->tm_mon + 1;
-    const int currentYear = ptm->tm_year + 1900;
-    set_clock_date(monthDay, currentMonth, currentYear);
+
+    rtc_day = ptm->tm_mday;
+    rtc_month = ptm->tm_mon + 1;
+    rtc_year = ptm->tm_year + 1900;
+    set_clock_date(rtc_day, rtc_month, rtc_year);
   }
   //HANDLE OTA
   ArduinoOTA.handle();

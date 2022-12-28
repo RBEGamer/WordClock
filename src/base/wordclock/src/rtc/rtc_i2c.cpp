@@ -96,7 +96,7 @@ datetime_t rtc_i2c::read_rtc_raw()
 datetime_t rtc_i2c::read_rtc()
 {
     datetime_t t = rtc_i2c::read_rtc_raw();
-    if (rtc::enable_daylightsaving && !rtc::summertime_eu(t.year, t.month, t.day, t.hour))
+    if (rtc::enable_daylightsaving && rtc::summertime_eu(t.year, t.month, t.day, t.hour))
     {
         signed char tmp = t.hour - 1;
         if (tmp < 0)

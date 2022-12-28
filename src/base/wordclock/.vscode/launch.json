@@ -2,6 +2,8 @@
     // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
     // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
     // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+
+
     "version": "0.2.0",
     "configurations": [
         {   "name": "Pico Debug",
@@ -40,6 +42,7 @@
                 "${workspaceRoot}/src",
             ],
         },
+
         {
             "name": "JLINK USB",
             //"showDevDebugOutput": "raw",
@@ -51,7 +54,6 @@
             "servertype": "jlink",
             "interface": "swd",
             //"ipAddress": "127.0.0.1",
-            
             "svdFile": "${workspaceRoot}/../pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
             "device": "RP2040_M0_0",
             "osx": {
@@ -61,6 +63,31 @@
                "armToolchainPath": "/usr/bin",
                 "toolchainPrefix" : "arm-none-eabi",
             },
+            "postRestartCommands": [
+                "break main",
+                "continue"
+            ],
+            "debuggerArgs": [
+                "-d",
+                "${workspaceFolder}/src"
+            ],
+            "searchDir": [ 
+                "${workspaceRoot}",
+                "${workspaceRoot}/src",
+            ],
+        },
+        {
+            "name": "JLINK IP",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceRoot}/wordclock.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "jlink",
+            "ipAddress": "127.0.0.1",
+            "svdFile": "${workspaceRoot}/../pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
+            "device": "RP2040_M0_0",
+            "serverpath": "JLinkGDBServerCLExe",
             "postRestartCommands": [
                 "break main",
                 "continue"
