@@ -36,13 +36,14 @@ public:
     rtc();
     virtual ~rtc();
 
-    virtual void set_rtc_time(const std::string _time);
-    virtual void set_rtc_time(const signed char _h, const signed char _m, const signed char _s);
+    virtual void set_rtc_time(const std::string _time, bool _initial);
+    virtual void set_rtc_time(const signed char _h, const signed char _m, const signed char _s, bool _initial);
     virtual void set_rtc_date(const std::string _time);
     virtual void set_rtc_date(const signed char _day, const signed char _month, const int _year);
-    virtual void init_rtc();
+    virtual void init();
     void set_daylightsaving(bool _enable_daylightsaving);
     virtual datetime_t read_rtc();
+    virtual void set_initial_time();
 
 private:
     datetime_t current_time;

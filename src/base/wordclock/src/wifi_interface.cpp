@@ -78,8 +78,12 @@ void wifi_interface::on_wifi_uart_rx()
 
 void wifi_interface::process_cmd()
 {
-  if (wifi_interface::rx_recieved_queue.size() > 0)
-  {
+  //CLEAR CMD BUFFER IF MORE THAN x CHARACTERS ARE IN IT, TO PREVENT OVERFLOW;
+  if(wifi_interface::cmd_rx_buffer.size() > 100){
+    cmd_rx_buffer = "";
+  }
+
+  if (wifi_interface::rx_recieved_queue.size() > 0){
     const std::string front_cmd = wifi_interface::rx_recieved_queue.front();
     wifi_interface::rx_recieved_queue.pop();
     parse_cmd(front_cmd);

@@ -50,7 +50,7 @@ public:
     COLORMODE color_mode;
     FACEPLATE_CONFIG()
     {
-      flip_state = WORDCLOCK_DISPlAY_ORIENTATION;
+      flip_state = false;
       current_faceplate = FACEPLATES::TEST;
       color_mode = COLORMODE::RAINBOW_SEPARATE;
     }

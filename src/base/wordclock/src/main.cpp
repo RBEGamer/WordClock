@@ -45,6 +45,8 @@ rtc *timekeeper = new rtc();
 #else
     ambient_light *light_sensor = new ambient_light();
 #endif
+
+
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
 {
     if (_instance)
@@ -84,6 +86,7 @@ void init_bh1750(const int _i2_addr)
         return;
     }
 
+#ifndef DISBALE_BH1750 
 #ifndef FORCE_BH1750
     if (light_sensor)
     {
@@ -94,6 +97,7 @@ void init_bh1750(const int _i2_addr)
     {
         light_sensor->init();
     }
+#endif
 #endif
 }
 
@@ -161,15 +165,15 @@ void init_i2c()
         // CHECK FOR REQUESTED DEVIES FOUND
         if (addr == BH1750_I2C_ADDR)
         {
-            init_bh1750(addr);
+           // init_bh1750(addr);
         }
         else if (addr == RTC_I2C_ADDR)
         {
-            init_rtc_i2c(addr);
+            //init_rtc_i2c(addr);
         }
         else if (addr == EEPROM_I2C_ADDR)
         {
-            init_eeprom_i2c(addr);
+            //init_eeprom_i2c(addr);
         }
     }
 }
@@ -240,7 +244,7 @@ void set_displayorientation(const int _payload)
 
 void set_time(const std::string _payload)
 {
-    timekeeper->set_rtc_time(_payload);
+    timekeeper->set_rtc_time(_payload, false); //false = update time
 }
 
 void set_date(const std::string _payload)
@@ -248,8 +252,7 @@ void set_date(const std::string _payload)
     timekeeper->set_rtc_date(_payload);
 }
 
-void set_dls(const std::string _payload)
-{
+void set_dls(const std::string _payload){
     const int v = (bool)helper::limit(_payload, 0, 1);
     timekeeper->set_daylightsaving(v);
     settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, v);
@@ -297,6 +300,12 @@ void restore_settings(bool _force = false)
         settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESS, WORDCLOCK_BRIGHTNESS_MODE);
         settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, WORDCLOCK_DAYLIGHTSAVING);
         settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, WORDCLOCK_BRIGHTNESS_MODE_AUTO_CURVE);
+        settings->write(settings_storage::SETTING_ENTRY::COLORMODE, WORDCLOCK_COLOR_MODE);
+
+        //SET THE RTC TO A DEFINED TIME
+        if(timekeeper){
+            timekeeper->set_initial_time();
+        }
     }
 
     // LOAD VALUES FROM STORAGE
@@ -316,10 +325,10 @@ int main()
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
-    init_i2c();
+    //init_i2c();
 
     settings->init();
-    timekeeper->init_rtc();
+    timekeeper->init();
     light_sensor->init();
 
     // modified lib for 400khz
@@ -353,12 +362,16 @@ int main()
     //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
     restore_settings(false);
     gpio_put(PICO_DEFAULT_LED_PIN, false);
-
+    int i = 0;
     while (true)
     {
+        sleep_ms(1000);
+
 
         // PROCEESS ANY RECEIEVED COMMANDS
         wifi_interface::process_cmd();
+
+      
 
         if (display_to_ip.size() > 0)
         {
@@ -368,6 +381,7 @@ int main()
 
         // UPDATE DISPLAY IF NEEDED
         const datetime_t t = timekeeper->read_rtc();
+        printf("%i\n", t.sec);
         if (last_tsec != t.sec)
         {
             last_tsec = t.sec;
@@ -388,7 +402,7 @@ int main()
             last_brightness = current_brightness;
             ledStrip.setBrightness(current_brightness);
         }
-        sleep_ms(200);
+       
     }
 
     return 0;

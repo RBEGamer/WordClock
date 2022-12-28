@@ -29,6 +29,8 @@ void wordclock_faceplate::display_time_with_words(PicoLed::PicoLedController &_l
 
 PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_faceplate::WORD_COLOR_CLASS _basecolor, const int _current_seconds)
 {
+    //return PicoLed::RGB(128, 128, 128);
+    
     if (_basecolor == wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT)
     {
         return PicoLed::RGB(128, 128, 128);
@@ -45,10 +47,11 @@ PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_face
     }else if(wordclock_faceplate::config.color_mode == wordclock_faceplate::COLORMODE::COLD_WHITE){
         return PicoLed::RGB(255, 250, 250);
     }else if(wordclock_faceplate::config.color_mode == wordclock_faceplate::COLORMODE::WARM_WHITE){
-        return PicoLed::RGB(243, 231, 211);
+        return PicoLed::RGB(184, 115, 51);
     }else{
         return PicoLed::RGB(128, 128, 128);
     }
+    
 }
 
 std::tuple<int, int> wordclock_faceplate::flip_xy(const std::tuple<int, int> _origin, const bool _flip)

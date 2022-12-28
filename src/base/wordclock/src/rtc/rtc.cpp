@@ -10,7 +10,7 @@ rtc::~rtc()
 {
 }
 
-void rtc::set_rtc_time(const std::string _time)
+void rtc::set_rtc_time(const std::string _time, bool _initial)
 {
     if (_time.length() > 0)
     {
@@ -19,22 +19,36 @@ void rtc::set_rtc_time(const std::string _time)
         helper::tokenize(_time, delim, out);
         if (out.size() > 2)
         {
-            set_rtc_time(std::atoi(out.at(0).c_str()), std::atoi(out.at(1).c_str()), std::atoi(out.at(2).c_str()));
+            set_rtc_time(std::atoi(out.at(0).c_str()), std::atoi(out.at(1).c_str()), std::atoi(out.at(2).c_str()), _initial);
         }
     }
 }
 
-void rtc::set_rtc_time(const signed char _h, const signed char _m, const signed char _s)
+void rtc::set_rtc_time(const signed char _h, const signed char _m, const signed char _s, bool _initial)
 {
     const datetime_t tmp = rtc::current_time;
-    rtc::current_time = {
-        .year = tmp.year,
-        .month = tmp.month,
-        .day = tmp.day,
-        .dotw = tmp.dotw,
-        .hour = _h,
-        .min = _m,
-        .sec = _s};
+    if (_initial)
+    {
+        rtc::current_time = {
+            .year = 22,
+            .month = 1,
+            .day = 1,
+            .dotw = 6,
+            .hour = _h,
+            .min = _m,
+            .sec = _s};
+    }
+    else
+    {
+        rtc::current_time = {
+            .year = tmp.year,
+            .month = tmp.month,
+            .day = tmp.day,
+            .dotw = tmp.dotw,
+            .hour = _h,
+            .min = _m,
+            .sec = _s};
+    }
 }
 
 void rtc::set_rtc_date(const std::string _time)
@@ -65,22 +79,26 @@ void rtc::set_rtc_date(const signed char _day, const signed char _month, const i
         .sec = tmp.sec};
 }
 
-void rtc::init_rtc()
+void rtc::set_initial_time()
 {
 #ifdef SET_INITIAL_TIME_ZERO
-    rtc_rp2040::set_rtc_time(0, 0, 0);
-    rtc_rp2040::set_rtc_date(1, 1, 22);
+    rtc::set_rtc_time(0, 0, 0, true);
+    rtc::set_rtc_date(1, 1, 22);
 #else
-    rtc::set_rtc_time(__TIME__);
+    rtc::set_rtc_time(__TIME__, true);
     rtc::set_rtc_date(rtc::get_compiletime_date());
 #endif
+}
+
+void rtc::init()
+{
+    rtc::set_initial_time();
 }
 
 void rtc::set_daylightsaving(bool _enable_daylightsaving)
 {
     rtc::enable_daylightsaving = _enable_daylightsaving;
 }
-
 
 datetime_t rtc::read_rtc()
 {
@@ -162,7 +180,7 @@ std::string rtc::get_compiletime_date()
     const std::string date = __DATE__;
     std::vector<std::string> out;
     helper::tokenize(date, delim, out);
-   
+
     if (out.size() > 2)
     {
         int month = 0;

@@ -20,12 +20,13 @@ public:
     rtc_i2c();
     ~rtc_i2c();
 
-    void set_rtc_time(const std::string _time) override;
-    void set_rtc_time(const signed char _h, const signed char _m, const signed char _s) override;
+    void set_rtc_time(const std::string _time, bool _initial) override;
+    void set_rtc_time(const signed char _h, const signed char _m, const signed char _s, bool _initial) override;
     void set_rtc_date(const std::string _time) override;
     void set_rtc_date(const signed char _day, const signed char _month, const int _year) override;
-    void init_rtc() override;
+    void init() override;
     datetime_t read_rtc() override;
+    void set_initial_time() override;
 
 
 };
