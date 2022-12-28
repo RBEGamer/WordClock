@@ -165,15 +165,15 @@ void init_i2c()
         // CHECK FOR REQUESTED DEVIES FOUND
         if (addr == BH1750_I2C_ADDR)
         {
-           // init_bh1750(addr);
+           init_bh1750(addr);
         }
         else if (addr == RTC_I2C_ADDR)
         {
-            //init_rtc_i2c(addr);
+            init_rtc_i2c(addr);
         }
         else if (addr == EEPROM_I2C_ADDR)
         {
-            //init_eeprom_i2c(addr);
+            init_eeprom_i2c(addr);
         }
     }
 }
@@ -325,7 +325,7 @@ int main()
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     gpio_put(PICO_DEFAULT_LED_PIN, true);
 
-    //init_i2c();
+    init_i2c();
 
     settings->init();
     timekeeper->init();

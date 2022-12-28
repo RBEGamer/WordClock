@@ -33,6 +33,8 @@ public:
     static int year_formatter(const int _year); // formats the year 2022 -> 22 1943 -> 43
     static bool summertime_eu(const int _year, const signed char _month, const signed char _day, const signed char _hour);
     static std::string get_compiletime_date();
+
+    
     rtc();
     virtual ~rtc();
 
