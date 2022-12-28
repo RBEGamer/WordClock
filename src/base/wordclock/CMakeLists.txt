@@ -79,7 +79,7 @@ add_executable(wordclock
         )
 
 pico_set_program_name(wordclock "wordclock")
-pico_set_program_version(wordclock "2.0")
+pico_set_program_version(wordclock "3.0")
 pico_set_program_url(wordclock "https://marcelochsendorf.com")
 pico_set_program_description(wordclock "software for a rp2040 base 10x11 wordclock")
 

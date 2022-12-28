@@ -421,7 +421,7 @@ int main()
             {
                 current_brightness++;
             }
-            else if (sensor_read < current_brightness && current_brightness > 10)
+            else if (sensor_read < current_brightness && current_brightness > 11)
             {
                 current_brightness--;
             }

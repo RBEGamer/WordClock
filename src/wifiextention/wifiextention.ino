@@ -3,7 +3,7 @@
 // 16.11.2022 -  INITIAL
 // 25.12.2022 -  simplification due to more required parameters
 // 25.12.2022 - due to storage on the rp2040 with firmware V2 and working flash/eeporm storage the wifimodule doesnt save settings locally
-#define VERSION "2.0"
+#define VERSION "3.0"
 // ENABLE ON ESP8266-01 !!!!!!!!!!!!!!!!!!!!!!!!!!
 #define USE_LITTLEFS
 //FOR ESP8266-01
