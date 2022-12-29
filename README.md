@@ -6,13 +6,14 @@
 
 Simple easy to build tabletop wordclock with many features:
 
-* wifi base sync and control
+* wifi based sync and control
 * different clockfaces and languages
 * RP2040 based
 * ambient light sensor
 * temperature sensor
 * alternative datasources: mqtt, rest-api
-* alternative modes: running text
+* eu summertime support
+
 
 
 
@@ -33,7 +34,7 @@ The `drawing.svg` contatins every layer (as seperate object), so it can be seper
 * 1x - plexiglas - opaque <30% transparent , >=3mm 
 
 
-*See `./src/lasercut` for cutting instructions*
+**See `./src/lasercut` for cutting instructions**
 
 #### OPTIONAL
 * 8x neodym magnets - 10x3mm (if you want to make the faceplate removable/rotatable)
