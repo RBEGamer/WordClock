@@ -315,7 +315,7 @@ int main()
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
-    gpio_put(PICO_DEFAULT_LED_PIN, false);
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
 
     init_i2c();
     // AFTER CALLING init_i2c all needed instances of timekeeper lightsensor settings objects should be created.
@@ -368,8 +368,8 @@ int main()
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
     sleep_ms(1000);
-    current_brightness = lightsensor->get_brightness();
-    ledStrip.setBrightness(current_brightness);
+    //current_brightness = lightsensor->get_brightness();
+    //ledStrip.setBrightness(current_brightness);
 
     // enable uart rx irq for communication with wifi module and register callback functions
     wifi_interface::init_uart();
@@ -410,6 +410,7 @@ int main()
         if (last_tsec != t.sec)
         {
             last_tsec = t.sec;
+            printf("h%i m%i s%i b%i\n",t.hour, t.min, t.sec, current_brightness);
             update_display_time(ledStrip, t.hour, t.min, t.sec);
         }
 
@@ -417,7 +418,7 @@ int main()
         if (current_brightness_mode == 0)
         {
             const int sensor_read = apply_brightnesscurve(lightsensor->get_average_brightness()); // automatic if mode = 0
-            if (sensor_read > current_brightness)
+            if (sensor_read > current_brightness && current_brightness <= 255)
             {
                 current_brightness++;
             }
@@ -425,7 +426,6 @@ int main()
             {
                 current_brightness--;
             }
-            printf("fade %i \n", current_brightness);
         }
         else
         {
