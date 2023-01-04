@@ -49,48 +49,52 @@ void wifi_interface::enable_uart_irq(bool _irq_state)
   irq_set_enabled(UART_WIFI_IRQ, _irq_state);
   // Now enable the UART to send interrupts - RX only
   uart_set_irq_enables(UART_WIFI, _irq_state, false);
-  //wifi_interface::prev_irq_state = _irq_state;
+  // wifi_interface::prev_irq_state = _irq_state;
 }
 
 void wifi_interface::on_wifi_uart_rx()
 {
-  while (uart_is_readable(UART_WIFI) >= 1)
+  //CHECK IF ANYTHING RECEIEVED
+  if (uart_is_readable(UART_WIFI))
   {
-    uint8_t ch = uart_getc(UART_WIFI);
-    // READ UNTIL NEW LINE
-    if (ch == '\n')
+    //WAIT FOR A MORE BYTES UP TO 10ms
+    while (uart_is_readable_within_us(UART_WIFI, 10000) && wifi_interface::cmd_rx_buffer.size() < 20)
     {
-      wifi_interface::rx_recieved_queue.push(wifi_interface::cmd_rx_buffer);
-      wifi_interface::cmd_rx_buffer = "";
-      wifi_interface::cmd_started = false;
-    }
-    else if (ch == CMD_START_CHARACTER && !wifi_interface::cmd_started)
-    {
-      wifi_interface::cmd_rx_buffer = "";
-      wifi_interface::cmd_started = true;
-    }
-    else if(wifi_interface::cmd_started)
-    {
-      wifi_interface::cmd_rx_buffer += ch;
+      gpio_put(PICO_DEFAULT_LED_PIN, true);
+      const char ch = uart_getc(UART_WIFI);
+      // READ UNTIL NEW LINE
+      if (ch == '\n')
+      {
+        wifi_interface::rx_recieved_queue.push(wifi_interface::cmd_rx_buffer);
+        wifi_interface::cmd_rx_buffer = "";
+        wifi_interface::cmd_started = false;
+      }
+      else if (ch == CMD_START_CHARACTER && !wifi_interface::cmd_started)
+      {
+        wifi_interface::cmd_rx_buffer = "";
+        wifi_interface::cmd_started = true;
+      }
+      else if (wifi_interface::cmd_started)
+      {
+        wifi_interface::cmd_rx_buffer += ch;
+      }
+      gpio_put(PICO_DEFAULT_LED_PIN, false);
     }
   }
 }
 
 void wifi_interface::process_cmd()
 {
-  //CLEAR CMD BUFFER IF MORE THAN x CHARACTERS ARE IN IT, TO PREVENT OVERFLOW;
-  if(wifi_interface::cmd_rx_buffer.size() > 100){
-    cmd_rx_buffer = "";
-  }
-
-  if (wifi_interface::rx_recieved_queue.size() > 0){
+  // PROCESS
+  if (wifi_interface::rx_recieved_queue.size() > 0)
+  {
     const std::string front_cmd = wifi_interface::rx_recieved_queue.front();
     wifi_interface::rx_recieved_queue.pop();
-    parse_cmd(front_cmd);
+    process_cmd_str(front_cmd);
   }
 }
 
-wifi_interface::rxcmd wifi_interface::parse_cmd(const std::string _rx_buffer)
+wifi_interface::rxcmd wifi_interface::process_cmd_str(const std::string _rx_buffer)
 {
 
   wifi_interface::rxcmd res = check_extract_cmd(_rx_buffer);
@@ -213,6 +217,7 @@ void wifi_interface::send_log(const std::string _payload)
   send_cmd_str(wifi_interface::CMD_INDEX::LOG, _payload.c_str());
 }
 
-void wifi_interface::send_daylightsaving(const bool _dls){
-   send_cmd_str(wifi_interface::CMD_INDEX::DAYLIGHTSAVING, std::to_string((int)_dls));
+void wifi_interface::send_daylightsaving(const bool _dls)
+{
+  send_cmd_str(wifi_interface::CMD_INDEX::DAYLIGHTSAVING, std::to_string((int)_dls));
 }

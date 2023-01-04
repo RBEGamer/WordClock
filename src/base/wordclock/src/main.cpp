@@ -368,8 +368,8 @@ int main()
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
     sleep_ms(1000);
-    //current_brightness = lightsensor->get_brightness();
-    //ledStrip.setBrightness(current_brightness);
+    // current_brightness = lightsensor->get_brightness();
+    // ledStrip.setBrightness(current_brightness);
 
     // enable uart rx irq for communication with wifi module and register callback functions
     wifi_interface::init_uart();
@@ -410,7 +410,7 @@ int main()
         if (last_tsec != t.sec)
         {
             last_tsec = t.sec;
-            printf("h%i m%i s%i b%i\n",t.hour, t.min, t.sec, current_brightness);
+            printf("h%i m%i s%i b%i\n", t.hour, t.min, t.sec, current_brightness);
             update_display_time(ledStrip, t.hour, t.min, t.sec);
         }
 

@@ -79,13 +79,14 @@ public:
     static inline std::unordered_map<std::string, std::function<void(const std::string _payload)>> RX_CALLBACK_FUNCTIONS = {};
     static inline std::queue<std::string> rx_recieved_queue;
     static inline std::string cmd_rx_buffer = "";
+    static inline std::string cmd_rx_buffer_tmp = "";
     static inline bool cmd_started = false;
     static inline bool callback_setup = false;
 
     // static rxcmd manual_uart_rx();
     static void process_cmd();
     static rxcmd check_extract_cmd(const std::string _cmd_rx_buffer);
-    static rxcmd parse_cmd(const std::string _rx_buffer);
+    static rxcmd process_cmd_str(const std::string _rx_buffer);
     static void init_uart();
     static void on_wifi_uart_rx(); // IRQ TO COLLECT CHARS FROM RX
     static void enable_uart_irq(bool _irq_state);
