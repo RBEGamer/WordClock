@@ -46,6 +46,9 @@
 #endif
 
 
+#define XOR(a, b) (a + b) % 2
+
+
 class wordclock_faceplate
 {
 protected:

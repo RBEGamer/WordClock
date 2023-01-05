@@ -18,6 +18,7 @@ Linker script and memory map
 LOAD CMakeFiles/bs2_default.dir/compile_time_choice.S.obj
 START GROUP
 LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v6-m/nofp/libgcc.a
+LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg.a
 LOAD /opt/homebrew/Cellar/arm-none-eabi-gcc/10.3-2021.07/gcc/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a
 END GROUP
 START GROUP
@@ -50,3 +51,19 @@ LOAD linker stubs
                 0x0000000000000000       0x21
  .ARM.attributes
                 0x0000000000000000       0x21 CMakeFiles/bs2_default.dir/compile_time_choice.S.obj
+
+.debug_line     0x0000000000000000      0x151
+ .debug_line    0x0000000000000000      0x151 CMakeFiles/bs2_default.dir/compile_time_choice.S.obj
+
+.debug_info     0x0000000000000000       0x26
+ .debug_info    0x0000000000000000       0x26 CMakeFiles/bs2_default.dir/compile_time_choice.S.obj
+
+.debug_abbrev   0x0000000000000000       0x14
+ .debug_abbrev  0x0000000000000000       0x14 CMakeFiles/bs2_default.dir/compile_time_choice.S.obj
+
+.debug_aranges  0x0000000000000000       0x20
+ .debug_aranges
+                0x0000000000000000       0x20 CMakeFiles/bs2_default.dir/compile_time_choice.S.obj
+
+.debug_str      0x0000000000000000       0xde
+ .debug_str     0x0000000000000000       0xde CMakeFiles/bs2_default.dir/compile_time_choice.S.obj
