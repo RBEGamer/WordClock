@@ -26,7 +26,7 @@ int last_tsec = -1;
 
 int brighness_curve = 10;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
-wordclock_faceplate *faceplate = new wordclock_faceplate_german();
+wordclock_faceplate *faceplate = new wordclock_faceplate();
 
 ambient_light *lightsensor = nullptr;
 rtc *timekeeper = nullptr;
@@ -367,7 +367,7 @@ int main()
     sleep_ms(500);
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
-    sleep_ms(1000);
+    sleep_ms(1000 + DEBUG*5000);
     // current_brightness = lightsensor->get_brightness();
     // ledStrip.setBrightness(current_brightness);
 

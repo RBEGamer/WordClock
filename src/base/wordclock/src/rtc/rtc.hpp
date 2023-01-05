@@ -3,10 +3,8 @@
 
 #include "pico/stdlib.h"
 #include "pico/util/datetime.h"
-
-
-
 #include "../helper.h"
+
 #define RTC_TIME_DELIMITER ":"
 #define RTC_DATE_DELIMITER "."
 
@@ -14,9 +12,16 @@
 #define RTC_TIMEZONE_MEZ 1
 
 
+//#define SET_INITIAL_TIME_ZERO
+//#define RTC_TIMEZONE RTC_TIMEZONE_UTC
+//#define RTC_TIMEZONE RTC_TIMEZONE_MEZ
+
+
 #ifndef RTC_TIMEZONE
 #define RTC_TIMEZONE RTC_TIMEZONE_UTC
 #endif
+
+
 
 #define RTC_LEAP_YEAR(Y) ((Y > 0) && !(Y % 4) && ((Y % 100) || !(Y % 400)))
 

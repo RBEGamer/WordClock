@@ -22,7 +22,12 @@
 #define UART_WIFI_IRQ UART1_IRQ
 #endif
 
-#define DISABLE_CRC true
+#define DISABLE_CRC
+
+#ifndef DISABLE_CRC
+#define ENABLE_CRC
+#endif
+
 #define CMD_START_CHARACTER '%'
 
 class wifi_interface
@@ -71,7 +76,7 @@ public:
         "sbc", // BRIGHTNESS CURVE
         "sd",  // DATE
         "dls", // DAYLIGHTSAVING
-        "col",  // COLORMODE
+        "col", // COLORMODE
         "res", // RESTORESETTINGS
     };
 
@@ -91,7 +96,10 @@ public:
     static void on_wifi_uart_rx(); // IRQ TO COLLECT CHARS FROM RX
     static void enable_uart_irq(bool _irq_state);
     static void send_cmd_str(const CMD_INDEX _cmd, const std::string _payload);
+    
+#ifdef ENABLE_CRC
     static uint16_t crc16(const std::string _data, const uint16_t _poly);
+#endif
     static void send_log(const std::string _payload);
     static bool register_rx_callback(const std::function<void(const std::string _payload)> _callback, const CMD_INDEX _cmd);
     // TODO IMPLEMENT COMMAND LIST

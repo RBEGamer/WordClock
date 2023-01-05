@@ -7,6 +7,45 @@
 #include "wordclock_faceplate_constants.h"
 #include "../wifi_interface.h"
 
+// THE TESTPATTERN FUNCTIONS DISPLAYS SOME SETTINGS LIKE VERSION, CONFIG
+// SO MAKE SURE THE REQUIRED DEFINES ARE THERE
+#ifndef VERSION
+#define VERSION "1.0.0" //FORMAT "x.y.z"
+#endif
+
+#ifndef WORDCLOCK_PCBREV
+#define WORDCLOCK_PCBREV 0
+#endif
+
+#ifndef RTCMODE
+  #define RTCMODE 0
+  #ifdef USE_RP2040RTC
+    #define RTCMODE 1
+  #endif
+  #ifdef USE_I2CRTC_IF_PRESENT
+   #define RTCMODE 2
+  #endif
+#endif
+
+#ifndef STORAGEMODE
+  #define STORAGEMODE 0
+  #ifdef USE_FLASH_AS_EEPROM
+    #define STORAGEMODE 1
+  #endif
+  #ifdef USE_EEPROM_IF_PRESENT
+   #define STORAGEMODE 2
+  #endif
+#endif
+
+
+#ifndef LIGHTMODE
+  #define LIGHTMODE 0
+  #ifdef USE_BH1750_IF_PRESENT
+    #define LIGHTMODE 1
+  #endif
+#endif
+
+
 class wordclock_faceplate
 {
 protected:
@@ -40,9 +79,9 @@ public:
     RAINBOW_SAME = 1,
     COLD_WHITE = 2,
     WARM_WHITE = 3,
-    LENGTH //DONT DELETE or USE
-  }; 
-  
+    LENGTH // DONT DELETE or USE
+  };
+
   struct FACEPLATE_CONFIG
   {
     bool flip_state;
@@ -65,7 +104,6 @@ public:
   void display_testpattern(PicoLed::PicoLedController &_leds);
   void display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s);
   void set_colormode(COLORMODE _colormode);
-
 };
 
 #endif

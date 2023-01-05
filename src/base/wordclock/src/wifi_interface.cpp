@@ -15,6 +15,7 @@ bool wifi_interface::register_rx_callback(const std::function<void(const std::st
   return true;
 }
 
+#ifdef ENABLE_CRC
 uint16_t wifi_interface::crc16(const std::string _data, const uint16_t _poly = 0x8408)
 {
   uint16_t crc = 0xFFFF;
@@ -40,6 +41,7 @@ uint16_t wifi_interface::crc16(const std::string _data, const uint16_t _poly = 0
   crc = (crc << 8) | ((crc >> 8) & 0xFF);
   return crc & 0xFFFF;
 }
+#endif
 
 void wifi_interface::enable_uart_irq(bool _irq_state)
 {
@@ -54,10 +56,10 @@ void wifi_interface::enable_uart_irq(bool _irq_state)
 
 void wifi_interface::on_wifi_uart_rx()
 {
-  //CHECK IF ANYTHING RECEIEVED
+  // CHECK IF ANYTHING RECEIEVED
   if (uart_is_readable(UART_WIFI))
   {
-    //WAIT FOR A MORE BYTES UP TO 10ms
+    // WAIT FOR A MORE BYTES UP TO 10ms
     while (uart_is_readable_within_us(UART_WIFI, 10000) && wifi_interface::cmd_rx_buffer.size() < 20)
     {
       gpio_put(PICO_DEFAULT_LED_PIN, true);
@@ -141,10 +143,13 @@ wifi_interface::rxcmd wifi_interface::check_extract_cmd(const std::string _cmd_r
       const std::string crc = out.at(2);
 
       // CHECK CRC
+      // TODO FIX CRC ON ESP8266 SIDE
+#ifdef ENABLE_CRC
       const uint16_t crc_rx = wifi_interface::crc16(cmd + payload);
-      // TODO FIX CRC
-      if (DISABLE_CRC || crc == std::to_string((int)crc_rx))
-      {
+      if (crc == std::to_string((int)crc_rx)){
+#else
+      if (true){
+#endif
         ret.cmdok = true;
         ret.cmd = CMD_INDEX::INVALID;
         for (int i = 0; i < ((int)wifi_interface::CMD_INDEX::LENGHT); i++)
@@ -159,7 +164,9 @@ wifi_interface::rxcmd wifi_interface::check_extract_cmd(const std::string _cmd_r
       }
       else
       {
+#ifdef ENABLE_CRC
         printf("crc mismatch got_crc:-%s- exp_crc:-%i- for cmd:-%s- payload:-%s- orig:-%s-\n", crc.c_str(), crc_rx, cmd.c_str(), payload.c_str(), raw.c_str());
+#endif
       }
     }
     else
@@ -181,13 +188,18 @@ void wifi_interface::init_uart()
 void wifi_interface::send_cmd_str(const wifi_interface::CMD_INDEX _cmd, const std::string _payload)
 {
 
-  if (_cmd >= wifi_interface::CMD_INDEX::LENGHT)
+  if (_cmd > wifi_interface::CMD_INDEX::LENGHT)
   {
     return;
   }
 
   const std::string command = CMD_LUT[(int)_cmd];
+#ifdef ENABLE_CRC
   const std::string tosend = CMD_START_CHARACTER + command + "_" + _payload + "_" + std::to_string(wifi_interface::crc16(command + _payload)) + "\n";
+#else
+  const std::string tosend = CMD_START_CHARACTER + command + "_" + _payload + "_4242\n";
+#endif
+
   printf("%s", tosend.c_str());
   uart_puts(UART_WIFI, tosend.c_str());
 }

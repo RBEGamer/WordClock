@@ -32,7 +32,7 @@ void rtc_i2c::set_rtc_time(const signed char _h, const signed char _m, const sig
     }
     else
     {
-        datetime_t t = read_rtc();
+        const datetime_t t = read_rtc();
         uint8_t buf_tx[7] = {decToBcd(_s), decToBcd(_m), decToBcd(_h), decToBcd(t.dotw), decToBcd(t.day), decToBcd(t.month), decToBcd(t.year)};
         const int ret = helper::reg_write(i2c_default, RTC_I2C_ADDR, 0x01, buf_tx, (sizeof(buf_tx) / sizeof(uint8_t)));
     }

@@ -19,6 +19,38 @@ void wordclock_faceplate::display_time_with_words(PicoLed::PicoLedController &_l
     set_leds(_leds, corners, wordclock_faceplate::WORD_COLOR_CLASS::HOUR, _s);
     const std::vector<std::tuple<int, int>> test = {{USE_DIRECT_LED_INDEXING, 0}, {USE_DIRECT_LED_INDEXING, 12}, {USE_DIRECT_LED_INDEXING, 101}, {USE_DIRECT_LED_INDEXING, 113}};
     set_leds(_leds, test, wordclock_faceplate::WORD_COLOR_CLASS::MINUTE, _s);
+
+#ifdef RTCMODE
+    const std::vector<std::tuple<int, int>> rtcmode = {{1, RTCMODE}};
+    set_leds(_leds, rtcmode, wordclock_faceplate::WORD_COLOR_CLASS::MINUTE, _s);
+#endif
+
+#ifdef STORAGEMODE
+    const std::vector<std::tuple<int, int>> storagemode = {{2, STORAGEMODE}};
+    set_leds(_leds, storagemode, wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT, _s);
+#endif
+
+#ifdef LIGHTMODE
+    const std::vector<std::tuple<int, int>> lightmode = {{3, LIGHTMODE}};
+    set_leds(_leds, lightmode, wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT, _s);
+#endif
+
+#ifdef VERSION
+    const char *delim = ".";
+    std::vector<std::string> out;
+    helper::tokenize(VERSION, delim, out);
+    if (out.size() > 2)
+    {
+        const std::vector<std::tuple<int, int>> versionmdode = {{4, std::atoi(out.at(0).c_str())}, {5, std::atoi(out.at(1).c_str())}, {6, std::atoi(out.at(2).c_str())}};
+        set_leds(_leds, versionmdode, wordclock_faceplate::WORD_COLOR_CLASS::MINUTE, _s);
+    }
+#endif
+
+#ifdef WORDCLOCK_PCBREV
+    const std::vector<std::tuple<int, int>> pcbver = {{7, WORDCLOCK_PCBREV}};
+    set_leds(_leds, pcbver, wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT, _s);
+#endif
+
 }
 
 PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_faceplate::WORD_COLOR_CLASS _basecolor, const int _current_seconds)
@@ -140,6 +172,5 @@ void wordclock_faceplate::set_colormode(wordclock_faceplate::COLORMODE _colormod
     {
         return;
     }
-
     wordclock_faceplate::config.color_mode = _colormode;
 }

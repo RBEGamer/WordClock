@@ -33,22 +33,20 @@ void wordclock_faceplate_german::display_time_with_words(PicoLed::PicoLedControl
 {
     // MINUTE DOTS
     const int minute_dots = _m % 5;
-    if (minute_dots > 0)
+    if (minute_dots > 0 || (DEBUG == 1 && _s%2 == 0))
     {
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_DOT_ONE, _s);
     }
-
-    if (minute_dots > 1)
+    
+    if (minute_dots > 1 || (DEBUG == 1 && _s%2 == 0))
     {
-
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_DOT_TWO, _s);
     }
-    if (minute_dots > 2)
+    if (minute_dots > 2 || (DEBUG == 1 && _s%2 == 0))
     {
-
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_DOT_THREE, _s);
     }
-    if (minute_dots > 3)
+    if (minute_dots > 3 || (DEBUG == 1 && _s%2 == 0))
     {
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_DOT_FOUR, _s);
     }

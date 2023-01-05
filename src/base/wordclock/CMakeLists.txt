@@ -1,9 +1,12 @@
-# Generated Cmake Pico project file
-
 cmake_minimum_required(VERSION 3.13)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
+
+if(NOT CMAKE_BUILD_TYPE)
+        message(WARNING "NO CMAKE_BUILD_TYPE SET")
+        set(CMAKE_BUILD_TYPE "Release")
+endif()
 
 # initalize pico_sdk from installed location
 # (note this can come from environment, CMake cache etc)
@@ -11,13 +14,10 @@ set(PICO_SDK_PATH ${CMAKE_CURRENT_LIST_DIR}/../pico-sdk)
 set(CMAKE_CURRENT_BINARY_DIR ${CMAKE_CURRENT_LIST_DIR}/build)
 set(PICO_BOARD_HEADER_DIRS ${CMAKE_CURRENT_LIST_DIR}/board)
 
-
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/build)
-#set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_LIST_DIR}/build)
-
-
 #et(PICO_BOARD "WORDCLOCK_V1_RP2040")
 set(PICO_BOARD "WORDCLOCK_V2_RP2040")
+set(VERSION "3.1.0")
+
 
 
 
@@ -27,15 +27,17 @@ include(pico_sdk_import.cmake)
 
 project(wordclock C CXX ASM)
 
-set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 
+set(PICO_CXX_ENABLE_EXCEPTIONS 1)
 set(PICO_CXX_ENABLE_RTTI 1)
 
 # Initialise the Pico SDK
 pico_sdk_init()
 
-include(${CMAKE_CURRENT_LIST_DIR}/PicoLED/PicoLed.cmake)
 
+
+
+include(${CMAKE_CURRENT_LIST_DIR}/PicoLED/PicoLed.cmake)
 
 add_executable(wordclock 
         src/ambient_light/ambient_light_include.h
@@ -75,16 +77,34 @@ add_executable(wordclock
         src/wifi_interface.h
         src/wifi_interface.cpp
         src/main.cpp
-
         )
 
-pico_set_program_name(wordclock "wordclock")
-pico_set_program_version(wordclock "3.0")
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        target_compile_definitions(wordclock PRIVATE DEBUG=1)
+        message(STATUS "ADD DEBUG=1")
+else()
+        target_compile_definitions(wordclock PRIVATE DEBUG=0)
+endif()
+
+target_compile_definitions(wordclock PRIVATE VERSION="${VERSION}")
+
+if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+        #set(CMAKE_CXX_FLAGS "-Wall")
+        set(CMAKE_CXX_FLAGS_DEBUG "-g")
+        message(STATUS "RELEASE BUILD")
+endif()
+
+
+pico_set_program_name(wordclock "${PICO_BOARD}_${CMAKE_BUILD_TYPE}")
+pico_set_program_version(wordclock "${VERSION}")
 pico_set_program_url(wordclock "https://marcelochsendorf.com")
 pico_set_program_description(wordclock "software for a rp2040 base 10x11 wordclock")
-
 pico_enable_stdio_uart(wordclock 0)
 pico_enable_stdio_usb(wordclock 1)
+
+set_target_properties(wordclock PROPERTIES OUTPUT_NAME "${PICO_BOARD}_${VERSION}_${CMAKE_BUILD_TYPE}")
 
 target_link_libraries(wordclock 
         pico_stdlib
