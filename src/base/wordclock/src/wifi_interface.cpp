@@ -56,11 +56,8 @@ void wifi_interface::enable_uart_irq(bool _irq_state)
 
 void wifi_interface::on_wifi_uart_rx()
 {
-  // CHECK IF ANYTHING RECEIEVED
-  if (uart_is_readable(UART_WIFI))
-  {
     // WAIT FOR A MORE BYTES UP TO 10ms
-    while (uart_is_readable_within_us(UART_WIFI, 10000) && wifi_interface::cmd_rx_buffer.size() < 20)
+    while (uart_is_readable(UART_WIFI))
     {
       gpio_put(PICO_DEFAULT_LED_PIN, true);
       const char ch = uart_getc(UART_WIFI);
@@ -81,8 +78,8 @@ void wifi_interface::on_wifi_uart_rx()
         wifi_interface::cmd_rx_buffer += ch;
       }
       gpio_put(PICO_DEFAULT_LED_PIN, false);
+      sleep_ms(1);
     }
-  }
 }
 
 void wifi_interface::process_cmd()

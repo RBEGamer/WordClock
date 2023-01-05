@@ -88,7 +88,7 @@ public:
     static inline bool cmd_started = false;
     static inline bool callback_setup = false;
 
-    // static rxcmd manual_uart_rx();
+
     static void process_cmd();
     static rxcmd check_extract_cmd(const std::string _cmd_rx_buffer);
     static rxcmd process_cmd_str(const std::string _rx_buffer);

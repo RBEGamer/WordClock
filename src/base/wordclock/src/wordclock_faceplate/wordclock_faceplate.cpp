@@ -51,6 +51,12 @@ void wordclock_faceplate::display_time_with_words(PicoLed::PicoLedController &_l
     set_leds(_leds, pcbver, wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT, _s);
 #endif
 
+#ifdef DEBUG
+    const std::vector<std::tuple<int, int>> build = {{8, 1}};
+#else
+    const std::vector<std::tuple<int, int>> build = {{8, 2}};
+#endif
+     set_leds(_leds, build, wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT, _s);
 }
 
 PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_faceplate::WORD_COLOR_CLASS _basecolor, const int _current_seconds)

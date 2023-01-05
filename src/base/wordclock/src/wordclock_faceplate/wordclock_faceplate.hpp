@@ -10,7 +10,13 @@
 // THE TESTPATTERN FUNCTIONS DISPLAYS SOME SETTINGS LIKE VERSION, CONFIG
 // SO MAKE SURE THE REQUIRED DEFINES ARE THERE
 #ifndef VERSION
-#define VERSION "1.0.0" //FORMAT "x.y.z"
+#define VERSION "1.0.0" // FORMAT "x.y.z"
+#endif
+
+#if defined(DEBUG) || defined(ENABLE_BLINKENDOTS)
+#ifndef BLINKENDOTS
+#define BLINKENDOTS 1
+#endif
 #endif
 
 #ifndef WORDCLOCK_PCBREV
@@ -18,36 +24,35 @@
 #endif
 
 #ifndef RTCMODE
-  #define RTCMODE 0
-  #ifdef USE_RP2040RTC
-    #define RTCMODE 1
-  #endif
-  #ifdef USE_I2CRTC_IF_PRESENT
-   #define RTCMODE 2
-  #endif
+#if defined(USE_RP2040RTC)
+#define RTCMODE 1
+#elif defined(USE_I2CRTC_IF_PRESENT)
+#define RTCMODE 2
+#else
+#define RTCMODE 0
+#endif
 #endif
 
 #ifndef STORAGEMODE
-  #define STORAGEMODE 0
-  #ifdef USE_FLASH_AS_EEPROM
-    #define STORAGEMODE 1
-  #endif
-  #ifdef USE_EEPROM_IF_PRESENT
-   #define STORAGEMODE 2
-  #endif
+#if defined(USE_FLASH_AS_EEPROM)
+#define STORAGEMODE 1
+#elif defined(USE_EEPROM_IF_PRESENT)
+#define STORAGEMODE 2
+#else
+#define STORAGEMODE 0
 #endif
-
+#endif
 
 #ifndef LIGHTMODE
-  #define LIGHTMODE 0
-  #ifdef USE_BH1750_IF_PRESENT
-    #define LIGHTMODE 1
-  #endif
+
+#ifdef USE_BH1750_IF_PRESENT
+#define LIGHTMODE 1
+#else
+#define LIGHTMODE 0
+#endif
 #endif
 
-
 #define XOR(a, b) (a + b) % 2
-
 
 class wordclock_faceplate
 {

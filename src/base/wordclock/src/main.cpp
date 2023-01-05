@@ -8,7 +8,7 @@
 
 #include "hardware/flash.h" // for the flash erasing and writing
 #include "hardware/sync.h"  // for the interrupts
-
+#include "pico/unique_id.h"
 #include <PicoLed.hpp>
 
 #include "wifi_interface.h"
@@ -249,8 +249,7 @@ void set_colormode(const std::string _payload)
     settings->write(settings_storage::SETTING_ENTRY::COLORMODE, (int)wordclock_faceplate::config.color_mode);
 }
 
-int apply_brightnesscurve(const int _in)
-{
+int apply_brightnesscurve(const int _in){
     // LINEAR IF brighness_curve <= 10
     if (brighness_curve < 11)
     {
@@ -259,6 +258,7 @@ int apply_brightnesscurve(const int _in)
     // EXPONENTIAL IN 0.02 steps
     return helper::limit(std::pow(_in, 0.5 + (brighness_curve / 50.0)), WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX);
 }
+
 void prepare_display_ip(const std::string _payload)
 {
     if (_payload.size() > 0)
@@ -271,7 +271,22 @@ void restore_settings(bool _force = false)
 {
     // USED TO CHECK VALUE OF SETTING_ENTRY::INVALID
     // IF VALUES ARENT MATCHING => ERASE FLASH/EEPROM
-    const int check_value = FLASH_CHECK_VALUE_START;
+    // USE THE RP2040 CHIPID BECAUSE ITS DIFFERENT ON EACH BOARD SO A INITIAL WRITE WILL BE PERFORMED ON FIRST SW LOAD
+    // ALSO ON EACH VERSION CHANGE OR PCB VERSION CHANGE A RESTORE SETTINGS WILL BE INITIATED USING VERSION AND WORDCLOCK_PCBREV DEFINED FROM CAMKE AND BOARD SETTINGS.h
+    pico_unique_board_id_t chip_id;
+    pico_get_unique_board_id(&chip_id);
+    int versionint = 0;
+
+    #ifdef VERSION
+    versionint = helper::version2int(VERSION);
+    #endif
+
+    #ifdef WORDCLOCK_PCBREV
+    versionint += WORDCLOCK_PCBREV;
+    #endif
+
+    const int check_value = (chip_id.id[0]+chip_id.id[7]+versionint) % 255;
+
     if (_force || settings->read(settings_storage::SETTING_ENTRY::INVALID) != check_value)
     {
         settings->write(settings_storage::SETTING_ENTRY::INVALID, check_value);
@@ -367,13 +382,15 @@ int main()
     sleep_ms(500);
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
-    sleep_ms(1000 + DEBUG*5000);
+    sleep_ms(1000 + DEBUG * 5000);
     // current_brightness = lightsensor->get_brightness();
     // ledStrip.setBrightness(current_brightness);
 
     // enable uart rx irq for communication with wifi module and register callback functions
     wifi_interface::init_uart();
+#ifdef ENABLE_UART_IRQ
     wifi_interface::enable_uart_irq(true);
+#endif
     wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::TIME);
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::BRIGHTNESS);
     wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::FACEPLATE);
@@ -394,9 +411,13 @@ int main()
 
     while (true)
     {
-        sleep_ms(100);
+        sleep_ms(10);
 
-        // PROCEESS ANY RECEIEVED COMMANDS
+// PROCEESS ANY RECEIEVED COMMANDS
+#ifndef ENABLE_UART_IRQ
+        wifi_interface::on_wifi_uart_rx();
+#endif
+
         wifi_interface::process_cmd();
 
         if (display_to_ip.size() > 0)

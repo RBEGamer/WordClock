@@ -20,6 +20,6 @@ static int limit(const std::string& _value, const int _min, const int _max);
 
 static int reg_write(i2c_inst* _i2c, const uint _addr, const uint8_t _reg, uint8_t* _buf, const uint8_t _bytes);
 static int reg_read(i2c_inst* _i2c, const uint _addr, const uint8_t _reg, uint8_t* _buf, const uint8_t _bytes);
-
+static int version2int(const std::string _version);
 };
 #endif
