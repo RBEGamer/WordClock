@@ -54,4 +54,11 @@ The `drawing.svg` contatins every layer (as seperate object), so it can be seper
 
 
 
+## STATUS CODE
+
+Directly after startup, the clock shows some version information about the hardware revision and used software.
+
+
+![complete](./documentation/status_codes.jpg)
+
 
