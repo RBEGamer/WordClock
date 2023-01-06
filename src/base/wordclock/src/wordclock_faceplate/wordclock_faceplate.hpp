@@ -13,10 +13,12 @@
 #define VERSION "1.0.0" // FORMAT "x.y.z"
 #endif
 
-#if defined(DEBUG) || defined(ENABLE_BLINKENDOTS)
+#if (defined(DEBUG) &&  DEBUG==1)|| defined(ENABLE_BLINKENDOTS)
 #ifndef BLINKENDOTS
 #define BLINKENDOTS 1
 #endif
+#else
+#define BLINKENDOTS 0
 #endif
 
 #ifndef WORDCLOCK_PCBREV

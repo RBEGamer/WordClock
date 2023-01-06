@@ -14,8 +14,12 @@ set(PICO_SDK_PATH ${CMAKE_CURRENT_LIST_DIR}/../pico-sdk)
 set(CMAKE_CURRENT_BINARY_DIR ${CMAKE_CURRENT_LIST_DIR}/build)
 set(PICO_BOARD_HEADER_DIRS ${CMAKE_CURRENT_LIST_DIR}/board)
 
-#et(PICO_BOARD "WORDCLOCK_V1_RP2040")
+#set(PICO_BOARD "WORDCLOCK_V1_RP2040")
 set(PICO_BOARD "WORDCLOCK_V2_RP2040")
+#set(PICO_BOARD "WORDCLOCK_V2_RP2040_RP2040RTC")
+#set(PICO_BOARD "WORDCLOCK_V2_RP2040_NOI2C")
+
+
 set(VERSION "3.1.0")
 
 
@@ -76,6 +80,7 @@ add_executable(wordclock
         src/helper.cpp
         src/wifi_interface.h
         src/wifi_interface.cpp
+        src/main.h
         src/main.cpp
         )
 
@@ -114,6 +119,7 @@ target_link_libraries(wordclock
         hardware_adc
         hardware_flash
         hardware_sync
+        hardware_timer
 )
 
 

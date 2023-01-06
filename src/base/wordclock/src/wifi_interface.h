@@ -16,10 +16,8 @@
 
 #if defined(PICO_DEFAULT_UART0)
 #define UART_WIFI uart0
-#define UART_WIFI_IRQ UART0_IRQ
 #elif defined(PICO_DEFAULT_UART1)
 #define UART_WIFI uart1
-#define UART_WIFI_IRQ UART1_IRQ
 #endif
 
 #define DISABLE_CRC
@@ -88,7 +86,6 @@ public:
     static inline bool cmd_started = false;
     static inline bool callback_setup = false;
 
-
     static void process_cmd();
     static rxcmd check_extract_cmd(const std::string _cmd_rx_buffer);
     static rxcmd process_cmd_str(const std::string _rx_buffer);
@@ -96,7 +93,7 @@ public:
     static void on_wifi_uart_rx(); // IRQ TO COLLECT CHARS FROM RX
     static void enable_uart_irq(bool _irq_state);
     static void send_cmd_str(const CMD_INDEX _cmd, const std::string _payload);
-    
+
 #ifdef ENABLE_CRC
     static uint16_t crc16(const std::string _data, const uint16_t _poly);
 #endif

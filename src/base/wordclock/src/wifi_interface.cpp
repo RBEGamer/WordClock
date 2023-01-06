@@ -45,41 +45,51 @@ uint16_t wifi_interface::crc16(const std::string _data, const uint16_t _poly = 0
 
 void wifi_interface::enable_uart_irq(bool _irq_state)
 {
-
+  const int UART_IRQ = UART_WIFI == uart0 ? UART0_IRQ : UART1_IRQ;
   // set up and enable the interrupt handlers
-  irq_set_exclusive_handler(UART_WIFI_IRQ, wifi_interface::on_wifi_uart_rx);
-  irq_set_enabled(UART_WIFI_IRQ, _irq_state);
+  irq_set_exclusive_handler(UART_IRQ, wifi_interface::on_wifi_uart_rx);
+  irq_set_enabled(UART_IRQ, _irq_state);
   // Now enable the UART to send interrupts - RX only
   uart_set_irq_enables(UART_WIFI, _irq_state, false);
-  // wifi_interface::prev_irq_state = _irq_state;
+  // DIABLE FIFO IN IRQ MODE
+  // FIFO IS A BITT BUGGY IN IRQ
+  // SO SWITCHTING TO SINGLE CHARACTER IRQ
+  if (_irq_state)
+  {
+    uart_set_fifo_enabled(UART_WIFI, false);
+  }
+  else
+  {
+    uart_set_fifo_enabled(UART_WIFI, true);
+  }
 }
 
 void wifi_interface::on_wifi_uart_rx()
 {
-    // WAIT FOR A MORE BYTES UP TO 10ms
-    while (uart_is_readable(UART_WIFI))
+  // WAIT FOR A MORE BYTES UP TO 10ms
+  while (uart_is_readable(UART_WIFI))
+  {
+    gpio_put(PICO_DEFAULT_LED_PIN, true);
+    const char ch = uart_getc(UART_WIFI);
+    // READ UNTIL NEW LINE
+    if (ch == '\n')
     {
-      gpio_put(PICO_DEFAULT_LED_PIN, true);
-      const char ch = uart_getc(UART_WIFI);
-      // READ UNTIL NEW LINE
-      if (ch == '\n')
-      {
-        wifi_interface::rx_recieved_queue.push(wifi_interface::cmd_rx_buffer);
-        wifi_interface::cmd_rx_buffer = "";
-        wifi_interface::cmd_started = false;
-      }
-      else if (ch == CMD_START_CHARACTER && !wifi_interface::cmd_started)
-      {
-        wifi_interface::cmd_rx_buffer = "";
-        wifi_interface::cmd_started = true;
-      }
-      else if (wifi_interface::cmd_started)
-      {
-        wifi_interface::cmd_rx_buffer += ch;
-      }
-      gpio_put(PICO_DEFAULT_LED_PIN, false);
-      sleep_ms(1);
+      wifi_interface::rx_recieved_queue.push(wifi_interface::cmd_rx_buffer);
+      wifi_interface::cmd_rx_buffer = "";
+      wifi_interface::cmd_started = false;
     }
+    else if (ch == CMD_START_CHARACTER && !wifi_interface::cmd_started)
+    {
+      wifi_interface::cmd_rx_buffer = "";
+      wifi_interface::cmd_started = true;
+    }
+    else if (wifi_interface::cmd_started)
+    {
+      wifi_interface::cmd_rx_buffer += ch;
+    }
+    gpio_put(PICO_DEFAULT_LED_PIN, false);
+    sleep_ms(1);
+  }
 }
 
 void wifi_interface::process_cmd()
@@ -143,9 +153,11 @@ wifi_interface::rxcmd wifi_interface::check_extract_cmd(const std::string _cmd_r
       // TODO FIX CRC ON ESP8266 SIDE
 #ifdef ENABLE_CRC
       const uint16_t crc_rx = wifi_interface::crc16(cmd + payload);
-      if (crc == std::to_string((int)crc_rx)){
+      if (crc == std::to_string((int)crc_rx))
+      {
 #else
-      if (true){
+      if (true)
+      {
 #endif
         ret.cmdok = true;
         ret.cmd = CMD_INDEX::INVALID;
