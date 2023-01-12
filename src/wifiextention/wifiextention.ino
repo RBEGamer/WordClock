@@ -376,13 +376,13 @@ void handleRoot() {
   "<input type='submit' value='SEND NTP TIME TO CLOCK'/>"
   "</form><br>";
   // FONTFACE
-  control_forms += "<p>FONTFACE: </p><form name='btn_on' action='/save' method='GET'><select name='sfp' id='sfp'><option value='0'>GERMAN</option><option value='1'>ENGLISH</option><option value='2'>BINARY</option><option value='3'>DOTS</option></select><input type='submit' value='SAVE'/></form><br>";
+  control_forms += "<p>FONTFACE: </p><form name='btn_on' action='/save' method='GET'><select name='sfp' id='sfp'><option value='0'>GERMAN</option><option value='1'>ENGLISH</option><option value='2'>ITALIAN</option><option value='3'>BELGIAN</option><option value='4'>BINARY</option><option value='5'>DOTS</option><option value='6'>TESTPATTERN</option></select><input type='submit' value='SAVE'/></form><br>";
   //FLIP DISPLAY
   control_forms += "<p>DISPLAY ROTATION: </p><form name='btn_on' action='/save' method='GET'><select name='sdo' id='sdo'><option value='0'>NORMAL</option><option value='1'>ROTATED</option></select><input type='submit' value='SAVE'/></form><br>";
   // DAYLIGHTSAVING
   control_forms += "<p>DAYLIGHTSAVING: </p><form name='btn_on' action='/save' method='GET'><select name='dls' id='dls'><option value='0'>DISBALED</option><option value='1'>ENABLED</option></select><input type='submit' value='SAVE'/></form><br>";
   //BRIGHTNESS
-  control_forms += "<p>BRIGHTNESS: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sb' id='sb' min='0' max='255' required placeholder='0=AUTO 10-255=MANUAL'/><input type='submit' value='SAVE'/></form><br>";
+  control_forms += "<p>BRIGHTNESS<br> </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sb' id='sb' min='10' max='255' required placeholder='10-255'/><input type='submit' value='SAVE MANUAL MODE'/></form><br><form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='10'/><input type='submit' value='SET AUTO MODE'/></form><br>";
   //BRIGHTNESS CURVE
   control_forms += "<p>BRIGHTNESS CURVE: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sbc' id='sbc' min='10' max='100' required placeholder='0=LINEAR 10-100=EXPONENTIAL'/><input type='submit' value='SAVE'/></form><br>";
   //COLORMODE

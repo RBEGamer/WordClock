@@ -40,6 +40,9 @@ void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _
     case wordclock_faceplate::FACEPLATES::ENGLISH:
         _instance = new wordclock_faceplate_english();
         break;
+    case wordclock_faceplate::FACEPLATES::ITALIAN:
+        _instance = new wordclock_faceplate_italian();
+        break;
     case wordclock_faceplate::FACEPLATES::DOTS:
         _instance = new wordclock_faceplate_dots();
         break;

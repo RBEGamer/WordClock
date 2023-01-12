@@ -78,6 +78,8 @@ public:
   {
     GERMAN,
     ENGLISH,
+    ITALIAN,
+    BELGIAN,
     BINARY,
     DOTS,
     TEST // DONT DELETE TEST PLACE AS lAST ELEMENT used as length indicator

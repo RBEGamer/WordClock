@@ -60,6 +60,8 @@ add_executable(wordclock
         src/wordclock_faceplate/wordclock_faceplate_include.h
         src/wordclock_faceplate/wordclock_faceplate_german.cpp
         src/wordclock_faceplate/wordclock_faceplate_german.hpp
+        src/wordclock_faceplate/wordclock_faceplate_italian.cpp
+        src/wordclock_faceplate/wordclock_faceplate_italian.hpp
         src/wordclock_faceplate/wordclock_faceplate_english.cpp
         src/wordclock_faceplate/wordclock_faceplate_english.hpp
         src/wordclock_faceplate/wordclock_faceplate_binary.cpp

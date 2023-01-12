@@ -1,5 +1,6 @@
 #include "wordclock_faceplate.hpp"
 #include "wordclock_faceplate_german.hpp"
+#include "wordclock_faceplate_italian.hpp"
 #include "wordclock_faceplate_english.hpp"
 #include "wordclock_faceplate_binary.hpp"
 #include "wordclock_faceplate_dots.hpp"
