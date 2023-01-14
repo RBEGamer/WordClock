@@ -22,7 +22,7 @@ class wordclock_faceplate_italian : public wordclock_faceplate
         WORDS_INDEX_COMMON_END,   // DONT DELETE
         WORDS_INDEX_MINUTE_BEGIN, // DONT DELETE
         //---- MINUTE WORDS BEGIN------ //
-        M_E,
+        M_OE,
         M_MENO,
         M_CINIQUE,
         M_DIECI,
@@ -67,7 +67,7 @@ class wordclock_faceplate_italian : public wordclock_faceplate
         {{0, 0}, {0, 1}, {0, 2}, {0, 3}},                           // C_SONO
         {{0, 5}, {0, 6}},                                           // C_LE
         {{9, 8}, {9, 9}, {9, 10}},                                  // C_ORE
-        {{7, 0}},                                                   // C_E
+        {{7, 0}},                                                   // M_OE => M_E
         //----------- COMMON WORDS END ---------------------------- //
         {},                                                         // DONT DELETE
         {},                                                         // DONT DELETE

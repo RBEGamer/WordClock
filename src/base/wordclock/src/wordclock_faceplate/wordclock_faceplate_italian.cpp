@@ -56,7 +56,7 @@ void wordclock_faceplate_italian::display_time_with_words(PicoLed::PicoLedContro
     wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_LE, _s);
     wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_ORE, _s);
     // after >30 min the hour word need to be set to the nex full hour
-    //int _h = _horig;
+    const int _h = _horig; // REMOVE
     //if (_m >= 25)
     //{
     //    _h = (_horig + 1) % 24;
@@ -115,7 +115,7 @@ void wordclock_faceplate_italian::display_time_with_words(PicoLed::PicoLedContro
     // ADD MIDDLE WORDS TO PAST VOR NACH
     if (_m >= 5 && _m < 35)
     {
-        wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::M_E, _s);
+        wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::M_OE, _s);
     }
     else if (_m >= 35 && _m <= 59)
     {

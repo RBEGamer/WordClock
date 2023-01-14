@@ -21,6 +21,7 @@ set(PICO_BOARD "WORDCLOCK_V2_RP2040")
 
 
 set(VERSION "3.1.0")
+set(VERSION "3.2.0")
 
 
 
