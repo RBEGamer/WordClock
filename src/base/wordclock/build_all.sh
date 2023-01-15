@@ -16,3 +16,7 @@ for filename in ./board/*.h; do
         cmake . -DCMAKE_BUILD_TYPE=Debug -DWORDCLOCK_BOARD=$(basename "$filename" .h)  && make -j4
         cp -f *.uf2 ./build_u2f
 done
+
+# FINAL CLEANUP
+rm WORDCLOCK_*.*
+rm *.uf2
