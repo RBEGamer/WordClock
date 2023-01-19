@@ -1,9 +1,4 @@
 {
-    // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
-    // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
-    // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
-
-
     "version": "0.2.0",
     "configurations": [
         {   "name": "Pico Debug",
@@ -53,11 +48,11 @@
             "runToEntryPoint": "main",
             "servertype": "jlink",
             "interface": "swd",
-            //"ipAddress": "127.0.0.1",
             "svdFile": "${workspaceRoot}/../pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
             "device": "RP2040_M0_0",
             "osx": {
                 //"serverpath": "JLinkGDBServerCLExe",
+                "serverpath":": "JLinkGDBServerCL"
             },
             "linux": {
                "armToolchainPath": "/usr/bin",
@@ -87,7 +82,7 @@
             "ipAddress": "127.0.0.1",
             "svdFile": "${workspaceRoot}/../pico-sdk/src/rp2040/hardware_regs/rp2040.svd",
             "device": "RP2040_M0_0",
-            "serverpath": "JLinkGDBServerCLExe",
+            "serverpath": "JLinkGDBServerCL",
             "postRestartCommands": [
                 "break main",
                 "continue"
