@@ -66,7 +66,7 @@ class wordclock_faceplate_italian : public wordclock_faceplate
         //------------ COMMON WORDS BEGIN ------------------------- //
         {{0, 0}, {0, 1}, {0, 2}, {0, 3}},                           // C_SONO
         {{0, 5}, {0, 6}},                                           // C_LE
-        {{9, 8}, {9, 9}, {9, 10}},                                  // C_ORE
+        {{0, 8}, {0, 9}, {0, 10}},                                  // C_ORE
         {{7, 0}},                                                   // M_OE => M_E
         //----------- COMMON WORDS END ---------------------------- //
         {},                                                         // DONT DELETE
