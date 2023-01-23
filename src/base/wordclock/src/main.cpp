@@ -438,11 +438,11 @@ int main()
             {
                 last_tsec = t.sec;
                 printf("h%i m%i s%i b%i\n", t.hour, t.min, t.sec, current_brightness);
-#ifdef DEBUG
-                update_display_time(ledStrip, t.min%24, t.sec, t.sec);
-#else
+//#ifdef DEBUG
+//                update_display_time(ledStrip, t.min%24, t.sec, t.sec);
+//#else
                 update_display_time(ledStrip, t.hour, t.min, t.sec);
-#endif
+//#endif
             }
             // CHECK BRIGHTNESS
             if (current_brightness_mode == 0)
