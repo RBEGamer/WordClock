@@ -54,7 +54,11 @@ void wordclock_faceplate_italian::display_time_with_words(PicoLed::PicoLedContro
     // PREFIX WORDS SONE LE ORE
     wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_SONO, _s);
     wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_LE, _s);
-    wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_ORE, _s);
+
+    if(_m >= 0 && _m < 5){
+        wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_ORE, _s);
+    }
+    
     // after >30 min the hour word need to be set to the nex full hour
     const int _h = _horig; // REMOVE
     //if (_m >= 25)
