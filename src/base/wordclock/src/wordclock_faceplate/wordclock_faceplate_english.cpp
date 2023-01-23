@@ -79,7 +79,6 @@ void wordclock_faceplate_english::display_time_with_words(PicoLed::PicoLedContro
     }
     else if (_h == 1 || _h == 13)
     {
-
         wordclock_faceplate_english::set_word(_leds, wordclock_faceplate_english::WORDS_INDEX::H_ONE, _s);
     }
     else if (_h == 2 || _h == 14)
@@ -127,7 +126,7 @@ void wordclock_faceplate_english::display_time_with_words(PicoLed::PicoLedContro
     {
         wordclock_faceplate_english::set_word(_leds, wordclock_faceplate_english::WORDS_INDEX::M_PAST, _s);
     }
-    else if (_m >= 35 && _m < 40)
+    else if (_m >= 30 && _m < 40)
     {
         wordclock_faceplate_english::set_word(_leds, wordclock_faceplate_english::WORDS_INDEX::M_PAST, _s);
     }
@@ -167,7 +166,7 @@ void wordclock_faceplate_english::display_time_with_words(PicoLed::PicoLedContro
     }
     else if (_m >= 30 && _m < 35)
     {
-        wordclock_faceplate_english::set_word(_leds, wordclock_faceplate_english::WORDS_INDEX::M_QUATER, _s);
+        wordclock_faceplate_english::set_word(_leds, wordclock_faceplate_english::WORDS_INDEX::M_HALF, _s);
     }
     else if (_m >= 35 && _m < 40)
     {

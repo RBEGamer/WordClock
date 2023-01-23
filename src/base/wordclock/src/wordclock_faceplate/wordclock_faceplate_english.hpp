@@ -37,18 +37,19 @@ class wordclock_faceplate_english : public wordclock_faceplate
         WORDS_INDEX_MINUTE_END, // DONT DELETE
         WORDS_INDEX_HOUR_BEGIN, // DONT DELETE
         //---- HOUR WORDS BEGIN------ //
-        H_NINE,
         H_ONE,
-        H_SIX,
+        H_TWO,
         H_THREE,
         H_FOUR,
         H_FIVE,
-        H_TWO,
-        H_EIGHT,
-        H_ELEVEN,
+        H_SIX,
         H_SEVEN,
-        H_TWELVE,
+        H_EIGHT,
+        H_NINE,
         H_TEN,
+        H_ELEVEN,
+        H_TWELVE,
+
         H_AM,
         H_PM,
         //---- HOUR WORDS END------ //
@@ -86,20 +87,29 @@ class wordclock_faceplate_english : public wordclock_faceplate
         {},                                                         // DONT DELETE
         {},                                                         // DONT DELETE
         //---- HOUR WORDS BEGIN------ //
-        {{4, 7}, {4, 8}, {4, 9}, {4, 10}},                           // H_NINE
         {{5, 0}, {5, 1}, {5, 2}},                                   // H_ONE
-        {{6, 8}, {6, 9}, {6, 10}},                                  // H_TWO
+        {{5, 3}, {5, 4}, {5, 5}},                                  // H_TWO
         {{5, 6}, {5, 7}, {5, 8}, {5, 9}, {5, 10}},                  // H_THREE
         {{6, 0}, {6, 1}, {6, 2}, {6, 3}},                           // H_FOUR
         {{6, 4}, {6, 5}, {6, 6}, {6, 7}},                           // H_FIVE
-        {{5, 3}, {5, 4}, {5, 5}},                                   // H_SIX
-        {{7, 0}, {7, 1}, {7, 2}, {7, 3}, {7, 4}},                   // H_EIGHT
-        {{7, 5}, {7, 6}, {7, 7}, {7, 8}, {7, 9}, {7, 10}},          // H_ELEVEN
-        {{8, 0}, {8, 1}, {8, 2}, {8, 3}, {8, 4}},                   // H_SEVEN
-        {{8, 5}, {8, 6}, {8, 7}, {8, 8}, {8, 9}, {8, 10}},          // H_TWELVE
+        {{6, 8}, {6, 9}, {6, 10}},                                  // H_SIX
+        {{4, 5}, {4, 6}, {4, 7}, {4, 8}, {4, 9}},                   // H_SEVEN
+        {{8, 0}, {8, 1}, {8, 2}, {8, 3}, {8, 4}},                   // H_EIGHT
+        {{7, 0}, {7, 1}, {7, 2}, {7, 3}},                           // H_NINE
         {{9, 0}, {9, 1}, {9, 2}},                                   // H_TEN
+        {{7, 5}, {7, 6}, {7, 7}, {7, 8}, {7, 9}, {7, 10}},          // H_ELEVEN
+        {{8, 5}, {8, 6}, {8, 7}, {8, 8}, {8, 9}, {8, 10}},          // H_TWELVE
+
+
+        //DEPENDING ON THE FONTFACE DISPLAY AM/PM. THERE ARE SOME FONTFACES WITH AM/PM IN THE TOP RIGHT CORNER
+        #ifdef WORDCLOCK_ENGLISH_FONTFACE_ENABLE_AM_PM
+        {{0, 7}, {0, 8}},                                           // H_AM
+        {{0, 9}, {0, 10}},                                          // H_PM
+        #else
         {},//{{0, 7}, {0, 8}},                                           // H_AM
         {},//{{0, 9}, {0, 10}},                                          // H_PM
+        #endif
+        
         //---- HOUR WORDS END------ //
         {} // DONT DELETE
     };

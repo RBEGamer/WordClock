@@ -157,7 +157,7 @@ void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip)
     helper::tokenize(_ip, delim, out);
     for (int i = 0; i < out.size(); i++)
     {
-        //LIGHT UP FOR A IP BLOCK
+        // LIGHT UP FOR A IP BLOCK
         _leds.setBrightness(128);
         for (int j = 0; j < out.at(i).size(); j++)
         {
@@ -167,13 +167,12 @@ void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip)
             }
             sleep_ms(1000);
         }
-        //DARKEN = BETWEEN IP BLOCK
+        // DARKEN = BETWEEN IP BLOCK
         _leds.setBrightness(10);
         sleep_ms(2000);
     }
     // RESTORE BRIGHTNESS
-     _leds.setBrightness(last_brightness);
-    
+    _leds.setBrightness(last_brightness);
 }
 
 void set_brightnesmode(const std::string _payload)
@@ -439,7 +438,11 @@ int main()
             {
                 last_tsec = t.sec;
                 printf("h%i m%i s%i b%i\n", t.hour, t.min, t.sec, current_brightness);
+#ifdef DEBUG
+                update_display_time(ledStrip, t.min%24, t.sec, t.sec);
+#else
                 update_display_time(ledStrip, t.hour, t.min, t.sec);
+#endif
             }
             // CHECK BRIGHTNESS
             if (current_brightness_mode == 0)
