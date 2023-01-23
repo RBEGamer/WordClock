@@ -29,7 +29,7 @@ int ambient_light_bh1750::get_brightness()
     {
         return -1;
     }
-    const int lux = ((buf[0] << 8) + buf[1]) / (1.2 * 2); // custom 1.2 factor added
+    const int lux = ((buf[0] << 8) + buf[1]) / (1.2 * 3); // custom 1.2 factor added
     return helper::limit(lux, BH1750_RAW_OUTPUT_MIN, BH1750_RAW_OUTPUT_MAX);
 }
 

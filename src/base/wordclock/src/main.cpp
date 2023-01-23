@@ -10,14 +10,11 @@ bool display_update = true;
 int brighness_curve = 10;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 
-
 // CLASS INSTANCES
 wordclock_faceplate *faceplate = new wordclock_faceplate();
 ambient_light *lightsensor = nullptr;
 rtc *timekeeper = nullptr;
 settings_storage *settings = nullptr;
-
-
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
 {
@@ -247,7 +244,7 @@ int apply_brightnesscurve(const int _in)
         return _in;
     }
     // EXPONENTIAL IN 0.02 steps
-    return helper::limit(std::pow(_in, 0.5 + (brighness_curve / 50.0)), WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX);
+    return helper::limit(std::pow(_in, 1 + (brighness_curve / 20.0)), WORDCLOCK_BRIGHTNESS_MODE_AUTO_MIN, WORDCLOCK_BRIGHTNESS_MODE_AUTO_MAX);
 }
 
 void prepare_display_ip(const std::string _payload)
@@ -393,13 +390,15 @@ int main()
     wifi_interface::register_rx_callback(set_colormode, wifi_interface::CMD_INDEX::COLORMODE);
     wifi_interface::register_rx_callback(set_restoresettings, wifi_interface::CMD_INDEX::RESTORESETTINGS);
 
-    // RESTORE ALLE SETTINGS
-    //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
+// RESTORE ALLE SETTINGS
+//  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
+#ifdef FORCE_RESTORE_SETTINGS
+    restore_settings(true);
+#else
     restore_settings(false);
+#endif
 
     gpio_put(PICO_DEFAULT_LED_PIN, false);
-
-   
 
     while (true)
     {
@@ -412,7 +411,7 @@ int main()
         wifi_interface::process_cmd();
 
         // SET UPDATE DISPLAY EVERY x00 MS
-        const long long current_update = time_us_64();   
+        const long long current_update = time_us_64();
         if (abs(last_update - current_update) > (300 * 1000))
         {
             last_update = current_update;
