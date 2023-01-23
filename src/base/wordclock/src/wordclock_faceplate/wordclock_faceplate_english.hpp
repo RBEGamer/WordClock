@@ -70,7 +70,7 @@ class wordclock_faceplate_english : public wordclock_faceplate
         //---- MINUTE WORDS BEGIN------ //
         {{1, 2}, {1, 3}, {1, 4}, {1, 5}, {1, 6}, {1, 7}, {1, 8}},   // M_QUATER
         {{2, 0}, {2, 1}, {2, 2}, {2, 3}, {2, 4}, {2, 5}},           // M_TWENTY
-        {{2, 6}, {2, 7}, {2, 8}, {2, 9}},                           // M_FIVE
+        {{2, 7}, {2, 8}, {2, 9}, {2, 10}},                           // M_FIVE
         {{3, 5}, {3, 6}, {3, 7}},                                   // M_TEN
         {{3, 9}, {3, 10}},                                          // M_TO
         {{3, 0}, {3, 1}, {3, 2}, {3, 3}},                           // M_HALF
@@ -98,8 +98,8 @@ class wordclock_faceplate_english : public wordclock_faceplate
         {{8, 0}, {8, 1}, {8, 2}, {8, 3}, {8, 4}},                   // H_SEVEN
         {{8, 5}, {8, 6}, {8, 7}, {8, 8}, {8, 9}, {8, 10}},          // H_TWELVE
         {{9, 0}, {9, 1}, {9, 2}},                                   // H_TEN
-        {{0, 7}, {0, 8}},                                           // H_AM
-        {{0, 9}, {0, 10}},                                          // H_PM
+        {},//{{0, 7}, {0, 8}},                                           // H_AM
+        {},//{{0, 9}, {0, 10}},                                          // H_PM
         //---- HOUR WORDS END------ //
         {} // DONT DELETE
     };
