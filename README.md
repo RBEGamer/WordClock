@@ -17,6 +17,18 @@ Simple easy to build tabletop wordclock with many features:
 * eu summertime support
 * optional wifi based sync and control
 
+## LANGUAGES
+
+* GERMAN - TESTED
+* ENGLISH - TESTED
+* ITALIAN - TESTING NEEDED
+
+### POSSIBLE LANGUAGES
+
+* SPAIN
+* DUTCH
+
+
 
 
 ## PARTS
