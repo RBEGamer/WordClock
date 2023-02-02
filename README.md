@@ -103,6 +103,8 @@ All needed drawings are located in the `./src/lasercut/V2/layers_seperated` dire
 
 #### [OPTIONAL] 3D PRINTED STANDS
 
+All needed files are located in the `./src/3d_print/` directory:
+
 ##### TABLESTAND
 * 1x - TABLESTAND `wordclock_tablestand.stl`
 
