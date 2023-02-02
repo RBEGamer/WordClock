@@ -81,11 +81,11 @@ Information from example above:
 * RTC: I2C (DS17307)
 * Configuration-Storage: EEPROM
 * Lightsensor: BH1750
-* Software-Version: 3.1.0 (test)
+* Software-Version: 3.1.0 (test), please use stable `Release` firmware
 
 
 To download the latest software, please see the [Firmware-Releases](https://github.com/RBEGamer/WordClock/releases) page.
-
+In general the current V2 clocks use the firmware: `WORDCLOCK_V2_RP2040_RP2040RTC_3.2.2_Release.uf2`.
 
 **Note** All clocks produced before `01.11.2022` are hardware revision `V1` so please use:
 [WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2](https://github.com/RBEGamer/WordClock/releases/download/v3.2.2/WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2)
