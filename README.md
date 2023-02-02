@@ -91,6 +91,7 @@ To download the latest software, please see the [Firmware-Releases](https://gith
 
 ### MECHANICAL
 
+#### LASERCUT LAYERS 
 **See `./src/lasercut` for cutting instructions**
 
 All needed drawings are located in the `./src/lasercut/V2/layers_seperated` directory:
@@ -100,7 +101,13 @@ All needed drawings are located in the `./src/lasercut/V2/layers_seperated` dire
 * 1x - SPACER `2_lightguidehexnut_layer` - >=3mm plywood (or plexiglas, but its hidden)
 * 1x - FACEPLATE `1_text<LANGUAGE>_layer` - plexiglas, plywood >220x220mm 1mm
 
+#### [OPTIONAL] 3D PRINTED STANDS
 
+##### TABLESTAND
+* 1x - TABLESTAND `wordclock_tablestand.stl`
+
+##### WALLMOUNT
+* 1x - WALLMOUNT `wordclock_wallmount.stl`
 
 ### OTHER
 
