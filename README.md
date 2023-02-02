@@ -64,9 +64,22 @@ Directly after startup, the clock shows some version information about the hardw
 ![complete](./documentation/status_codes.jpg)
 
 
+### FIRMWARE UPDATE
+
+It is possible to update the software of the clock.
+This adds new features like new languages and general bug fixes.
+The software of the `RP2040` main processor can be done directly via the USB interface on the back.
+To perform the update, a small button called `QBOOT` must be pressed and held while the watch is turned off and connected to a PC.
+Now a new removable drive with the name `RP-BOOT` should appear. Now the update file is copied to it, afterwards the clock restarts.
+If the update fails it can be done again by following the steps once more.
+
+#### DOWNLOAD FIRMWARE UPDATE
+Please identfy the clock hardware version, which is printed on the back of the clock.
+To download the latest software, please see the [Firmware-Releases](https://github.com/RBEGamer/WordClock/releases) page.
 
 
-
+**Note** All clock produced before `11.2022` are `V1` so please use:
+[WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2](https://github.com/RBEGamer/WordClock/releases/download/v3.2.2/WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2)
 
 
 ## PARTS
