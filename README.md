@@ -93,6 +93,9 @@ In general the current V2 clocks use the firmware: `WORDCLOCK_V2_RP2040_RP2040RT
 
 ## PARTS
 
+The latest version of the clock is currently `v2` so please replace `vX` with `v2` in the following instructions.
+
+
 ### ELECTRICAL
 
 * 1x ASSEMBLED PCB - `./src/pcb/vX`
@@ -103,7 +106,7 @@ In general the current V2 clocks use the firmware: `WORDCLOCK_V2_RP2040_RP2040RT
 #### LASERCUT LAYERS 
 **See `./src/lasercut` for cutting instructions**
 
-All needed drawings are located in the `./src/lasercut/V2/layers_seperated` directory:
+All needed drawings are located in the `./src/lasercut/vX/layers_seperated` directory:
 
 * 1x - BACKCOVER `3_backcover_layer` - >=3mm plywood (or plexiglas)
 * 1x - SPACER `2_lightguide_layer` - >=3mm plywood (or plexiglas, but its hidden)
