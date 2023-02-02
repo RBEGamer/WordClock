@@ -1,7 +1,5 @@
 # Wordclock
 
-![complete](./documentation/images/IMG_9906.png)
-
 ![complete](./documentation/images/click_it_en_de_clockfaces.JPG)
 
 ## FEATURES
@@ -30,6 +28,8 @@ Simple easy to build tabletop wordclock with many features:
 
 
 ## USER - MANUAL
+
+![complete](./documentation/images/IMG_9906.png)
 
 ### POWER UP
 
