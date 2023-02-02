@@ -57,11 +57,7 @@ So `192.168.178.4` results in the following word order:
 
 
 
-### STATUS CODE
 
-Directly after startup, the clock shows some version information about the hardware revision and used software.
-
-![complete](./documentation/status_codes.jpg)
 
 
 ### FIRMWARE UPDATE
@@ -74,11 +70,16 @@ Now a new removable drive with the name `RP-BOOT` should appear. Now the update 
 If the update fails it can be done again by following the steps once more.
 
 #### DOWNLOAD FIRMWARE UPDATE
-Please identfy the clock hardware version, which is printed on the back of the clock.
+Please identfy the clock hardware version, which is printed on the back of the clock or use the `STATUS CODE` display.
+
+**STATUS CODE** Directly after startup, the clock shows some version information about the hardware revision and used software.
+![complete](./documentation/status_codes.jpg)
+
+
 To download the latest software, please see the [Firmware-Releases](https://github.com/RBEGamer/WordClock/releases) page.
 
 
-**Note** All clock produced before `11.2022` are `V1` so please use:
+**Note** All clocks produced before `01.11.2022` are hardware revision `V1` so please use:
 [WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2](https://github.com/RBEGamer/WordClock/releases/download/v3.2.2/WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2)
 
 
