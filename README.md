@@ -5,33 +5,36 @@
 ![complete](./documentation/images/click_it_en_de_clockfaces.JPG)
 
 ## FEATURES
-
 Simple easy to build tabletop wordclock with many features:
 
-
 * different clockfaces and languages
-* four colormodes (coldwhite, warmwhite, 2x rainbow)
+* different colormodes (coldwhite, warmwhite, 2x rainbow)
 * RP2040 based
 * ambient light sensor
 * temperature sensor
 * eu summertime support
 * optional wifi based sync and control
 
-## LANGUAGES
+## IMPLEMENTED LANGUAGES
 
-* GERMAN - TESTED
-* ENGLISH - TESTED
-* ITALIAN - TESTING NEEDED
+* GERMAN
+* ENGLISH
+* ITALIAN
 
 ### POSSIBLE LANGUAGES
 
-* SPAIN
+* SPANISH
 * DUTCH
 
 
 
 
-## MANUAL
+## USER - MANUAL
+
+### POWER UP
+
+Connect the clock using its Micro-USB port on the back a USB power source like a PC or USB wallplug.
+After a few seconds the clock lights up, depending on the configuration it may be that the brightness is set very low or the fontface is set incorrectly. To make these settings the web configuration can be used. Please follow the steps below to access the configuration webui.
 
 
 ### CONNECT CLOCK TO WIFI
@@ -59,6 +62,10 @@ So `192.168.178.4` results in the following word order:
 Directly after startup, the clock shows some version information about the hardware revision and used software.
 
 ![complete](./documentation/status_codes.jpg)
+
+
+
+
 
 
 
