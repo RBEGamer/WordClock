@@ -75,7 +75,6 @@ Please identfy the clock hardware version, which is printed on the back of the c
 **STATUS CODE** Directly after startup, the clock shows some version information about the hardware revision and used software.
 ![complete](./documentation/status_codes.jpg)
 
-
 To download the latest software, please see the [Firmware-Releases](https://github.com/RBEGamer/WordClock/releases) page.
 
 
@@ -117,23 +116,26 @@ All needed drawings are located in the `./src/lasercut/V2/layers_seperated` dire
 
 ### ASSEMBLY INSTRUCTIONS
 
+#### 0
+Place some M4 nuts in the hexnut cutouts in the `lightguidehexnut` plate.
+![clock_assembly_nuts_1](./documentation/clock_assembly_nuts_1.JPG)
 
 #### 1
 Glue the spacers `lightguidehexnut` and `lightguide` using woodglue togehter.
+![clock_assembly_diffusor_spacer_glue_2](./documentation/clock_assembly_diffusor_spacer_glue_2.JPG)
 
 #### 2
-
-Place some M4 nuts in the hexnut cutouts in the `lightguidehexnut` plate.
-
-#### 3
 Place and glue the sandwichpaper ontop the the `lightguidehexnut` layer.
+![clock_assembly_diffusor_0](./documentation/clock_assembly_diffusor_0.JPG)
+ 
+#### 3
+Glue the `FACEPLATE` ontop of the sandwhichpaper, make sure that the cutout in the spacers is the top of the clock.
+![italian_clockface](./documentation/italian_clockface.JPG)
 
 #### 4
-Glue the `FACEPLATE` ontop of the sandwhichpaper, make sure that the cutout in the spacers is the top of the clock.
-
-#### 5
 Place the glued fontplate/spacer assembly ontop of the PCB and place the `BACKCOVER` on the back of the PCB.
 Use the four M4 screws in the holes in the corners, to screw anything together.
+![clock_assembly_diffusor_0](./documentation/IMG_9905.png)
 
 
 
