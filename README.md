@@ -36,10 +36,15 @@ Simple easy to build tabletop wordclock with many features:
 
 
 
+### CONFIGURATION
 
-After configuring the wifi, you can access the clock using its DHCP adress (see your router or nmap) or use the clocks mDNS adress `http://wordclock_%%ID%%__.local` with `__%%ID%%__` is the ID printed on the back of the clock `http://wordclock10144907.local`.
 
+After configuring the wifi, you can access the clock-configuration webpage using its DHCP address (see your router or nmap) or use the clocks mDNS adress `http://wordclock_%%ID%%__.local` with `__%%ID%%__` is the ID printed on the back of the clock, like: `http://wordclock10144907.local`.
 
+**NOTE** After a wifi connection is established (power up, power cycle), the clock shows it on its display by means of the words. here the ip blocks are shown with the hours and the dot by using dark switching 0 or 12.
+
+So `192.168.178.4` results in the following word order:
+`one nine two  (pause)(dark 0/12)(pause) one six eight (pause)(dark 0/12)(pause) one seven eight (pause)(dark 0/12)(pause) four`
 
 
 
