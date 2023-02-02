@@ -48,7 +48,7 @@ So `192.168.178.4` results in the following word order:
 
 
 
-
+![webui_config](./documentation/images/webui_config.png)
 
 
 
