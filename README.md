@@ -34,12 +34,17 @@ Simple easy to build tabletop wordclock with many features:
 ## MANUAL
 
 
+### CONNECT CLOCK TO WIFI
+
+To sync up the current time using NTP or setup the fontface or colors, connect the clock to a existing 2.4Ghz Wifi network.
+After startup the clock check if the previous setup network exists. 
+If not, the clock will open its own Wifi with the SSID `WordClockConfiguration_%ID%` (`%ID%` is the ID printed on the back of the clock).
+After connecting, an captive portal should open, or by open the IP `192.168.4.1` in a web browser to set up the new Wifi.
+
+### ACCESS CONFIGURATION WEBUI
 
 
-### CONFIGURATION
-
-
-After configuring the wifi, you can access the clock-configuration webpage using its DHCP address (see your router or nmap) or use the clocks mDNS adress `http://wordclock_%%ID%%__.local` with `__%%ID%%__` is the ID printed on the back of the clock, like: `http://wordclock10144907.local`.
+After configuring the wifi, you can access the clock-configuration webpage using its DHCP address (see your router or nmap) or use the clocks mDNS adress `http://wordclock%%ID%%.local` with `%%ID%%` is the ID printed on the back of the clock, like: `http://wordclock10144907.local`.
 
 **NOTE** After a wifi connection is established (power up, power cycle), the clock shows it on its display by means of the words. here the ip blocks are shown with the hours and the dot by using dark switching 0 or 12.
 
