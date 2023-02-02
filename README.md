@@ -43,7 +43,6 @@ After connecting, an captive portal should open, or by open the IP `192.168.4.1`
 
 ### ACCESS CONFIGURATION WEBUI
 
-
 After configuring the wifi, you can access the clock-configuration webpage using its DHCP address (see your router or nmap) or use the clocks mDNS adress `http://wordclock%%ID%%.local` with `%%ID%%` is the ID printed on the back of the clock, like: `http://wordclock10144907.local`.
 
 **NOTE** After a wifi connection is established (power up, power cycle), the clock shows it on its display by means of the words. here the ip blocks are shown with the hours and the dot by using dark switching 0 or 12.
@@ -51,11 +50,15 @@ After configuring the wifi, you can access the clock-configuration webpage using
 So `192.168.178.4` results in the following word order:
 `one nine two  (pause)(dark 0/12)(pause) one six eight (pause)(dark 0/12)(pause) one seven eight (pause)(dark 0/12)(pause) four`
 
-
-
 ![webui_config](./documentation/images/webui_config.png)
 
 
+
+### STATUS CODE
+
+Directly after startup, the clock shows some version information about the hardware revision and used software.
+
+![complete](./documentation/status_codes.jpg)
 
 
 
@@ -95,12 +98,7 @@ The `drawing.svg` contatins every layer (as seperate object), so it can be seper
 
 
 
-## STATUS CODE
 
-Directly after startup, the clock shows some version information about the hardware revision and used software.
-
-
-![complete](./documentation/status_codes.jpg)
 
 ## COLOR
 
