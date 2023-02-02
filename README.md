@@ -92,34 +92,48 @@ To download the latest software, please see the [Firmware-Releases](https://gith
 
 ### MECHANICAL
 
-All needed drawings are located in the `./src/lasercut` directory.
-The `drawing.svg` contatins every layer (as seperate object), so it can be seperated and used with K40Whisperer software for the K40 lasercutter.
-
-* 1x - spacers - >220x220mm (approx 0.25m^2) >=3mm plywood (or plexiglas, but its hidden)
-* 1x - plexiglas - >220x220mm 1mm, solid color for faceplate (with words cut in)
-
-
 **See `./src/lasercut` for cutting instructions**
 
-#### OPTIONAL
-* 8x neodym magnets - 10x3mm (if you want to make the faceplate removable/rotatable)
+All needed drawings are located in the `./src/lasercut/V2/layers_seperated` directory:
+
+* 1x - BACKCOVER `3_backcover_layer` - >=3mm plywood (or plexiglas)
+* 1x - SPACER `2_lightguide_layer` - >=3mm plywood (or plexiglas, but its hidden)
+* 1x - SPACER `2_lightguidehexnut_layer` - >=3mm plywood (or plexiglas, but its hidden)
+* 1x - FACEPLATE `1_text<LANGUAGE>_layer` - plexiglas, plywood >220x220mm 1mm
+
 
 
 ### OTHER
 
 * sandwich paper - as additional semi transparent diffusor ontop of the leds
 * woodglue - to glue spacers together
-* ACRIFIX Plexiglas glue - to glue faceplate and opaque frontplate together
 * isopropanol - plexiglas cleaning before gluing
+
+
 ### TOOLS
 
 * lasercutter / cnc for cutting wood / plexiglas with working-area of at least 220mmx220mm
 * 3d rpinter can be used to print the faceplates and spacers(conversion from svg-> 3mm stl is needed)
 
+### ASSEMBLY INSTRUCTIONS
 
 
+#### 1
+Glue the spacers `lightguidehexnut` and `lightguide` using woodglue togehter.
+
+#### 2
+
+Place some M4 nuts in the hexnut cutouts in the `lightguidehexnut` plate.
+
+#### 3
+Place and glue the sandwichpaper ontop the the `lightguidehexnut` layer.
+
+#### 4
+Glue the `FACEPLATE` ontop of the sandwhichpaper, make sure that the cutout in the spacers is the top of the clock.
+
+#### 5
+Place the glued fontplate/spacer assembly ontop of the PCB and place the `BACKCOVER` on the back of the PCB.
+Use the four M4 screws in the holes in the corners, to screw anything together.
 
 
-
-## COLOR
 
