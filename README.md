@@ -31,6 +31,24 @@ Simple easy to build tabletop wordclock with many features:
 
 
 
+## MANUAL
+
+
+
+
+
+After configuring the wifi, you can access the clock using its DHCP adress (see your router or nmap) or use the clocks mDNS adress `http://wordclock_%%ID%%__.local` with `__%%ID%%__` is the ID printed on the back of the clock `http://wordclock10144907.local`.
+
+
+
+
+
+
+
+
+
+
+
 ## PARTS
 
 ### ELECTRICAL
