@@ -75,6 +75,15 @@ Please identfy the clock hardware version, which is printed on the back of the c
 **STATUS CODE** Directly after startup, the clock shows some version information about the hardware revision and used software.
 ![complete](./documentation/status_codes.jpg)
 
+Information from example above:
+
+* Hardware-Revision: 2 (PCBv2) so use `WORDCLOCK_V2_*.uf2` firmware files
+* RTC: I2C (DS17307)
+* Configuration-Storage: EEPROM
+* Lightsensor: BH1750
+* Software-Version: 3.1.0 (test)
+
+
 To download the latest software, please see the [Firmware-Releases](https://github.com/RBEGamer/WordClock/releases) page.
 
 
