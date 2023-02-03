@@ -27,7 +27,7 @@ endif()
 
 
 
-set(VERSION "3.2.2")
+set(VERSION "3.2.3")
 
 
 

@@ -53,6 +53,8 @@ After connecting, an captive portal should open, or by open the IP `192.168.4.1`
 **NOTE**
 The configuration wifi will be disabled after one minute, so if it is not visible power cycle the board.
 
+**NOTE**
+If the clock cannot connect to the configured WLAN (not found, or invalid credentials,...), the configuration accesspoint is opened again.
 
 ### ACCESS CONFIGURATION WEBUI
 
@@ -97,7 +99,13 @@ Information from example above:
 To download the latest software, please see the [Firmware-Releases](https://github.com/RBEGamer/WordClock/releases) page.
 In general the current V2 clocks use the firmware: `WORDCLOCK_V2_RP2040_RP2040RTC_3.2.2_Release.uf2`.
 
-**Note** All clocks produced before `01.11.2022` are hardware revision `V1` so please use:
+**Note**
+If `RTC`, `Lightsensor` and `Storage` are set to `SOFT` and `None`/`FLASH` please use firmware `WORDCLOCK_Vx_NOI2C_*.u2f`.
+[WORDCLOCK_V2_RP2040_NOI2C_3.2.2_Release.uf2](https://github.com/RBEGamer/WordClock/releases/download/v3.2.2/WORDCLOCK_V2_RP2040_NOI2C_3.2.2_Release.uf2)
+
+
+
+**Note** All clocks produced before `01.11.2022` have hardware revision `V1` so please use:
 [WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2](https://github.com/RBEGamer/WordClock/releases/download/v3.2.2/WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2)
 
 

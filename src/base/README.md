@@ -88,7 +88,7 @@ Please see reference implementation for a word-base clockface:
 * `./wordclock/src/wordclock_faceplate_german.hpp`
 * `./wordclock/src/wordclock_faceplate_german.cpp`
 
-If you dont have words on your fontface and wanto to implement other stlyes (like random dots, binary, for fancy animations), see the reference implementation for a dot based clockface:
+If you dont have words on your fontface and wan to implement other stlyes (like random dots, binary, for fancy animations), see the reference implementation for a dot based clockface to set individual LEDs:
 
 * `./wordclock/src/wordclock_faceplate_dots.hpp`
 * `./wordclock/src/wordclock_faceplate_dots.cpp`
