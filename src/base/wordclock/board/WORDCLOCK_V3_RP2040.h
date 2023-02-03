@@ -51,7 +51,7 @@
 #define BH1750_I2C_ADDR 0x23 // BH1750 0x23 or 0x5C
 #define RTC_I2C_ADDR 0x51 // (PCBv1)FOR DS1307/DS3231 0x68, (PCBv2)FOR PCF PCF85263AT 0x51
 #define EEPROM_I2C_ADDR 0x50 //FOR m24c02 0x50, FOR at24c02 0x50
-
+#define PCF8574_I2C_ADDR 0x38 //IN V3 ADDED PCF8574
 // On some samples, the xosc can take longer to stabilize than is usual
 #ifndef PICO_XOSC_STARTUP_DELAY_MULTIPLIER
 #define PICO_XOSC_STARTUP_DELAY_MULTIPLIER 64
