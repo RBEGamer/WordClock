@@ -374,6 +374,7 @@ int main()
     sleep_ms(500);
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
+    //IN DEBUG BUILD WAIT A BIT LONGER TO WAIT FOR FULL USB SERIAL INIT
     sleep_ms(1000 + DEBUG * 5000);
     // current_brightness = lightsensor->get_brightness();
     // ledStrip.setBrightness(current_brightness);
