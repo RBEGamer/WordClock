@@ -16,6 +16,7 @@ class wordclock_faceplate_italian : public wordclock_faceplate
         //---- COMMON WORDS BEGIN------ //
         C_SONO,
         C_LE,
+        C_L,
         C_ORE,
         C_E,
         //---- COMMON WORDS END------ //
@@ -65,7 +66,8 @@ class wordclock_faceplate_italian : public wordclock_faceplate
         {},                                                         // DONT DELETE
         //------------ COMMON WORDS BEGIN ------------------------- //
         {{0, 0}, {0, 1}, {0, 2}, {0, 3}},                           // C_SONO
-        {{0, 5} },//, {0, 6}},                                           // C_LE only L = p.s. small italian correction sono le una e cinque should be sono l'una e cinque
+        {{0, 5}, {0, 6}},                                           // C_LE
+        {{0, 5}},                                                   // C_L only L = small italian correction sono le una e cinque should be sono l'una e cinque
         {{0, 8}, {0, 9}, {0, 10}},                                  // C_ORE
         {{7, 0}},                                                   // M_OE => M_E
         //----------- COMMON WORDS END ---------------------------- //
