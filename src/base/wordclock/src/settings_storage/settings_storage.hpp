@@ -39,6 +39,7 @@ public:
         DAYLIGHTSAVING,
         COLORMODE,
         RESTORESETTINGS,
+        FLASHESPFIRMWARE,
         LENGHT // DONT DELETE
     };
 #endif

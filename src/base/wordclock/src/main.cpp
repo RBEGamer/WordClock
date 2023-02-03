@@ -68,7 +68,7 @@ void init_bh1750(const int _i2_addr)
 }
 
 void init_pcf8574(const int _i2c_addr){
-    if (_i2_addr < 0)
+    if (_i2c_addr < 0)
     {
         printf("init_pcf8574 failed");
         return;
@@ -389,10 +389,38 @@ int main()
     faceplate->display_testpattern(ledStrip);
     //IN DEBUG BUILD WAIT A BIT LONGER TO WAIT FOR FULL USB SERIAL INIT
     sleep_ms(1000 + DEBUG * 5000);
-    // current_brightness = lightsensor->get_brightness();
-    // ledStrip.setBrightness(current_brightness);
+
+
+
+    // RESTORE ALLE SETTINGS
+//  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
+#ifdef FORCE_RESTORE_SETTINGS
+    restore_settings(true);
+#else
+    restore_settings(false);
+#endif
+
+
+
+#ifdef INCLUDE_ESP_FIRMWARE
+    //CHECK IF FIRMWARE UPDATE FOR THE WIFI CHIP IS NEEDED
+    if(settings->read(settings_storage::SETTING_ENTRY::FLASHESPFIRMWARE) <= 0){
+        //SAVE FIRMWARE FLASH IF flash RETURNED SUCCESS
+        //SO NO FIRMWARE FLASH ON NEXT STARTUP
+        // AFTER A RP2040 UPDATE THE SETTINGS WILL BE SET TO DEFAULT SO IT WILL TRIGGER A REFLASH OF THE WIFI
+        if(firmware::flash()){
+            settings->write(settings_storage::SETTING_ENTRY::FLASHESPFIRMWARE, 1);
+        }
+    }else{
+        firmware::reset();
+    }
+#endif  
+
+
+
 
     // enable uart rx irq for communication with wifi module and register callback functions
+    // this needed due firmware::flash clears the uart initialisation so init it again
     wifi_interface::init_uart();
 #ifdef ENABLE_UART_IRQ
     wifi_interface::enable_uart_irq(true);
@@ -408,13 +436,7 @@ int main()
     wifi_interface::register_rx_callback(set_colormode, wifi_interface::CMD_INDEX::COLORMODE);
     wifi_interface::register_rx_callback(set_restoresettings, wifi_interface::CMD_INDEX::RESTORESETTINGS);
 
-// RESTORE ALLE SETTINGS
-//  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
-#ifdef FORCE_RESTORE_SETTINGS
-    restore_settings(true);
-#else
-    restore_settings(false);
-#endif
+
 
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 

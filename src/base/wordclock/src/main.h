@@ -21,7 +21,7 @@
 #include "rtc/rtc_include.h"
 #include "wordclock_faceplate/wordclock_faceplate_include.h"
 #include "ambient_light/ambient_light_include.h"
-
+#include "firmware/firmware.hpp"
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate);
 void init_bh1750(const int _i2_addr);
