@@ -8,6 +8,7 @@ int last_tsec = -1;
 long long last_update = 0;
 bool display_update = true;
 int brighness_curve = 10;
+bool automatic_faceplate_detection_enabled = false;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 
 // CLASS INSTANCES
@@ -67,14 +68,18 @@ void init_bh1750(const int _i2_addr)
 #endif
 }
 
-void init_pcf8574(const int _i2c_addr){
+void init_pcf8574(const int _i2c_addr)
+{
     if (_i2c_addr < 0)
     {
         printf("init_pcf8574 failed");
         return;
     }
 #ifdef ENABLE_AUTOMATIC_FACEPLACE_DETECTION
-    //TODO ADD READ STORAGE OR IF ENABLED THE HALLSENSORS TO GET CURRENT FACEPLATE ENUM
+    // TODO ADD READ STORAGE OR IF ENABLED THE HALLSENSORS TO GET CURRENT FACEPLATE ENUM
+    // TODO INIT PCF AND SET
+    automatic_faceplate_detection_enabled = true;
+
 #endif
 }
 
@@ -149,7 +154,9 @@ void init_i2c()
         else if (addr == EEPROM_I2C_ADDR)
         {
             init_eeprom_i2c(addr);
-        }else if(addr == PCF8574_I2C_ADDR){
+        }
+        else if (addr == PCF8574_I2C_ADDR)
+        {
             init_eeprom_i2c(addr);
         }
     }
@@ -208,7 +215,7 @@ int set_faceplate(const int _fp)
 void set_faceplate_str(const std::string _payload)
 {
     const int actual_fb = set_faceplate(helper::limit(_payload, 0, (int)wordclock_faceplate::FACEPLATES::TEST));
-    settings->write(settings_storage::SETTING_ENTRY::FACEPLATE, actual_fb);
+    settings->write(settings_storage::SETTING_ENTRY::FACEPLATE, actual_fb);  
 }
 
 void set_displayorientation_str(const std::string _payload)
@@ -328,6 +335,29 @@ void set_restoresettings(const std::string _payload)
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 }
 
+void set_automatic_clockface()
+{
+#ifdef ENABLE_AUTOMATIC_FACEPLACE_DETECTION
+    if (automatic_faceplate_detection_enabled)
+    {
+        //READ FIRST FOUR CHANNELS FROM THE PCF8574 WITH HALL-SENSORS ATTACHED
+        uint8_t ret = 0;
+        uint8_t buf_rx[1] = {0};
+        helper::reg_read(i2c_default, PCF8574_I2C_ADDR, 1 << 0, buf_rx, 1);
+        ret += buf_rx[0] * 1;
+        helper::reg_read(i2c_default, PCF8574_I2C_ADDR, 1 << 1, buf_rx, 1);
+        ret += buf_rx[0] * 2;
+        helper::reg_read(i2c_default, PCF8574_I2C_ADDR, 1 << 2, buf_rx, 1);
+        ret += buf_rx[0] * 4;
+        helper::reg_read(i2c_default, PCF8574_I2C_ADDR, 1 << 3, buf_rx, 1);
+        ret += buf_rx[0] * 8;
+
+        //FINALLY SET FACEPLATE BUT DONT SAVE TO SAVE WRITE CYCLES
+        set_faceplate(ret);
+    }
+#endif
+}
+
 int main()
 {
     bool led_state = false;
@@ -387,10 +417,8 @@ int main()
     sleep_ms(500);
     // DISPLAY TESTPATTERN => light up all corners to test matrix settings
     faceplate->display_testpattern(ledStrip);
-    //IN DEBUG BUILD WAIT A BIT LONGER TO WAIT FOR FULL USB SERIAL INIT
+    // IN DEBUG BUILD WAIT A BIT LONGER TO WAIT FOR FULL USB SERIAL INIT
     sleep_ms(1000 + DEBUG * 5000);
-
-
 
     // RESTORE ALLE SETTINGS
 //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
@@ -400,24 +428,23 @@ int main()
     restore_settings(false);
 #endif
 
-
-
 #ifdef INCLUDE_ESP_FIRMWARE
-    //CHECK IF FIRMWARE UPDATE FOR THE WIFI CHIP IS NEEDED
-    if(settings->read(settings_storage::SETTING_ENTRY::FLASHESPFIRMWARE) <= 0){
-        //SAVE FIRMWARE FLASH IF flash RETURNED SUCCESS
-        //SO NO FIRMWARE FLASH ON NEXT STARTUP
-        // AFTER A RP2040 UPDATE THE SETTINGS WILL BE SET TO DEFAULT SO IT WILL TRIGGER A REFLASH OF THE WIFI
-        if(firmware::flash()){
+    // CHECK IF FIRMWARE UPDATE FOR THE WIFI CHIP IS NEEDED
+    if (settings->read(settings_storage::SETTING_ENTRY::FLASHESPFIRMWARE) <= 0)
+    {
+        // SAVE FIRMWARE FLASH IF flash RETURNED SUCCESS
+        // SO NO FIRMWARE FLASH ON NEXT STARTUP
+        //  AFTER A RP2040 UPDATE THE SETTINGS WILL BE SET TO DEFAULT SO IT WILL TRIGGER A REFLASH OF THE WIFI
+        if (firmware::flash())
+        {
             settings->write(settings_storage::SETTING_ENTRY::FLASHESPFIRMWARE, 1);
         }
-    }else{
+    }
+    else
+    {
         firmware::reset();
     }
-#endif  
-
-
-
+#endif
 
     // enable uart rx irq for communication with wifi module and register callback functions
     // this needed due firmware::flash clears the uart initialisation so init it again
@@ -435,8 +462,6 @@ int main()
     wifi_interface::register_rx_callback(set_date, wifi_interface::CMD_INDEX::DATE);
     wifi_interface::register_rx_callback(set_colormode, wifi_interface::CMD_INDEX::COLORMODE);
     wifi_interface::register_rx_callback(set_restoresettings, wifi_interface::CMD_INDEX::RESTORESETTINGS);
-
-
 
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 
@@ -456,6 +481,7 @@ int main()
         {
             last_update = current_update;
             display_update = true;
+            set_automatic_clockface();
         }
 
         // UPDATE DISPLAY STUFF HERE
@@ -474,11 +500,11 @@ int main()
             {
                 last_tsec = t.sec;
                 printf("h%i m%i s%i b%i\n", t.hour, t.min, t.sec, current_brightness);
-//#ifdef DEBUG
-//                update_display_time(ledStrip, t.min%24, t.sec, t.sec);
-//#else
+                // #ifdef DEBUG
+                //                 update_display_time(ledStrip, t.min%24, t.sec, t.sec);
+                // #else
                 update_display_time(ledStrip, t.hour, t.min, t.sec);
-//#endif
+                // #endif
             }
             // CHECK BRIGHTNESS
             if (current_brightness_mode == 0)
