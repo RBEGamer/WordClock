@@ -67,6 +67,17 @@ void init_bh1750(const int _i2_addr)
 #endif
 }
 
+void init_pcf8574(const int _i2c_addr){
+    if (_i2_addr < 0)
+    {
+        printf("init_pcf8574 failed");
+        return;
+    }
+#ifdef ENABLE_AUTOMATIC_FACEPLACE_DETECTION
+    //TODO ADD READ STORAGE OR IF ENABLED THE HALLSENSORS TO GET CURRENT FACEPLATE ENUM
+#endif
+}
+
 void init_eeprom_i2c(const int _i2_addr)
 {
     if (_i2_addr < 0)
@@ -137,6 +148,8 @@ void init_i2c()
         }
         else if (addr == EEPROM_I2C_ADDR)
         {
+            init_eeprom_i2c(addr);
+        }else if(addr == PCF8574_I2C_ADDR){
             init_eeprom_i2c(addr);
         }
     }
