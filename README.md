@@ -44,7 +44,7 @@ After a few seconds the clock lights up, depending on the configuration it may b
 To sync up the current time using NTP or setup the fontface or colors, connect the clock to a existing 2.4Ghz Wifi network.
 After startup the clock check if the previous setup network exists. 
 
-![config_wifi](./documentation/imagesconfig_wifi.PNG)
+![config_wifi](./documentation/images/config_wifi.PNG)
 
 
 If not, the clock will open its own Wifi with the SSID `WordClockConfiguration_%ID%` (`%ID%` is the ID printed on the back of the clock).
