@@ -53,6 +53,8 @@ After connecting, an captive portal should open, or by open the IP `192.168.4.1`
 **NOTE**
 The configuration wifi will be disabled after one minute, so if it is not visible power cycle the board.
 
+**NOTE**
+If the clock cannot connect to the configured WLAN (not found, or invalid credentials,...), the configuration accesspoint is opened again.
 
 ### ACCESS CONFIGURATION WEBUI
 
