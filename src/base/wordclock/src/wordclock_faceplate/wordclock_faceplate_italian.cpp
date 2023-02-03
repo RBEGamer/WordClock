@@ -53,7 +53,9 @@ void wordclock_faceplate_italian::display_time_with_words(PicoLed::PicoLedContro
 
     // PREFIX WORDS SONE LE ORE
     wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_SONO, _s);
-    wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_LE, _s);
+    // small italian correction sono le una e cinque should be sono l'una e cinque
+    //wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_LE, _s);
+    wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_L, _s);
 
     if(_m >= 0 && _m < 5){
         wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::C_ORE, _s);
