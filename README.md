@@ -50,6 +50,10 @@ After startup the clock check if the previous setup network exists.
 If not, the clock will open its own Wifi with the SSID `WordClockConfiguration_%ID%` (`%ID%` is the ID printed on the back of the clock).
 After connecting, an captive portal should open, or by open the IP `192.168.4.1` in a web browser to set up the new Wifi.
 
+**NOTE**
+The configuration wifi will be disabled after one minute, so if it is not visible power cycle the board.
+
+
 ### ACCESS CONFIGURATION WEBUI
 
 After configuring the wifi, you can access the clock-configuration webpage using its DHCP address (see your router or nmap) or use the clocks mDNS adress `http://wordclock%%ID%%.local` with `%%ID%%` is the ID printed on the back of the clock, like: `http://wordclock10144907.local`.
