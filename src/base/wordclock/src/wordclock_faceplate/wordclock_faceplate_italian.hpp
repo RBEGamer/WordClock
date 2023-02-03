@@ -25,7 +25,7 @@ class wordclock_faceplate_italian : public wordclock_faceplate
         //---- MINUTE WORDS BEGIN------ //
         M_OE,
         M_MENO,
-        M_CINIQUE,
+        M_CINQUE,
         M_DIECI,
         M_QUINDICI,
         M_VENTI,
@@ -76,7 +76,7 @@ class wordclock_faceplate_italian : public wordclock_faceplate
                                                                     //---- MINUTE WORDS BEGIN------ //
         {{7, 0}},                                                   // M_E
         {{6, 7}, {6, 8}, {6, 9}, {6, 10}},                          // M_MENO
-        {{8, 5}, {8, 6}, {8, 7}, {8, 8}, {8, 9}, {8, 10}},          // M_CINIQUE
+        {{8, 5}, {8, 6}, {8, 7}, {8, 8}, {8, 9}, {8, 10}},          // M_CINQUE
         {{9, 0}, {9, 1}, {9, 2}, {9, 3}, {9, 4}},                   // M_DIECI
         {},                                                         // M_QUINDICI
         {{8, 0}, {8, 1}, {8, 2}, {8, 3}, {8, 4}},                   // M_VENTI
