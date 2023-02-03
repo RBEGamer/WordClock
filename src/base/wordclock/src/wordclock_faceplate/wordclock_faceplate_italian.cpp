@@ -132,7 +132,7 @@ void wordclock_faceplate_italian::display_time_with_words(PicoLed::PicoLedContro
     // ADD WORDS FOR MINUTES
     if (_m >= 5 && _m < 10)
     {
-        wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::M_CINIQUE, _s);
+        wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::M_CINQUE, _s);
     }
     else if (_m >= 10 && _m < 15)
     {
@@ -158,7 +158,7 @@ void wordclock_faceplate_italian::display_time_with_words(PicoLed::PicoLedContro
     }
     else if (_m >= 35 && _m < 40)
     {
-        wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::M_CINIQUE, _s);
+        wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::M_CINQUE, _s);
     }
     else if (_m >= 40 && _m < 45)
     {
@@ -175,6 +175,6 @@ void wordclock_faceplate_italian::display_time_with_words(PicoLed::PicoLedContro
     }
     else if (_m >= 55 && _m < 60)
     {
-        wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::M_CINIQUE, _s);
+        wordclock_faceplate_italian::set_word(_leds, wordclock_faceplate_italian::WORDS_INDEX::M_CINQUE, _s);
     }
 }
