@@ -89,7 +89,7 @@ If the update fails, you can do it again by repeating the steps.
 ![rpi-rp2](./documentation/images/rpi-rp2.png)
 
 **NOTE**
-On MacOS drag&drop installation can fail, so please try `$ cp WORDCLOC_VXx_RP2040_x.y.z_Release.uf2 /Volumes/RPI-RP2/` from the Terminal-App instead.
+On MacOS drag&drop installation can fail, so please try `$ cp ./WORDCLOCK_Vx_RP2040_x.y.z_Release.uf2 /Volumes/RPI-RP2/` from the Terminal-App instead.
 
 #### DOWNLOAD FIRMWARE UPDATE
 Please identfy the clock hardware version, which is printed on the back of the clock or use the `STATUS CODE` display.
