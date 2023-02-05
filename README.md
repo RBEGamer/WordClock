@@ -116,6 +116,7 @@ If `RTC`, `Lightsensor` and `Storage` are set to `SOFT` and `None`/`FLASH` pleas
 * RTC: `SOFT`
 * Configuration-Storage: `FLASH` or `NONE`
 * Lightsensor: `SOFT`
+
 [WORDCLOCK_V2_RP2040_NOI2C_3.2.2_Release.uf2](https://github.com/RBEGamer/WordClock/releases/download/v3.2.2/WORDCLOCK_V2_RP2040_NOI2C_3.2.2_Release.uf2)
 
 
