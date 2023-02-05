@@ -87,7 +87,7 @@ The button is accessible through the cutout on the top of the clock near the USB
 ![rpi-rp2_cutout](./documentation/images/rpi-rp2_cutout.jpg)
 
 Now a new removable drive with the name `RP-BOOT` should appear.
-Now copy (or drag&drop)the update file to the drive.
+Now copy (or drag&drop) the `.u2f` update file to the drive.
 After the copy process is complete, the drive disappears automatically and the clock restarts.
 If the update fails, you can do it again by repeating the steps.
 
