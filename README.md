@@ -86,10 +86,10 @@ Now copy (or drag&drop)the update file to the drive.
 After the copy process is complete, the drive disappears automatically and the clock restarts.
 If the update fails, you can do it again by repeating the steps.
 
-![rpi-rp2](./documentation/images/rpi-rp2.jpg)
+![rpi-rp2](./documentation/images/rpi-rp2.png)
 
 **NOTE**
-On MacOS drag&drop can fail, so please try the `$ cp firmware.u2f /Volumes/RPI-RP2/` instead.
+On MacOS drag&drop installation can fail, so please try `$ cp WORDCLOC_VXx_RP2040_x.y.z_Release.uf2 /Volumes/RPI-RP2/` from the Terminal-App instead.
 
 #### DOWNLOAD FIRMWARE UPDATE
 Please identfy the clock hardware version, which is printed on the back of the clock or use the `STATUS CODE` display.
