@@ -94,7 +94,11 @@ On MacOS drag&drop installation can fail, so please try `$ cp ./WORDCLOCK_Vx_RP2
 #### DOWNLOAD FIRMWARE UPDATE
 Please identfy the clock hardware version, which is printed on the back of the clock or use the `STATUS CODE` display.
 
-**STATUS CODE** Directly after startup, the clock shows some version information about the hardware revision and used software.
+##### STATUS CODE
+Directly after startup, the clock shows some version information about the hardware revision and used software.
+This information is language-independent and is displayed in the form of individual illuminated LEDs.
+On the following picture their meaning can be determined.
+
 ![complete](./documentation/status_codes.jpg)
 
 Information from example above:
