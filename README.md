@@ -27,7 +27,7 @@ Simple easy to build tabletop wordclock with many features:
 
 
 
-## USER - MANUAL
+## USER-MANUAL
 
 ![complete](./documentation/images/IMG_9906.png)
 
@@ -262,7 +262,7 @@ Place the glued fontplate/spacer assembly ontop of the PCB and place the `BACKCO
 Use the four M4 screws in the holes in the corners, to screw anything together.
 ![clock_assembly_diffusor_0](./documentation/images/IMG_9905.png)
 
-##### 4 [OPTIONAL]
+##### 5 [OPTIONAL]
 
 Mount the 3D-printed `wallmount` or `tablestand`.
 
@@ -271,3 +271,8 @@ Mount the 3D-printed `wallmount` or `tablestand`.
 
 ###### WALLMOUNT
 ![clock_wallmount_assembly](./documentation/images/clock_wallmount_assembly.JPG)
+
+
+##### 6
+
+Flash the firmware to the clock using the [USER-MANUAL](#user-manual)
