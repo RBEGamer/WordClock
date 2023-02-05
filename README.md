@@ -95,7 +95,7 @@ Check the firmware version after an update using the [STATUS-CODES](#status-code
 On MacOS drag&drop installation can fail, so please try `$ cp ./WORDCLOCK_Vx_RP2040_x.y.z_Release.uf2 /Volumes/RPI-RP2/` from the Terminal-App instead.
 
 #### DOWNLOAD FIRMWARE UPDATE
-Please identfy the clock hardware version, which is printed on the back of the clock or use the `STATUS CODE` display.
+Please identfy the clock hardware version, which is printed on the back of the clock or use the [STATUS-CODES](#status-codes) display.
 
 ##### STATUS CODES
 Directly after startup, the clock shows some version information about the hardware revision and used software.
