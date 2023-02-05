@@ -258,28 +258,28 @@ All needed files are located in the `./src/3d_print/` directory:
 
 #### ASSEMBLY INSTRUCTIONS
 
-##### 0
+##### 0 - INSERT HEXNUTS
 Place some M4 nuts in the hexnut cutouts in the `lightguidehexnut` plate.
 ![clock_assembly_nuts_1](./documentation/images/clock_assembly_nuts_1.JPG)
 
-##### 1
+##### 1 - GLUE SPACERS TOGEHTER
 Glue the spacers `lightguidehexnut` and `lightguide` using woodglue togehter.
 ![clock_assembly_diffusor_spacer_glue_2](./documentation/images/clock_assembly_diffusor_spacer_glue_2.JPG)
 
-##### 2
+##### 2 - ADD  DIFFUSOR
 Place and glue the sandwichpaper ontop the the `lightguidehexnut` layer.
 ![clock_assembly_diffusor_0](./documentation/images/clock_assembly_diffusor_0.JPG)
  
-##### 3
+##### 3 - ADD FACEPLATE
 Glue the `FACEPLATE` ontop of the sandwhichpaper, make sure that the cutout in the spacers is the top of the clock.
 ![italian_clockface](./documentation/images/italian_clockface.JPG)
 
-##### 4
+##### 4 - ASSEMBLY
 Place the glued fontplate/spacer assembly ontop of the PCB and place the `BACKCOVER` on the back of the PCB.
 Use the four M4 screws in the holes in the corners, to screw anything together.
 ![clock_assembly_diffusor_0](./documentation/images/IMG_9905.png)
 
-##### 5 [OPTIONAL]
+##### 5 - WALLMOUNT / TABLESTAND [OPTIONAL]
 
 Mount the 3D-printed `wallmount` or `tablestand`.
 
