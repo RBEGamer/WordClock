@@ -143,25 +143,42 @@ $ git clone --depth 1 https://github.com/RBEGamer/WordClock.git ~/WordClock
 $ cd ~/WordClock/base/wordclock/
 # UPDATE CMAKE PATHS
 $ rm -Rf build CMakeCache.txt CMakeFiles elf2uf2 generated pioasm WORDCLOCK_* build_u2f
-
 # see board folder for available PCB-Revisions
 # for example to build the firmware for a PCBv2 use WORDCLOCK_V2_RP2040_RP2040RTC
 ## RELEAE
 $ cmake -DCMAKE_BUILD_TYPE=Release -DWORDCLOCK_BOARD=WORDCLOCK_V2_RP2040_RP2040RTC .
 ## DEBUG
 $ cmake -DCMAKE_BUILD_TYPE=Debug -DWORDCLOCK_BOARD=WORDCLOCK_V2_RP2040_RP2040RTC .
+PICO_SDK_PATH is ~/WordClock/src/base/pico-sdk
+Defaulting PICO_PLATFORM to rp2040 since not specified.
+Defaulting PICO platform compiler to pico_arm_gcc since not specified.
+PICO compiler is pico_arm_gcc
+-- The C compiler identification is GNU 10.3.1
+-- The CXX compiler identification is GNU 10.3.1
+-- The ASM compiler identification is GNU
+-- Found assembler: /opt/homebrew/bin/arm-none-eabi-gcc
+Build type is Release
+PICO target board is WORDCLOCK_V2_RP2040_RP2040RTC.
+
+
 
 # BUILD
 # on first build the pico-sdk will be downloaded
-$ make -j8
 # the result should be a WORDCLOCK_V2_RP2040_RP2040RTC_3.2.3_Debug.uf2
+$ make -j8
+[ 97%] Linking CXX executable WORDCLOCK_V2_RP2040_RP2040RTC_3.2.3_Debug.elf
+[100%] Built target wordclock
+
 
 # FLASH
 # you can use the drag&drop method to install the firmware or use the pico-tool with a usb connected clock.
-# see flash_release.sh
+# see flash_release.sh or flash_release.sh
 $ ../picotool/picotool load -f *.uf2 && ../picotool/picotool reboot
 ```
 
+**NOTE**
+To build the a new firmware relase, for all clock hardware-revisions you can use the `build_all.sh` script.
+It builds the `.u2f` for each board definition located in the `board` folder and stores the build artefacts in `build_u2f`.
 
 
 
