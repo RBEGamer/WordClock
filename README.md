@@ -81,8 +81,15 @@ To perform the update, a small button called `QBOOT` must be pressed and held wh
 
 ![qboot_button](./documentation/images/qboot.jpg)
 
-Now a new removable drive with the name `RP-BOOT` should appear. Now the update file is copied to it, afterwards the clock restarts.
-If the update fails it can be done again by following the steps once more.
+Now a new removable drive with the name `RP-BOOT` should appear.
+Now copy (or drag&drop)the update file to the drive.
+After the copy process is complete, the drive disappears automatically and the clock restarts.
+If the update fails, you can do it again by repeating the steps.
+
+![rpi-rp2](./documentation/images/rpi-rp2.jpg)
+
+**NOTE**
+On MacOS drag&drop can fail, so please try the `$ cp firmware.u2f /Volumes/RPI-RP2/` instead.
 
 #### DOWNLOAD FIRMWARE UPDATE
 Please identfy the clock hardware version, which is printed on the back of the clock or use the `STATUS CODE` display.
