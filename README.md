@@ -121,6 +121,61 @@ If `RTC`, `Lightsensor` and `Storage` are set to `SOFT` and `None`/`FLASH` pleas
 
 
 
+### FIRMWARE CUSTOMIZATION
+
+It is also possible to make your own adjustments to the clock's firmware, e.g. to add your own languages or animations.
+
+It is recommended to use Visual Code with the following plugins as the editor, since the project already has all the necessary settings and also a debug environment configured. This makes it easy to get started.
+
+* `C/C++` by `Microsoft`
+* `Cortex-Debug` by `marus25` 
+
+The complete firmware of the RP2040 main processor is available in the `src/base/wordclock/src` folder.
+If you want to develop your own fontface, see the examples in  `wordclock_faceplate` and the `wordclock_faceplate_template.*` files.
+
+
+
+#### BUILDING THE FIRMWARE
+
+```bash
+
+$ git clone --depth 1 https://github.com/RBEGamer/WordClock.git ~/WordClock
+$ cd ~/WordClock/base/wordclock/
+# UPDATE CMAKE PATHS
+$ rm -Rf build CMakeCache.txt CMakeFiles elf2uf2 generated pioasm WORDCLOCK_* build_u2f
+
+# see board folder for available PCB-Revisions
+# for example to build the firmware for a PCBv2 use WORDCLOCK_V2_RP2040_RP2040RTC
+## RELEAE
+$ cmake -DCMAKE_BUILD_TYPE=Release -DWORDCLOCK_BOARD=WORDCLOCK_V2_RP2040_RP2040RTC .
+## DEBUG
+$ cmake -DCMAKE_BUILD_TYPE=Debug -DWORDCLOCK_BOARD=WORDCLOCK_V2_RP2040_RP2040RTC .
+
+# BUILD
+# on first build the pico-sdk will be downloaded
+$ make -j8
+# the result should be a WORDCLOCK_V2_RP2040_RP2040RTC_3.2.3_Debug.uf2
+
+# FLASH
+# you can use the drag&drop method to install the firmware or use the pico-tool with a usb connected clock.
+# see flash_release.sh
+$ ../picotool/picotool load -f *.uf2 && ../picotool/picotool reboot
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## BUILD YOUR OWN CLOCK
 
 ### PARTS
