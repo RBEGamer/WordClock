@@ -135,7 +135,7 @@ If you want to develop your own fontface, see the examples in  `wordclock_facepl
 
 
 
-#### BUILDING THE FIRMWARE
+#### BUILDING THE FIRMWARE YOURSELF
 
 ```bash
 
