@@ -99,39 +99,43 @@ Please identfy the clock hardware version, which is printed on the back of the c
 
 Information from example above:
 
-* Hardware-Revision: 2 (PCBv2) so use `WORDCLOCK_V2_*.uf2` firmware files
-* RTC: I2C (DS17307)
-* Configuration-Storage: EEPROM
-* Lightsensor: BH1750
+* Hardware-Revision: 2 (`PCBv2`) so use `WORDCLOCK_V2_*.uf2` firmware files
+* RTC: `I2C (DS17307)`
+* Configuration-Storage: `EEPROM`
+* Lightsensor: `BH1750`
 * Software-Version: 3.1.0 (test), please use stable `Release` firmware
 
 
 To download the latest software, please see the [Firmware-Releases](https://github.com/RBEGamer/WordClock/releases) page.
-In general the current V2 clocks use the firmware: `WORDCLOCK_V2_RP2040_RP2040RTC_3.2.2_Release.uf2`.
+For the current `V2` clocks, use the latest firmware file: `WORDCLOCK_V2_RP2040_RP2040RTC_x.y.z_Release.uf2`.
+
+For the `V1` clocks, use the archived firmware: `WORDCLOCK_V1_RP2040_3.1.0_Release.uf2`.
 
 **Note**
 If `RTC`, `Lightsensor` and `Storage` are set to `SOFT` and `None`/`FLASH` please use firmware `WORDCLOCK_Vx_NOI2C_*.u2f`.
+* RTC: `SOFT`
+* Configuration-Storage: `FLASH` or `NONE`
+* Lightsensor: `SOFT`
 [WORDCLOCK_V2_RP2040_NOI2C_3.2.2_Release.uf2](https://github.com/RBEGamer/WordClock/releases/download/v3.2.2/WORDCLOCK_V2_RP2040_NOI2C_3.2.2_Release.uf2)
 
 
 
-**Note** All clocks produced before `01.11.2022` have hardware revision `V1` so please use:
-[WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2](https://github.com/RBEGamer/WordClock/releases/download/v3.2.2/WORDCLOCK_V1_RP2040_RP2040RTC_3.2.2_Release.uf2)
 
+## BUILD YOUR OWN CLOCK
 
-## PARTS
+### PARTS
 
 The latest version of the clock is currently `v2` so please replace `vX` with `v2` in the following instructions.
 
 
-### ELECTRICAL
+#### ELECTRICAL
 
 * 1x ASSEMBLED PCB - `./src/pcb/vX`
 * 1x MicroUSB to DIP breakout or USB Cable with open leads
 
-### MECHANICAL
+#### MECHANICAL
 
-#### LASERCUT LAYERS 
+##### LASERCUT LAYERS 
 **See `./src/lasercut` for cutting instructions**
 
 All needed drawings are located in the `./src/lasercut/vX/layers_seperated` directory:
@@ -141,57 +145,57 @@ All needed drawings are located in the `./src/lasercut/vX/layers_seperated` dire
 * 1x - SPACER `2_lightguidehexnut_layer` - >=3mm plywood (or plexiglas, but its hidden)
 * 1x - FACEPLATE `1_text<LANGUAGE>_layer` - plexiglas, plywood >220x220mm 1mm
 
-#### [OPTIONAL] 3D PRINTED STANDS
+##### [OPTIONAL] 3D PRINTED STANDS
 
 All needed files are located in the `./src/3d_print/` directory:
 
-##### TABLESTAND
+####### TABLESTAND
 * 1x - TABLESTAND `wordclock_tablestand.stl`
 
-##### WALLMOUNT
+####### WALLMOUNT
 * 1x - WALLMOUNT `wordclock_wallmount.stl`
 
-### OTHER
+#### OTHER
 
 * sandwich paper - as additional semi transparent diffusor ontop of the leds
 * woodglue - to glue spacers together
 * isopropanol - plexiglas cleaning before gluing
 
 
-### TOOLS
+#### TOOLS
 
 * lasercutter / cnc for cutting wood / plexiglas with working-area of at least 220mmx220mm
 * 3d rpinter can be used to print the faceplates and spacers(conversion from svg-> 3mm stl is needed)
 
-### ASSEMBLY INSTRUCTIONS
+#### ASSEMBLY INSTRUCTIONS
 
-#### 0
+##### 0
 Place some M4 nuts in the hexnut cutouts in the `lightguidehexnut` plate.
 ![clock_assembly_nuts_1](./documentation/images/clock_assembly_nuts_1.JPG)
 
-#### 1
+##### 1
 Glue the spacers `lightguidehexnut` and `lightguide` using woodglue togehter.
 ![clock_assembly_diffusor_spacer_glue_2](./documentation/images/clock_assembly_diffusor_spacer_glue_2.JPG)
 
-#### 2
+##### 2
 Place and glue the sandwichpaper ontop the the `lightguidehexnut` layer.
 ![clock_assembly_diffusor_0](./documentation/images/clock_assembly_diffusor_0.JPG)
  
-#### 3
+##### 3
 Glue the `FACEPLATE` ontop of the sandwhichpaper, make sure that the cutout in the spacers is the top of the clock.
 ![italian_clockface](./documentation/images/italian_clockface.JPG)
 
-#### 4
+##### 4
 Place the glued fontplate/spacer assembly ontop of the PCB and place the `BACKCOVER` on the back of the PCB.
 Use the four M4 screws in the holes in the corners, to screw anything together.
 ![clock_assembly_diffusor_0](./documentation/images/IMG_9905.png)
 
-#### 4 [OPTIONAL]
+##### 4 [OPTIONAL]
 
 Mount the 3D-printed `wallmount` or `tablestand`.
 
-##### TABLESTAND
+###### TABLESTAND
 ![clock_tablestand_assembly](./documentation/images/clock_tablestand_assembly.JPG)
 
-##### WALLMOUNT
+###### WALLMOUNT
 ![clock_wallmount_assembly](./documentation/images/clock_wallmount_assembly.JPG)
