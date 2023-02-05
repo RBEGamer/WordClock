@@ -78,9 +78,13 @@ It is possible to update the software of the clock.
 This adds new features like new languages and general bug fixes.
 The software of the `RP2040` main processor can be updated directly via the USB interface on the back.
 To perform the update, a small button called `QBOOT` must be pressed and held while the watch is turned off and connected to a PC.
-You can press the button even when the watch is assembled. The button is accessible through the cutout on the top of the clock near the USB port.
 
 ![qboot_button](./documentation/images/qboot.jpg)
+
+You can press the button even when the clock is assembled.
+The button is accessible through the cutout on the top of the clock near the USB port.
+
+![rpi-rp2_cutout](./documentation/images/rpi-rp2_cutout.jpg)
 
 Now a new removable drive with the name `RP-BOOT` should appear.
 Now copy (or drag&drop)the update file to the drive.
@@ -89,11 +93,15 @@ If the update fails, you can do it again by repeating the steps.
 
 ![rpi-rp2](./documentation/images/rpi-rp2.png)
 
+
 **NOTE**
 Check the firmware version after an update using the [STATUS-CODES](#status-codes).
 
 **NOTE**
 On MacOS drag&drop installation can fail, so please try `$ cp ./WORDCLOCK_Vx_RP2040_x.y.z_Release.uf2 /Volumes/RPI-RP2/` from the Terminal-App instead.
+
+**NOTE**
+Instead of reconnecting the USB cable, there is an other button called `RPRST` which can be pressed once, while keep holding the `QBOOT` button.
 
 #### DOWNLOAD FIRMWARE UPDATE
 Please identfy the clock hardware version, which is printed on the back of the clock or use the [STATUS-CODES](#status-codes) display.
