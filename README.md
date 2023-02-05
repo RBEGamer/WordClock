@@ -78,6 +78,7 @@ It is possible to update the software of the clock.
 This adds new features like new languages and general bug fixes.
 The software of the `RP2040` main processor can be updated directly via the USB interface on the back.
 To perform the update, a small button called `QBOOT` must be pressed and held while the watch is turned off and connected to a PC.
+You can press the button even when the watch is assembled. The button is accessible through the cutout on the top of the clock near the USB port.
 
 ![qboot_button](./documentation/images/qboot.jpg)
 
