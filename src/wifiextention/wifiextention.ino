@@ -44,8 +44,8 @@
 
 // CONFIG -------------------------------------
 #define WEBSERVER_PORT 80                                     // set the port for the webserver eg 80 8080
-#define MDNS_NAME "wordclock"                                 // set hostname
-#define WEBSITE_TITLE "Word Clock Wifi Module Configuration"  // name your device
+#define MDNS_NAME "dbclock"                                 // set hostname
+#define WEBSITE_TITLE "DB Wifi Module Configuration"  // name your device
 #define SERIAL_BAUD_RATE 9600
 #define NTP_SEND_TIME_INTERVAL 5 * 60  //sende zeit an uhr all x minuten
 #define DEFAULT_NTP_SERVER "pool.ntp.org"
@@ -59,13 +59,13 @@ String time_last = "not synced";
 long last = 0;
 long last_ee = 0;
 #if defined(ESP8266)
-const String BOARD_INFO = "WORDCLOCKWIFIMODULE_FW_" + String(VERSION) + "_BOARD_" + "ESP8266";
+const String BOARD_INFO = "DBCLOCKWIFIMODULE_FW_" + String(VERSION) + "_BOARD_" + "ESP8266";
 #elif defined(ESP32)
-const String BOARD_INFO = "WORDCLOCKWIFIMODULE_FW_" + String(VERSION) + "_BOARD_" + "ESP32";
+const String BOARD_INFO = "DBCLOCKWIFIMODULE_FW_" + String(VERSION) + "_BOARD_" + "ESP32";
 #endif
 
 
-const String ap_name = "WordClockConfiguration";
+const String ap_name = "DBClockConfiguration";
 
 // END NEOPIXEL CONF ---------------------------
 //FILES FOR STORiNG CONFIGURATION DATA
@@ -376,19 +376,27 @@ void handleRoot() {
   "<input type='submit' value='SEND NTP TIME TO CLOCK'/>"
   "</form><br>";
   // FONTFACE
-  control_forms += "<p>FONTFACE: </p><form name='btn_on' action='/save' method='GET'><select name='sfp' id='sfp'><option value='0'>GERMAN</option><option value='1'>ENGLISH</option><option value='2'>ITALIAN</option><option value='3'>BELGIAN</option><option value='4'>BINARY</option><option value='5'>DOTS</option><option value='6'>TESTPATTERN</option></select><input type='submit' value='SAVE'/></form><br>";
+  //control_forms += "<p>FONTFACE: </p><form name='btn_on' action='/save' method='GET'><select name='sfp' id='sfp'><option value='0'>GERMAN</option><option value='1'>ENGLISH</option><option value='2'>ITALIAN</option><option value='3'>BELGIAN</option><option value='4'>BINARY</option><option value='5'>DOTS</option><option value='6'>TESTPATTERN</option></select><input type='submit' value='SAVE'/></form><br>";
   //FLIP DISPLAY
-  control_forms += "<p>DISPLAY ROTATION: </p><form name='btn_on' action='/save' method='GET'><select name='sdo' id='sdo'><option value='0'>NORMAL</option><option value='1'>ROTATED</option></select><input type='submit' value='SAVE'/></form><br>";
+  //control_forms += "<p>DISPLAY ROTATION: </p><form name='btn_on' action='/save' method='GET'><select name='sdo' id='sdo'><option value='0'>NORMAL</option><option value='1'>ROTATED</option></select><input type='submit' value='SAVE'/></form><br>";
   // DAYLIGHTSAVING
-  control_forms += "<p>DAYLIGHTSAVING: </p><form name='btn_on' action='/save' method='GET'><select name='dls' id='dls'><option value='0'>DISBALED</option><option value='1'>ENABLED</option></select><input type='submit' value='SAVE'/></form><br>";
+  //control_forms += "<p>DAYLIGHTSAVING: </p><form name='btn_on' action='/save' method='GET'><select name='dls' id='dls'><option value='0'>DISBALED</option><option value='1'>ENABLED</option></select><input type='submit' value='SAVE'/></form><br>";
   //BRIGHTNESS
-  control_forms += "<p>BRIGHTNESS<br> </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sb' id='sb' min='10' max='255' required placeholder='10-255'/><input type='submit' value='SAVE MANUAL MODE'/></form><br><form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='10'/><input type='submit' value='SET AUTO MODE'/></form><br>";
+  control_forms += "<p>BRIGHTNESS-MODE<br> </p><br>";
+  control_forms += "<form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='0'/><input type='submit' value='OFF'/></form><br>";
+  control_forms += "<form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='1'/><input type='submit' value='10%'/></form><br>";
+  control_forms += "<form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='2'/><input type='submit' value='20%'/></form><br>";
+  control_forms += "<form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='3'/><input type='submit' value='50%'/></form><br>";
+  control_forms += "<form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='4'/><input type='submit' value='70%'/></form><br>";
+  control_forms += "<form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='5'/><input type='submit' value='100%'/></form><br>";
+  control_forms += "<form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='6'/><input type='submit' value='AUTO'/></form><br>";
+
   //BRIGHTNESS CURVE
-  control_forms += "<p>BRIGHTNESS CURVE: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sbc' id='sbc' min='10' max='100' required placeholder='0=LINEAR 10-100=EXPONENTIAL'/><input type='submit' value='SAVE'/></form><br>";
+  //control_forms += "<p>BRIGHTNESS CURVE: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sbc' id='sbc' min='10' max='100' required placeholder='0=LINEAR 10-100=EXPONENTIAL'/><input type='submit' value='SAVE'/></form><br>";
   //COLORMODE
-  control_forms += "<p>COLOR MODE: </p><form name='btn_on' action='/save' method='GET'><select name='col' id='col'><option value='0'>RAINBOW SEPARATE</option><option value='1'>RAINBOW EQUAL</option><option value='2'>COLD WHITE</option><option value='3'>WARM WHITE</option></select><input type='submit' value='SAVE'/></form><br>";
+  //control_forms += "<p>COLOR MODE: </p><form name='btn_on' action='/save' method='GET'><select name='col' id='col'><option value='0'>RAINBOW SEPARATE</option><option value='1'>RAINBOW EQUAL</option><option value='2'>COLD WHITE</option><option value='3'>WARM WHITE</option></select><input type='submit' value='SAVE'/></form><br>";
   // CLOCKRESET
-  control_forms += "<form name='btn_on' action='/save' method='GET' required ><input type='hidden' value='res' name='res' /><input type='submit' value='CLOCK RESET'/></form><br>";
+  //control_forms += "<form name='btn_on' action='/save' method='GET' required ><input type='hidden' value='res' name='res' /><input type='submit' value='CLOCK RESET'/></form><br>";
 
   // SYSTEM SETTINGS  
   control_forms += "<form name='btn_on' action='/save' method='GET' required ><input type='hidden' value='eepromread' name='eepromread' /><input type='submit' value='READ STORED CONFIG'/></form><br>";
@@ -453,6 +461,13 @@ void setup(void) {
   delay(1000);
   server.on("/", handleRoot);
   server.on("/save", handleSave);
+/*
+  server.on("/save", HTTP_GET, [](AsyncWebServerRequest *request){
+    //if(!request->authenticate(http_username, http_password))
+    //  return request->requestAuthentication();
+    request->send_P(200, "text/html", index_html, processor);
+  });
+*/
   server.on("/index.html", handleRoot);
   server.onNotFound(handleNotFound);
   server.begin();
