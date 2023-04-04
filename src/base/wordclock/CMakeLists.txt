@@ -22,12 +22,11 @@ else()
         #set(PICO_BOARD "WORDCLOCK_V2_RP2040")
         #set(PICO_BOARD "WORDCLOCK_V2_RP2040_RP2040RTC")
         set(PICO_BOARD "WORDCLOCK_V2_RP2040_NOI2C")
-        #set(PICO_BOARD "WORDCLOCK_V3_RP2040")
 endif()
 
 
 
-set(VERSION "3.2.3") # FORMAT X.Y.Z single digit
+set(VERSION "3.2.2")
 
 
 
@@ -51,9 +50,6 @@ pico_sdk_init()
 include(${CMAKE_CURRENT_LIST_DIR}/PicoLED/PicoLed.cmake)
 
 add_executable(wordclock 
-        src/firmware/firmware_data.hpp
-        src/firmware/firmware.hpp
-        src/firmware/firmware.cpp
         src/ambient_light/ambient_light_include.h
         src/ambient_light/ambient_light.hpp
         src/ambient_light/ambient_light.cpp
@@ -99,12 +95,10 @@ add_executable(wordclock
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         target_compile_definitions(wordclock PRIVATE DEBUG=1)
-        target_compile_definitions(wordclock PRIVATE PICO_DEOPTIMIZED_DEBUG=1)
         message(STATUS "ADD DEBUG=1")
 else()
         target_compile_definitions(wordclock PRIVATE DEBUG=0)
 endif()
-
 
 target_compile_definitions(wordclock PRIVATE VERSION="${VERSION}")
 
@@ -113,7 +107,6 @@ if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
         #set(CMAKE_CXX_FLAGS "-Wall")
         set(CMAKE_CXX_FLAGS_DEBUG "-g")
         message(STATUS "RELEASE BUILD")
-
 endif()
 
 

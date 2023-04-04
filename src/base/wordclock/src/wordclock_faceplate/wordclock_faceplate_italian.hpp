@@ -16,7 +16,6 @@ class wordclock_faceplate_italian : public wordclock_faceplate
         //---- COMMON WORDS BEGIN------ //
         C_SONO,
         C_LE,
-        C_L,
         C_ORE,
         C_E,
         //---- COMMON WORDS END------ //
@@ -25,7 +24,7 @@ class wordclock_faceplate_italian : public wordclock_faceplate
         //---- MINUTE WORDS BEGIN------ //
         M_OE,
         M_MENO,
-        M_CINQUE,
+        M_CINIQUE,
         M_DIECI,
         M_QUINDICI,
         M_VENTI,
@@ -67,7 +66,6 @@ class wordclock_faceplate_italian : public wordclock_faceplate
         //------------ COMMON WORDS BEGIN ------------------------- //
         {{0, 0}, {0, 1}, {0, 2}, {0, 3}},                           // C_SONO
         {{0, 5}, {0, 6}},                                           // C_LE
-        {{0, 5}},                                                   // C_L only L = small italian correction sono le una e cinque should be sono l'una e cinque
         {{0, 8}, {0, 9}, {0, 10}},                                  // C_ORE
         {{7, 0}},                                                   // M_OE => M_E
         //----------- COMMON WORDS END ---------------------------- //
@@ -76,7 +74,7 @@ class wordclock_faceplate_italian : public wordclock_faceplate
                                                                     //---- MINUTE WORDS BEGIN------ //
         {{7, 0}},                                                   // M_E
         {{6, 7}, {6, 8}, {6, 9}, {6, 10}},                          // M_MENO
-        {{8, 5}, {8, 6}, {8, 7}, {8, 8}, {8, 9}, {8, 10}},          // M_CINQUE
+        {{8, 5}, {8, 6}, {8, 7}, {8, 8}, {8, 9}, {8, 10}},          // M_CINIQUE
         {{9, 0}, {9, 1}, {9, 2}, {9, 3}, {9, 4}},                   // M_DIECI
         {},                                                         // M_QUINDICI
         {{8, 0}, {8, 1}, {8, 2}, {8, 3}, {8, 4}},                   // M_VENTI
