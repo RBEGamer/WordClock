@@ -39,6 +39,8 @@ public:
         DAYLIGHTSAVING,
         COLORMODE,
         RESTORESETTINGS,
+        DOTBRIGHTNESS,
+        BLINKENDOTS,
         LENGHT // DONT DELETE
     };
 #endif

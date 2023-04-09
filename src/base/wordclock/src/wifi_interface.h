@@ -46,6 +46,7 @@ public:
         COLORMODE,
         RESTORESETTINGS,
         DOTBRIGHTNESS,
+        BLINKENDOTS,
         LENGHT // DONT DELETE
     };
 
@@ -77,6 +78,8 @@ public:
         "dls", // DAYLIGHTSAVING
         "col", // COLORMODE
         "res", // RESTORESETTINGS
+        "dob", // DOTBRIGHTNESS
+        "bld", // BLINKENDOTS
     };
 
     // MAP FOR FAST LUT  FKT <> CMD_LUT will be used in parse_cmd

@@ -18,6 +18,7 @@ settings_storage *settings = nullptr;
 
 void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
 {
+
     if (_instance)
     {
         delete _instance;
@@ -163,7 +164,8 @@ void display_ip(PicoLed::PicoLedController &_leds, const std::string _ip)
         {
             if (faceplate)
             {
-                faceplate->display_time(_leds, (int)(out.at(i).at(j) - '0'), 0, 0);
+                const int ip_digit = (int)(out.at(i).at(j) - '0');
+                faceplate->display_time(_leds, ip_digit, 0, (ip_digit * 1 / 255) % 60);
             }
             sleep_ms(1000);
         }
@@ -227,10 +229,24 @@ void set_dls(const std::string _payload)
     settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, v);
 }
 
+void set_dob(const std::string _payload)
+{
+    const int v = helper::limit(_payload, 0, 100);
+    wordclock_faceplate::config.dotbrightness = v;
+    settings->write(settings_storage::SETTING_ENTRY::DOTBRIGHTNESS, v);
+}
+
 void set_brightnesscurve(const std::string _payload)
 {
-    brighness_curve = (bool)helper::limit(_payload, 10, 100);
+    brighness_curve = helper::limit(_payload, 10, 100);
     settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, brighness_curve);
+}
+
+void set_blinkendots(const std::string _payload)
+{
+    const bool v = (bool)helper::limit(_payload, 0, 1);
+    wordclock_faceplate::config.blinkendots = v;
+    settings->write(settings_storage::SETTING_ENTRY::BLINKENDOTS, v);
 }
 
 void set_colormode(const std::string _payload)
@@ -290,7 +306,7 @@ void restore_settings(bool _force = false)
         settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, WORDCLOCK_DAYLIGHTSAVING);
         settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, WORDCLOCK_BRIGHTNESS_MODE_AUTO_CURVE);
         settings->write(settings_storage::SETTING_ENTRY::COLORMODE, WORDCLOCK_COLOR_MODE);
-        settings->wirte(settings_storage::SETTING_ENTRY::DOTBRIGHTNESS, WORDCLOCK_DOTBRIGHTNESS);
+        settings->write(settings_storage::SETTING_ENTRY::DOTBRIGHTNESS, WORDCLOCK_DOTBRIGHTNESS);
         // SET THE RTC TO A DEFINED TIME
         if (timekeeper)
         {
@@ -306,6 +322,7 @@ void restore_settings(bool _force = false)
     brighness_curve = settings->read(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE);
     faceplate->set_colormode(static_cast<wordclock_faceplate::COLORMODE>(settings->read(settings_storage::SETTING_ENTRY::COLORMODE)));
     wordclock_faceplate::config.dotbrightness = settings->read(settings_storage::SETTING_ENTRY::DOTBRIGHTNESS);
+    wordclock_faceplate::config.blinkendots = settings->read(settings_storage::SETTING_ENTRY::BLINKENDOTS);
 }
 
 void set_restoresettings(const std::string _payload)
@@ -324,6 +341,8 @@ int main()
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
     gpio_put(PICO_DEFAULT_LED_PIN, true);
+
+    wordclock_faceplate::config = wordclock_faceplate::FACEPLATE_CONFIG();
 
     init_i2c();
     // AFTER CALLING init_i2c all needed instances of timekeeper lightsensor settings objects should be created.
@@ -394,6 +413,8 @@ int main()
     wifi_interface::register_rx_callback(set_date, wifi_interface::CMD_INDEX::DATE);
     wifi_interface::register_rx_callback(set_colormode, wifi_interface::CMD_INDEX::COLORMODE);
     wifi_interface::register_rx_callback(set_restoresettings, wifi_interface::CMD_INDEX::RESTORESETTINGS);
+    wifi_interface::register_rx_callback(set_dob, wifi_interface::CMD_INDEX::DOTBRIGHTNESS);
+    wifi_interface::register_rx_callback(set_blinkendots, wifi_interface::CMD_INDEX::BLINKENDOTS);
 
 // RESTORE ALLE SETTINGS
 //  DO ITS AT THE END (AFTER I2C INIT ) -> settings source could changesd to eeprom if enabled
@@ -439,11 +460,7 @@ int main()
             {
                 last_tsec = t.sec;
                 printf("h%i m%i s%i b%i\n", t.hour, t.min, t.sec, current_brightness);
-//#ifdef DEBUG
-//                update_display_time(ledStrip, t.min%24, t.sec, t.sec);
-//#else
                 update_display_time(ledStrip, t.hour, t.min, t.sec);
-//#endif
             }
             // CHECK BRIGHTNESS
             if (current_brightness_mode == 0)

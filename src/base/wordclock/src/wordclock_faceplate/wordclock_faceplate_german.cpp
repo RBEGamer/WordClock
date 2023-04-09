@@ -33,21 +33,21 @@ void wordclock_faceplate_german::display_time_with_words(PicoLed::PicoLedControl
 {
     // MINUTE DOTS
     const int minute_dots = _m % 5;
-    if (minute_dots > 0 || (BLINKENDOTS == 1 && _s%2 == 0))
+    //TODO SIMPLY IF cfg
+    if (minute_dots > 0 || (wordclock_faceplate::config.blinkendots && _s%2 == 0))
     {
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_DOT_ONE, _s);
     }
 
-    
-    if (minute_dots > 1|| (BLINKENDOTS == 1 && _s%2 == 0))
+    if (minute_dots > 1|| (wordclock_faceplate::config.blinkendots && _s%2 == 0))
     {
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_DOT_TWO, _s);
     }
-    if (minute_dots > 2|| (BLINKENDOTS == 1 && _s%2 == 0))
+    if (minute_dots > 2|| (wordclock_faceplate::config.blinkendots && _s%2 == 0))
     {
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_DOT_THREE, _s);
     }
-    if (minute_dots > 3|| (BLINKENDOTS == 1 && _s%2 == 0))
+    if (minute_dots > 3|| (wordclock_faceplate::config.blinkendots && _s%2 == 0))
     {
         wordclock_faceplate_german::set_word(_leds, wordclock_faceplate_german::WORDS_INDEX::M_DOT_FOUR, _s);
     }

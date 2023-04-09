@@ -4,7 +4,7 @@
 // 25.12.2022 -  simplification due to more required parameters
 // 25.12.2022 - due to storage working on the rp2040 with firmware V2 and working flash/eeporm storage the wifimodule doesnt save settings locally
 // 27.12.2022 - added colormodes and clock reset command
-#define VERSION "3.2.0"
+#define VERSION "3.3.0"
 // ENABLE ON ESP8266-01 !!!!!!!!!!!!!!!!!!!!!!!!!!
 #define USE_LITTLEFS
 //FOR ESP8266-01
@@ -382,11 +382,17 @@ void handleRoot() {
   // DAYLIGHTSAVING
   control_forms += "<p>DAYLIGHTSAVING: </p><form name='btn_on' action='/save' method='GET'><select name='dls' id='dls'><option value='0'>DISBALED</option><option value='1'>ENABLED</option></select><input type='submit' value='SAVE'/></form><br>";
   //BRIGHTNESS
-  control_forms += "<p>BRIGHTNESS<br> </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sb' id='sb' min='10' max='255' required placeholder='10-255'/><input type='submit' value='SAVE MANUAL MODE'/></form><br><form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='10'/><input type='submit' value='SET AUTO MODE'/></form><br>";
+  control_forms += "<p>BRIGHTNESS<br> </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sb' id='sb' min='10' max='255' required placeholder='10-255'/><input type='submit' value='SAVE MANUAL MODE'/></form><br><form name='btn_off' action='/save' method='GET'><input type='hidden' name='sb' id='sb' value='0'/><input type='submit' value='SET AUTO MODE'/></form><br>";
   //BRIGHTNESS CURVE
   control_forms += "<p>BRIGHTNESS CURVE: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='sbc' id='sbc' min='10' max='100' required placeholder='0=LINEAR 10-100=EXPONENTIAL'/><input type='submit' value='SAVE'/></form><br>";
   //COLORMODE
   control_forms += "<p>COLOR MODE: </p><form name='btn_on' action='/save' method='GET'><select name='col' id='col'><option value='0'>RAINBOW SEPARATE</option><option value='1'>RAINBOW EQUAL</option><option value='2'>COLD WHITE</option><option value='3'>WARM WHITE</option></select><input type='submit' value='SAVE'/></form><br>";
+  
+  //DOTBRIGHTNESS
+  control_forms += "<p>DOT BRIGHTNESS: </p><form name='btn_off' action='/save' method='GET'><input type='number' name='dob' id='dob' min='0' max='100' required placeholder='0-100%'/><input type='submit' value='SAVE'/></form><br>";
+  // BLINKENDOTS
+  control_forms += "<p>BLINKENDOTS: </p><form name='btn_on' action='/save' method='GET'><select name='bld' id='bld'><option value='0'>DISBALED</option><option value='1'>ENABLED</option></select><input type='submit' value='SAVE'/></form><br>";
+  
   // CLOCKRESET
   control_forms += "<form name='btn_on' action='/save' method='GET' required ><input type='hidden' value='res' name='res' /><input type='submit' value='CLOCK RESET'/></form><br>";
 

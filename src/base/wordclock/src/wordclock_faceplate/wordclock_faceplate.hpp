@@ -13,13 +13,6 @@
 #define VERSION "1.0.0" // FORMAT "x.y.z"
 #endif
 
-#if (defined(DEBUG) &&  DEBUG==1)|| defined(ENABLE_BLINKENDOTS)
-#ifndef BLINKENDOTS
-#define BLINKENDOTS 1
-#endif
-#else
-#define BLINKENDOTS 0
-#endif
 
 #ifndef WORDCLOCK_PCBREV
 #define WORDCLOCK_PCBREV 0
@@ -64,7 +57,7 @@ protected:
     HOUR,
     MINUTE,
     COMMON,
-    DEFAULT // DONT DELETE PLACE AS lAST ELEMENT used as length indicator
+    DEFAULT // DONT DELETE PLACE AS LAST ELEMENT used as length indicator
   };
 
   virtual void display_time_with_words(PicoLed::PicoLedController &_leds, const int _horig, const int _m, const int _s);
@@ -72,6 +65,7 @@ protected:
   PicoLed::Color get_word_color_by_class(const WORD_COLOR_CLASS _basecolor, const int _current_seconds);
   int xy_to_led_index(const std::tuple<int, int> _xy);
   std::tuple<int, int> flip_xy(const std::tuple<int, int> _origin, const bool _flip);
+  bool is_minutedot(const int _led_index);
 
 public:
   enum class FACEPLATES
@@ -100,15 +94,16 @@ public:
     FACEPLATES current_faceplate;
     COLORMODE color_mode;
     uint8_t dotbrightness;
+    bool blinkendots;
     FACEPLATE_CONFIG()
     {
       flip_state = false;
-      current_faceplate = FACEPLATES::TEST;
+      current_faceplate = FACEPLATES::GERMAN;
       color_mode = COLORMODE::COLD_WHITE;
       dotbrightness = WORDCLOCK_DOTBRIGHTNESS;
+      blinkendots = (bool)WORDCLOCK_BLINKENDOTS;
     }
   };
-
   // INLINE IN C++17 no init in cpp needed
   inline static struct FACEPLATE_CONFIG config;
 
@@ -118,6 +113,7 @@ public:
   void display_testpattern(PicoLed::PicoLedController &_leds);
   void display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s);
   void set_colormode(COLORMODE _colormode);
+ 
 };
 
 #endif

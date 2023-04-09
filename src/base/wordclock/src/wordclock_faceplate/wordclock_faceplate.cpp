@@ -56,7 +56,7 @@ void wordclock_faceplate::display_time_with_words(PicoLed::PicoLedController &_l
 #else
     const std::vector<std::tuple<int, int>> build = {{8, 2}};
 #endif
-     set_leds(_leds, build, wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT, _s);
+    set_leds(_leds, build, wordclock_faceplate::WORD_COLOR_CLASS::DEFAULT, _s);
 }
 
 PicoLed::Color wordclock_faceplate::get_word_color_by_class(const wordclock_faceplate::WORD_COLOR_CLASS _basecolor, const int _current_seconds)
@@ -142,24 +142,52 @@ int wordclock_faceplate::xy_to_led_index(const std::tuple<int, int> _xy)
     return index + minute_dot_offset;
 }
 
+bool wordclock_faceplate::is_minutedot(const int _led_index)
+{
+    for (int i = 0; i < LED_MINUTEDOT_COUNT; i++)
+    {
+        if (LED_MINUTEDOT_POSITIONS[i] == _led_index)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
 void wordclock_faceplate::set_leds(PicoLed::PicoLedController &_leds, const std::vector<std::tuple<int, int>> _word, const WORD_COLOR_CLASS _basecolor, const int _current_seconds)
 {
+    int led_to_set_index = -1;
+    PicoLed::Color led_color;
+    //  GET LED COLOR
+    led_color = get_word_color_by_class(_basecolor, _current_seconds);
 
+    // SET COLORS IN WORD
     for (int i = 0; i < _word.size(); i++)
     {
         const std::tuple<int, int> led_pos = _word.at(i);
 
+        // GET LED INDEX
         if (std::get<0>(led_pos) == USE_DIRECT_LED_INDEXING)
         {
-            const int clamped_index = std::get<1>(led_pos) % PICO_DEFAULT_WS2812_NUM;
-            _leds.setPixelColor(clamped_index + LED_MATRIX_START_OFFSET, get_word_color_by_class(_basecolor, _current_seconds));
+            led_to_set_index = std::get<1>(led_pos) % PICO_DEFAULT_WS2812_NUM;
         }
         else
         {
             // FLIP PIXEL IF NEEDED
-            const std::tuple<int, int> final = flip_xy(led_pos, wordclock_faceplate::config.flip_state);
-            _leds.setPixelColor(xy_to_led_index(final) + LED_MATRIX_START_OFFSET, get_word_color_by_class(_basecolor, _current_seconds));
+            const std::tuple<int, int> index_flipped_final = flip_xy(led_pos, wordclock_faceplate::config.flip_state);
+            led_to_set_index = xy_to_led_index(index_flipped_final);
         }
+
+        // SEPERATE HANDLER FOR MINUTE DOTS
+        // SIMPLY MIX COLOR WITH BLACK USING SEPERATE RATIOS
+        if (is_minutedot(led_to_set_index))
+        {
+            led_color = PicoLed::MixColors(led_color, PicoLed::RGB(0, 0, 0), wordclock_faceplate::config.dotbrightness / 100.0); // MultiplyColors(led_color,  helper::limit((wordclock_faceplate::config.dotbrightness*1.0f / 100.0), 0, 100));
+        }
+        // FINALLY SET THE LED
+        _leds.setPixelColor(led_to_set_index + LED_MATRIX_START_OFFSET, led_color);
     }
 }
 
