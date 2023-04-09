@@ -4,7 +4,7 @@
 // 25.12.2022 -  simplification due to more required parameters
 // 25.12.2022 - due to storage working on the rp2040 with firmware V2 and working flash/eeporm storage the wifimodule doesnt save settings locally
 // 27.12.2022 - added colormodes and clock reset command
-#define VERSION "3.3.0"
+#define VERSION "3.4.1"
 // ENABLE ON ESP8266-01 !!!!!!!!!!!!!!!!!!!!!!!!!!
 #define USE_LITTLEFS
 //FOR ESP8266-01
