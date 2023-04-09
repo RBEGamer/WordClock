@@ -224,7 +224,7 @@ void set_date(const std::string _payload)
 
 void set_dls(const std::string _payload)
 {
-    const int v = (bool)helper::limit(_payload, 0, 1);
+    const int v = !(bool)helper::limit(_payload, 0, 1);
     timekeeper->set_daylightsaving(v);
     settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, v);
 }
@@ -426,6 +426,8 @@ int main()
 
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 
+
+    
     while (true)
     {
         sleep_ms(10);
@@ -435,7 +437,6 @@ int main()
         wifi_interface::on_wifi_uart_rx();
 #endif
         wifi_interface::process_cmd();
-
         // SET UPDATE DISPLAY EVERY x00 MS
         const long long current_update = time_us_64();
         if (abs(last_update - current_update) > (300 * 1000))
@@ -459,7 +460,7 @@ int main()
             if (last_tsec != t.sec)
             {
                 last_tsec = t.sec;
-                printf("h%i m%i s%i b%i\n", t.hour, t.min, t.sec, current_brightness);
+                printf("h%i m%i s%i b%i d%i m%i y%i\n", t.hour, t.min, t.sec, current_brightness, t.day, t.month, t.year);
                 update_display_time(ledStrip, t.hour, t.min, t.sec);
             }
             // CHECK BRIGHTNESS

@@ -18,15 +18,12 @@ if(WORDCLOCK_BOARD)
         set(PICO_BOARD "${WORDCLOCK_BOARD}")
 else()
         message(WARNING "WORDCLOCK_BOARD NOT SET")      
-        #set(PICO_BOARD "WORDCLOCK_V1_RP2040")
-        #set(PICO_BOARD "WORDCLOCK_V2_RP2040")
         set(PICO_BOARD "WORDCLOCK_V2_RP2040_RP2040RTC")
-        #set(PICO_BOARD "WORDCLOCK_V2_RP2040_NOI2C")
 endif()
 
 
 
-set(VERSION "3.4.1")
+set(VERSION "4.0.0")
 
 
 
@@ -86,7 +83,7 @@ add_executable(wordclock
         src/rtc/rtc_i2c.hpp
         src/helper.h
         src/helper.cpp
-        src/wifi_interface.h
+        src/wifi_interface.hpp
         src/wifi_interface.cpp
         src/main.h
         src/main.cpp

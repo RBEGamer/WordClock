@@ -1,4 +1,4 @@
-#include "wifi_interface.h"
+#include "wifi_interface.hpp"
 
 bool wifi_interface::register_rx_callback(const std::function<void(const std::string _payload)> _callback, const wifi_interface::CMD_INDEX _cmd)
 {
@@ -9,9 +9,8 @@ bool wifi_interface::register_rx_callback(const std::function<void(const std::st
   if (_callback != nullptr)
   {
     callback_setup = true;
-    wifi_interface::RX_CALLBACK_FUNCTIONS[wifi_interface::CMD_LUT[(int)_cmd]] = _callback;
+    wifi_interface::RX_CALLBACK_FUNCTIONS[std::get<0>(wifi_interface::CMD_LUT[(int)_cmd])] = _callback;
   }
-
   return true;
 }
 
@@ -115,7 +114,7 @@ wifi_interface::rxcmd wifi_interface::process_cmd_str(const std::string _rx_buff
     if (wifi_interface::callback_setup)
     {
       // MAP CMD INDEX ENUM TO STRING VERSERION  CMD_INDEX::LOG => "log"
-      const std::string cmd_str = wifi_interface::CMD_LUT[(int)res.cmd];
+      const std::string cmd_str = std::get<0>(wifi_interface::CMD_LUT[(int)res.cmd]);
       // FIND ELEMENT STring_VERSION THAT MATCHES THE STRING and CAll SET FUNCTION
       if (wifi_interface::RX_CALLBACK_FUNCTIONS.find(cmd_str) != wifi_interface::RX_CALLBACK_FUNCTIONS.end())
       {
@@ -163,7 +162,7 @@ wifi_interface::rxcmd wifi_interface::check_extract_cmd(const std::string _cmd_r
         ret.cmd = CMD_INDEX::INVALID;
         for (int i = 0; i < ((int)wifi_interface::CMD_INDEX::LENGHT); i++)
         {
-          const std::string cmd_l = wifi_interface::CMD_LUT[i];
+          const std::string cmd_l = std::get<0>(wifi_interface::CMD_LUT[i]);
           if (cmd == cmd_l)
           {
             ret.cmd = static_cast<wifi_interface::CMD_INDEX>(i);
@@ -202,7 +201,7 @@ void wifi_interface::send_cmd_str(const wifi_interface::CMD_INDEX _cmd, const st
     return;
   }
 
-  const std::string command = CMD_LUT[(int)_cmd];
+  const std::string command = std::get<0>(CMD_LUT[(int)_cmd]);
 #ifdef ENABLE_CRC
   const std::string tosend = CMD_START_CHARACTER + command + "_" + _payload + "_" + std::to_string(wifi_interface::crc16(command + _payload)) + "\n";
 #else
@@ -211,6 +210,28 @@ void wifi_interface::send_cmd_str(const wifi_interface::CMD_INDEX _cmd, const st
 
   printf("%s", tosend.c_str());
   uart_puts(UART_WIFI, tosend.c_str());
+}
+
+void wifi_interface::send_present_command_list(const std::string _payload)
+{
+  // GENERATE AND SEND CMD OPTION LIST
+  for (size_t i = 0; i < CMD_LUT_SIZE; i++)
+  {
+
+    const std::tuple<const std::string, const std::string, CMD_DATATYPE, int, int, bool, std::vector<std::string>> cmd_entry = CMD_LUT[i];
+    const char sepc = CMD_DEFINITION_TOUPLE_SEPERATION_CHARACTER;
+
+    const std::string cmd_def_str = std::get<0>(cmd_entry) + sepc + std::get<1>(cmd_entry) + sepc+ std::to_string((int)std::get<2>(cmd_entry)) + sepc + std::to_string(std::get<3>(cmd_entry)) + sepc + std::to_string(std::get<4>(cmd_entry)) + sepc + std::to_string(std::get<5>(cmd_entry)) + sepc;
+    std::string cmd_def_opt_str = "";
+    const std::vector<std::string> cmd_opts = std::get<6>(cmd_entry);
+
+    for (auto i : cmd_opts)
+    {
+      cmd_def_opt_str += i + CMD_DEFINITION_OPTION_SEPERATION_CHARACTER;
+    }
+
+    send_cmd_str(CMD_INDEX::SYS_CMD_DEFINITION, cmd_def_str + cmd_def_opt_str);
+  }
 }
 
 void wifi_interface::send_time(const int _h, const int _m, const int _s)

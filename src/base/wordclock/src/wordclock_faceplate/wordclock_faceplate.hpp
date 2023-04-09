@@ -5,14 +5,13 @@
 #include <vector>
 #include <tuple>
 #include "wordclock_faceplate_constants.h"
-#include "../wifi_interface.h"
+#include "../wifi_interface.hpp"
 
 // THE TESTPATTERN FUNCTIONS DISPLAYS SOME SETTINGS LIKE VERSION, CONFIG
 // SO MAKE SURE THE REQUIRED DEFINES ARE THERE
 #ifndef VERSION
 #define VERSION "1.0.0" // FORMAT "x.y.z"
 #endif
-
 
 #ifndef WORDCLOCK_PCBREV
 #define WORDCLOCK_PCBREV 0
@@ -79,6 +78,20 @@ public:
     TEST // DONT DELETE TEST PLACE AS lAST ELEMENT used as length indicator
   };
 
+
+  static inline const int FACEPLATE_LENGHT = ((int)FACEPLATES::TEST);
+
+  static inline const std::string FACEPLATE_NAMES[FACEPLATE_LENGHT] = {
+      "GERMAN",
+      "ENGLISH",
+      "ITALIAN",
+      "BELGIAN",
+      "BINARY",
+      "DOTS"
+    };
+
+
+
   enum class COLORMODE
   {
     RAINBOW_SEPARATE = 0,
@@ -113,7 +126,6 @@ public:
   void display_testpattern(PicoLed::PicoLedController &_leds);
   void display_time(PicoLed::PicoLedController &_leds, const int _h, const int _m, const int _s);
   void set_colormode(COLORMODE _colormode);
- 
 };
 
 #endif

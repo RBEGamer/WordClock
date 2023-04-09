@@ -15,7 +15,7 @@
 #include <PicoLed.hpp>
 
 
-#include "wifi_interface.h"
+#include "wifi_interface.hpp"
 #include "settings_storage/settings_storage_include.h"
 #include "helper.h"
 #include "rtc/rtc_include.h"

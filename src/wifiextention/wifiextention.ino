@@ -238,7 +238,7 @@ void set_clock_time(const int _h, const int _m, const int _s) {
 }
 
 void set_clock_date(const int _day, const int _month, const int _year) {
-  send_cmd_str("sd", String(_day) + ":" + String(_month) + ":" + String(_year));
+  send_cmd_str("sd", String(_day) + "." + String(_month) + "." + String(_year));
 }
 
 void set_restdefaults(){
@@ -512,7 +512,7 @@ void loop(void) {
     // DATE
     time_t epochTime = timeClient.getEpochTime();
     struct tm* ptm = gmtime((time_t*)&epochTime);
-
+    delay(100);
     rtc_day = ptm->tm_mday;
     rtc_month = ptm->tm_mon + 1;
     rtc_year = ptm->tm_year + 1900;

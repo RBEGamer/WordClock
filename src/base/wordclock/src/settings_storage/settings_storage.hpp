@@ -14,7 +14,7 @@
 //USE CONFIG SETTINGS FROM WIFIINTERFACE, NEW ENTRIES MUST BE DECLARED IN WIFI INTERFACE
 #define USE_WIFIINTERFACE_SETTINGS
 #ifdef USE_WIFIINTERFACE_SETTINGS
-#include "../wifi_interface.h"
+#include "../wifi_interface.hpp"
 // #define SETTING_ENTRY wifi_interface::CMD_INDEX SETTINGS_ENTRY
 #endif
 
