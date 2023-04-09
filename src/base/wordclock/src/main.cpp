@@ -290,7 +290,7 @@ void restore_settings(bool _force = false)
         settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, WORDCLOCK_DAYLIGHTSAVING);
         settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, WORDCLOCK_BRIGHTNESS_MODE_AUTO_CURVE);
         settings->write(settings_storage::SETTING_ENTRY::COLORMODE, WORDCLOCK_COLOR_MODE);
-
+        settings->wirte(settings_storage::SETTING_ENTRY::DOTBRIGHTNESS, WORDCLOCK_DOTBRIGHTNESS);
         // SET THE RTC TO A DEFINED TIME
         if (timekeeper)
         {
@@ -305,6 +305,7 @@ void restore_settings(bool _force = false)
     timekeeper->set_daylightsaving((bool)helper::limit(settings->read(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING), 0, 1));
     brighness_curve = settings->read(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE);
     faceplate->set_colormode(static_cast<wordclock_faceplate::COLORMODE>(settings->read(settings_storage::SETTING_ENTRY::COLORMODE)));
+    wordclock_faceplate::config.dotbrightness = settings->read(settings_storage::SETTING_ENTRY::DOTBRIGHTNESS);
 }
 
 void set_restoresettings(const std::string _payload)

@@ -99,11 +99,13 @@ public:
     bool flip_state;
     FACEPLATES current_faceplate;
     COLORMODE color_mode;
+    uint8_t dotbrightness;
     FACEPLATE_CONFIG()
     {
       flip_state = false;
       current_faceplate = FACEPLATES::TEST;
-      color_mode = COLORMODE::RAINBOW_SEPARATE;
+      color_mode = COLORMODE::COLD_WHITE;
+      dotbrightness = WORDCLOCK_DOTBRIGHTNESS;
     }
   };
 
