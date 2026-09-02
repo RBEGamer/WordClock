@@ -61,6 +61,7 @@ public:
         RESTORESETTINGS,
         DOTBRIGHTNESS,
         BLINKENDOTS,
+        IGNOREWIFITIME,
 
         // DONT DELETE FOLLOWING
         SYS_SEND_COMMANDS,
@@ -87,6 +88,7 @@ public:
         {"res", "RESTORE CLOCK SETTINGS", CMD_DATATYPE::BOOL, -1, -1, true, {}},            // RESTORESETTINGS
         {"dob", "DOT BRIGHTNESS", CMD_DATATYPE::NUMBER, 0, 100, true, {}},      // DOTBRIGHTNESS
         {"bld", "BLINKENDOTS", CMD_DATATYPE::BOOL, -1, -1, true, {}},                       // BLINKENDOTS
+        {"iwt", "", CMD_DATATYPE::BOOL, -1, -1, false, {}},                                // IGNOREWIFITIME
 
         // DONT DELETE FOLLOWING
         {"syssc", "", CMD_DATATYPE::INVISIBLE, -1, -1, false, {}},           // SYS_SEND_COMMANDS USES TO SEND BACK COMMAND LIST

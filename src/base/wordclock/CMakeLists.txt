@@ -85,6 +85,8 @@ add_executable(wordclock
         src/helper.cpp
         src/wifi_interface.hpp
         src/wifi_interface.cpp
+        src/usb_serial_commandline.hpp
+        src/usb_serial_commandline.cpp
         src/main.h
         src/main.cpp
         )
@@ -133,4 +135,3 @@ target_link_libraries(wordclock
 target_link_libraries(wordclock pico_stdlib PicoLed)
 
 pico_add_extra_outputs(wordclock)
-

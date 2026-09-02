@@ -16,6 +16,7 @@
 
 
 #include "wifi_interface.hpp"
+#include "usb_serial_commandline.hpp"
 #include "settings_storage/settings_storage_include.h"
 #include "helper.h"
 #include "rtc/rtc_include.h"
@@ -35,7 +36,10 @@ int set_faceplate(const int _fp);
 void set_faceplate_str(const std::string _payload);
 void set_displayorientation_str(const std::string _payload);
 void set_displayorientation(const int _payload);
-void set_time(const std::string _payload);
+void set_time_from_wifi(const std::string _payload);
+void set_time_from_usb(const int _hour, const int _minute, const int _second);
+void set_ignore_wifi_time(const bool _ignore);
+bool get_ignore_wifi_time();
 void set_date(const std::string _payload);
 void set_dls(const std::string _payload);
 void set_brightnesscurve(const std::string _payload);

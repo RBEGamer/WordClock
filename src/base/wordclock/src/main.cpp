@@ -9,6 +9,7 @@ long long last_update = 0;
 bool display_update = true;
 int brighness_curve = 10;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
+bool ignore_wifi_time = false;
 
 // CLASS INSTANCES
 wordclock_faceplate *faceplate = new wordclock_faceplate();
@@ -212,9 +213,31 @@ void set_displayorientation(const int _payload)
     settings->write(settings_storage::SETTING_ENTRY::DISPLAYORIENTATION, (int)wordclock_faceplate::config.flip_state);
 }
 
-void set_time(const std::string _payload)
+void set_time_from_wifi(const std::string _payload)
 {
+    if (ignore_wifi_time)
+    {
+        printf("wifi time update ignored\n");
+        return;
+    }
     timekeeper->set_rtc_time(_payload, false); // false = update time
+}
+
+void set_time_from_usb(const int _hour, const int _minute, const int _second)
+{
+    timekeeper->set_rtc_time(_hour, _minute, _second, false);
+    display_update = true;
+}
+
+void set_ignore_wifi_time(const bool _ignore)
+{
+    ignore_wifi_time = _ignore;
+    settings->write(settings_storage::SETTING_ENTRY::IGNOREWIFITIME, (uint8_t)_ignore);
+}
+
+bool get_ignore_wifi_time()
+{
+    return ignore_wifi_time;
 }
 
 void set_date(const std::string _payload)
@@ -307,6 +330,7 @@ void restore_settings(bool _force = false)
         settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, WORDCLOCK_BRIGHTNESS_MODE_AUTO_CURVE);
         settings->write(settings_storage::SETTING_ENTRY::COLORMODE, WORDCLOCK_COLOR_MODE);
         settings->write(settings_storage::SETTING_ENTRY::DOTBRIGHTNESS, WORDCLOCK_DOTBRIGHTNESS);
+        settings->write(settings_storage::SETTING_ENTRY::IGNOREWIFITIME, 0);
         // SET THE RTC TO A DEFINED TIME
         if (timekeeper)
         {
@@ -323,6 +347,8 @@ void restore_settings(bool _force = false)
     faceplate->set_colormode(static_cast<wordclock_faceplate::COLORMODE>(settings->read(settings_storage::SETTING_ENTRY::COLORMODE)));
     wordclock_faceplate::config.dotbrightness = settings->read(settings_storage::SETTING_ENTRY::DOTBRIGHTNESS);
     wordclock_faceplate::config.blinkendots = settings->read(settings_storage::SETTING_ENTRY::BLINKENDOTS);
+    // Only 1 means enabled so erased/uninitialized storage (0xff) remains backward compatible.
+    ignore_wifi_time = settings->read(settings_storage::SETTING_ENTRY::IGNOREWIFITIME) == 1;
 }
 
 void set_restoresettings(const std::string _payload)
@@ -403,7 +429,7 @@ int main()
 #ifdef ENABLE_UART_IRQ
     wifi_interface::enable_uart_irq(true);
 #endif
-    wifi_interface::register_rx_callback(set_time, wifi_interface::CMD_INDEX::TIME);
+    wifi_interface::register_rx_callback(set_time_from_wifi, wifi_interface::CMD_INDEX::TIME);
     wifi_interface::register_rx_callback(set_brightnesmode, wifi_interface::CMD_INDEX::BRIGHTNESS);
     wifi_interface::register_rx_callback(set_faceplate_str, wifi_interface::CMD_INDEX::FACEPLATE);
     wifi_interface::register_rx_callback(prepare_display_ip, wifi_interface::CMD_INDEX::DISPLAYIP);
@@ -424,6 +450,8 @@ int main()
     restore_settings(false);
 #endif
 
+    usb_serial_commandline::init(set_time_from_usb, set_ignore_wifi_time, get_ignore_wifi_time);
+
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 
 
@@ -431,6 +459,8 @@ int main()
     while (true)
     {
         sleep_ms(10);
+
+        usb_serial_commandline::process();
 
 // PROCEESS ANY RECEIEVED COMMANDS
 #ifndef ENABLE_UART_IRQ
