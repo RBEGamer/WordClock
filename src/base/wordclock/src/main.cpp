@@ -10,6 +10,133 @@ bool display_update = true;
 int brighness_curve = 10;
 std::string display_to_ip = ""; // IF THERE IS SET ANYTHING THIS WILL BE SHOWN ON THE CLOCK
 bool ignore_wifi_time = false;
+int timezone_offset_minutes = 0;
+int wifi_time_date_adjustment = 0;
+
+namespace
+{
+constexpr int TIMEZONE_MINUTES_MIN = -12 * 60;
+constexpr int TIMEZONE_MINUTES_MAX = 14 * 60;
+constexpr int TIMEZONE_MINUTES_STEP = 15;
+constexpr int TIMEZONE_STORAGE_BIAS = 49;
+constexpr int TIMEZONE_STORAGE_MAX = (TIMEZONE_MINUTES_MAX / TIMEZONE_MINUTES_STEP) + TIMEZONE_STORAGE_BIAS;
+
+uint8_t encode_timezone_offset(const int _offset_minutes)
+{
+    return (uint8_t)((_offset_minutes / TIMEZONE_MINUTES_STEP) + TIMEZONE_STORAGE_BIAS);
+}
+
+int decode_timezone_offset(const uint8_t _stored_value)
+{
+    // Zero and erased flash (0xff) both decode to UTC for backward compatibility.
+    if (_stored_value < 1 || _stored_value > TIMEZONE_STORAGE_MAX)
+    {
+        return 0;
+    }
+    return ((int)_stored_value - TIMEZONE_STORAGE_BIAS) * TIMEZONE_MINUTES_STEP;
+}
+
+bool parse_unsigned_value(const std::string &_value, const int _minimum, const int _maximum, int &_result)
+{
+    if (_value.empty())
+    {
+        return false;
+    }
+
+    int result = 0;
+    for (const char ch : _value)
+    {
+        if (ch < '0' || ch > '9')
+        {
+            return false;
+        }
+        const int digit = ch - '0';
+        if (digit > _maximum || result > (_maximum - digit) / 10)
+        {
+            return false;
+        }
+        result = (result * 10) + digit;
+    }
+
+    if (result < _minimum)
+    {
+        return false;
+    }
+    _result = result;
+    return true;
+}
+
+bool extract_time(const std::string &_payload, int &_hour, int &_minute, int &_second)
+{
+    const size_t first_separator = _payload.find(':');
+    const size_t second_separator = first_separator == std::string::npos
+                                        ? std::string::npos
+                                        : _payload.find(':', first_separator + 1);
+    if (first_separator == std::string::npos ||
+        second_separator == std::string::npos ||
+        _payload.find(':', second_separator + 1) != std::string::npos)
+    {
+        return false;
+    }
+
+    return parse_unsigned_value(_payload.substr(0, first_separator), 0, 23, _hour) &&
+           parse_unsigned_value(_payload.substr(first_separator + 1, second_separator - first_separator - 1), 0, 59, _minute) &&
+           parse_unsigned_value(_payload.substr(second_separator + 1), 0, 59, _second);
+}
+
+bool extract_date(const std::string &_payload, int &_day, int &_month, int &_year)
+{
+    const size_t first_separator = _payload.find('.');
+    const size_t second_separator = first_separator == std::string::npos
+                                        ? std::string::npos
+                                        : _payload.find('.', first_separator + 1);
+    if (first_separator == std::string::npos ||
+        second_separator == std::string::npos ||
+        _payload.find('.', second_separator + 1) != std::string::npos)
+    {
+        return false;
+    }
+
+    return parse_unsigned_value(_payload.substr(0, first_separator), 1, 31, _day) &&
+           parse_unsigned_value(_payload.substr(first_separator + 1, second_separator - first_separator - 1), 1, 12, _month) &&
+           parse_unsigned_value(_payload.substr(second_separator + 1), 2000, 2099, _year);
+}
+
+int days_in_month(const int _month, const int _year)
+{
+    static const int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (_month == 2 && RTC_LEAP_YEAR(_year))
+    {
+        return 29;
+    }
+    return days[_month - 1];
+}
+
+void adjust_date(int &_day, int &_month, int &_year, const int _day_adjustment)
+{
+    _day += _day_adjustment;
+    if (_day < 1)
+    {
+        _month--;
+        if (_month < 1)
+        {
+            _month = 12;
+            _year--;
+        }
+        _day = days_in_month(_month, _year);
+    }
+    else if (_day > days_in_month(_month, _year))
+    {
+        _day = 1;
+        _month++;
+        if (_month > 12)
+        {
+            _month = 1;
+            _year++;
+        }
+    }
+}
+} // namespace
 
 // CLASS INSTANCES
 wordclock_faceplate *faceplate = new wordclock_faceplate();
@@ -17,7 +144,7 @@ ambient_light *lightsensor = nullptr;
 rtc *timekeeper = nullptr;
 settings_storage *settings = nullptr;
 
-void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate)
+void switch_fp(wordclock_faceplate *&_instance, wordclock_faceplate::FACEPLATES _faceplate)
 {
 
     if (_instance)
@@ -217,15 +344,60 @@ void set_time_from_wifi(const std::string _payload)
 {
     if (ignore_wifi_time)
     {
+        wifi_time_date_adjustment = 0;
         printf("wifi time update ignored\n");
         return;
     }
-    timekeeper->set_rtc_time(_payload, false); // false = update time
+
+    int hour = 0;
+    int minute = 0;
+    int second = 0;
+    if (!extract_time(_payload, hour, minute, second))
+    {
+        printf("invalid wifi time: %s\n", _payload.c_str());
+        return;
+    }
+
+    int adjusted_minutes = (hour * 60) + minute + timezone_offset_minutes;
+    wifi_time_date_adjustment = 0;
+    if (adjusted_minutes < 0)
+    {
+        adjusted_minutes += 24 * 60;
+        wifi_time_date_adjustment = -1;
+    }
+    else if (adjusted_minutes >= 24 * 60)
+    {
+        adjusted_minutes -= 24 * 60;
+        wifi_time_date_adjustment = 1;
+    }
+
+    timekeeper->set_rtc_time(adjusted_minutes / 60, adjusted_minutes % 60, second, false);
 }
 
 void set_time_from_usb(const int _hour, const int _minute, const int _second)
 {
     timekeeper->set_rtc_time(_hour, _minute, _second, false);
+    display_update = true;
+}
+
+void set_date_from_wifi(const std::string _payload)
+{
+    int day = 0;
+    int month = 0;
+    int year = 0;
+    if (!extract_date(_payload, day, month, year) || day > days_in_month(month, year))
+    {
+        printf("invalid wifi date: %s\n", _payload.c_str());
+        return;
+    }
+
+    adjust_date(day, month, year, wifi_time_date_adjustment);
+    timekeeper->set_rtc_date(day, month, year);
+}
+
+void set_date_from_usb(const std::string _payload)
+{
+    timekeeper->set_rtc_date(_payload);
     display_update = true;
 }
 
@@ -240,14 +412,26 @@ bool get_ignore_wifi_time()
     return ignore_wifi_time;
 }
 
-void set_date(const std::string _payload)
+void set_timezone_offset(const int _offset_minutes)
 {
-    timekeeper->set_rtc_date(_payload);
+    if (_offset_minutes < TIMEZONE_MINUTES_MIN ||
+        _offset_minutes > TIMEZONE_MINUTES_MAX ||
+        _offset_minutes % TIMEZONE_MINUTES_STEP != 0)
+    {
+        return;
+    }
+    timezone_offset_minutes = _offset_minutes;
+    settings->write(settings_storage::SETTING_ENTRY::TIMEZONEOFFSET, encode_timezone_offset(_offset_minutes));
+}
+
+int get_timezone_offset()
+{
+    return timezone_offset_minutes;
 }
 
 void set_dls(const std::string _payload)
 {
-    const int v = !(bool)helper::limit(_payload, 0, 1);
+    const int v = (bool)helper::limit(_payload, 0, 1);
     timekeeper->set_daylightsaving(v);
     settings->write(settings_storage::SETTING_ENTRY::DAYLIGHTSAVING, v);
 }
@@ -330,7 +514,9 @@ void restore_settings(bool _force = false)
         settings->write(settings_storage::SETTING_ENTRY::BRIGHTNESSCURVE, WORDCLOCK_BRIGHTNESS_MODE_AUTO_CURVE);
         settings->write(settings_storage::SETTING_ENTRY::COLORMODE, WORDCLOCK_COLOR_MODE);
         settings->write(settings_storage::SETTING_ENTRY::DOTBRIGHTNESS, WORDCLOCK_DOTBRIGHTNESS);
+        settings->write(settings_storage::SETTING_ENTRY::BLINKENDOTS, WORDCLOCK_BLINKENDOTS);
         settings->write(settings_storage::SETTING_ENTRY::IGNOREWIFITIME, 0);
+        settings->write(settings_storage::SETTING_ENTRY::TIMEZONEOFFSET, encode_timezone_offset(0));
         // SET THE RTC TO A DEFINED TIME
         if (timekeeper)
         {
@@ -349,6 +535,7 @@ void restore_settings(bool _force = false)
     wordclock_faceplate::config.blinkendots = settings->read(settings_storage::SETTING_ENTRY::BLINKENDOTS);
     // Only 1 means enabled so erased/uninitialized storage (0xff) remains backward compatible.
     ignore_wifi_time = settings->read(settings_storage::SETTING_ENTRY::IGNOREWIFITIME) == 1;
+    timezone_offset_minutes = decode_timezone_offset(settings->read(settings_storage::SETTING_ENTRY::TIMEZONEOFFSET));
 }
 
 void set_restoresettings(const std::string _payload)
@@ -436,7 +623,7 @@ int main()
     wifi_interface::register_rx_callback(set_displayorientation_str, wifi_interface::CMD_INDEX::DISPLAYORIENTATION);
     wifi_interface::register_rx_callback(set_dls, wifi_interface::CMD_INDEX::DAYLIGHTSAVING);
     wifi_interface::register_rx_callback(set_brightnesscurve, wifi_interface::CMD_INDEX::BRIGHTNESSCURVE);
-    wifi_interface::register_rx_callback(set_date, wifi_interface::CMD_INDEX::DATE);
+    wifi_interface::register_rx_callback(set_date_from_wifi, wifi_interface::CMD_INDEX::DATE);
     wifi_interface::register_rx_callback(set_colormode, wifi_interface::CMD_INDEX::COLORMODE);
     wifi_interface::register_rx_callback(set_restoresettings, wifi_interface::CMD_INDEX::RESTORESETTINGS);
     wifi_interface::register_rx_callback(set_dob, wifi_interface::CMD_INDEX::DOTBRIGHTNESS);
@@ -450,7 +637,24 @@ int main()
     restore_settings(false);
 #endif
 
-    usb_serial_commandline::init(set_time_from_usb, set_ignore_wifi_time, get_ignore_wifi_time);
+    usb_serial_commandline::callbacks usb_callbacks;
+    usb_callbacks.set_time = set_time_from_usb;
+    usb_callbacks.set_date = set_date_from_usb;
+    usb_callbacks.set_brightness = set_brightnesmode;
+    usb_callbacks.display_ip = prepare_display_ip;
+    usb_callbacks.set_faceplate = set_faceplate_str;
+    usb_callbacks.set_orientation = set_displayorientation_str;
+    usb_callbacks.set_brightness_curve = set_brightnesscurve;
+    usb_callbacks.set_daylight_saving = set_dls;
+    usb_callbacks.set_color_mode = set_colormode;
+    usb_callbacks.restore_settings = set_restoresettings;
+    usb_callbacks.set_dot_brightness = set_dob;
+    usb_callbacks.set_blink_dots = set_blinkendots;
+    usb_callbacks.set_ignore_wifi_time = set_ignore_wifi_time;
+    usb_callbacks.get_ignore_wifi_time = get_ignore_wifi_time;
+    usb_callbacks.set_timezone_offset = set_timezone_offset;
+    usb_callbacks.get_timezone_offset = get_timezone_offset;
+    usb_serial_commandline::init(usb_callbacks);
 
     gpio_put(PICO_DEFAULT_LED_PIN, false);
 

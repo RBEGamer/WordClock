@@ -62,6 +62,7 @@ public:
         DOTBRIGHTNESS,
         BLINKENDOTS,
         IGNOREWIFITIME,
+        TIMEZONEOFFSET,
 
         // DONT DELETE FOLLOWING
         SYS_SEND_COMMANDS,
@@ -89,6 +90,7 @@ public:
         {"dob", "DOT BRIGHTNESS", CMD_DATATYPE::NUMBER, 0, 100, true, {}},      // DOTBRIGHTNESS
         {"bld", "BLINKENDOTS", CMD_DATATYPE::BOOL, -1, -1, true, {}},                       // BLINKENDOTS
         {"iwt", "", CMD_DATATYPE::BOOL, -1, -1, false, {}},                                // IGNOREWIFITIME
+        {"tz", "", CMD_DATATYPE::STRING, -1, -1, false, {}},                               // TIMEZONEOFFSET
 
         // DONT DELETE FOLLOWING
         {"syssc", "", CMD_DATATYPE::INVISIBLE, -1, -1, false, {}},           // SYS_SEND_COMMANDS USES TO SEND BACK COMMAND LIST

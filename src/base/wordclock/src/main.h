@@ -24,7 +24,7 @@
 #include "ambient_light/ambient_light_include.h"
 
 
-void switch_fp(wordclock_faceplate *_instance, wordclock_faceplate::FACEPLATES _faceplate);
+void switch_fp(wordclock_faceplate *&_instance, wordclock_faceplate::FACEPLATES _faceplate);
 void init_bh1750(const int _i2_addr);
 void init_eeprom_i2c(const int _i2_addr);
 void init_rtc_i2c(const int _i2_addr);
@@ -38,9 +38,12 @@ void set_displayorientation_str(const std::string _payload);
 void set_displayorientation(const int _payload);
 void set_time_from_wifi(const std::string _payload);
 void set_time_from_usb(const int _hour, const int _minute, const int _second);
+void set_date_from_wifi(const std::string _payload);
+void set_date_from_usb(const std::string _payload);
 void set_ignore_wifi_time(const bool _ignore);
 bool get_ignore_wifi_time();
-void set_date(const std::string _payload);
+void set_timezone_offset(const int _offset_minutes);
+int get_timezone_offset();
 void set_dls(const std::string _payload);
 void set_brightnesscurve(const std::string _payload);
 void set_colormode(const std::string _payload);
